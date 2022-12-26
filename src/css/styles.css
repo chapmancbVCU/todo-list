@@ -16,6 +16,29 @@
 
 .footer {
     border: solid black 1px;
+    height: 100px;
+
+    padding-top: 15px;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+}
+
+.footer-text {
+    margin: 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.footer-text:first-of-type {
+margin-top: 1px;
+}
+
+.footer-text:last-of-type {
+margin-bottom: 1px;
+}
+
+h4 {
+    margin-top: 10px;
 }
 
 .header {

@@ -36,7 +36,35 @@ export class Page {
         const footerContainer = document.createElement('div');
         footerContainer.setAttribute('id', 'footer');
         footerContainer.classList.add('footer');
-        footerContainer.textContent = "Footer";
+        
+        const siteCurator = document.createElement('h4');
+        siteCurator.textContent = 'Created by: Chad Chapman';
+        siteCurator.classList.add('footer-text');
+        footerContainer.appendChild(siteCurator);
+
+        const linkedIn = document.createElement('p');
+        linkedIn.classList.add('footer-text');
+        const linkedInURL = document.createElement('a');
+        linkedInURL.textContent = "LinkedIn";
+        linkedInURL.href = 'https://www.linkedin.com/in/chadchapman2010/';
+        linkedIn.appendChild(linkedInURL);
+        footerContainer.appendChild(linkedIn);
+
+        const gitHub = document.createElement('p');
+        gitHub.classList.add('footer-text');
+        const gitHubURL = document.createElement('a');
+        gitHubURL.textContent = 'GitHub';
+        gitHubURL.href = 'https://github.com/chapmancbVCU';
+        gitHub.appendChild(gitHubURL);
+        footerContainer.appendChild(gitHub);
+
+        const docs = document.createElement('p');
+        docs.classList.add('footer-text');
+        const docsURL = document.createElement('a');
+        docsURL.textContent = 'JSDOC For This Project';
+        docsURL.href = 'https://chapmancbvcu.github.io/restaurant-page/out/index.html';
+        docs.appendChild(docsURL);
+        footerContainer.appendChild(docs);
 
         return footerContainer;
     }
