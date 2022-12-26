@@ -136,7 +136,40 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _css_styles_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./css/styles.css */ \"./src/css/styles.css\");\n/******************************************************************************\n *         Name: index.js\n *       Author: Chad Chapman\n * Date Created: December 26, 2022\n *  Description: Functions that support implementation of Todo List website\n******************************************************************************/\n\n/******************************************************************************\n * IMPORTS\n *****************************************************************************/\n\n\n\nfunction component() {\n    const element = document.createElement('div');\n  \n    // Lodash, now imported by this script.\n    element.innerHTML = lodash__WEBPACK_IMPORTED_MODULE_0___default().join(['Hello', 'webpack'], ' ');\n    \n    return element;\n  }\n  \n  document.body.appendChild(component());\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _css_styles_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./css/styles.css */ \"./src/css/styles.css\");\n/* harmony import */ var _page__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./page */ \"./src/page.js\");\n/******************************************************************************\n *         Name: index.js\n *       Author: Chad Chapman\n * Date Created: December 26, 2022\n *  Description: Functions that support implementation of Todo List website\n******************************************************************************/\n\n/******************************************************************************\n * IMPORTS\n *****************************************************************************/\n\n\n\n\nconst page = new _page__WEBPACK_IMPORTED_MODULE_2__.Page();\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/page.js":
+/*!*********************!*\
+  !*** ./src/page.js ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"Page\": () => (/* binding */ Page)\n/* harmony export */ });\n/* harmony import */ var _images_format_list_checks_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./images/format-list-checks.png */ \"./src/images/format-list-checks.png\");\n/* harmony import */ var _images_text_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./images/text.png */ \"./src/images/text.png\");\n/******************************************************************************\n *         Name: index.js\n *       Author: Chad Chapman\n * Date Created: December 26, 2022\n *  Description: This file contains the Page class whose responsibility is to \n *               build the main components of the index.html page.\n******************************************************************************/\n\n\n/**\n * The Page class is responsible for the initial setup of the Todo List page's \n * components.\n */\nclass Page {\n    /**\n     * Default constructor.\n     */\n    constructor() {\n        this.container = document.querySelector('#content');\n        this.container.classList.add('content');\n        this.initializeComponents();\n    }\n\n    /**\n     * \n     */\n    get getContentContainer() {\n        return this.container;\n    }\n\n    /**\n     * \n     * @returns \n     */\n    footerComponents() {\n        const footerContainer = document.createElement('div');\n        footerContainer.setAttribute('id', 'footer');\n        footerContainer.classList.add('footer');\n        footerContainer.textContent = \"Footer\";\n\n        return footerContainer;\n    }\n\n    /**\n     * \n     * @returns \n     */\n    headerComponents() {\n        const headerContainer = document.createElement('div');\n        headerContainer.setAttribute('id', 'header');\n        headerContainer.classList.add('header');\n\n        headerContainer.appendChild(this.logoComponents());\n        headerContainer.appendChild(this.titleContainerComponents());\n\n        return headerContainer;\n    }\n\n    /**\n     * \n     */\n    initializeComponents() {\n        this.container.appendChild(this.headerComponents());\n        this.container.appendChild(this.mainComponents());\n        this.container.appendChild(this.footerComponents());\n    }\n\n    /**\n     * \n     * @returns \n     */\n    logoComponents() {\n        const logoContainer = document.createElement('div');\n        logoContainer.setAttribute('id', 'logo-container');\n        logoContainer.classList.add('logo-container');\n\n        const checkListIcon = new Image();\n        checkListIcon.classList.add('logo-icons');\n        checkListIcon.src = _images_format_list_checks_png__WEBPACK_IMPORTED_MODULE_0__;\n        logoContainer.appendChild(checkListIcon);\n\n        const textImage = new Image();\n        textImage.classList.add('logo-icons');\n        textImage.src - _images_text_png__WEBPACK_IMPORTED_MODULE_1__;\n        logoContainer.appendChild(textImage);\n\n        return logoContainer;\n    }\n \n    /**\n     * \n     * @returns \n     */\n    mainComponents() {\n        const mainContainer = document.createElement('div');\n        mainContainer.setAttribute('id', 'main');\n        mainContainer.classList.add('main');\n\n        mainContainer.appendChild(this.sideBarComponents());\n        mainContainer.appendChild(this.tasksContainerComponents());\n\n        return mainContainer;\n    }\n\n    /**\n     * \n     * @returns \n     */\n    sideBarComponents() {\n        const sidebarContainer = document.createElement('div');\n        sidebarContainer.setAttribute('id', 'side-bar');\n        sidebarContainer.classList.add('side-bar');\n        sidebarContainer.textContent = 'Sidebar';\n\n        return sidebarContainer;\n    }\n\n    /**\n     * \n     * @returns \n     */\n    tasksContainerComponents() {\n        const tasksContainer = document.createElement('div');\n        tasksContainer.setAttribute('id', 'tasks-container');\n        tasksContainer.textContent = \"Tasks container\";\n\n        return tasksContainer;\n    }\n\n    /**\n     * \n     * @returns \n     */\n    titleContainerComponents() {\n        const title = document.createElement('div');\n        title.setAttribute('id', 'title');\n        title.textContent = \"Online Todo List\";\n\n        return title;\n    }\n}\n\n//# sourceURL=webpack://todo-list/./src/page.js?");
+
+/***/ }),
+
+/***/ "./src/images/format-list-checks.png":
+/*!*******************************************!*\
+  !*** ./src/images/format-list-checks.png ***!
+  \*******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("module.exports = __webpack_require__.p + \"b1c61e73b40fa3dea951.png\";\n\n//# sourceURL=webpack://todo-list/./src/images/format-list-checks.png?");
+
+/***/ }),
+
+/***/ "./src/images/text.png":
+/*!*****************************!*\
+  !*** ./src/images/text.png ***!
+  \*****************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("module.exports = __webpack_require__.p + \"07d8bedb890cc8d9e071.png\";\n\n//# sourceURL=webpack://todo-list/./src/images/text.png?");
 
 /***/ })
 
@@ -229,6 +262,26 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var loda
 /******/ 			if (!module.children) module.children = [];
 /******/ 			return module;
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
