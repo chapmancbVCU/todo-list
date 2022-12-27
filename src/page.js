@@ -11,6 +11,7 @@
  *****************************************************************************/
 import CheckListIcon from './images/format-list-checks.png';
 import ClipboardList from './images/clipboard-list.png';
+import Marble from './images/pexels-the-happiest-face.jpg';
 import TextIcon from './images/text.png';
 
 /**

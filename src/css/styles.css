@@ -45,10 +45,15 @@ h4 {
     border: solid black 1px;
     display: flex;
     flex-direction: column;
+    background: url('../images/pexels-the-happiest-face.jpg');
 }
 
 .logo-container {
     border: solid black 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .logo-icons {
@@ -66,6 +71,7 @@ h4 {
 }
 
 .title {
+    height: 100px;
     display: flex;
     margin-left: auto;
     margin-right: auto;
