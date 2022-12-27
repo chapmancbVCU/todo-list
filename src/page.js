@@ -10,6 +10,7 @@
  * IMPORTS
  *****************************************************************************/
 import CheckListIcon from './images/format-list-checks.png';
+import ClipboardList from './images/clipboard-list.png';
 import TextIcon from './images/text.png';
 
 /**
@@ -116,6 +117,11 @@ export class Page {
         textImage.classList.add('logo-icons');
         textImage.src = TextIcon;
         logoContainer.appendChild(textImage);
+
+        const clipboardListIcon = new Image();
+        clipboardListIcon.classList.add('logo-icons');
+        clipboardListIcon.src = ClipboardList;
+        logoContainer.appendChild(clipboardListIcon);
 
         return logoContainer;
     }
