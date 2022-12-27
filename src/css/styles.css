@@ -37,23 +37,24 @@ margin-top: 1px;
 margin-bottom: 1px;
 }
 
+h1 {
+    color: whitesmoke;
+}
+
 h4 {
     margin-top: 10px;
 }
 
 .header {
-    border: solid black 1px;
     display: flex;
     flex-direction: column;
     background: url('../images/pexels-the-happiest-face.jpg');
 }
 
 .logo-container {
-    border: solid black 1px;
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
 
 .logo-icons {
