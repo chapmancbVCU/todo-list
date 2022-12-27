@@ -5,8 +5,13 @@
  *  Description: This file contains the Page class whose responsibility is to 
  *               build the main components of the index.html page.
 ******************************************************************************/
+
+/******************************************************************************
+ * IMPORTS
+ *****************************************************************************/
 import CheckListIcon from './images/format-list-checks.png';
 import TextIcon from './images/text.png';
+
 /**
  * The Page class is responsible for the initial setup of the Todo List page's 
  * components.
@@ -109,7 +114,7 @@ export class Page {
 
         const textImage = new Image();
         textImage.classList.add('logo-icons');
-        textImage.src - TextIcon;
+        textImage.src = TextIcon;
         logoContainer.appendChild(textImage);
 
         return logoContainer;
@@ -162,8 +167,10 @@ export class Page {
     titleContainerComponents() {
         const title = document.createElement('div');
         title.setAttribute('id', 'title');
-        title.textContent = "Online Todo List";
-
+        title.classList.add('title');
+        const titleText = document.createElement('h1');
+        titleText.textContent = "Online Todo List";
+        title.appendChild(titleText);
         return title;
     }
 }
