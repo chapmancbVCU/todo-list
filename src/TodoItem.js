@@ -1,5 +1,5 @@
 /******************************************************************************
- *         Name: index.js
+ *         Name: todoItem.js
  *       Author: Chad Chapman
  * Date Created: December 26, 2022
  *  Description: Functions that support implementation of Todo List item
