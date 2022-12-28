@@ -9,9 +9,9 @@
     padding: 0;
 }
 
-.content {
+.categories {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .footer {
@@ -70,6 +70,29 @@ h4 {
 
 .side-bar {
     border: solid black 1px;
+}
+
+.side-bar-label {
+    margin-left: 20px;
+    margin-right: auto;
+    border: solid black 1px;
+    width: 80%;
+}
+
+.side-bar-row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.side-bar-task-count {
+    margin-left: auto;
+    margin-right: 20px;
+    background-color: blue;
+    border-radius: 100%;
+    height: 35px;
+    width: 35px;
 }
 
 .title {
