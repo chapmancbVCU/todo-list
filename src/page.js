@@ -1,5 +1,5 @@
 /******************************************************************************
- *         Name: index.js
+ *         Name: page.js
  *       Author: Chad Chapman
  * Date Created: December 26, 2022
  *  Description: This file contains the Page class whose responsibility is to 
@@ -11,7 +11,7 @@
  *****************************************************************************/
 import CheckListIcon from './images/format-list-checks.png';
 import ClipboardList from './images/clipboard-list.png';
-import Marble from './images/pexels-the-happiest-face.jpg';
+import { SideBar } from './SideBar.js';
 import TextIcon from './images/text.png';
 
 /**
@@ -25,7 +25,19 @@ export class Page {
     constructor() {
         this.container = document.querySelector('#content');
         this.container.classList.add('content');
-        this.initializeComponents();
+        
+        this.container.appendChild(this.headerComponents());
+        
+        const mainContainer = document.createElement('div');
+        mainContainer.setAttribute('id', 'main');
+        mainContainer.classList.add('main');
+
+        this.sideBar = new SideBar(this.sideBarComponents());
+        mainContainer.appendChild(this.sideBar.getSideBarContainer());
+        mainContainer.appendChild(this.tasksContainerComponents());
+
+        this.container.appendChild(mainContainer);
+        this.container.appendChild(this.footerComponents());
     }
 
     /**
@@ -93,15 +105,6 @@ export class Page {
 
     /**
      * 
-     */
-    initializeComponents() {
-        this.container.appendChild(this.headerComponents());
-        this.container.appendChild(this.mainComponents());
-        this.container.appendChild(this.footerComponents());
-    }
-
-    /**
-     * 
      * @returns 
      */
     logoComponents() {
@@ -150,7 +153,6 @@ export class Page {
         const sidebarContainer = document.createElement('div');
         sidebarContainer.setAttribute('id', 'side-bar');
         sidebarContainer.classList.add('side-bar');
-        sidebarContainer.textContent = 'Sidebar';
 
         return sidebarContainer;
     }
