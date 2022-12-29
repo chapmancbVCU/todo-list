@@ -75,7 +75,11 @@ h4 {
 .side-bar-label {
     margin-left: 20px;
     margin-right: auto;
+
     border: solid black 1px;
+    padding: 15px 0;
+
+    
     width: 80%;
 }
 
@@ -87,12 +91,17 @@ h4 {
 }
 
 .side-bar-task-count {
+    padding-top: 15px;
     margin-left: auto;
     margin-right: 20px;
+
     background-color: blue;
     border-radius: 100%;
+
     height: 35px;
-    width: 35px;
+    width: 55px;
+    
+    text-align: center;
 }
 
 .title {
