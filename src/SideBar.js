@@ -28,19 +28,22 @@ export class SideBar {
         categories.setAttribute('id', 'categories');
         
         const homeContainer = document.createElement('li');
+        homeContainer.setAttribute('id', 'home');
         homeContainer.classList.add('side-bar-row');
 
-        const homeLabel = document.createElement('p');
+        const homeLabel = document.createElement('h3');
         homeLabel.classList.add('side-bar-label');
         homeLabel.textContent = 'Home';
         homeContainer.appendChild(homeLabel);
         
-        const homeTaskCount = document.createElement('p');
+        const homeTaskCount = document.createElement('h3');
         homeTaskCount.classList.add('side-bar-task-count');
         homeTaskCount.textContent = '10';
         homeContainer.appendChild(homeTaskCount);
 
         categories.appendChild(homeContainer);
+
+
         return categories;
     }
 }
