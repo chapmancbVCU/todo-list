@@ -42,12 +42,33 @@ export class SideBar {
         return homeContainer;
     }
 
+    renderTodayTasksContainer() {
+        const todayTasksContainer = document.createElement('li');
+        todayTasksContainer.setAttribute('id', 'today');
+        todayTasksContainer.classList.add('side-bar-row');
+
+        const todayLabel = document.createElement('h3');
+        todayLabel.classList.add('side-bar-label');
+        todayLabel.textContent = 'Today';
+        todayTasksContainer.appendChild(todayLabel);
+        
+        const todayTaskCount = document.createElement('h3');
+        todayTaskCount.classList.add('side-bar-task-count');
+        todayTaskCount.textContent = '10';
+
+        todayTasksContainer.appendChild(todayTaskCount);
+
+        return todayTasksContainer;
+    }
+
     sidebarComponents() {
+        // The setup
         const categories = document.createElement('ul');
         categories.setAttribute('id', 'categories');
-        
-        categories.appendChild(this.renderHomeContainer());
 
+        // Render components of sidebar
+        categories.appendChild(this.renderHomeContainer());
+        categories.appendChild(this.renderTodayTasksContainer());
 
         return categories;
     }
