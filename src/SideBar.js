@@ -23,10 +23,7 @@ export class SideBar {
         return this.sideBarContainer;
     }
 
-    sidebarComponents() {
-        const categories = document.createElement('ul');
-        categories.setAttribute('id', 'categories');
-        
+    renderHomeContainer() {
         const homeContainer = document.createElement('li');
         homeContainer.setAttribute('id', 'home');
         homeContainer.classList.add('side-bar-row');
@@ -39,9 +36,17 @@ export class SideBar {
         const homeTaskCount = document.createElement('h3');
         homeTaskCount.classList.add('side-bar-task-count');
         homeTaskCount.textContent = '10';
+
         homeContainer.appendChild(homeTaskCount);
 
-        categories.appendChild(homeContainer);
+        return homeContainer;
+    }
+
+    sidebarComponents() {
+        const categories = document.createElement('ul');
+        categories.setAttribute('id', 'categories');
+        
+        categories.appendChild(this.renderHomeContainer());
 
 
         return categories;
