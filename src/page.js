@@ -64,6 +64,7 @@ export class Page {
         const linkedIn = document.createElement('p');
         linkedIn.classList.add('footer-text');
         const linkedInURL = document.createElement('a');
+        linkedInURL.classList.add('footer-link');
         linkedInURL.textContent = "LinkedIn";
         linkedInURL.href = 'https://www.linkedin.com/in/chadchapman2010/';
         linkedIn.appendChild(linkedInURL);
@@ -72,6 +73,7 @@ export class Page {
         const gitHub = document.createElement('p');
         gitHub.classList.add('footer-text');
         const gitHubURL = document.createElement('a');
+        gitHubURL.classList.add('footer-link');
         gitHubURL.textContent = 'GitHub';
         gitHubURL.href = 'https://github.com/chapmancbVCU';
         gitHub.appendChild(gitHubURL);
@@ -80,6 +82,7 @@ export class Page {
         const docs = document.createElement('p');
         docs.classList.add('footer-text');
         const docsURL = document.createElement('a');
+        docsURL.classList.add('footer-link');
         docsURL.textContent = 'JSDOC For This Project';
         docsURL.href = 'https://chapmancbvcu.github.io/restaurant-page/out/index.html';
         docs.appendChild(docsURL);

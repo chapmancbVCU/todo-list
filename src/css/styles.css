@@ -17,11 +17,24 @@
 .footer {
     background: url('../images/pexels-the-happiest-face.jpg');
     border: solid black 1px;
+    color: whitesmoke;
     height: 100px;
 
     padding-top: 15px;
     padding-bottom: 30px;
     margin-bottom: 50px;
+}
+
+.footer-link:link {
+    color: whitesmoke;
+}
+
+.footer-link:visited {
+    color: whitesmoke;
+}
+
+.footer-link:hover {
+    color: whitesmoke;
 }
 
 .footer-text {
