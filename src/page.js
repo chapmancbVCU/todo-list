@@ -48,8 +48,8 @@ export class Page {
     }
 
     /**
-     * 
-     * @returns 
+     * Renders the footer.
+     * @returns HTMLDivElement The div that contains the footer.
      */
     footerComponents() {
         const footerContainer = document.createElement('div');
@@ -89,8 +89,9 @@ export class Page {
     }
 
     /**
-     * 
-     * @returns 
+     * Renders the header section of the webpage.
+     * @returns HTMLDivElement The div that contains the header section of the 
+     * webpage.
      */
     headerComponents() {
         const headerContainer = document.createElement('div');
@@ -104,8 +105,9 @@ export class Page {
     }
 
     /**
-     * 
-     * @returns 
+     * Renders the logo section of the webpage.
+     * @returns HTMLDivElement The div that contains logo section of the 
+     * webpage.
      */
     logoComponents() {
         const logoContainer = document.createElement('div');
@@ -131,8 +133,9 @@ export class Page {
     }
  
     /**
-     * 
-     * @returns 
+     * This function initialized the main components of the webpage.
+     * @returns HTMLDivElement The div that contains the main section of the 
+     * webpage.
      */
     mainComponents() {
         const mainContainer = document.createElement('div');
@@ -146,8 +149,9 @@ export class Page {
     }
 
     /**
-     * 
-     * @returns 
+     * Renders the sidebar components.
+     * @returns HTMLDivElement The div that contains the sidebar components of 
+     * the webpage.
      */
     sideBarComponents() {
         const sidebarContainer = document.createElement('div');
@@ -158,8 +162,9 @@ export class Page {
     }
 
     /**
-     * 
-     * @returns 
+     * Renders the tasks section of the webpage.
+     * @returns HTMLDivElement The div that contains the tasks for the todo 
+     * list.
      */
     tasksContainerComponents() {
         const tasksContainer = document.createElement('div');

@@ -23,6 +23,11 @@ export class SideBar {
         return this.sideBarContainer;
     }
 
+    /**
+     * Renders the the home tasks row.
+     * @returns HTMLDivElement The div that contains the row for home category 
+     * of the sidebar.
+     */
     renderHomeContainer() {
         const homeContainer = document.createElement('li');
         homeContainer.setAttribute('id', 'home');
@@ -42,6 +47,11 @@ export class SideBar {
         return homeContainer;
     }
 
+    /**
+     * Renders the the today tasks row.
+     * @returns HTMLDivElement The div that contains the row for today 
+     * category of the sidebar.
+     */
     renderTodayTasksContainer() {
         const todayTasksContainer = document.createElement('li');
         todayTasksContainer.setAttribute('id', 'today');
@@ -61,6 +71,11 @@ export class SideBar {
         return todayTasksContainer;
     }
 
+    /**
+     * Renders the the week tasks row.
+     * @returns HTMLDivElement The div that contains the row for week category 
+     * of the sidebar.
+     */
     renderWeekTasksContainer() {
         const weekTasksContainer = document.createElement('li');
         weekTasksContainer.setAttribute('id', 'week');
@@ -80,6 +95,11 @@ export class SideBar {
         return weekTasksContainer;
     }
 
+    /**
+     * Renders the sidebar section of the webpage.
+     * @returns HTMLDivElement The div that contains the sidebare for the 
+     * webpage.
+     */
     sidebarComponents() {
         // The setup
         const categories = document.createElement('ul');
