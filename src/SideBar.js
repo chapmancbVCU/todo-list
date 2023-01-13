@@ -61,6 +61,25 @@ export class SideBar {
         return todayTasksContainer;
     }
 
+    renderWeekTasksContainer() {
+        const weekTasksContainer = document.createElement('li');
+        weekTasksContainer.setAttribute('id', 'week');
+        weekTasksContainer.classList.add('side-bar-row');
+
+        const weekLabel = document.createElement('h3');
+        weekLabel.classList.add('side-bar-label');
+        weekLabel.textContent = 'Week';
+        weekTasksContainer.appendChild(weekLabel);
+        
+        const weekTaskCount = document.createElement('h3');
+        weekTaskCount.classList.add('side-bar-task-count');
+        weekTaskCount.textContent = '10';
+
+        weekTasksContainer.appendChild(weekTaskCount);
+
+        return weekTasksContainer;
+    }
+
     sidebarComponents() {
         // The setup
         const categories = document.createElement('ul');
@@ -69,7 +88,7 @@ export class SideBar {
         // Render components of sidebar
         categories.appendChild(this.renderHomeContainer());
         categories.appendChild(this.renderTodayTasksContainer());
-
+        categories.appendChild(this.renderWeekTasksContainer());
         return categories;
     }
 }
