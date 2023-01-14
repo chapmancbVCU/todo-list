@@ -10,14 +10,23 @@
 }
 
 body {
-    background-color: rgb(233, 228, 219)
+    background-color: rgb(233, 228, 219);
 }
+
 .categories {
     display: flex;
     flex-direction: row;
 }
 
+.content {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
 .footer {
+    margin-top: auto;
     background: url('../images/pexels-the-happiest-face.jpg');
     border: solid black 1px;
     color: whitesmoke;
@@ -25,7 +34,6 @@ body {
 
     padding-top: 15px;
     padding-bottom: 30px;
-    margin-bottom: 50px;
 }
 
 .footer-link:link {
@@ -79,6 +87,7 @@ h4 {
 }
 
 .main {
+    height: 100vh;
     border: solid black 1px;
     display: flex;
     flex-direction: column;
