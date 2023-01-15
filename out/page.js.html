@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: page.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: page.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/******************************************************************************
+ *         Name: page.js
+ *       Author: Chad Chapman
+ * Date Created: December 26, 2022
+ *  Description: This file contains the Page class whose responsibility is to 
+ *               build the main components of the index.html page.
+******************************************************************************/
+
+/******************************************************************************
+ * IMPORTS
+ *****************************************************************************/
+import CheckListIcon from './images/format-list-checks.png';
+import ClipboardList from './images/clipboard-list.png';
+import { SideBar } from './SideBar.js';
+import TextIcon from './images/text.png';
+
+/**
+ * The Page class is responsible for the initial setup of the Todo List page's 
+ * components.
+ */
+export class Page {
+    /**
+     * Default constructor.
+     */
+    constructor() {
+        this.container = document.querySelector('#content');
+        this.container.classList.add('content');
+        
+        this.container.appendChild(this.headerComponents());
+        
+        const mainContainer = document.createElement('div');
+        mainContainer.setAttribute('id', 'main');
+        mainContainer.classList.add('main');
+
+        this.sideBar = new SideBar(this.sideBarComponents(), this.container);
+        mainContainer.appendChild(this.sideBar.getSideBarContainer());
+        mainContainer.appendChild(this.tasksContainerComponents());
+
+        this.container.appendChild(mainContainer);
+        this.container.appendChild(this.footerComponents());
+    }
+
+    /**
+     * Getter function that returns the container for the page's content.
+     * @returns HTMLDivElement The container for the page content.
+     */
+    getContentContainer() {
+        return this.container;
+    }
+
+    /**
+     * Renders the footer.
+     * @returns HTMLDivElement The div that contains the footer.
+     */
+    footerComponents() {
+        const footerContainer = document.createElement('div');
+        footerContainer.setAttribute('id', 'footer');
+        footerContainer.classList.add('footer');
+        
+        const siteCurator = document.createElement('h4');
+        siteCurator.textContent = 'Created by: Chad Chapman';
+        siteCurator.classList.add('footer-text');
+        footerContainer.appendChild(siteCurator);
+
+        const linkedIn = document.createElement('p');
+        linkedIn.classList.add('footer-text');
+        const linkedInURL = document.createElement('a');
+        linkedInURL.classList.add('footer-link');
+        linkedInURL.textContent = "LinkedIn";
+        linkedInURL.href = 'https://www.linkedin.com/in/chadchapman2010/';
+        linkedIn.appendChild(linkedInURL);
+        footerContainer.appendChild(linkedIn);
+
+        const gitHub = document.createElement('p');
+        gitHub.classList.add('footer-text');
+        const gitHubURL = document.createElement('a');
+        gitHubURL.classList.add('footer-link');
+        gitHubURL.textContent = 'GitHub';
+        gitHubURL.href = 'https://github.com/chapmancbVCU';
+        gitHub.appendChild(gitHubURL);
+        footerContainer.appendChild(gitHub);
+
+        const docs = document.createElement('p');
+        docs.classList.add('footer-text');
+        const docsURL = document.createElement('a');
+        docsURL.classList.add('footer-link');
+        docsURL.textContent = 'JSDOC For This Project';
+        docsURL.href = 'https://chapmancbvcu.github.io/restaurant-page/out/index.html';
+        docs.appendChild(docsURL);
+        footerContainer.appendChild(docs);
+
+        return footerContainer;
+    }
+
+    /**
+     * Renders the header section of the webpage.
+     * @returns HTMLDivElement The div that contains the header section of the 
+     * webpage.
+     */
+    headerComponents() {
+        const headerContainer = document.createElement('div');
+        headerContainer.setAttribute('id', 'header');
+        headerContainer.classList.add('header');
+
+        headerContainer.appendChild(this.logoComponents());
+        headerContainer.appendChild(this.titleContainerComponents());
+
+        return headerContainer;
+    }
+
+    /**
+     * Renders the logo section of the webpage.
+     * @returns HTMLDivElement The div that contains logo section of the 
+     * webpage.
+     */
+    logoComponents() {
+        const logoContainer = document.createElement('div');
+        logoContainer.setAttribute('id', 'logo-container');
+        logoContainer.classList.add('logo-container');
+
+        const checkListIcon = new Image();
+        checkListIcon.classList.add('logo-icons');
+        checkListIcon.src = CheckListIcon;
+        logoContainer.appendChild(checkListIcon);
+
+        const textImage = new Image();
+        textImage.classList.add('logo-icons');
+        textImage.src = TextIcon;
+        logoContainer.appendChild(textImage);
+
+        const clipboardListIcon = new Image();
+        clipboardListIcon.classList.add('logo-icons');
+        clipboardListIcon.src = ClipboardList;
+        logoContainer.appendChild(clipboardListIcon);
+
+        return logoContainer;
+    }
+ 
+    /**
+     * This function initialized the main components of the webpage.
+     * @returns HTMLDivElement The div that contains the main section of the 
+     * webpage.
+     */
+    mainComponents() {
+        const mainContainer = document.createElement('div');
+        mainContainer.setAttribute('id', 'main');
+        mainContainer.classList.add('main');
+
+        mainContainer.appendChild(this.sideBarComponents());
+        mainContainer.appendChild(this.tasksContainerComponents());
+
+        return mainContainer;
+    }
+
+    /**
+     * Renders the sidebar components.
+     * @returns HTMLDivElement The div that contains the sidebar components of 
+     * the webpage.
+     */
+    sideBarComponents() {
+        const sidebarContainer = document.createElement('div');
+        sidebarContainer.setAttribute('id', 'side-bar');
+        sidebarContainer.classList.add('side-bar');
+
+        return sidebarContainer;
+    }
+
+    /**
+     * Renders the tasks section of the webpage.
+     * @returns HTMLDivElement The div that contains the tasks for the todo 
+     * list.
+     */
+    tasksContainerComponents() {
+        const tasksContainer = document.createElement('div');
+        tasksContainer.setAttribute('id', 'tasks-container');
+        tasksContainer.textContent = "Tasks container";
+
+        return tasksContainer;
+    }
+
+    /**
+     * Renderst the title of the webpage.
+     * @returns HTMLDivElement The div that contains the title of the webpage.
+     */
+    titleContainerComponents() {
+        const title = document.createElement('div');
+        title.setAttribute('id', 'title');
+        title.classList.add('title');
+        const titleText = document.createElement('h1');
+        titleText.textContent = "Online Todo List";
+        title.appendChild(titleText);
+        return title;
+    }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddItem.html">AddItem</a></li><li><a href="Page.html">Page</a></li><li><a href="TodoItem.html">TodoItem</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Sat Jan 14 2023 22:45:44 GMT-0500 (Eastern Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
