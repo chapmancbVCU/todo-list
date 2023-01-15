@@ -23,6 +23,12 @@ export class SideBar {
         return this.sideBarContainer;
     }
 
+    renderAddButton() {
+        const addButtonContainer = document.createElement('div');
+        addButtonContainer.classList.add('add-button-container');
+        addButtonContainer.textContent = 'add';
+        return addButtonContainer;
+    }
     /**
      * Renders the the home tasks row.
      * @returns HTMLDivElement The div that contains the row for home category 
@@ -135,6 +141,7 @@ export class SideBar {
         categories.appendChild(this.renderWeekTasksContainer());
         categories.appendChild(this.renderProjectsRow());
         categories.appendChild(this.renderNotesRow());
+        categories.appendChild(this.renderAddButton());
         return categories;
     }
 }
