@@ -47,6 +47,18 @@ export class SideBar {
         return homeContainer;
     }
 
+    renderNotesRow() {
+        const notesRow = document.createElement('div');
+        notesRow.classList.add('side-bar-row');
+
+        const notesLabel = document.createElement('h3');
+        notesLabel.classList.add('side-bar-label');
+        notesLabel.textContent = 'Notes';
+        notesRow.appendChild(notesLabel);
+
+        return notesRow;
+    }
+
     renderProjectsRow() {
         const projectsRow = document.createElement('div');
         projectsRow.classList.add('side-bar-row');
@@ -122,6 +134,7 @@ export class SideBar {
         categories.appendChild(this.renderTodayTasksContainer());
         categories.appendChild(this.renderWeekTasksContainer());
         categories.appendChild(this.renderProjectsRow());
+        categories.appendChild(this.renderNotesRow());
         return categories;
     }
 }
