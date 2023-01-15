@@ -32,7 +32,7 @@ export class Page {
         mainContainer.setAttribute('id', 'main');
         mainContainer.classList.add('main');
 
-        this.sideBar = new SideBar(this.sideBarComponents());
+        this.sideBar = new SideBar(this.sideBarComponents(), this.container);
         mainContainer.appendChild(this.sideBar.getSideBarContainer());
         mainContainer.appendChild(this.tasksContainerComponents());
 
@@ -43,7 +43,7 @@ export class Page {
     /**
      * 
      */
-    get getContentContainer() {
+    getContentContainer() {
         return this.container;
     }
 

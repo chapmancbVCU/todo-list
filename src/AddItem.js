@@ -6,7 +6,19 @@
  *               an item.  More specifically the modal div that presents a 
  *               web form.
 ******************************************************************************/
+import { Page } from "./page";
+export class AddItem {
+    constructor() {
+        
+        //this.initializeComponents();
+    }
 
-class AddItem {
-    
+    initializeComponents() {
+        const addItemContainer = document.createElement('div')
+        addItemContainer.classList.add('bg-modal');
+        addItemContainer.textContent = 'foo';
+        console.log('foo');
+        addItemContainer.style.display = 'flex';
+        return addItemContainer;
+    }
 }
