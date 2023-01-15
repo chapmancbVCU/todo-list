@@ -26,7 +26,13 @@ export class SideBar {
     renderAddButton() {
         const addButtonContainer = document.createElement('div');
         addButtonContainer.classList.add('add-button-container');
-        addButtonContainer.textContent = 'add';
+        
+        const addItemButton = document.createElement('button');
+        addItemButton.setAttribute('id', 'add-item-button');
+        addItemButton.classList.add('add-item-button');
+        addItemButton.textContent = '+'
+        addButtonContainer.appendChild(addItemButton);
+
         return addButtonContainer;
     }
     /**

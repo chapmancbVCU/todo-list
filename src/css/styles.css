@@ -4,6 +4,11 @@
   Date Created: December 26, 2022
    Description: CSS Stylesheet for Todo List project.
 ******************************************************************************/
+:root {
+    --link-and-button-color: rgb(43, 194, 194);
+    --page-background: rgb(233, 228, 219);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,10 +17,25 @@
 .add-button-container {
     margin-top: 100px;
     margin-bottom: 30px;
+    display: flex;
+}
+
+.add-item-button {
+    margin-right: auto;
+    margin-left: 20px;
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50px;
+    border: none;
+
+    background-color: var(--link-and-button-color);
+
+    font-size: 45px;
 }
 
 body {
-    background-color: rgb(233, 228, 219);
+    background-color: var(--page-background);
 }
 
 .categories {
@@ -125,7 +145,7 @@ h4 {
     margin-left: auto;
     margin-right: 20px;
 
-    background-color: rgb(43, 194, 194);
+    background-color: var(--link-and-button-color);
     border-radius: 100%;
 
     height: 35px;
