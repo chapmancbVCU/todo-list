@@ -32,7 +32,7 @@ export class Page {
         mainContainer.setAttribute('id', 'main');
         mainContainer.classList.add('main');
 
-        this.sideBar = new SideBar(this.sideBarComponents(), this.container);
+        this.sideBar = new SideBar(this.sideBarComponents());
         mainContainer.appendChild(this.sideBar.getSideBarContainer());
         mainContainer.appendChild(this.tasksContainerComponents());
 
@@ -179,7 +179,7 @@ export class Page {
     }
 
     /**
-     * Renderst the title of the webpage.
+     * Renders the title of the webpage.
      * @returns HTMLDivElement The div that contains the title of the webpage.
      */
     titleContainerComponents() {

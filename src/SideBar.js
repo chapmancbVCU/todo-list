@@ -9,15 +9,26 @@
 /******************************************************************************
  * IMPORTS
  *****************************************************************************/
-import { AddItem } from "./AddItem";
 
+
+/**
+ * Class for rendering the components of the sidebar.
+ */
 export class SideBar {
+    /**
+     * Constructor for setting up the sidebar.
+     * @param {HTMLDivElement} sideBarContainer The container for the sidebar. 
+     */
     constructor(sideBarContainer) {
         this.sideBarContainer = sideBarContainer;
-        this.sideBarContainer.appendChild(this.sidebarComponents());
+        this.sideBarContainer.appendChild(this.initializeSidebarComponents());
         this.sideBarContainer.appendChild(this.renderAddButton());
     }
 
+    /**
+     * Getter function for the sidebar container.
+     * @returns HTMLDivElement The div that contains the sidebar container.
+     */
     getSideBarContainer() {
         return this.sideBarContainer;
     }
@@ -149,7 +160,7 @@ export class SideBar {
      * @returns HTMLDivElement The div that contains the sidebar for the 
      * webpage.
      */
-    sidebarComponents() {
+    initializeSidebarComponents() {
         // The setup
         const categories = document.createElement('ul');
         categories.setAttribute('id', 'categories');
