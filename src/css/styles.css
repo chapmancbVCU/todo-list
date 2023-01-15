@@ -35,6 +35,7 @@
     font-size: 45px;
 }
 
+/* Contains form for adding new items. */
 .bg-modal {
     width: 100%;
     height: 100%;
@@ -56,6 +57,7 @@ body {
     flex-direction: row;
 }
 
+/* Close button for modal. */
 .close {
     position: absolute;
     top: 0;

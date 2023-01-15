@@ -14,9 +14,6 @@ import { AddItem } from "./AddItem";
 export class SideBar {
     constructor(sideBarContainer) {
         this.sideBarContainer = sideBarContainer;
-
-        
-
         this.sideBarContainer.appendChild(this.sidebarComponents());
         this.sideBarContainer.appendChild(this.renderAddButton());
     }
@@ -26,7 +23,6 @@ export class SideBar {
     }
 
     renderAddButton() {
-        
         const addButtonContainer = document.createElement('div');
         addButtonContainer.classList.add('add-button-container');
         
@@ -35,11 +31,6 @@ export class SideBar {
         addItemButton.classList.add('add-item-button');
         addItemButton.textContent = '+'
         addButtonContainer.appendChild(addItemButton);
-
-        /*addItemButton.addEventListener('click', () => {
-            const addItem = new AddItem();
-            addItem.renderComponents();
-        });*/
 
         return addButtonContainer;
     }
@@ -155,7 +146,7 @@ export class SideBar {
         categories.appendChild(this.renderWeekTasksContainer());
         categories.appendChild(this.renderProjectsRow());
         categories.appendChild(this.renderNotesRow());
-        //categories.appendChild(this.renderAddButton());
+
         return categories;
     }
 }
