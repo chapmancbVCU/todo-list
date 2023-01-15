@@ -17,6 +17,7 @@ export class AddItem {
      */
     constructor() {
         const addButtonContainer = document.createElement('div');
+        
     }
 
     /**
