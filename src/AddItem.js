@@ -6,19 +6,33 @@
  *               an item.  More specifically the modal div that presents a 
  *               web form.
 ******************************************************************************/
-import { Page } from "./page";
+
 export class AddItem {
     constructor() {
-        
-        //this.initializeComponents();
+        const addButtonContainer = document.createElement('div');
     }
 
     initializeComponents() {
-        const addItemContainer = document.createElement('div')
-        addItemContainer.classList.add('bg-modal');
-        addItemContainer.textContent = 'foo';
-        console.log('foo');
-        addItemContainer.style.display = 'flex';
-        return addItemContainer;
+        this.addItemContainer = document.createElement('div')
+        this.addItemContainer.classList.add('bg-modal');
+        this.addItemContainer.style.display = 'flex';
+
+        const modalContent = document.createElement('div');
+        modalContent.classList.add('modal-content');
+        modalContent.appendChild(this.renderCloseButton());
+        
+        this.addItemContainer.appendChild(modalContent);
+        return this.addItemContainer;
+    }
+
+    closeModal() {
+        this.addItemContainer.style.display = 'none';
+    }
+    
+    renderCloseButton() {
+        const closeButton = document.createElement('div');
+        closeButton.classList.add('close');
+        closeButton.textContent = '+';
+        return closeButton;
     }
 }
