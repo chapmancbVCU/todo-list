@@ -5,7 +5,17 @@
  *  Description: Functions that support implementation of Todo List item
 ******************************************************************************/
 
+/**
+ * 
+ */
 export class TodoItem {
+    /**
+     * 
+     * @param {*} title 
+     * @param {*} description 
+     * @param {*} dueDate 
+     * @param {*} priority 
+     */
     constructor(title, description, dueDate, priority) {
         this.title = title;
         this.description = description;

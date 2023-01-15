@@ -22,6 +22,10 @@ export class SideBar {
         return this.sideBarContainer;
     }
 
+    /**
+     * Renders the the add item button.
+     * @returns HTMLDivElement The div that contains the add item button.
+     */
     renderAddButton() {
         const addButtonContainer = document.createElement('div');
         addButtonContainer.classList.add('add-button-container');
@@ -58,6 +62,11 @@ export class SideBar {
         return homeContainer;
     }
 
+    /**
+     * Renders the sidebar label for Notes.
+     * @returns HTMLDivElement The div that contains the label for the 
+     * Notes section of the sidebar.
+     */
     renderNotesRow() {
         const notesRow = document.createElement('div');
         notesRow.classList.add('side-bar-row');
@@ -70,6 +79,11 @@ export class SideBar {
         return notesRow;
     }
 
+    /**
+     * Renders the sidebar label for Projects.
+     * @returns HTMLDivElement The div that contains the label for the 
+     * Nrojects section of the sidebar.
+     */
     renderProjectsRow() {
         const projectsRow = document.createElement('div');
         projectsRow.classList.add('side-bar-row');
@@ -132,7 +146,7 @@ export class SideBar {
 
     /**
      * Renders the sidebar section of the webpage.
-     * @returns HTMLDivElement The div that contains the sidebare for the 
+     * @returns HTMLDivElement The div that contains the sidebar for the 
      * webpage.
      */
     sidebarComponents() {
