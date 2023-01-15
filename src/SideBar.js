@@ -47,6 +47,18 @@ export class SideBar {
         return homeContainer;
     }
 
+    renderProjectsRow() {
+        const projectsRow = document.createElement('div');
+        projectsRow.classList.add('side-bar-row');
+
+        const projectsLabel = document.createElement('h3');
+        projectsLabel.classList.add('side-bar-label');
+        projectsLabel.textContent = 'Projects';
+        projectsRow.appendChild(projectsLabel);
+
+        return projectsRow;
+    }
+
     /**
      * Renders the the today tasks row.
      * @returns HTMLDivElement The div that contains the row for today 
@@ -109,6 +121,7 @@ export class SideBar {
         categories.appendChild(this.renderHomeContainer());
         categories.appendChild(this.renderTodayTasksContainer());
         categories.appendChild(this.renderWeekTasksContainer());
+        categories.appendChild(this.renderProjectsRow());
         return categories;
     }
 }
