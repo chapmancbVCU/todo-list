@@ -32,6 +32,9 @@ export class Page {
         mainContainer.setAttribute('id', 'main');
         mainContainer.classList.add('main');
 
+        /* This may look awkward.  The parent div is created in this class
+        and the SideBar class is responsible for setting up the content
+        inside this div. */
         this.sideBar = new SideBar(this.sideBarComponents());
         mainContainer.appendChild(this.sideBar.getSideBarContainer());
         mainContainer.appendChild(this.tasksContainerComponents());

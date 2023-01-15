@@ -32,6 +32,12 @@ export class AddItem {
         modalContent.classList.add('modal-content');
         modalContent.appendChild(this.renderCloseButton());
         
+        const modalMain = document.createElement('div');
+        modalMain.classList.add('modal-main');
+        modalMain.appendChild(this.renderModalSideBar());
+        modalMain.appendChild(this.renderModalPagesContainer());
+        modalContent.appendChild(modalMain);
+
         this.addItemContainer.appendChild(modalContent);
         return this.addItemContainer;
     }
@@ -42,6 +48,20 @@ export class AddItem {
     closeModal() {
         this.addItemContainer.style.display = 'none';
         this.addItemContainer.remove();
+    }
+
+    renderModalPagesContainer() {
+        const modalPagesContainer = document.createElement('div');
+        modalPagesContainer.textContent = 'pages go here';
+
+        return modalPagesContainer;
+    }
+
+    renderModalSideBar() {
+        const modalSideBar = document.createElement('div');
+        modalSideBar.textContent = 'modal sidebar';
+
+        return modalSideBar;
     }
 
     /**
