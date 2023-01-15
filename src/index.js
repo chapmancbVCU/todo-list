@@ -18,7 +18,6 @@ import { Page } from './page';
  * INITIAL PAGE SETUP
  *****************************************************************************/
 const page = new Page();
-const addItem = new AddItem();
 const contentContainer = page.getContentContainer();
 const addItemSelector = document.querySelector('#add-item-button');
 
@@ -28,9 +27,11 @@ const addItemSelector = document.querySelector('#add-item-button');
  *****************************************************************************/
 // Event listener for creating add item modal.
 addItemSelector.addEventListener('click', function(){
+    const addItem = new AddItem();
     contentContainer.appendChild(addItem.initializeComponents());
     const closeModal = document.querySelector('.close');
-    
+    const element = document.getElementById('bg-modal');
+
     // Inside this event listener we need another one for closing the modal.
     closeModal.addEventListener('click', function() {
         addItem.closeModal();

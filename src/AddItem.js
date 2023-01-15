@@ -27,8 +27,9 @@ export class AddItem {
 
     closeModal() {
         this.addItemContainer.style.display = 'none';
+        this.addItemContainer.remove();
     }
-    
+
     renderCloseButton() {
         const closeButton = document.createElement('div');
         closeButton.classList.add('close');
