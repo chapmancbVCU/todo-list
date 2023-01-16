@@ -30,6 +30,10 @@ export class AddItem {
         this.todoItemForm = new TodoItemForm();
     }
 
+    getTodoItemForm() {
+        return this.todoItemForm
+    }
+    
     /**
      * Function that initializes the modal for adding items.
      * @returns HTMLDivElement The div that contains the modal.
@@ -82,11 +86,11 @@ export class AddItem {
         modalSideBar.setAttribute('id', 'modal-sidebar');
         modalSideBar.classList.add('modal-sidebar');
 
-        const toDoPageLink = document.createElement('div');
-        toDoPageLink.setAttribute('id', 'todo-page-link');
-        toDoPageLink.classList.add('modal-page-link');
-        toDoPageLink.textContent = 'Todo List';
-        modalSideBar.appendChild(toDoPageLink);
+        const todoPageLink = document.createElement('div');
+        todoPageLink.setAttribute('id', 'todo-page-link');
+        todoPageLink.classList.add('modal-page-link');
+        todoPageLink.textContent = 'Todo List';
+        modalSideBar.appendChild(todoPageLink);
 
         const projectsPageLink = document.createElement('div');
         projectsPageLink.setAttribute('id', 'projects-page-link');
@@ -99,6 +103,9 @@ export class AddItem {
         notesPageLink.classList.add('modal-page-link');
         notesPageLink.textContent = 'Notes';
         modalSideBar.appendChild(notesPageLink);
+
+        
+
 
         return modalSideBar;
     }

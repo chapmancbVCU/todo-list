@@ -36,5 +36,20 @@ addItemSelector.addEventListener('click', function(){
     closeModal.addEventListener('click', function() {
         addItem.closeModal();
     });
+
+    const notesLinkSelector = document.querySelector('#notes-page-link');
+    notesLinkSelector.addEventListener('click', function() {
+        console.log('notes');
+    });
+
+    const projectsLinkSelector = document.querySelector('#projects-page-link');
+    projectsLinkSelector.addEventListener('click', function() {
+        console.log('projects');
+    });
+
+    const todoLinkSelector = document.querySelector('#todo-page-link');
+    todoLinkSelector.addEventListener('click', function() {
+        console.log('todo');
+    });
 });
 
