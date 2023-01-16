@@ -13,6 +13,7 @@ export class NotesForm {
 
     initializeComponents() {
         const notesForm = document.createElement('div');
+        notesForm.setAttribute('id', 'modal-form');
         notesForm.textContent = 'Notes Form';
         return notesForm;
     }

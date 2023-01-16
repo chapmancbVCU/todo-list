@@ -31,6 +31,7 @@ addItemSelector.addEventListener('click', function(){
     contentContainer.appendChild(addItem.initializeComponents());
     const closeModal = document.querySelector('.close');
     const element = document.getElementById('bg-modal');
+    const modalMainSelector = document.querySelector('.modal-main');
 
     // Inside this event listener we need another one for closing the modal.
     closeModal.addEventListener('click', function() {
@@ -39,17 +40,20 @@ addItemSelector.addEventListener('click', function(){
 
     const notesLinkSelector = document.querySelector('#notes-page-link');
     notesLinkSelector.addEventListener('click', function() {
-        console.log('notes');
+        addItem.removeModalFormFromDOM();
+        modalMainSelector.appendChild(addItem.renderNotesForm());
     });
 
     const projectsLinkSelector = document.querySelector('#projects-page-link');
     projectsLinkSelector.addEventListener('click', function() {
-        console.log('projects');
+        addItem.removeModalFormFromDOM();
+        modalMainSelector.appendChild(addItem.renderProjectsForm());
     });
 
     const todoLinkSelector = document.querySelector('#todo-page-link');
     todoLinkSelector.addEventListener('click', function() {
-        console.log('todo');
+        addItem.removeModalFormFromDOM();
+        modalMainSelector.appendChild(addItem.renderTodoItemForm());
     });
 });
 

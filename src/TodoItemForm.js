@@ -12,8 +12,9 @@ export class TodoItemForm {
     }
 
     initializeComponents() {
-        const toDoItemForm = document.createElement('div');
-        toDoItemForm.textContent = 'Todo Item Form';
-        return toDoItemForm;
+        const todoItemForm = document.createElement('div');
+        todoItemForm.setAttribute('id', 'modal-form');
+        todoItemForm.textContent = 'Todo Item Form';
+        return todoItemForm;
     }
 }

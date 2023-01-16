@@ -30,10 +30,6 @@ export class AddItem {
         this.todoItemForm = new TodoItemForm();
     }
 
-    getTodoItemForm() {
-        return this.todoItemForm
-    }
-    
     /**
      * Function that initializes the modal for adding items.
      * @returns HTMLDivElement The div that contains the modal.
@@ -59,7 +55,7 @@ export class AddItem {
         const modalMain = document.createElement('div');
         modalMain.classList.add('modal-main');
         modalMain.appendChild(this.renderModalSideBar());
-        modalMain.appendChild(this.renderModalPagesContainer());
+        modalMain.appendChild(this.renderTodoItemForm());
         modalContent.appendChild(modalMain);
 
         this.addItemContainer.appendChild(modalContent);
@@ -74,11 +70,9 @@ export class AddItem {
         this.addItemContainer.remove();
     }
 
-    renderModalPagesContainer() {
-        const modalPagesContainer = document.createElement('div');
-        modalPagesContainer.textContent = 'pages go here';
-        modalPagesContainer.appendChild(this.todoItemForm.initializeComponents());
-        return modalPagesContainer;
+    removeModalFormFromDOM() {
+        const modalMainSelector = document.querySelector('#modal-form');
+        modalMainSelector.remove();
     }
 
     renderModalSideBar() {
@@ -104,10 +98,20 @@ export class AddItem {
         notesPageLink.textContent = 'Notes';
         modalSideBar.appendChild(notesPageLink);
 
-        
-
-
         return modalSideBar;
+    }
+
+    renderNotesForm() {;
+        return this.notesForm.initializeComponents();  
+    }
+
+    renderProjectsForm() {
+        return this.projectsForm.initializeComponents();
+    }
+
+    renderTodoItemForm() {
+
+        return this.todoItemForm.initializeComponents();
     }
 
     /**
