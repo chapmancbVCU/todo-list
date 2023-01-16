@@ -7,6 +7,14 @@
  *               web form.
 ******************************************************************************/
 
+/******************************************************************************
+ * IMPORTS
+ *****************************************************************************/
+import { NotesForm } from "./NotesForm.js";
+import { ProjectsForm } from "./ProjectsForm.js";
+import { TodoItemForm } from "./TodoItemForm.js";
+
+
 /**
  * Class that contains functions for rendering form for adding an item.  More 
  * specifically, the modal div that presents a web form.
@@ -17,7 +25,9 @@ export class AddItem {
      */
     constructor() {
         const addButtonContainer = document.createElement('div');
-        
+        const notesForm = new NotesForm();
+        const projectsForm = new ProjectsForm();
+        const todoItemForm = new TodoItemForm();
     }
 
     /**
@@ -60,7 +70,10 @@ export class AddItem {
 
     renderModalSideBar() {
         const modalSideBar = document.createElement('div');
-        modalSideBar.textContent = 'modal sidebar';
+        modalSideBar.setAttribute('id', 'modal-sidebar');
+        modalSideBar.classList.add('modal-sidebar');
+
+        
 
         return modalSideBar;
     }

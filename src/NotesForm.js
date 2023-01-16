@@ -1,11 +1,11 @@
 /******************************************************************************
- *         Name: TodoItemForm.js
+ *         Name: NotesForm.js
  *       Author: Chad Chapman
  * Date Created: January 15, 2023
  *  Description: Class for rendering and handling data entry for adding a new
- *               todo list.
+ *               note.
 ******************************************************************************/
 
-export class TodoItemForm {
+export class NotesForm {
     
 }
