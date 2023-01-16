@@ -24,10 +24,10 @@ export class AddItem {
      * Default constructor.
      */
     constructor() {
-        const addButtonContainer = document.createElement('div');
-        const notesForm = new NotesForm();
-        const projectsForm = new ProjectsForm();
-        const todoItemForm = new TodoItemForm();
+        this.addButtonContainer = document.createElement('div');
+        this.notesForm = new NotesForm();
+        this.projectsForm = new ProjectsForm();
+        this.todoItemForm = new TodoItemForm();
     }
 
     /**
@@ -73,7 +73,7 @@ export class AddItem {
     renderModalPagesContainer() {
         const modalPagesContainer = document.createElement('div');
         modalPagesContainer.textContent = 'pages go here';
-
+        modalPagesContainer.appendChild(this.todoItemForm.initializeComponents());
         return modalPagesContainer;
     }
 
