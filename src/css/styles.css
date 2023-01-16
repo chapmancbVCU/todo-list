@@ -154,8 +154,23 @@ h4 {
 
 .modal-main {
     border: solid black 1px;
-    margin-top: 45px;
+    margin-top: 15px;
     display: flex;
+}
+
+.modal-sidebar {
+    border: solid black 1px;
+}
+
+.modal-title {
+    font-size: 25px;
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.modal-title-container {
+    display: flex;
+    flex-direction: row;
 }
 
 .side-bar {
