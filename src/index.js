@@ -38,13 +38,15 @@ addItemSelector.addEventListener('click', function(){
         addItem.closeModal();
     });
 
+    // Event listeners for links inside modal for selecting forms.
     const notesLinkSelector = document.querySelector('#notes-page-link');
     notesLinkSelector.addEventListener('click', function() {
         addItem.removeModalFormFromDOM();
         modalMainSelector.appendChild(addItem.renderNotesForm());
     });
 
-    const projectsLinkSelector = document.querySelector('#projects-page-link');
+    const projectsLinkSelector = 
+        document.querySelector('#projects-page-link');
     projectsLinkSelector.addEventListener('click', function() {
         addItem.removeModalFormFromDOM();
         modalMainSelector.appendChild(addItem.renderProjectsForm());
