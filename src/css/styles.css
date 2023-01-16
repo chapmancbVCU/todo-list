@@ -15,8 +15,8 @@
 }
 
 .add-button-container {
-    margin-top: 100px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     display: flex;
 }
 
@@ -145,7 +145,7 @@ h4 {
     border: solid black 1px;
     background-color: white;
     width: 400px;
-    height: 420px;
+    height: 500px;
     border-radius: 5px;
 
     /* Need this for close button. */
@@ -154,21 +154,34 @@ h4 {
 
 .modal-main {
     border: solid black 1px;
-    margin-top: 15px;
     display: flex;
+    flex-direction: column;
+}
+
+.modal-page-link {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 17px;;
 }
 
 .modal-sidebar {
     border: solid black 1px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .modal-title {
     font-size: 25px;
+    font-weight: bold;
     margin-top: 10px;
+    margin-bottom: 10px;
     padding-left: 10px;
 }
 
 .modal-title-container {
+    background-color: var(--link-and-button-color);
     display: flex;
     flex-direction: row;
 }
@@ -219,6 +232,11 @@ h4 {
 }
 
 @media only screen and (min-width: 700px) {
+    .add-button-container {
+        margin-top: 100px;
+        margin-bottom: 30px;
+    }
+
     .header {
         flex-direction: row;
     }
@@ -233,5 +251,18 @@ h4 {
 
     .main {
         flex-direction: row;
+    }
+
+    .modal-content {
+        width: 600px;
+        height: 400px;
+    }
+    .modal-main {
+        flex-direction: row;
+    }
+
+    .modal-sidebar {
+        width: 115px;
+        flex-direction: column;
     }
 }

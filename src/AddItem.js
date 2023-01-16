@@ -84,16 +84,19 @@ export class AddItem {
 
         const toDoPageLink = document.createElement('div');
         toDoPageLink.setAttribute('id', 'todo-page-link');
+        toDoPageLink.classList.add('modal-page-link');
         toDoPageLink.textContent = 'Todo List';
         modalSideBar.appendChild(toDoPageLink);
 
         const projectsPageLink = document.createElement('div');
         projectsPageLink.setAttribute('id', 'projects-page-link');
+        projectsPageLink.classList.add('modal-page-link');
         projectsPageLink.textContent = 'My Projects';
         modalSideBar.appendChild(projectsPageLink);
 
         const notesPageLink = document.createElement('div');
         notesPageLink.setAttribute('id', 'notes-page-link');
+        notesPageLink.classList.add('modal-page-link');
         notesPageLink.textContent = 'Notes';
         modalSideBar.appendChild(notesPageLink);
 
