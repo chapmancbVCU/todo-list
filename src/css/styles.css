@@ -21,7 +21,10 @@
 }
 
 .add-item-button {
-    text-align: center;
+    color: black;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     margin-right: auto;
     margin-left: 20px;
     background-color: rgba(0, 0, 0, 0.7);
