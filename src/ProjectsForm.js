@@ -7,5 +7,13 @@
 ******************************************************************************/
 
 export class ProjectsForm {
-    
+    constructor() {
+
+    }
+
+    initializeComponents() {
+        const projectsForm = document.createElement('div');
+        projectsForm.textContent = 'Projects Form';
+        return projectsForm;
+    }
 }

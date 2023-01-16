@@ -7,5 +7,13 @@
 ******************************************************************************/
 
 export class NotesForm {
-    
+    constructor() {
+
+    }
+
+    initializeComponents() {
+        const notesForm = document.createElement('div');
+        notesForm.textContent = 'Notes Form';
+        return notesForm;
+    }
 }
