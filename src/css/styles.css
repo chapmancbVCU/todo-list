@@ -146,7 +146,7 @@ h4 {
 }
 
 .modal-content {
-    background-color: white;
+    border: solid black 1px;
     width: 400px;
     height: 500px;
     border-radius: 10px;
@@ -156,7 +156,10 @@ h4 {
 }
 
 .modal-main {
-   
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: white;
+    height: 88%;
     display: flex;
     flex-direction: column;
 }
@@ -170,7 +173,8 @@ h4 {
 }
 
 .modal-sidebar {
-    border-right: solid black 1px;
+    border-bottom-left-radius: 10px;
+    background-color: var(--page-background);
     display: flex;
     justify-content: space-between;
 }
@@ -267,6 +271,7 @@ h4 {
     }
 
     .modal-sidebar {
+        justify-content: flex-start;
         width: 115px;
         flex-direction: column;
     }
