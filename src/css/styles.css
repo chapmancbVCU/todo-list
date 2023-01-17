@@ -157,7 +157,7 @@ h4 {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     background-color: white;
-    height: 88%;
+    height: 90.5%;
     display: flex;
     flex-direction: column;
 }
@@ -171,7 +171,7 @@ h4 {
 }
 
 .modal-sidebar {
-    border-bottom-left-radius: 10px;
+    
     background-color: var(--page-background);
     display: flex;
     justify-content: space-between;
@@ -265,10 +265,12 @@ h4 {
         height: 400px;
     }
     .modal-main {
+        height: 88%;
         flex-direction: row;
     }
 
     .modal-sidebar {
+        border-bottom-left-radius: 10px;
         justify-content: flex-start;
         width: 115px;
         flex-direction: column;
