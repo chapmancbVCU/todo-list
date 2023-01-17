@@ -80,7 +80,6 @@ body {
 .footer {
     margin-top: auto;
     background: url('../images/pexels-the-happiest-face.jpg');
-    border: solid black 1px;
     color: whitesmoke;
     height: 100px;
 
@@ -140,7 +139,6 @@ h4 {
 
 .main {
     height: 100vh;
-    border: solid black 1px;
     display: flex;
     flex-direction: column;
 }
@@ -196,7 +194,7 @@ h4 {
 }
 
 .side-bar {
-    border: solid black 1px;
+    border-bottom: solid black 1px;
 }
 
 .side-bar-label {
@@ -274,5 +272,9 @@ h4 {
         justify-content: flex-start;
         width: 115px;
         flex-direction: column;
+    }
+
+    .side-bar {
+        border-right: solid black 1px;
     }
 }
