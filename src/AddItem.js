@@ -71,7 +71,7 @@ export class AddItem {
     }
 
     removeModalFormFromDOM() {
-        const modalMainSelector = document.querySelector('#modal-form');
+        const modalMainSelector = document.querySelector('#modal-form-container');
         modalMainSelector.remove();
     }
 
