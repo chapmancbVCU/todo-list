@@ -12,9 +12,10 @@ export class TodoItemForm {
     }
 
     initializeComponents() {
-        const todoItemForm = document.createElement('div');
-        todoItemForm.setAttribute('id', 'modal-form');
-        todoItemForm.textContent = 'Todo Item Form';
+        const todoItemFormContainer = document.createElement('div');
+        todoItemFormContainer.setAttribute('id', 'modal-form-container');
+        
+        
         return todoItemForm;
     }
 }

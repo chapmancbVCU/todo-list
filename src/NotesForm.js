@@ -12,9 +12,9 @@ export class NotesForm {
     }
 
     initializeComponents() {
-        const notesForm = document.createElement('div');
-        notesForm.setAttribute('id', 'modal-form');
-        notesForm.textContent = 'Notes Form';
-        return notesForm;
+        const notesFormContainer = document.createElement('div');
+        notesFormContainer.setAttribute('id', 'modal-form-container');
+        notesFormContainer.textContent = 'Notes Form';
+        return notesFormContainer;
     }
 }

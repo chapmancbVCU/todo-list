@@ -12,9 +12,9 @@ export class ProjectsForm {
     }
 
     initializeComponents() {
-        const projectsForm = document.createElement('div');
-        projectsForm.setAttribute('id', 'modal-form');
-        projectsForm.textContent = 'Projects Form';
-        return projectsForm;
+        const projectsFormContainer = document.createElement('div');
+        projectsFormContainer.setAttribute('id', 'modal-form-container');
+        projectsFormContainer.textContent = 'Projects Form';
+        return projectsFormContainer;
     }
 }
