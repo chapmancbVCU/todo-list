@@ -13,7 +13,7 @@ export class ProjectsForm {
 
     initializeComponents() {
         const projectsFormContainer = document.createElement('div');
-        projectsFormContainer.setAttribute('id', 'modal-form-container');
+        projectsFormContainer.classList.add('modal-form-container');
         projectsFormContainer.textContent = 'Projects Form';
         return projectsFormContainer;
     }

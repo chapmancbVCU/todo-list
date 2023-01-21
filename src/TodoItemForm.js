@@ -13,9 +13,11 @@ export class TodoItemForm {
 
     initializeComponents() {
         const todoItemFormContainer = document.createElement('div');
-        todoItemFormContainer.setAttribute('id', 'modal-form-container');
+        todoItemFormContainer.classList.add('modal-form-container');
         
-        
-        return todoItemForm;
+       // const
+
+        return todoItemFormContainer;
     }
+
 }
