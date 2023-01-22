@@ -5,7 +5,7 @@
  *  Description: Class for rendering and handling data entry for adding a new
  *               todo list.
 ******************************************************************************/
-
+import { Editor } from "@tinymce/tinymce-webcomponent";
 export class TodoItemForm {
     constructor() {
 
@@ -16,6 +16,23 @@ export class TodoItemForm {
         todoItemFormContainer.setAttribute('id', 'modal-form-container');
 
         const todoItemForm = document.createElement('form');
+        todoItemForm.classList.add('modal-form');
+
+        const titleRow = document.createElement('div');
+        titleRow.classList.add('form-row');
+        const todoItemFormLabel = document.createElement('label');
+        todoItemFormLabel.textContent = 'Title';
+        titleRow.appendChild(todoItemFormLabel);
+        
+        const title = document.createElement('input');
+        titleRow.appendChild(title);
+        
+        todoItemForm.appendChild(titleRow);
+
+        const todoTextArea = document.createElement('textarea');
+        
+        todoItemForm.appendChild(todoTextArea);
+
 
         todoItemFormContainer.appendChild(todoItemForm);
         return todoItemFormContainer;
