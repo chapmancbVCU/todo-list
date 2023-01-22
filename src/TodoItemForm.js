@@ -29,9 +29,12 @@ export class TodoItemForm {
         
         todoItemForm.appendChild(titleRow);
 
-        const todoTextArea = document.createElement('textarea');
+
+        const editorArea = document.createElement('tinymce-editor');
+        todoItemForm.appendChild(editorArea);
+        //const todoTextArea = document.createElement('textarea');
         
-        todoItemForm.appendChild(todoTextArea);
+        //todoItemForm.appendChild(todoTextArea);
 
 
         todoItemFormContainer.appendChild(todoItemForm);
