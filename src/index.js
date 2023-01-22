@@ -12,7 +12,7 @@ import _ from 'lodash';
 import './css/styles.css';
 import { AddItem } from './AddItem';
 import { Page } from './page';
-
+import * as editor from './editor';
 
 /******************************************************************************
  * INITIAL PAGE SETUP
