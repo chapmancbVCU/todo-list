@@ -6,6 +6,7 @@
  *               todo list.
 ******************************************************************************/
 import { Editor } from "@tinymce/tinymce-webcomponent";
+import tinymce from "tinymce";
 export class TodoItemForm {
     constructor() {
 
@@ -31,11 +32,12 @@ export class TodoItemForm {
 
 
         const editorArea = document.createElement('tinymce-editor');
+        editorArea.setAttribute('selector', 'appeditor');
+        editorArea.setAttribute('plugins', 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount');
+        editorArea.setAttribute('toolbar', 'undo redo | blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help');
+        editorArea.setAttribute('menubar', 'false');
+        editorArea.setAttribute('height', '400');
         todoItemForm.appendChild(editorArea);
-        //const todoTextArea = document.createElement('textarea');
-        
-        //todoItemForm.appendChild(todoTextArea);
-
 
         todoItemFormContainer.appendChild(todoItemForm);
         return todoItemFormContainer;
