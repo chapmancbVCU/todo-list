@@ -145,10 +145,11 @@ h4 {
 
 .modal-content {
     border: solid black 1px;
-    width: 400px;
+    width: 350px;
     height: 500px;
     border-radius: 10px;
-
+    margin-right: 34px;
+    
     /* Need this for close button. */
     position: relative;
 }
@@ -262,10 +263,10 @@ h4 {
 
     .modal-content {
         width: 600px;
-        height: 400px;
+        height: 600px;
     }
     .modal-main {
-        height: 88%;
+        height: 90.5%;
         flex-direction: row;
     }
 
