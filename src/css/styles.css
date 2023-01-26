@@ -146,7 +146,7 @@ h4 {
 .modal-content {
     border: solid black 1px;
     width: 350px;
-    height: 500px;
+    height: 600px;
     border-radius: 10px;
     margin-right: 34px;
     
@@ -263,10 +263,10 @@ h4 {
 
     .modal-content {
         width: 600px;
-        height: 600px;
+        height: 550px;
     }
     .modal-main {
-        height: 90.5%;
+        height: 90%;
         flex-direction: row;
     }
 
