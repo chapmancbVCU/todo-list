@@ -169,7 +169,7 @@ h4 {
 .modal-content {
     border: solid black 1px;
     width: 350px;
-    height: 600px;
+    height: 650px;
     border-radius: 10px;
     margin-right: 34px;
     
@@ -281,7 +281,7 @@ h4 {
     }
 
     .form-row input[type='text'] {
-        width: 380px;
+        width: 383px;
         height: initial;
     }
 
