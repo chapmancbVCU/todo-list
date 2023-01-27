@@ -121,7 +121,8 @@ body {
     flex-wrap: wrap;
 }
 
-.form-row input[type='text'] {
+.form-row input[type='text'],
+.form-row input[type='date'] {
     background-color: #FFFFFF;
     border: 1px solid #D6D9DC;
     border-radius: 3px;
@@ -131,6 +132,7 @@ body {
 }
 
 .form-row label {
+    margin-top: 15px;
     margin-bottom: 10px;
 }
 
@@ -173,6 +175,11 @@ h4 {
     
     /* Need this for close button. */
     position: relative;
+}
+
+.modal-form {
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .modal-main {
@@ -266,8 +273,27 @@ h4 {
         margin-bottom: 30px;
     }
 
+    .form-row {
+        flex-direction: row;
+        align-items: flex-start; /* To avoid stretching. */
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
     .form-row input[type='text'] {
-        width: 96%;
+        width: 380px;
+        height: initial;
+    }
+
+    .form-row input[type='date'] {
+        width: 360px;
+        height: initial;
+    }
+
+    .form-row label {
+        text-align: right;
+        margin-top: 7px;
+        padding-right: 20px;
     }
 
     .header {
@@ -292,7 +318,7 @@ h4 {
     }
 
     .modal-form {
-        margin-left: 10px;
+        margin-left: 20px;
     }
 
     .modal-main {
