@@ -19,21 +19,23 @@ export class TodoItemForm {
         const todoItemForm = document.createElement('form');
         todoItemForm.classList.add('modal-form');
 
+        // Setup title
         const titleRow = document.createElement('div');
         titleRow.classList.add('form-row');
         const todoItemFormLabel = document.createElement('label');
-        todoItemFormLabel.setAttribute('for', 'title');
+        todoItemFormLabel.setAttribute('for', 'todo-title');
         todoItemFormLabel.textContent = 'Title:';
         titleRow.appendChild(todoItemFormLabel);
         const title = document.createElement('input');
-        title.setAttribute('id', 'title');
-        title.setAttribute('name', 'title');
+        title.setAttribute('id', 'todo-title');
+        title.setAttribute('name', 'todo-title');
         title.setAttribute('type', 'text');
         title.setAttribute('required', '');
         title.setAttribute('placeholder', 'Ex: Get groceries');
         titleRow.appendChild(title);
         todoItemForm.appendChild(titleRow);
 
+        // Setup description textarea
         const editorArea = document.createElement('tinymce-editor');
         editorArea.setAttribute('id', 'todo-description');
         editorArea.setAttribute('selector', 'todo-description');
@@ -45,6 +47,7 @@ export class TodoItemForm {
         editorArea.setAttribute('placeholder', 'Describe item here.');
         todoItemForm.appendChild(editorArea);
 
+        // Setup due by date
         const dueByRow = document.createElement('div');
         dueByRow.classList.add('form-row');
         const dueByLabel = document.createElement('label');
@@ -58,6 +61,12 @@ export class TodoItemForm {
         dueByInput.setAttribute('required', '');
         dueByRow.appendChild(dueByInput);
         todoItemForm.appendChild(dueByRow);
+
+        // Setup buttons
+        const buttonsRow = document.createElement('div');
+        buttonsRow.classList.add('form-row');
+
+        todoItemForm.appendChild(buttonsRow);
 
         todoItemFormContainer.appendChild(todoItemForm);
         return todoItemFormContainer;
