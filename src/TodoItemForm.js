@@ -29,6 +29,8 @@ export class TodoItemForm {
         title.setAttribute('id', 'title');
         title.setAttribute('name', 'title');
         title.setAttribute('type', 'text');
+        title.setAttribute('required', '');
+        title.setAttribute('placeholder', 'Ex: Get groceries');
         titleRow.appendChild(title);
         todoItemForm.appendChild(titleRow);
 
@@ -38,6 +40,7 @@ export class TodoItemForm {
         editorArea.setAttribute('toolbar', 'undo redo | strikethrough bullist numlist outdent indent | removeformat | help');
         editorArea.setAttribute('menubar', 'false');
         editorArea.setAttribute('height', '350');
+        editorArea.setAttribute('placeholder', 'Describe item here.');
         todoItemForm.appendChild(editorArea);
 
         const dueByRow = document.createElement('div');
@@ -47,8 +50,11 @@ export class TodoItemForm {
         dueByLabel.textContent = 'Due By:';
         dueByRow.appendChild(dueByLabel);
         const dueByInput = document.createElement('input');
-        dueByInput.setAttribute('type', 'date');
         dueByInput.setAttribute('id', 'dueByDate');
+        dueByInput.setAttribute('name', 'dueByDate');
+        dueByInput.setAttribute('type', 'date');
+        dueByInput.setAttribute('required', '');
+        
         dueByRow.appendChild(dueByInput);
         todoItemForm.appendChild(dueByRow);
 
