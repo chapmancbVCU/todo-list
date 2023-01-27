@@ -22,11 +22,13 @@ export class TodoItemForm {
         const titleRow = document.createElement('div');
         titleRow.classList.add('form-row');
         const todoItemFormLabel = document.createElement('label');
-        todoItemForm.setAttribute('for', 'title');
+        todoItemFormLabel.setAttribute('for', 'title');
         todoItemFormLabel.textContent = 'Title';
         titleRow.appendChild(todoItemFormLabel);
         const title = document.createElement('input');
         title.setAttribute('id', 'title');
+        title.setAttribute('name', 'title');
+        title.setAttribute('type', 'text');
         titleRow.appendChild(title);
         todoItemForm.appendChild(titleRow);
 
