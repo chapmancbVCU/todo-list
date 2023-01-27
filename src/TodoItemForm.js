@@ -23,7 +23,7 @@ export class TodoItemForm {
         titleRow.classList.add('form-row');
         const todoItemFormLabel = document.createElement('label');
         todoItemFormLabel.setAttribute('for', 'title');
-        todoItemFormLabel.textContent = 'Title';
+        todoItemFormLabel.textContent = 'Title:';
         titleRow.appendChild(todoItemFormLabel);
         const title = document.createElement('input');
         title.setAttribute('id', 'title');
@@ -35,9 +35,11 @@ export class TodoItemForm {
         todoItemForm.appendChild(titleRow);
 
         const editorArea = document.createElement('tinymce-editor');
-        editorArea.setAttribute('selector', 'appeditor');
+        editorArea.setAttribute('id', 'todo-description');
+        editorArea.setAttribute('selector', 'todo-description');
+        editorArea.setAttribute('name', 'todo-description');
         editorArea.setAttribute('plugins', 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount');
-        editorArea.setAttribute('toolbar', 'undo redo | strikethrough bullist numlist outdent indent | removeformat | help');
+        editorArea.setAttribute('toolbar', 'undo redo | | bold italic backcolor | strikethrough | bullist numlist | outdent indent | alignleft aligncenter alignright alignjustify | removeformat | help');
         editorArea.setAttribute('menubar', 'false');
         editorArea.setAttribute('height', '350');
         editorArea.setAttribute('placeholder', 'Describe item here.');
@@ -54,7 +56,6 @@ export class TodoItemForm {
         dueByInput.setAttribute('name', 'dueByDate');
         dueByInput.setAttribute('type', 'date');
         dueByInput.setAttribute('required', '');
-        
         dueByRow.appendChild(dueByInput);
         todoItemForm.appendChild(dueByRow);
 
