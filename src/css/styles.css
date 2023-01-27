@@ -131,6 +131,11 @@ body {
     font-size: 14px;
 }
 
+.form-row input[type='text']:invalid {
+    border: 1px solid #D55C5F;
+    color: #D55C5F;
+    box-shadow: none; /* Remove default red glow in Firefox */
+}
 .form-row label {
     margin-top: 15px;
     margin-bottom: 10px;
