@@ -22,22 +22,33 @@ export class TodoItemForm {
         const titleRow = document.createElement('div');
         titleRow.classList.add('form-row');
         const todoItemFormLabel = document.createElement('label');
+        todoItemForm.setAttribute('for', 'title');
         todoItemFormLabel.textContent = 'Title';
         titleRow.appendChild(todoItemFormLabel);
-        
         const title = document.createElement('input');
+        title.setAttribute('id', 'title');
         titleRow.appendChild(title);
-        
         todoItemForm.appendChild(titleRow);
-
 
         const editorArea = document.createElement('tinymce-editor');
         editorArea.setAttribute('selector', 'appeditor');
         editorArea.setAttribute('plugins', 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount');
         editorArea.setAttribute('toolbar', 'undo redo | strikethrough bullist numlist outdent indent | removeformat | help');
         editorArea.setAttribute('menubar', 'false');
-        editorArea.setAttribute('height', '400');
+        editorArea.setAttribute('height', '350');
         todoItemForm.appendChild(editorArea);
+
+        const dueByRow = document.createElement('div');
+        dueByRow.classList.add('form-row');
+        const dueByLabel = document.createElement('label');
+        dueByLabel.setAttribute('for', 'dueByDate');
+        dueByLabel.textContent = 'Due By:';
+        dueByRow.appendChild(dueByLabel);
+        const dueByInput = document.createElement('input');
+        dueByInput.setAttribute('type', 'date');
+        dueByInput.setAttribute('id', 'dueByDate');
+        dueByRow.appendChild(dueByInput);
+        todoItemForm.appendChild(dueByRow);
 
         todoItemFormContainer.appendChild(todoItemForm);
         return todoItemFormContainer;
