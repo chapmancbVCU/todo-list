@@ -207,7 +207,7 @@ h4 {
 .modal-content {
     border: solid black 1px;
     width: 350px;
-    height: 750px;
+    height: 780px;
     border-radius: 10px;
     margin-right: 34px;
     
@@ -224,7 +224,7 @@ h4 {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     background-color: white;
-    height: 90.45%;
+    height: 93%;
     display: flex;
     flex-direction: column;
 }
