@@ -176,7 +176,7 @@ h4 {
 .modal-content {
     border: solid black 1px;
     width: 350px;
-    height: 650px;
+    height: 750px;
     border-radius: 10px;
     margin-right: 34px;
     
@@ -227,6 +227,35 @@ h4 {
     background-color: var(--link-and-button-color);
     display: flex;
     flex-direction: row;
+}
+
+.priority-buttons-container {
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.priority-button {
+    margin-top: 5px;
+    width: 85px;
+    height: 30px;
+    
+    border: solid black 1px;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.priority-button input[type='radio'] {
+    opacity: 0.011;
+    z-index: 100;
+}
+
+.priority-button .priority-button-label {
+    padding-right: 10px;
 }
 
 .side-bar {
@@ -321,7 +350,7 @@ h4 {
 
     .modal-content {
         width: 600px;
-        height: 550px;
+        height: 620px;
     }
 
     .modal-form {
@@ -329,7 +358,7 @@ h4 {
     }
 
     .modal-main {
-        height: 90%;
+        height: 91%;
         flex-direction: row;
     }
 
@@ -338,6 +367,10 @@ h4 {
         justify-content: flex-start;
         width: 115px;
         flex-direction: column;
+    }
+
+    .priority-buttons-container {
+        width: 300px;
     }
 
     .side-bar {
