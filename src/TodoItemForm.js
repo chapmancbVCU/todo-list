@@ -121,9 +121,13 @@ export class TodoItemForm {
         buttonsRow.appendChild(priorityButtonsContainer);
 
         // Submit button container
+        const submitButtonContainer = document.createElement('div');
+        submitButtonContainer.classList.add('add-todo-button-container');
         const submitButton = document.createElement('button');
-        submitButton.textContent = "Add";
-        buttonsRow.appendChild(submitButton);
+        submitButton.classList.add('add-todo-button');
+        submitButton.textContent = 'Add';
+        submitButtonContainer.appendChild(submitButton);
+        buttonsRow.appendChild(submitButtonContainer);
 
         todoItemForm.appendChild(buttonsRow);
         todoItemFormContainer.appendChild(todoItemForm);
