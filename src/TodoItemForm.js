@@ -64,10 +64,68 @@ export class TodoItemForm {
 
         // Setup buttons
         const buttonsRow = document.createElement('div');
-        buttonsRow.classList.add('form-row');
+        buttonsRow.classList.add('buttons-form-row');
+
+        // Priority buttons container
+        const priorityButtonsContainer = document.createElement('fieldset');
+        priorityButtonsContainer.classList.add('priority-buttons-container');
+        const priorityButtonsLegend = document.createElement('legend');
+        priorityButtonsLegend.textContent = 'Priority:';
+        priorityButtonsContainer.append(priorityButtonsLegend);
+
+        const lowPriorityButtonContainer = document.createElement('div');
+        lowPriorityButtonContainer.classList.add('priority-button');
+        const lowPriorityButton = document.createElement('input');
+        lowPriorityButton.setAttribute('id', 'low-priority');
+        lowPriorityButton.setAttribute('name', 'set-priority');
+        lowPriorityButton.setAttribute('type', 'radio');
+        lowPriorityButton.setAttribute('value', 'set-low-priority');
+        lowPriorityButtonContainer.appendChild(lowPriorityButton);
+        const lowPriorityButtonLabel = document.createElement('label');
+        lowPriorityButtonLabel.setAttribute('for', 'low-priority');
+        lowPriorityButtonLabel.classList.add('priority-button-label');
+        lowPriorityButtonLabel.textContent = 'Low';
+        lowPriorityButtonContainer.appendChild(lowPriorityButtonLabel);
+        priorityButtonsContainer.append(lowPriorityButtonContainer);
+
+        const mediumPriorityButtonContainer = document.createElement('div');
+        mediumPriorityButtonContainer.classList.add('priority-button');
+        const mediumPriorityButton = document.createElement('input');
+        mediumPriorityButton.setAttribute('id', 'medium-priority');
+        mediumPriorityButton.setAttribute('name', 'set-priority');
+        mediumPriorityButton.setAttribute('type', 'radio');
+        mediumPriorityButton.setAttribute('value', 'set-medium-priority');
+        mediumPriorityButtonContainer.appendChild(mediumPriorityButton);
+        const mediumPriorityButtonLabel = document.createElement('label');
+        mediumPriorityButtonLabel.setAttribute('for', 'medium-priority');
+        mediumPriorityButtonLabel.classList.add('priority-button-label');
+        mediumPriorityButtonLabel.textContent = 'Medium';
+        mediumPriorityButtonContainer.appendChild(mediumPriorityButtonLabel);
+        priorityButtonsContainer.appendChild(mediumPriorityButtonContainer);
+
+        const highPriorityButtonContainer = document.createElement('div');
+        highPriorityButtonContainer.classList.add('priority-button');
+        const highPriorityButton = document.createElement('input');
+        highPriorityButton.setAttribute('id', 'high-priority');
+        highPriorityButton.setAttribute('name', 'set-priority');
+        highPriorityButton.setAttribute('type', 'radio');
+        highPriorityButton.setAttribute('value', 'set-high-priority');
+        highPriorityButtonContainer.appendChild(highPriorityButton);
+        const highPriorityButtonLabel = document.createElement('label');
+        highPriorityButtonLabel.setAttribute('for', 'high-priority');
+        highPriorityButtonLabel.classList.add('priority-button-label');
+        highPriorityButtonLabel.textContent = 'High';
+        highPriorityButtonContainer.appendChild(highPriorityButtonLabel);
+        priorityButtonsContainer.appendChild(highPriorityButtonContainer);
+
+        buttonsRow.appendChild(priorityButtonsContainer);
+
+        // Submit button container
+        const submitButton = document.createElement('button');
+        submitButton.textContent = "Add";
+        buttonsRow.appendChild(submitButton);
 
         todoItemForm.appendChild(buttonsRow);
-
         todoItemFormContainer.appendChild(todoItemForm);
         return todoItemFormContainer;
     }
