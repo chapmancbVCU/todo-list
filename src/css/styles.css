@@ -27,7 +27,6 @@
     align-items: center;
     margin-right: auto;
     margin-left: 20px;
-    background-color: rgba(0, 0, 0, 0.7);
     width: 50px;
     height: 50px;
 
@@ -35,8 +34,35 @@
     border: none;
 
     background-color: var(--link-and-button-color);
-
     font-size: 45px;
+}
+
+.add-todo-button {
+    width: 290px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: bold;
+
+    color: #FFFFFF;
+    background-color: #5995DA;
+
+    border: none;
+    border-radius: 5px;
+
+    padding: 10px 40px;
+    cursor: pointer;
+}
+
+.add-todo-button:hover {
+    background-color: #76AEED;
+}
+
+.add-todo-button:active {
+    background-color: #407FC7;
+}
+
+.add-todo-button-container {
+    margin: 15px auto;
 }
 
 /* Contains form for adding new items. */
@@ -54,6 +80,11 @@
 
 body {
     background-color: var(--page-background);
+}
+
+.buttons-form-row {
+    display: flex;
+    flex-direction: column;
 }
 
 .categories {
@@ -240,7 +271,7 @@ h4 {
     margin-top: 5px;
     width: 85px;
     height: 30px;
-    
+
     border: solid black 1px;
     border-radius: 5px;
 
@@ -309,6 +340,18 @@ h4 {
         margin-bottom: 30px;
     }
 
+    .add-todo-button {
+        width: 100px;
+        height: 35px;
+        margin-top: 10px;
+        position: absolute;
+        right: 20px;
+    }
+
+    .buttons-form-row {
+        flex-direction: row;
+    }
+
     .form-row {
         flex-direction: row;
         align-items: flex-start; /* To avoid stretching. */
@@ -317,12 +360,12 @@ h4 {
     }
 
     .form-row input[type='text'] {
-        width: 383px;
+        width: 385px;
         height: initial;
     }
 
     .form-row input[type='date'] {
-        width: 360px;
+        width: 365px;
         height: initial;
     }
 
