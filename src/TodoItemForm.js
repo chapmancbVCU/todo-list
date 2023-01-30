@@ -91,6 +91,7 @@ export class TodoItemForm {
 
         const mediumPriorityButtonContainer = document.createElement('div');
         mediumPriorityButtonContainer.classList.add('priority-button');
+        mediumPriorityButtonContainer.classList.add('medium-priority-button-container');
         const mediumPriorityButton = document.createElement('input');
         mediumPriorityButton.setAttribute('id', 'medium-priority');
         mediumPriorityButton.setAttribute('name', 'set-priority');
@@ -106,6 +107,7 @@ export class TodoItemForm {
 
         const highPriorityButtonContainer = document.createElement('div');
         highPriorityButtonContainer.classList.add('priority-button');
+        highPriorityButtonContainer.classList.add('high-priority-button-container');
         const highPriorityButton = document.createElement('input');
         highPriorityButton.setAttribute('id', 'high-priority');
         highPriorityButton.setAttribute('name', 'set-priority');

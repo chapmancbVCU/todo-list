@@ -299,6 +299,7 @@ h4 {
     line-height: 30px;
 }
 
+/* Not in alphabetical order because things break for some reason. */
 .low-priority-button-container {
     border: solid green 1px;
     border-radius: 5px;
@@ -313,6 +314,38 @@ h4 {
 .low-priority-button-container input[type='radio']:checked + label {
     color: white;
     background-color: green;
+}
+
+.medium-priority-button-container {
+    border: solid orange 1px;
+    border-radius: 5px;
+}
+
+.medium-priority-button-container input[type='radio'] + label {
+    border-radius: 5px;
+    color: orange;
+    background-color: white;
+}
+
+.medium-priority-button-container input[type='radio']:checked + label {
+    color: white;
+    background-color: orange;
+}
+
+.high-priority-button-container {
+    border: solid red 1px;
+    border-radius: 5px;
+}
+
+.high-priority-button-container input[type='radio'] + label {
+    border-radius: 5px;
+    color: red;
+    background-color: white;
+}
+
+.high-priority-button-container input[type='radio']:checked + label {
+    color: white;
+    background-color: red;
 }
 
 .side-bar {
