@@ -207,7 +207,7 @@ h4 {
 .modal-content {
     border: solid black 1px;
     width: 350px;
-    height: 780px;
+  
     border-radius: 10px;
     margin-right: 34px;
     
@@ -350,6 +350,7 @@ h4 {
 
     .buttons-form-row {
         flex-direction: row;
+        margin-bottom: 15px;
     }
 
     .form-row {
@@ -360,12 +361,12 @@ h4 {
     }
 
     .form-row input[type='text'] {
-        width: 385px;
+        width: 96%;
         height: initial;
     }
 
     .form-row input[type='date'] {
-        width: 365px;
+        width: 449px;
         height: initial;
     }
 
@@ -393,7 +394,7 @@ h4 {
 
     .modal-content {
         width: 600px;
-        height: 620px;
+       
     }
 
     .modal-form {
