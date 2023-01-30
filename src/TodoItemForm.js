@@ -75,6 +75,7 @@ export class TodoItemForm {
 
         const lowPriorityButtonContainer = document.createElement('div');
         lowPriorityButtonContainer.classList.add('priority-button');
+        lowPriorityButtonContainer.classList.add('low-priority-button-container');
         const lowPriorityButton = document.createElement('input');
         lowPriorityButton.setAttribute('id', 'low-priority');
         lowPriorityButton.setAttribute('name', 'set-priority');
