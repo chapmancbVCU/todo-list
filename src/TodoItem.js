@@ -31,4 +31,15 @@ export class TodoItem {
             return `Title: ${this.title}; Description: ${this.description}; Due Date: ${this.dueDate}; Priority: ${this.priority}`;
         }
     }
+
+    getTodoItem() {
+        let deserializedObj = JSON.parse(localStorage.getItem("todoTest"));
+        //console.log(deserializedObj);
+    }
+    setTodoItem(todoItem) {
+        let serializedObj = JSON.stringify(todoItem);
+        localStorage.setItem("todoTest", serializedObj);
+    }
+
+
 }
