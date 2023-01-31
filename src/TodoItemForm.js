@@ -7,7 +7,14 @@
 ******************************************************************************/
 import { Editor } from "@tinymce/tinymce-webcomponent";
 import tinymce from "tinymce";
+
+/**
+ * Class for rendering and handling data entry for adding a new todo list.
+ */
 export class TodoItemForm {
+    /**
+     * Default constructor.
+     */
     constructor() {
 
     }
@@ -128,6 +135,7 @@ export class TodoItemForm {
         const submitButtonContainer = document.createElement('div');
         submitButtonContainer.classList.add('add-todo-button-container');
         const submitButton = document.createElement('button');
+        submitButton.setAttribute('add-todo-button');
         submitButton.classList.add('add-todo-button');
         submitButton.textContent = 'Add';
         submitButtonContainer.appendChild(submitButton);
