@@ -13,6 +13,7 @@ import './css/styles.css';
 import { AddItem } from './AddItem';
 import { Page } from './page';
 import * as editor from './editor';
+import { TodoItem } from './TodoItem';
 
 /******************************************************************************
  * INITIAL PAGE SETUP
