@@ -81,6 +81,7 @@ export class TodoItemForm {
         lowPriorityButton.setAttribute('name', 'set-priority');
         lowPriorityButton.setAttribute('type', 'radio');
         lowPriorityButton.setAttribute('value', 'set-low-priority');
+        lowPriorityButton.setAttribute('checked', '');
         lowPriorityButtonContainer.appendChild(lowPriorityButton);
         const lowPriorityButtonLabel = document.createElement('label');
         lowPriorityButtonLabel.setAttribute('for', 'low-priority');
