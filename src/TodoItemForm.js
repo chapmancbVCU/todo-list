@@ -19,6 +19,10 @@ export class TodoItemForm {
 
     }
 
+    /**
+     * Initializes and renders form for adding a todo item.
+     * @returns HTMLDivElement
+     */
     initializeComponents() {
         const todoItemFormContainer = document.createElement('div');
         todoItemFormContainer.setAttribute('id', 'modal-form-container');
@@ -50,7 +54,7 @@ export class TodoItemForm {
         editorArea.setAttribute('plugins', 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount');
         editorArea.setAttribute('toolbar', 'undo redo | | bold italic backcolor | strikethrough | bullist numlist | outdent indent | alignleft aligncenter alignright alignjustify | removeformat | help');
         editorArea.setAttribute('menubar', 'false');
-        editorArea.setAttribute('height', '350');
+        editorArea.setAttribute('height', '300');
         editorArea.setAttribute('placeholder', 'Describe item here.');
         todoItemForm.appendChild(editorArea);
 
@@ -135,7 +139,7 @@ export class TodoItemForm {
         const submitButtonContainer = document.createElement('div');
         submitButtonContainer.classList.add('add-todo-button-container');
         const submitButton = document.createElement('button');
-        submitButton.setAttribute('add-todo-button');
+        submitButton.setAttribute('id', 'add-todo-button');
         submitButton.classList.add('add-todo-button');
         submitButton.textContent = 'Add';
         submitButtonContainer.appendChild(submitButton);
