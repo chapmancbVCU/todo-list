@@ -15,6 +15,9 @@ import { Page } from './page';
 import * as editor from './editor';
 import { TodoItem } from './TodoItem';
 
+const test = new TodoItem('foo', 'bar', 'foo', 'foo');
+test.setTodoItem(test);
+test.getTodoItem();
 /******************************************************************************
  * INITIAL PAGE SETUP
  *****************************************************************************/
