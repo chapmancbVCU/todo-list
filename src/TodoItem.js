@@ -4,11 +4,11 @@
  * Date Created: December 26, 2022
  *  Description: Functions that support implementation of Todo List item
 ******************************************************************************/
-
+import { DataHandler } from "./DataHandler";
 /**
  * 
  */
-export class TodoItem {
+export class TodoItem extends DataHandler {
     /**
      * 
      * @param {*} title 
@@ -17,6 +17,7 @@ export class TodoItem {
      * @param {*} priority 
      */
     constructor(title, description, dueDate, priority) {
+        super();
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
@@ -32,14 +33,7 @@ export class TodoItem {
         }
     }
 
-    getTodoItem() {
-        let deserializedObj = JSON.parse(localStorage.getItem("todoTest"));
-        //console.log(deserializedObj);
-    }
-    setTodoItem(todoItem) {
-        let serializedObj = JSON.stringify(todoItem);
-        localStorage.setItem("todoTest", serializedObj);
-    }
+    
 
 
 }
