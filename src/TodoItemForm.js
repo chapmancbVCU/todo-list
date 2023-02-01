@@ -142,6 +142,7 @@ export class TodoItemForm {
         submitButtonContainer.classList.add('add-todo-button-container');
         const submitButton = document.createElement('button');
         submitButton.setAttribute('id', 'add-todo-button');
+        submitButton.setAttribute('type', 'submit');
         submitButton.classList.add('add-todo-button');
         submitButton.textContent = 'Add';
         submitButtonContainer.appendChild(submitButton);
