@@ -28,7 +28,7 @@ const addItemSelector = document.querySelector('#add-item-button');
 addItemSelector.addEventListener('click', function(){
     const addItem = new AddItem();
     contentContainer.appendChild(addItem.initializeComponents());
-    addItem.submitEventListener();
+    addItem.addTodoItemSubmitButtonEventListener();
     const closeModal = document.querySelector('.close');
     const element = document.getElementById('bg-modal');
     const modalMainSelector = document.querySelector('.modal-main');
@@ -56,6 +56,6 @@ addItemSelector.addEventListener('click', function(){
     todoLinkSelector.addEventListener('click', function() {
         addItem.removeModalFormFromDOM();
         modalMainSelector.appendChild(addItem.renderTodoItemForm());
-        addItem.submitEventListener();
+        addItem.addTodoItemSubmitButtonEventListener();
     });
 });
