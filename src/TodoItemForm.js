@@ -29,6 +29,8 @@ export class TodoItemForm {
 
         const todoItemForm = document.createElement('form');
         todoItemForm.classList.add('modal-form');
+        todoItemForm.setAttribute('method', 'get');
+        todoItemForm.setAttribute('action', '#');
 
         // Setup title
         const titleRow = document.createElement('div');
@@ -64,12 +66,12 @@ export class TodoItemForm {
         const dueByRow = document.createElement('div');
         dueByRow.classList.add('form-row');
         const dueByLabel = document.createElement('label');
-        dueByLabel.setAttribute('for', 'dueByDate');
+        dueByLabel.setAttribute('for', 'due-by-date');
         dueByLabel.textContent = 'Due By:';
         dueByRow.appendChild(dueByLabel);
         const dueByInput = document.createElement('input');
-        dueByInput.setAttribute('id', 'dueByDate');
-        dueByInput.setAttribute('name', 'dueByDate');
+        dueByInput.setAttribute('id', 'due-by-date');
+        dueByInput.setAttribute('name', 'due-by-date');
         dueByInput.setAttribute('type', 'date');
         dueByInput.setAttribute('required', '');
         dueByRow.appendChild(dueByInput);
@@ -141,7 +143,7 @@ export class TodoItemForm {
         const submitButtonContainer = document.createElement('div');
         submitButtonContainer.classList.add('add-todo-button-container');
         const submitButton = document.createElement('button');
-        submitButton.setAttribute('id', 'add-todo-button');
+        submitButton.setAttribute('id', 'add-todo-item-button');
         submitButton.setAttribute('type', 'submit');
         submitButton.classList.add('add-todo-button');
         submitButton.textContent = 'Add';
