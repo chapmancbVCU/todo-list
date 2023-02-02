@@ -32,15 +32,19 @@ export class AddItem {
     }
 
     addTodoItemSubmitButtonEventListener() {
-        document.addEventListener('DOMContentLoaded', () => {
-            const todoFormSubmit = document.querySelector('#add-todo-item-button');
-            todoFormSubmit.addEventListener('click', function(event) {
-                event.preventDefault();
+        const todoFormSubmit = document.querySelector('#add-todo-item-button');
+        todoFormSubmit.addEventListener('click', function(event) {
+            event.preventDefault();
 
-                let title = document.getElementById('todo-title').value;
-                let description = document.getElementById('todo-description').value;
-                let dueByDate = document.getElementById('due-by-date').value;
+            let title = document.getElementById('todo-title').value;
+            let description = document.getElementById('todo-description').value;
+            let dueByDate = document.getElementById('due-by-date').value;
 
+            if(title == "") {
+                alert("Title is a required field");
+            } else if (dueByDate == "") {
+                alert("Select a due by date");
+            } else {    
                 // Get value for radio button
                 let priority;
                 document.getElementsByName('set-priority')
@@ -56,7 +60,7 @@ export class AddItem {
                 // Reset form and close modal.
                 document.forms[0].reset();
                 AddItem.closeModal();
-            });
+            }
         });
     }
 
