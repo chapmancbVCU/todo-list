@@ -37,25 +37,26 @@ export class AddItem {
             event.preventDefault();
 
             let title = document.getElementById('todo-title').value;
-            console.log(`Title: ${title}`);
             let description = document.getElementById('todo-description').value;
-            let dueByDate = document.getElementById('due-by-date');
-            const todoItem = new TodoItem(title, description, "test date", 'haha');
+            let dueByDate = document.getElementById('due-by-date').value;
+
+
+            const todoItem = new TodoItem(title, description, dueByDate, 'haha');
             todoItem.setTodoItem(todoItem, title); 
 
             document.forms[0].reset();
-            document.querySelector('.bg-modal').style.display = 'none';
+            AddItem.closeModal();
         });
     }
-    
+
     /**
      * Function that initializes the modal for adding items.
      * @returns HTMLDivElement The div that contains the modal.
      */
     initializeComponents() {
-        this.addItemContainer = document.createElement('div')
-        this.addItemContainer.classList.add('bg-modal');
-        this.addItemContainer.style.display = 'flex';
+        const addItemContainer = document.createElement('div')
+        addItemContainer.classList.add('bg-modal');
+        addItemContainer.style.display = 'flex';
 
         const modalContent = document.createElement('div');
         modalContent.classList.add('modal-content');
@@ -76,29 +77,22 @@ export class AddItem {
         modalMain.appendChild(this.renderTodoItemForm());
         modalContent.appendChild(modalMain);
 
-        this.addItemContainer.appendChild(modalContent);
-        return this.addItemContainer;
+        addItemContainer.appendChild(modalContent);
+        return addItemContainer;
     }
 
     /**
      * Closes the modal when you press the close button.
      */
-    closeModal() {
-        this.addItemContainer.style.display = 'none';
-        this.addItemContainer.remove();
+    static closeModal() {
+        const modal = document.querySelector('.bg-modal');
+        modal.style.display = 'none';
+        modal.remove();
     }
 
-    getTodoItemForm() {
-        return this.todoItemForm;
-    }
     removeModalFormFromDOM() {
         const modalMainSelector = document.querySelector('#modal-form-container');
         modalMainSelector.remove();
-    }
-
-    removeModalFromDom() {
-        const bgModalSelector = document.querySelector('#bg-modal');
-        bgModalSelector.remove();
     }
 
     renderModalSideBar() {
