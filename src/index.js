@@ -12,19 +12,14 @@ import _ from 'lodash';
 import './css/styles.css';
 import { AddItem } from './AddItem';
 import { Page } from './page';
-import * as editor from './editor';
-import { TodoItem } from './TodoItem';
 
-//const test = new TodoItem('foo', 'bar', 'foo', 'foo');
-//test.setTodoItem(test);
-//test.getTodoItem();
+
 /******************************************************************************
  * INITIAL PAGE SETUP
  *****************************************************************************/
 const page = new Page();
 const contentContainer = page.getContentContainer();
 const addItemSelector = document.querySelector('#add-item-button');
-
 
 /******************************************************************************
  * Event listeners
@@ -33,6 +28,7 @@ const addItemSelector = document.querySelector('#add-item-button');
 addItemSelector.addEventListener('click', function(){
     const addItem = new AddItem();
     contentContainer.appendChild(addItem.initializeComponents());
+    addItem.submitEventListener();
     const closeModal = document.querySelector('.close');
     const element = document.getElementById('bg-modal');
     const modalMainSelector = document.querySelector('.modal-main');
@@ -60,6 +56,6 @@ addItemSelector.addEventListener('click', function(){
     todoLinkSelector.addEventListener('click', function() {
         addItem.removeModalFormFromDOM();
         modalMainSelector.appendChild(addItem.renderTodoItemForm());
+        addItem.submitEventListener();
     });
 });
-
