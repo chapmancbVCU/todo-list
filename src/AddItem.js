@@ -32,26 +32,31 @@ export class AddItem {
     }
 
     addTodoItemSubmitButtonEventListener() {
-        const todoFormSubmit = document.querySelector('#add-todo-item-button');
-        todoFormSubmit.addEventListener('click', function(event) {
-            event.preventDefault();
+        document.addEventListener('DOMContentLoaded', () => {
+            const todoFormSubmit = document.querySelector('#add-todo-item-button');
+            todoFormSubmit.addEventListener('click', function(event) {
+                event.preventDefault();
 
-            let title = document.getElementById('todo-title').value;
-            let description = document.getElementById('todo-description').value;
-            let dueByDate = document.getElementById('due-by-date').value;
-            let lowPriority = document.getElementById('low-priority').value;
-            let mediumPriority = document.getElementById('medium-priority').value;
-            let highPriority = document.getElementById('high-priority').value;
+                let title = document.getElementById('todo-title').value;
+                let description = document.getElementById('todo-description').value;
+                let dueByDate = document.getElementById('due-by-date').value;
 
-            console.log(`Low: ${lowPriority}`);
-            console.log(`Medium: ${mediumPriority}`);
-            console.log(`High: ${highPriority}`);
+                // Get value for radio button
+                let priority;
+                document.getElementsByName('set-priority')
+                        .forEach(radio => {
+                    if (radio.checked) {
+                        priority = radio.value;
+                    }
+                });
 
-            const todoItem = new TodoItem(title, description, dueByDate, 'haha');
-            todoItem.setTodoItem(todoItem, title); 
+                const todoItem = new TodoItem(title, description, dueByDate, priority);
+                todoItem.setTodoItem(todoItem, title); 
 
-            document.forms[0].reset();
-            AddItem.closeModal();
+                // Reset form and close modal.
+                document.forms[0].reset();
+                AddItem.closeModal();
+            });
         });
     }
 
