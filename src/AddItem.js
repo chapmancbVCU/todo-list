@@ -105,11 +105,20 @@ export class AddItem {
         modal.remove();
     }
 
+    /**
+     * Removes current modal form from DOM when user selects a different form 
+     * in the modal sidebar.
+     */
     removeModalFormFromDOM() {
         const modalMainSelector = document.querySelector('#modal-form-container');
         modalMainSelector.remove();
     }
 
+    /**
+     * Renders the modal sidebar.
+     * @returns HTMLDivElemtnt The sidebar for the modal that allows users to 
+     * add new projects, todo items, and notes.
+     */
     renderModalSideBar() {
         const modalSideBar = document.createElement('div');
         modalSideBar.setAttribute('id', 'modal-sidebar');
@@ -136,14 +145,26 @@ export class AddItem {
         return modalSideBar;
     }
 
+    /**
+     * Returns the form that allows a user to add a new note.
+     * @returns HTMLFormElement The form for adding a new note.
+     */
     renderNotesForm() {;
         return this.notesForm.initializeComponents();  
     }
 
+    /**
+     * Returns the form that allows a user to add a new project.
+     * @returns HTMLFormElement The form for adding a new project.
+     */
     renderProjectsForm() {
         return this.projectsForm.initializeComponents();
     }
 
+    /**
+     * Returns the form that allows a user to add a new todo list item.
+     * @returns HTMLFormElement The form for adding a new todo list item.
+     */
     renderTodoItemForm() {
 
         return this.todoItemForm.initializeComponents();
