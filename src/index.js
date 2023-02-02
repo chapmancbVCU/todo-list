@@ -12,7 +12,7 @@ import _ from 'lodash';
 import './css/styles.css';
 import { AddItem } from './AddItem';
 import { Page } from './page';
-
+import { TasksContent } from './TasksContent';
 
 /******************************************************************************
  * INITIAL PAGE SETUP
@@ -20,6 +20,8 @@ import { Page } from './page';
 const page = new Page();
 const contentContainer = page.getContentContainer();
 const addItemSelector = document.querySelector('#add-item-button');
+const tasksContainer = new TasksContent();
+tasksContainer.renderTest();
 
 /******************************************************************************
  * Event listeners
