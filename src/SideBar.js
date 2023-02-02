@@ -51,10 +51,12 @@ export class SideBar {
     }
     /**
      * Renders the the home tasks row.
+     * @param { Integer} allProjects The integer value that represents the 
+     * number of all projects.
      * @returns HTMLDivElement The div that contains the row for home category 
      * of the sidebar.
      */
-    renderHomeContainer() {
+    renderHomeContainer(allProjects) {
         const homeContainer = document.createElement('li');
         homeContainer.setAttribute('id', 'home');
         homeContainer.classList.add('side-bar-row');
@@ -66,7 +68,7 @@ export class SideBar {
         
         const homeTaskCount = document.createElement('h3');
         homeTaskCount.classList.add('side-bar-task-count');
-        homeTaskCount.textContent = '10';
+        homeTaskCount.textContent = allProjects;
 
         homeContainer.appendChild(homeTaskCount);
 
@@ -166,7 +168,7 @@ export class SideBar {
         categories.setAttribute('id', 'categories');
 
         // Render components of sidebar
-        categories.appendChild(this.renderHomeContainer());
+        categories.appendChild(this.renderHomeContainer(localStorage.length));
         categories.appendChild(this.renderTodayTasksContainer());
         categories.appendChild(this.renderWeekTasksContainer());
         categories.appendChild(this.renderProjectsRow());
