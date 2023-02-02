@@ -95,7 +95,7 @@ export class TodoItemForm {
         lowPriorityButton.setAttribute('id', 'low-priority');
         lowPriorityButton.setAttribute('name', 'set-priority');
         lowPriorityButton.setAttribute('type', 'radio');
-        lowPriorityButton.setAttribute('value', 'set-low-priority');
+        lowPriorityButton.setAttribute('value', 'low-priority');
         lowPriorityButton.setAttribute('checked', '');
         lowPriorityButtonContainer.appendChild(lowPriorityButton);
         const lowPriorityButtonLabel = document.createElement('label');
@@ -112,7 +112,7 @@ export class TodoItemForm {
         mediumPriorityButton.setAttribute('id', 'medium-priority');
         mediumPriorityButton.setAttribute('name', 'set-priority');
         mediumPriorityButton.setAttribute('type', 'radio');
-        mediumPriorityButton.setAttribute('value', 'set-medium-priority');
+        mediumPriorityButton.setAttribute('value', 'medium-priority');
         mediumPriorityButtonContainer.appendChild(mediumPriorityButton);
         const mediumPriorityButtonLabel = document.createElement('label');
         mediumPriorityButtonLabel.setAttribute('for', 'medium-priority');
@@ -128,7 +128,7 @@ export class TodoItemForm {
         highPriorityButton.setAttribute('id', 'high-priority');
         highPriorityButton.setAttribute('name', 'set-priority');
         highPriorityButton.setAttribute('type', 'radio');
-        highPriorityButton.setAttribute('value', 'set-high-priority');
+        highPriorityButton.setAttribute('value', 'high-priority');
         highPriorityButtonContainer.appendChild(highPriorityButton);
         const highPriorityButtonLabel = document.createElement('label');
         highPriorityButtonLabel.setAttribute('for', 'high-priority');
