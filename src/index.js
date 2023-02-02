@@ -30,12 +30,11 @@ addItemSelector.addEventListener('click', function(){
     contentContainer.appendChild(addItem.initializeComponents());
     addItem.addTodoItemSubmitButtonEventListener();
     const closeModal = document.querySelector('.close');
-    const element = document.getElementById('bg-modal');
     const modalMainSelector = document.querySelector('.modal-main');
 
     // Inside this event listener we need another one for closing the modal.
     closeModal.addEventListener('click', function() {
-        addItem.closeModal();
+        AddItem.closeModal();
     });
 
     // Event listeners for links inside modal for selecting forms.
