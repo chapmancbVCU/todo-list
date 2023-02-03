@@ -393,6 +393,9 @@ h4 {
     align-items: center
 }
 
+.todo-item {
+    border: solid black 1px;
+}
 @media only screen and (min-width: 700px) {
     .add-button-container {
         margin-top: 100px;
