@@ -14,8 +14,8 @@ import { NotesForm } from "./NotesForm.js";
 import { ProjectsForm } from "./ProjectsForm.js";
 import { TodoItem } from "./TodoItem.js";
 import { TodoItemForm } from "./TodoItemForm.js";
-
-
+import { SideBar } from "./SideBar.js";
+import { Page } from "./page.js";
 /**
  * Class that contains functions for rendering form for adding an item.  More 
  * specifically, the modal div that presents a web form.
@@ -31,7 +31,7 @@ export class AddItem {
         this.todoItemForm = new TodoItemForm();
     }
 
-    addTodoItemSubmitButtonEventListener() {
+    addTodoItemSubmitButtonEventListener(page) {
         const todoFormSubmit = document.querySelector('#add-todo-item-button');
         todoFormSubmit.addEventListener('click', function(event) {
             event.preventDefault();
@@ -60,6 +60,9 @@ export class AddItem {
                 // Reset form and close modal.
                 document.forms[0].reset();
                 AddItem.closeModal();
+
+                location.reload();
+                
             }
         });
     }
