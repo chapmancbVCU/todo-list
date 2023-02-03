@@ -21,7 +21,7 @@ const page = new Page();
 const contentContainer = page.getContentContainer();
 const addItemSelector = document.querySelector('#add-item-button');
 const tasksContainer = new TasksContent();
-tasksContainer.renderTest();
+tasksContainer.renderTasks();
 
 /******************************************************************************
  * Event listeners

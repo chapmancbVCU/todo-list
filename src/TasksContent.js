@@ -4,7 +4,7 @@ export class TasksContent {
         this.tasksContainer = document.querySelector('#tasks-container');
     }
 
-    renderTest() {
+    renderTasks() {
         for(let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
            const value = localStorage.getItem(key);

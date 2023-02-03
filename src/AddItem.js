@@ -60,7 +60,6 @@ export class AddItem {
                 // Reset form and close modal.
                 document.forms[0].reset();
                 AddItem.closeModal();
-
                 location.reload();
                 
             }
