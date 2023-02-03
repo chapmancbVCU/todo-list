@@ -44,14 +44,6 @@ export class Page {
     }
 
     /**
-     * Getter function that returns the container for the page's content.
-     * @returns HTMLDivElement The container for the page content.
-     */
-    getContentContainer() {
-        return this.container;
-    }
-
-    /**
      * Renders the footer.
      * @returns HTMLDivElement The div that contains the footer.
      */
@@ -93,6 +85,14 @@ export class Page {
         footerContainer.appendChild(docs);
 
         return footerContainer;
+    }
+
+    /**
+     * Getter function that returns the container for the page's content.
+     * @returns HTMLDivElement The container for the page content.
+     */
+    getContentContainer() {
+        return this.container;
     }
 
     /**
