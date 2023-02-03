@@ -34,6 +34,26 @@ export class SideBar {
     }
 
     /**
+     * Renders the sidebar section of the webpage.
+     * @returns HTMLDivElement The div that contains the sidebar for the 
+     * webpage.
+     */
+    initializeSidebarComponents() {
+        // The setup
+        const categories = document.createElement('ul');
+        categories.setAttribute('id', 'categories');
+
+        // Render components of sidebar
+        categories.appendChild(this.renderHomeContainer(localStorage.length));
+        categories.appendChild(this.renderTodayTasksContainer());
+        categories.appendChild(this.renderWeekTasksContainer());
+        categories.appendChild(this.renderProjectsRow());
+        categories.appendChild(this.renderNotesRow());
+        categories.appendChild(this.renderAddButton());
+        return categories;
+    }
+    
+    /**
      * Renders the the add item button.
      * @returns HTMLDivElement The div that contains the add item button.
      */
@@ -155,26 +175,6 @@ export class SideBar {
         weekTasksContainer.appendChild(weekTaskCount);
 
         return weekTasksContainer;
-    }
-
-    /**
-     * Renders the sidebar section of the webpage.
-     * @returns HTMLDivElement The div that contains the sidebar for the 
-     * webpage.
-     */
-    initializeSidebarComponents() {
-        // The setup
-        const categories = document.createElement('ul');
-        categories.setAttribute('id', 'categories');
-
-        // Render components of sidebar
-        categories.appendChild(this.renderHomeContainer(localStorage.length));
-        categories.appendChild(this.renderTodayTasksContainer());
-        categories.appendChild(this.renderWeekTasksContainer());
-        categories.appendChild(this.renderProjectsRow());
-        categories.appendChild(this.renderNotesRow());
-        categories.appendChild(this.renderAddButton());
-        return categories;
     }
 }
 
