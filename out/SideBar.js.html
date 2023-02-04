@@ -26,30 +26,51 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/******************************************************************************
- *         Name: SideBar.js
- *       Author: Chad Chapman
- * Date Created: December 26, 2022
- *  Description: This file contains the Page class whose responsibility is to 
- *               build sidebar section of the webpage.
-******************************************************************************/
-
-/******************************************************************************
- * IMPORTS
- *****************************************************************************/
-import { AddItem } from "./AddItem";
-
+            <pre class="prettyprint source linenums"><code>/**
+ * This file contains the Page class whose responsibility is to build sidebar 
+ * section of the webpage.
+ * @class Class for rendering the components of the sidebar.
+ * @author Chad Chapman
+ */
 export class SideBar {
+    /**
+     * Constructor for setting up the sidebar.
+     * @param {HTMLDivElement} sideBarContainer The container for the sidebar. 
+     */
     constructor(sideBarContainer) {
         this.sideBarContainer = sideBarContainer;
-        this.sideBarContainer.appendChild(this.sidebarComponents());
-        this.sideBarContainer.appendChild(this.renderAddButton());
+        this.sideBarContainer.appendChild(this.initializeSidebarComponents());
+        //this.sideBarContainer.appendChild(this.renderAddButton());
     }
 
+    /**
+     * Getter function for the sidebar container.
+     * @returns HTMLDivElement The div that contains the sidebar container.
+     */
     getSideBarContainer() {
         return this.sideBarContainer;
     }
 
+    /**
+     * Renders the sidebar section of the webpage.
+     * @returns HTMLDivElement The div that contains the sidebar for the 
+     * webpage.
+     */
+    initializeSidebarComponents() {
+        // The setup
+        const categories = document.createElement('ul');
+        categories.setAttribute('id', 'categories');
+
+        // Render components of sidebar
+        categories.appendChild(this.renderHomeContainer(localStorage.length));
+        categories.appendChild(this.renderTodayTasksContainer());
+        categories.appendChild(this.renderWeekTasksContainer());
+        categories.appendChild(this.renderProjectsRow());
+        categories.appendChild(this.renderNotesRow());
+        categories.appendChild(this.renderAddButton());
+        return categories;
+    }
+    
     /**
      * Renders the the add item button.
      * @returns HTMLDivElement The div that contains the add item button.
@@ -68,10 +89,12 @@ export class SideBar {
     }
     /**
      * Renders the the home tasks row.
+     * @param { Integer} allProjects The integer value that represents the 
+     * number of all projects.
      * @returns HTMLDivElement The div that contains the row for home category 
      * of the sidebar.
      */
-    renderHomeContainer() {
+    renderHomeContainer(allProjects) {
         const homeContainer = document.createElement('li');
         homeContainer.setAttribute('id', 'home');
         homeContainer.classList.add('side-bar-row');
@@ -83,7 +106,7 @@ export class SideBar {
         
         const homeTaskCount = document.createElement('h3');
         homeTaskCount.classList.add('side-bar-task-count');
-        homeTaskCount.textContent = '10';
+        homeTaskCount.textContent = allProjects;
 
         homeContainer.appendChild(homeTaskCount);
 
@@ -171,26 +194,6 @@ export class SideBar {
 
         return weekTasksContainer;
     }
-
-    /**
-     * Renders the sidebar section of the webpage.
-     * @returns HTMLDivElement The div that contains the sidebar for the 
-     * webpage.
-     */
-    sidebarComponents() {
-        // The setup
-        const categories = document.createElement('ul');
-        categories.setAttribute('id', 'categories');
-
-        // Render components of sidebar
-        categories.appendChild(this.renderHomeContainer());
-        categories.appendChild(this.renderTodayTasksContainer());
-        categories.appendChild(this.renderWeekTasksContainer());
-        categories.appendChild(this.renderProjectsRow());
-        categories.appendChild(this.renderNotesRow());
-
-        return categories;
-    }
 }
 
 </code></pre>
@@ -203,13 +206,13 @@ export class SideBar {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddItem.html">AddItem</a></li><li><a href="Page.html">Page</a></li><li><a href="TodoItem.html">TodoItem</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddItem.html">AddItem</a></li><li><a href="DataHandler.html">DataHandler</a></li><li><a href="NotesForm.html">NotesForm</a></li><li><a href="Page.html">Page</a></li><li><a href="ProjectsForm.html">ProjectsForm</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="TasksContent.html">TasksContent</a></li><li><a href="TodoItem.html">TodoItem</a></li><li><a href="TodoItemForm.html">TodoItemForm</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Sat Jan 14 2023 22:45:44 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Sat Feb 04 2023 18:45:32 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
