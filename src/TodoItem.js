@@ -36,16 +36,7 @@ export class TodoItem extends DataHandler {
     getTitle() {
         return this.title;
     }
-    
-    getTodoItem() {
-        let deserializedObj = JSON.parse(localStorage.getItem("test1"));
-        console.log(deserializedObj);
-    }
-    
-    setTodoItem(todoItem, title) {
-        let serializedObj = JSON.stringify(todoItem);
-        localStorage.setItem(title, serializedObj);
-    }
+
 
     
     
