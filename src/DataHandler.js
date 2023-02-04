@@ -26,7 +26,7 @@ export class DataHandler {
             const dueDate = deserializedObj.dueDate;
             const priority = deserializedObj.priority;
 
-            const todoItem = new TodoItem(itemType, parentProject, title, description, description, priority);
+            const todoItem = new TodoItem(itemType, parentProject, title, description, dueDate, priority);
             return todoItem;
         }
     }
