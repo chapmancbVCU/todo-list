@@ -5,6 +5,7 @@
  *  Description: Functions that support implementation of Todo List website
 ******************************************************************************/
 
+
 /******************************************************************************
  * IMPORTS
  *****************************************************************************/
@@ -13,7 +14,8 @@ import './css/styles.css';
 import { AddItem } from './AddItem';
 import { Page } from './page';
 import { TasksContent } from './TasksContent';
-localStorage.clear();
+
+
 /******************************************************************************
  * INITIAL PAGE SETUP
  *****************************************************************************/
@@ -22,6 +24,7 @@ const contentContainer = page.getContentContainer();
 const addItemSelector = document.querySelector('#add-item-button');
 const tasksContainer = new TasksContent();
 tasksContainer.renderTasks();
+
 
 /******************************************************************************
  * Event listeners
