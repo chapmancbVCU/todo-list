@@ -37,7 +37,7 @@ export class TodoItemForm {
         titleRow.classList.add('form-row');
         const todoItemFormLabel = document.createElement('label');
         todoItemFormLabel.setAttribute('for', 'todo-title');
-        todoItemFormLabel.textContent = 'Title:';
+        todoItemFormLabel.textContent = 'Todo List Item:';
         titleRow.appendChild(todoItemFormLabel);
         const title = document.createElement('input');
         title.setAttribute('id', 'todo-title');

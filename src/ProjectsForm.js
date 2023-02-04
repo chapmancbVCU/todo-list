@@ -25,7 +25,7 @@ export class ProjectsForm {
         titleRow.classList.add('form-row');
         const projectsFormLabel = document.createElement('label');
         projectsFormLabel.setAttribute('for', 'projects-title');
-        projectsFormLabel.textContent = 'Title:';
+        projectsFormLabel.textContent = 'Project Title:';
         titleRow.appendChild(projectsFormLabel);
         const title = document.createElement('input');
         title.setAttribute('id', 'projects-title');
