@@ -359,7 +359,7 @@ h4 {
     border: solid black 1px;
     padding: 15px 0;
  
-    width: 80%;
+    width: 50%;
 }
 
 .side-bar-row {
@@ -371,17 +371,20 @@ h4 {
 }
 
 .side-bar-task-count {
-    padding-top: 15px;
+
     margin-left: auto;
     margin-right: 20px;
 
     background-color: var(--link-and-button-color);
-    border-radius: 100%;
+    border-radius: 50%;
 
-    height: 35px;
-    width: 55px;
+    height: 50px;
+    width: 50px;
     
+    /* Horizontally align text in center. */
     text-align: center;
+    /* Vertically align text in center. */
+    line-height: 30px;
 }
 
 .title {
@@ -394,7 +397,11 @@ h4 {
 }
 
 .todo-item {
-    border: solid black 1px;
+    border: solid var(--link-and-button-color) 3px;
+    border-radius: 5px;
+
+    width: 90%;
+    margin: 15px auto;
 }
 @media only screen and (min-width: 700px) {
     .add-button-container {
