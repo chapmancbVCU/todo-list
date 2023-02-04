@@ -1,16 +1,21 @@
-/******************************************************************************
- *         Name: ProjectsForm.js
- *       Author: Chad Chapman
- * Date Created: January 15, 2023
- *  Description: Class for rendering and handling data entry for adding a new
- *               project.
-******************************************************************************/
-
+/**
+ * This file contains the ProjectsForm class.
+ * @class Class for rendering and handling data entry for adding a new project.
+ * @author Chad Chapman
+ */
 export class ProjectsForm {
+    /**
+     * Default constructor.
+     */
     constructor() {
 
     }
 
+    /**
+     * Renders the form for getting input about a new project.
+     * @returns HTMLDivElement The form responsible for getting information 
+     * about a project. 
+     */
     initializeComponents() {
         const projectsFormContainer = document.createElement('div');
         projectsFormContainer.setAttribute('id', 'modal-form-container');

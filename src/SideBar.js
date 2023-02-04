@@ -1,18 +1,8 @@
-/******************************************************************************
- *         Name: SideBar.js
- *       Author: Chad Chapman
- * Date Created: December 26, 2022
- *  Description: This file contains the Page class whose responsibility is to 
- *               build sidebar section of the webpage.
-******************************************************************************/
-
-/******************************************************************************
- * IMPORTS
- *****************************************************************************/
-
-
 /**
- * Class for rendering the components of the sidebar.
+ * This file contains the Page class whose responsibility is to build sidebar 
+ * section of the webpage.
+ * @class Class for rendering the components of the sidebar.
+ * @author Chad Chapman
  */
 export class SideBar {
     /**

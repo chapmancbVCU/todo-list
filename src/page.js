@@ -1,12 +1,4 @@
 /******************************************************************************
- *         Name: page.js
- *       Author: Chad Chapman
- * Date Created: December 26, 2022
- *  Description: This file contains the Page class whose responsibility is to 
- *               build the main components of the index.html page.
-******************************************************************************/
-
-/******************************************************************************
  * IMPORTS
  *****************************************************************************/
 import CheckListIcon from './images/format-list-checks.png';
@@ -15,8 +7,12 @@ import { SideBar } from './SideBar.js';
 import TextIcon from './images/text.png';
 
 /**
- * The Page class is responsible for the initial setup of the Todo List page's 
+ * This file contains the Page class whose responsibility is to build the main 
+ * components of the index.html page.
+ * @class The Page class is responsible for the initial setup of the Todo List 
+ * page's 
  * components.
+ * @author Chad Chapman
  */
 export class Page {
     /**

@@ -13,7 +13,8 @@ import './css/styles.css';
 import { AddItem } from './AddItem';
 import { Page } from './page';
 import { TasksContent } from './TasksContent';
-
+import { Editor } from "@tinymce/tinymce-webcomponent";
+import tinymce from "tinymce";
 
 /******************************************************************************
  * INITIAL PAGE SETUP

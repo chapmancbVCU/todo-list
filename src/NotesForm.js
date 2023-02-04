@@ -1,16 +1,22 @@
-/******************************************************************************
- *         Name: NotesForm.js
- *       Author: Chad Chapman
- * Date Created: January 15, 2023
- *  Description: Class for rendering and handling data entry for adding a new
- *               note.
-******************************************************************************/
-
+/**
+ * This file contains the NotesForm class
+ * @class The NotesForm class is responsible for rendering the form for 
+ * creating a new note.
+ * @author Chad Chapman
+ */
 export class NotesForm {
+    /**
+     * Default constructor.
+     */
     constructor() {
 
     }
 
+    /**
+     * Renders the form for getting input about a new note.
+     * @returns HTMLDivElement The form responsible for getting information 
+     * about a note. 
+     */
     initializeComponents() {
         const notesFormContainer = document.createElement('div');
         notesFormContainer.setAttribute('id', 'modal-form-container');

@@ -1,8 +1,3 @@
-/**
- * Contains the class Class that supports functions for rendering form for 
- * adding an item.  More specifically the modal div that presents a web form.
- * @author Chad Chapman
- */
 /******************************************************************************
  * IMPORTS
  *****************************************************************************/
@@ -10,32 +5,40 @@ import { NotesForm } from "./NotesForm.js";
 import { ProjectsForm } from "./ProjectsForm.js";
 import { TodoItem } from "./TodoItem.js";
 import { TodoItemForm } from "./TodoItemForm.js";
-import { SideBar } from "./SideBar.js";
-import { Page } from "./page.js";
+
 /**
- * Class that contains functions for rendering form for adding an item.  More 
- * specifically, the modal div that presents a web form.
+ * Contains the class Class that supports functions for rendering form for 
+ * adding an item.  More specifically the modal div that presents a web form.
+ * @author Chad Chapman
  */
 export class AddItem {
     /**
      * Default constructor.
      */
     constructor() {
+        // Instance variables.
         this.addButtonContainer = document.createElement('div');
         this.notesForm = new NotesForm();
         this.projectsForm = new ProjectsForm();
         this.todoItemForm = new TodoItemForm();
     }
 
-    addTodoItemSubmitButtonEventListener(page) {
+    /**
+     * Contains event listener for when user clicks the submit button on the 
+     * add todo item form.  Actions include form validation, adding Todo item 
+     * to local storage, resetting form, closing modal, and reloading the page.
+     */
+    addTodoItemSubmitButtonEventListener() {
         const todoFormSubmit = document.querySelector('#add-todo-item-button');
         todoFormSubmit.addEventListener('click', function(event) {
             event.preventDefault();
 
+            // Get the following information from the form.
             let title = document.getElementById('todo-title').value;
             let description = document.getElementById('todo-description').value;
             let dueByDate = document.getElementById('due-by-date').value;
 
+            // Perform form validation.
             if(title == "") {
                 alert("Title is a required field");
             } else if (dueByDate == "") {
@@ -50,8 +53,9 @@ export class AddItem {
                     }
                 });
 
+                // Add to local storage.
                 const todoItem = new TodoItem('TodoItem', 'NONE', title, description, dueByDate, priority);
-                todoItem.setTodoItem(todoItem, title); 
+                todoItem.setTodoItem(todoItem, `TodoItem_${title}`); 
 
                 // Reset form and close modal.
                 document.forms[0].reset();

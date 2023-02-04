@@ -1,15 +1,8 @@
-/******************************************************************************
- *         Name: TodoItemForm.js
- *       Author: Chad Chapman
- * Date Created: January 15, 2023
- *  Description: Class for rendering and handling data entry for adding a new
- *               todo list.
-******************************************************************************/
-import { Editor } from "@tinymce/tinymce-webcomponent";
-import tinymce from "tinymce";
-
 /**
- * Class for rendering and handling data entry for adding a new todo list.
+ * This file contains the TodoItemForm class
+ * @class The TodoItemForm class is responsible for rendering the form for 
+ * creating a new todo list item.
+ * @author Chad Chapman
  */
 export class TodoItemForm {
     /**
