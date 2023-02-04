@@ -206,11 +206,9 @@ h4 {
 
 .modal-content {
     border: solid black 1px;
+    border-radius: 10px;
     width: 350px;
   
-    border-radius: 10px;
-    margin-right: 34px;
-    
     /* Need this for close button. */
     position: relative;
 }
