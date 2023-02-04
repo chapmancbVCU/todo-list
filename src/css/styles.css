@@ -37,6 +37,10 @@
     font-size: 45px;
 }
 
+.add-note-button-row {
+    margin-top: 15px;
+}
+
 .add-project-button {
     margin-left: auto;
     margin-right: auto;
@@ -430,10 +434,6 @@ h4 {
         margin-top: 8px;
         position: absolute;
         right: 20px;
-    }
-
-    .add-note-button-row {
-        margin-top: 15px;
     }
     
     .buttons-form-row {
