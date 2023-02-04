@@ -4,6 +4,10 @@
  * Date Created: December 26, 2022
  *  Description: Functions that support implementation of Todo List item
 ******************************************************************************/
+
+/******************************************************************************
+ * IMPORTS
+ *****************************************************************************/
 import { DataHandler } from "./DataHandler";
 /**
  * 
@@ -36,6 +40,26 @@ export class TodoItem extends DataHandler {
         }
     }
 
+    getDescription() {
+        return this.description;
+    }
+
+    getDueDate() {
+        return this.dueDate;
+    }
+
+    getItemType() {
+        return this.itemType;
+    }
+
+    getParentProject() {
+        return this.parentProject;
+    }
+
+    getPriority() {
+        return this.priority;
+    }
+    
     getTitle() {
         return this.title;
     }
