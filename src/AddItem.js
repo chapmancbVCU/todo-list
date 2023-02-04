@@ -54,7 +54,7 @@ export class AddItem {
                     }
                 });
 
-                const todoItem = new TodoItem(title, description, dueByDate, priority);
+                const todoItem = new TodoItem('TodoItem', 'NONE', title, description, dueByDate, priority);
                 todoItem.setTodoItem(todoItem, title); 
 
                 // Reset form and close modal.
