@@ -47,9 +47,9 @@
     width: 290px;
 }
 
+.add-note-button,
 .add-project-button,
 .add-todo-button {
-    
     height: 40px;
     font-size: 16px;
     font-weight: bold;
@@ -64,11 +64,12 @@
     cursor: pointer;
 }
 
+.add-note-button:active,
 .add-project-button:active,
 .add-todo-button:active {
     background-color: #407FC7;
 }
-
+.add-note-button:hover,
 .add-project-button:hover,
 .add-todo-button:hover {
     background-color: #76AEED;
@@ -272,6 +273,11 @@ h4 {
     flex-direction: row;
 }
 
+.notes-form {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: 360px;
+}
 .priority-buttons-container {
     border: none;
     display: flex;
@@ -416,15 +422,20 @@ h4 {
     margin: 15px auto;
 }
 @media only screen and (min-width: 700px) {
+    .add-note-button,
     .add-project-button,
     .add-todo-button {
         width: 100px;
         height: 35px;
-        margin-top: 10px;
+        margin-top: 8px;
         position: absolute;
         right: 20px;
     }
 
+    .add-note-button-row {
+        margin-top: 15px;
+    }
+    
     .buttons-form-row {
         flex-direction: row;
         margin-bottom: 15px;
