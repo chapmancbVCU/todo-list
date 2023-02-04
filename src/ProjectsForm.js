@@ -41,15 +41,14 @@ export class ProjectsForm {
         // Setup submit button
         const buttonsRow = document.createElement('div');
         buttonsRow.classList.add('buttons-form-row');
-        buttonsRow.classList.add('add-project-button-row');
         const submitButton = document.createElement('button');
         submitButton.setAttribute('id', 'add-project-button');
         submitButton.setAttribute('type', 'submit');
         submitButton.classList.add('add-project-button');
         submitButton.textContent = 'Add';
         buttonsRow.appendChild(submitButton);
-
         projectsForm.appendChild(buttonsRow);
+
         projectsFormContainer.appendChild(projectsForm);
         return projectsFormContainer;
     }
