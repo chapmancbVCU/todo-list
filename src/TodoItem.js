@@ -16,13 +16,16 @@ export class TodoItem extends DataHandler {
      * @param {*} dueDate 
      * @param {*} priority 
      */
-    constructor(title, description, dueDate, priority) {
+    constructor(itemType, parentProject, title, description, dueDate, priority) {
         super();
-        this.title = title;
+        
+        // Instance variables
         this.description = description;
         this.dueDate = dueDate;
+        this.itemType = itemType;
+        this.parentProject = parentProject;
         this.priority = priority;
-
+        this.title = title;
         /**
          * Function inside constructor that reports information about todo
          * item.
