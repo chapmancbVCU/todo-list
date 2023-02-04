@@ -1,10 +1,9 @@
-/******************************************************************************
- *         Name: index.js
- *       Author: Chad Chapman
- * Date Created: December 26, 2022
- *  Description: Functions that support implementation of Todo List website
-******************************************************************************/
-
+/**
+ * index.js is the main entry point for execution of JavaScript code for this 
+ * todo list project.  It contains many of the event listeners needed for the 
+ * webpage to work properly.
+ * @author Chad Chapman
+ */
 
 /******************************************************************************
  * IMPORTS
