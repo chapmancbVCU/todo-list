@@ -26,7 +26,7 @@ export class TasksContent {
         for(let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
             
-            if(key.includes('TodoItem')) {
+            if(key.includes('TodoItem_')) {
                 this.renderTodoItem(key);
             }
        }
@@ -34,7 +34,7 @@ export class TasksContent {
 
     renderTodoItem(key) {
         let todoItem = new TodoItem();
-        todoItem = todoItem.getTodoItem(key);
+        todoItem = todoItem.getItem(key);
         const todoItemContainer = document.createElement('div');
         todoItemContainer.classList.add('todo-item');
         
