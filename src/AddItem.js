@@ -2,9 +2,10 @@
  * IMPORTS
  *****************************************************************************/
 import { NotesForm } from "./NotesForm.js";
-import { ProjectsForm } from "./ProjectsForm.js";
 import { TodoItem } from "./TodoItem.js";
 import { TodoItemForm } from "./TodoItemForm.js";
+import { Project } from "./Project.js";
+import { ProjectsForm } from "./ProjectsForm.js";
 
 /**
  * Contains the class Class that supports functions for rendering form for 
@@ -21,6 +22,30 @@ export class AddItem {
         this.notesForm = new NotesForm();
         this.projectsForm = new ProjectsForm();
         this.todoItemForm = new TodoItemForm();
+    }
+
+
+    addProjectSubmitButtonEventListener() {
+        const projectFormSubmit = document.querySelector('#add-project-button');
+        projectFormSubmit.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            // Get the following information from the form.
+            let title = document.getElementById('projects-title').value;
+
+            if(title == "") {
+                alert("Title is a required field");
+            } else {
+                alert('hi');
+                const project = new Project('ProjectObj', title);
+                let date = new Date(Date.now());
+                project.setTodoItem(project, `Project_${date}`);
+                // Reset form and close modal.
+                document.forms[0].reset();
+                AddItem.closeModal();
+                location.reload();
+            }
+        });
     }
 
     /**
