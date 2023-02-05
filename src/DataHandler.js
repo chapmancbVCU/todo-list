@@ -1,7 +1,7 @@
 /******************************************************************************
  * IMPORTS
  *****************************************************************************/
-import { TodoItem } from "./TodoItem";
+
 
 /**
  * This super class contains methods for managing local storage.
@@ -18,30 +18,7 @@ export class DataHandler {
 
     }
 
-    /**
-     * This function retrieves todo list items, projects, and notes that 
-     * are represented in local storage as a string.  The object returned 
-     * will be a new todo list item, a project, or notes object.
-     * @param {String} key A string containing the name of the key you want 
-     * to retrieve the value of.  In this case, the value is an object 
-     * represented as a string.
-     * @returns Todo list item, project, or a note.
-     */
-    getTodoItem(key) {
-        let deserializedObj = JSON.parse(localStorage.getItem(key));
-        
-        const itemType = deserializedObj.itemType;
-        if(itemType == 'TodoItem') {
-            const parentProject = deserializedObj.parentProject;
-            const title = deserializedObj.title;
-            const description = deserializedObj.description;
-            const dueDate = deserializedObj.dueDate;
-            const priority = deserializedObj.priority;
-
-            const todoItem = new TodoItem(itemType, parentProject, title, description, dueDate, priority);
-            return todoItem;
-        }
-    }
+    
     
     /**
      * This method accepts a todo list item, project, or note object as input 
