@@ -54,14 +54,6 @@ export class TasksContent {
         priorityContent.textContent = `Priority: ${todoItem.getPriority()}`;
         todoItemContainer.appendChild(priorityContent);
 
-        const itemTypeContent = document.createElement('p');
-        itemTypeContent.textContent = `Item type: ${todoItem.getItemType()}`;
-        todoItemContainer.appendChild(itemTypeContent);
-
-        const parentProjectContent = document.createElement('p');
-        parentProjectContent.textContent = `Parent Project: ${todoItem.getParentProject()}`;
-        todoItemContainer.appendChild(parentProjectContent);
-
         this.tasksContainer.appendChild(todoItemContainer);
     }
 }

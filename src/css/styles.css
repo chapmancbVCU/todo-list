@@ -439,6 +439,7 @@ h4 {
     width: 90%;
     margin: 15px auto;
 }
+
 @media only screen and (min-width: 700px) {
     .add-note-button,
     .add-project-button,
