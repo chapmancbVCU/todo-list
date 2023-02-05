@@ -11,11 +11,13 @@ import { DataHandler } from "./DataHandler";
  */
 export class TodoItem extends DataHandler {
     /**
-     * 
-     * @param {*} title 
-     * @param {*} description 
-     * @param {*} dueDate 
-     * @param {*} priority 
+     * Constructor for TodoItem
+     * @param {String} itemType 
+     * @param {String} parentProject 
+     * @param {String} title 
+     * @param {String} description 
+     * @param {String} dueDate 
+     * @param {String} priority 
      */
     constructor(itemType, parentProject, title, description, dueDate, priority) {
         super();
@@ -27,6 +29,7 @@ export class TodoItem extends DataHandler {
         this.parentProject = parentProject;
         this.priority = priority;
         this.title = title;
+        
         /**
          * Function inside constructor that reports information about todo
          * item.
