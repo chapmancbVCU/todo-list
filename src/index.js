@@ -47,6 +47,7 @@ addItemSelector.addEventListener('click', function(){
     notesLinkSelector.addEventListener('click', function() {
         addItem.removeModalFormFromDOM();
         modalMainSelector.appendChild(addItem.renderNotesForm());
+        addItem.addNoteSubmitButtonEventListener();
     });
 
     const projectsLinkSelector = 
