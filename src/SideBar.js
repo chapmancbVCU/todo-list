@@ -1,3 +1,5 @@
+import { Project } from "./Project";
+
 /**
  * This file contains the Page class whose responsibility is to build sidebar 
  * section of the webpage.
@@ -110,12 +112,24 @@ export class SideBar {
     renderProjectsRow() {
         const projectsRow = document.createElement('div');
         projectsRow.classList.add('side-bar-row');
+        projectsRow.classList.add('projects-section');
 
         const projectsLabel = document.createElement('h3');
         projectsLabel.classList.add('side-bar-label');
         projectsLabel.textContent = 'Projects';
         projectsRow.appendChild(projectsLabel);
 
+        for(let i = 0; i < localStorage.length; i++) {
+            let key = localStorage.key(i);
+
+            if(key.includes('Project_')) {
+                const projectDiv = document.createElement('div');
+                let project = new Project();
+                project = project.getItem(key);
+                projectDiv.textContent = `${project.getTitle()}`;
+                projectsRow.appendChild(projectDiv);
+            }
+        }
         return projectsRow;
     }
 
