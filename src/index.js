@@ -22,6 +22,7 @@ import tinymce from "tinymce";
 const page = new Page();
 const contentContainer = page.getContentContainer();
 const addItemSelector = document.querySelector('#add-item-button');
+const clearLocalStorageSelector = document.querySelector('#clear-item-button');
 const tasksContainer = new TasksContent();
 tasksContainer.renderTasks();
 
@@ -29,6 +30,12 @@ tasksContainer.renderTasks();
 /******************************************************************************
  * Event listeners
  *****************************************************************************/
+// Temp event listener for clearing local storage.
+clearLocalStorageSelector.addEventListener('click', function(){
+    localStorage.clear();
+    location.reload();
+});
+
 // Event listener for creating add item modal.
 addItemSelector.addEventListener('click', function(){
     const addItem = new AddItem();
