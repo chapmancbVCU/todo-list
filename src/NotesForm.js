@@ -27,6 +27,24 @@ export class NotesForm {
         notesForm.setAttribute('method', 'get');
         notesForm.setAttribute('action', '#');
 
+        // Setup title
+        const titleRow = document.createElement('div');
+        titleRow.classList.add('form-row');
+        const noteFormLabel = document.createElement('label');
+        noteFormLabel.setAttribute('for', 'note-title');
+        noteFormLabel.textContent = 'New note:';
+        titleRow.appendChild(noteFormLabel);
+        const title = document.createElement('input');
+        title.setAttribute('id', 'note-title');
+        title.setAttribute('name', 'note-title');
+        title.setAttribute('type', 'text');
+        title.setAttribute('minlength', '5');
+        title.setAttribute('maxlength', '50');
+        title.setAttribute('required', '');
+        title.setAttribute('placeholder', 'Ex: Get groceries');
+        titleRow.appendChild(title);
+        notesForm.appendChild(titleRow);
+
         // Setup description textarea
         const editorArea = document.createElement('tinymce-editor');
         editorArea.setAttribute('id', 'notes-content');
