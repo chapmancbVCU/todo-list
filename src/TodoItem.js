@@ -13,7 +13,7 @@ import { DataHandler } from "./DataHandler";
  */
 export class TodoItem extends DataHandler {
     /**
-     * Constructor for TodoItem
+     * Constructor for TodoItem.
      * @param {String} itemType 
      * @param {String} parentProject 
      * @param {String} title 
