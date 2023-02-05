@@ -37,6 +37,27 @@ export class Project extends DataHandler {
     }
 
     /**
+     * This function retrieves todo list items, projects, and notes that 
+     * are represented in local storage as a string.  The object returned 
+     * will be a new todo list item, a project, or notes object.
+     * @param {String} key A string containing the name of the key you want 
+     * to retrieve the value of.  In this case, the value is an object 
+     * represented as a string.
+     * @returns Todo list item, project, or a note.
+     */
+    getItem(key) {
+        let deserializedObj = JSON.parse(localStorage.getItem(key));
+        
+        const itemType = deserializedObj.itemType;
+        if(itemType == 'ProjectObj') {
+            const parentProject = deserializedObj.parentProject;
+            const title = deserializedObj.title;
+
+            const project = new Project(itemType, title);
+            return project;
+        } 
+    }
+    /**
      * Returns the type of item we are using.  The other types are project 
      * and notes.  
      * @returns String representation of the item type.
