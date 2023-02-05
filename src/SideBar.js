@@ -127,6 +127,7 @@ export class SideBar {
                 let project = new Project();
                 project = project.getItem(key);
                 projectDiv.textContent = `${project.getTitle()}`;
+                projectDiv.classList.add('project-name');
                 projectsContainer.appendChild(projectDiv);
             }
         }

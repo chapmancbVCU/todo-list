@@ -374,6 +374,15 @@ h4 {
     border-bottom: solid black 1px;
 }
 
+.project-name {
+    font-weight: bold;
+    font-size: 20px;
+    border: solid black 1px;
+    height: 40px;
+
+    margin-left: 50px;
+}
+
 #projects-row {
     display: flex;
     flex-direction: column;
