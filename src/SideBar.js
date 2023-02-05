@@ -36,7 +36,7 @@ export class SideBar {
         categories.setAttribute('id', 'categories');
 
         // Render components of sidebar
-        categories.appendChild(this.renderHomeContainer(localStorage.length));
+        categories.appendChild(this.renderHomeContainer());
         categories.appendChild(this.renderTodayTasksContainer());
         categories.appendChild(this.renderWeekTasksContainer());
         categories.appendChild(this.renderProjectsRow());
@@ -68,7 +68,7 @@ export class SideBar {
      * @returns HTMLDivElement The div that contains the row for home category 
      * of the sidebar.
      */
-    renderHomeContainer(allProjects) {
+    renderHomeContainer() {
         const homeContainer = document.createElement('li');
         homeContainer.setAttribute('id', 'home');
         homeContainer.classList.add('side-bar-row');
@@ -80,8 +80,19 @@ export class SideBar {
         
         const homeTaskCount = document.createElement('h3');
         homeTaskCount.classList.add('side-bar-task-count');
-        homeTaskCount.textContent = allProjects;
 
+        /* Get number of available todo items in storage so that we can set
+        the number of items in the home row. */
+        let allTodoItemsCount = 0;
+        for(let i  = 0; i < localStorage.length; i++) {
+            let key = localStorage.key(i);
+
+            if(key.includes('TodoItem_')) {
+                allTodoItemsCount++;
+            }
+        }
+
+        homeTaskCount.textContent = `${allTodoItemsCount}`;
         homeContainer.appendChild(homeTaskCount);
 
         return homeContainer;
