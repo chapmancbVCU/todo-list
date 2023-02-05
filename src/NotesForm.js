@@ -54,6 +54,8 @@ export class NotesForm {
         editorArea.setAttribute('toolbar', 'undo redo | | bold italic backcolor | strikethrough | bullist numlist | outdent indent | alignleft aligncenter alignright alignjustify | removeformat | help');
         editorArea.setAttribute('menubar', 'false');
         editorArea.setAttribute('height', '300');
+        editorArea.setAttribute('required', '');
+        editorArea.setAttribute('minlength', '5');
         editorArea.setAttribute('placeholder', 'Describe item here.');
         notesForm.appendChild(editorArea);
 
