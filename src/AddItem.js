@@ -55,7 +55,8 @@ export class AddItem {
 
                 // Add to local storage.
                 const todoItem = new TodoItem('TodoItem', 'NONE', title, description, dueByDate, priority);
-                todoItem.setTodoItem(todoItem, `TodoItem_${title}`); 
+                let date = new Date(Date.now());
+                todoItem.setTodoItem(todoItem, `TodoItem_${date}`); 
 
                 // Reset form and close modal.
                 document.forms[0].reset();
