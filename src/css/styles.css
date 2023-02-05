@@ -374,6 +374,11 @@ h4 {
     border-bottom: solid black 1px;
 }
 
+#projects-row {
+    display: flex;
+    flex-direction: column;
+}
+
 .side-bar-label {
     margin-left: 20px;
     margin-right: auto;

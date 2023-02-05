@@ -112,13 +112,13 @@ export class SideBar {
     renderProjectsRow() {
         const projectsRow = document.createElement('div');
         projectsRow.classList.add('side-bar-row');
-        projectsRow.classList.add('projects-section');
-
+        projectsRow.setAttribute('id', 'projects-row');
         const projectsLabel = document.createElement('h3');
         projectsLabel.classList.add('side-bar-label');
         projectsLabel.textContent = 'Projects';
         projectsRow.appendChild(projectsLabel);
 
+        const projectsContainer = document.createElement('div');
         for(let i = 0; i < localStorage.length; i++) {
             let key = localStorage.key(i);
 
@@ -127,9 +127,10 @@ export class SideBar {
                 let project = new Project();
                 project = project.getItem(key);
                 projectDiv.textContent = `${project.getTitle()}`;
-                projectsRow.appendChild(projectDiv);
+                projectsContainer.appendChild(projectDiv);
             }
         }
+        projectsRow.appendChild(projectsContainer);
         return projectsRow;
     }
 
