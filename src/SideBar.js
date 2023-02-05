@@ -42,6 +42,7 @@ export class SideBar {
         categories.appendChild(this.renderProjectsRow());
         categories.appendChild(this.renderNotesRow());
         categories.appendChild(this.renderAddButton());
+        categories.appendChild(this.renderClearButton());
         return categories;
     }
     
@@ -60,6 +61,23 @@ export class SideBar {
         addButtonContainer.appendChild(addItemButton);
 
         return addButtonContainer;
+    }
+
+    /**
+     * Renders the the add item button.
+     * @returns HTMLDivElement The div that contains the add item button.
+     */
+    renderClearButton() {
+        const clearButtonContainer = document.createElement('div');
+        clearButtonContainer.classList.add('add-button-container');
+        
+        const clearItemButton = document.createElement('button');
+        clearItemButton.setAttribute('id', 'clear-item-button');
+        clearItemButton.classList.add('add-item-button');
+        clearItemButton.textContent = 'C'
+        clearButtonContainer.appendChild(clearItemButton);
+
+        return clearButtonContainer;
     }
     /**
      * Renders the the home tasks row.
