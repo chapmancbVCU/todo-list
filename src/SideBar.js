@@ -133,7 +133,7 @@ export class SideBar {
         for(let i = 0; i < localStorage.length; i++) {
             let key = localStorage.key(i);
 
-            if(key.includes('Project_')) {
+            if(key.includes('ProjectObj_')) {
                 const projectDiv = document.createElement('div');
                 let project = new Project();
                 project = project.getItem(key);

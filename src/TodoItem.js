@@ -70,7 +70,7 @@ export class TodoItem extends DataHandler {
         let deserializedObj = JSON.parse(localStorage.getItem(key));
         
         const itemType = deserializedObj.itemType;
-        if(itemType == 'TodoItem') {
+        if(itemType == 'TodoItemObj') {
             const parentProject = deserializedObj.parentProject;
             const title = deserializedObj.title;
             const description = deserializedObj.description;
