@@ -87,7 +87,7 @@ export class SideBar {
         for(let i  = 0; i < localStorage.length; i++) {
             let key = localStorage.key(i);
 
-            if(key.includes('TodoItem_')) {
+            if(key.includes('TodoItemObj_')) {
                 allTodoItemsCount++;
             }
         }
