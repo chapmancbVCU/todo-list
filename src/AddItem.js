@@ -6,6 +6,7 @@ import { TodoItem } from "./TodoItem.js";
 import { TodoItemForm } from "./TodoItemForm.js";
 import { Project } from "./Project.js";
 import { ProjectsForm } from "./ProjectsForm.js";
+import { Note } from "./Note.js";
 
 /**
  * Contains the class Class that supports functions for rendering form for 
@@ -24,7 +25,44 @@ export class AddItem {
         this.todoItemForm = new TodoItemForm();
     }
 
+    /**
+     * Contains event listener for when user clicks the submit button on the 
+     * add note form.  Actions include form validation, adding the note to 
+     * local storage, resetting form, closing modal, and reloading the page.
+     */
+    addNoteSubmitButtonEventListener() {
+        const noteFormSubmit = document.querySelector('#add-note-button');
+        noteFormSubmit.addEventListener('click', function(event) {
+            event.preventDefault();
 
+            // Get the following information from the form.
+            let title = document.getElementById('note-title').value;
+            let description = document.getElementById('notes-content').value;
+
+            if(title == "") {
+                alert("Title is a required field");
+            } else if (description == "") {
+                alert("Please enter note content");
+            } else {
+
+                // Add to local storage.
+                const note = new Note('NoteItem', title, description);
+                let date = new Date(Date.now());
+                note.setTodoItem(note, `NoteItemObj_${date}`); 
+
+                // Reset form and close modal.
+                document.forms[0].reset();
+                AddItem.closeModal();
+                location.reload();
+            }
+        });
+    }
+
+    /**
+     * Contains event listener for when user clicks the submit button on the 
+     * add projects form.  Actions include form validation, adding the project  
+     * to local storage, resetting form, closing modal, and reloading the page.
+     */
     addProjectSubmitButtonEventListener() {
         const projectFormSubmit = document.querySelector('#add-project-button');
         projectFormSubmit.addEventListener('click', function(event) {
@@ -33,13 +71,14 @@ export class AddItem {
             // Get the following information from the form.
             let title = document.getElementById('projects-title').value;
 
+            // Perform form validation.
             if(title == "") {
                 alert("Title is a required field");
             } else {
-                alert('hi');
                 const project = new Project('ProjectObj', title);
                 let date = new Date(Date.now());
                 project.setTodoItem(project, `Project_${date}`);
+
                 // Reset form and close modal.
                 document.forms[0].reset();
                 AddItem.closeModal();
@@ -81,13 +120,12 @@ export class AddItem {
                 // Add to local storage.
                 const todoItem = new TodoItem('TodoItem', 'NONE', title, description, dueByDate, priority);
                 let date = new Date(Date.now());
-                todoItem.setTodoItem(todoItem, `TodoItem_${date}`); 
+                todoItem.setTodoItem(todoItem, `TodoItemObj_${date}`); 
 
                 // Reset form and close modal.
                 document.forms[0].reset();
                 AddItem.closeModal();
                 location.reload();
-                
             }
         });
     }
