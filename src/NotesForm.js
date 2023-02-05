@@ -56,7 +56,7 @@ export class NotesForm {
         editorArea.setAttribute('height', '300');
         editorArea.setAttribute('required', '');
         editorArea.setAttribute('minlength', '5');
-        editorArea.setAttribute('placeholder', 'Describe item here.');
+        editorArea.setAttribute('placeholder', 'This note is about ...');
         notesForm.appendChild(editorArea);
 
         // Setup submit button
