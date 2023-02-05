@@ -59,9 +59,8 @@ export class TodoItem extends DataHandler {
     }
 
     /**
-     * This function retrieves todo list items, projects, and notes that 
-     * are represented in local storage as a string.  The object returned 
-     * will be a new todo list item, a project, or notes object.
+     * This function retrieves todo list items that  are represented in local 
+     * storage as a string.  The object returned will be a new todo list itemb
      * @param {String} key A string containing the name of the key you want 
      * to retrieve the value of.  In this case, the value is an object 
      * represented as a string.
