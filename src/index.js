@@ -54,6 +54,7 @@ addItemSelector.addEventListener('click', function(){
     projectsLinkSelector.addEventListener('click', function() {
         addItem.removeModalFormFromDOM();
         modalMainSelector.appendChild(addItem.renderProjectsForm());
+        addItem.addProjectSubmitButtonEventListener();
     });
 
     const todoLinkSelector = document.querySelector('#todo-page-link');
