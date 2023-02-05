@@ -29,7 +29,7 @@ export class TodoItem extends DataHandler {
         this.parentProject = parentProject;
         this.priority = priority;
         this.title = title;
-        
+
         /**
          * Function inside constructor that reports information about todo
          * item.
@@ -89,10 +89,4 @@ export class TodoItem extends DataHandler {
     getTitle() {
         return this.title;
     }
-
-
-    
-    
-
-
 }
