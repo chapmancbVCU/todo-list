@@ -56,7 +56,7 @@ export class Note extends DataHandler {
         let deserializedObj = JSON.parse(localStorage.getItem(key));
         
         const itemType = deserializedObj.itemType;
-        if(itemType == 'NoteObj') {
+        if(itemType == 'NoteItemObj') {
             const title = deserializedObj.title;
             const description = deserializedObj.description;
 
