@@ -71,10 +71,10 @@ export class TodoItemForm {
         todoItemForm.appendChild(dueByRow);
 
         // Setup projects dropdown menu.
-       // const projectsInputRow = document.createElement('div');
+        const projectsInputRow = document.createElement('div');
 
-       // todoItemForm.appendChild(projectsInputRow);
-
+        todoItemForm.appendChild(projectsInputRow);
+        
         // Setup buttons
         const buttonsRow = document.createElement('div');
         buttonsRow.classList.add('buttons-form-row');
