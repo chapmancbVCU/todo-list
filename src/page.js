@@ -173,6 +173,7 @@ export class Page {
         const tasksContainer = document.createElement('div');
         tasksContainer.setAttribute('id', 'tasks-container');
         tasksContainer.classList.add('tasks-container');
+        
         return tasksContainer;
     }
 
