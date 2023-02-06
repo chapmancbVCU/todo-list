@@ -122,7 +122,7 @@ export class SideBar {
      * Notes section of the sidebar.
      */
     renderNotesRow() {
-        const notesRow = document.createElement('div');
+        const notesRow = document.createElement('li');
         notesRow.classList.add('side-bar-row');
 
         const notesLabel = document.createElement('h3');
@@ -139,7 +139,7 @@ export class SideBar {
      * Nrojects section of the sidebar.
      */
     renderProjectsRow() {
-        const projectsRow = document.createElement('div');
+        const projectsRow = document.createElement('li');
         projectsRow.classList.add('side-bar-row');
         projectsRow.setAttribute('id', 'side-bar-projects-row');
         const projectsRowLabel = document.createElement('h3');

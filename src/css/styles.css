@@ -121,7 +121,7 @@ body {
 
 .content {
     display: flex;
-    min-height: 100vh;
+ 
     flex-direction: column;
     justify-content: flex-start;
 }
@@ -130,7 +130,7 @@ body {
     margin-top: auto;
     background: url('../images/pexels-the-happiest-face.jpg');
     color: whitesmoke;
-    height: 100px;
+
 
     padding-top: 15px;
     padding-bottom: 30px;
@@ -217,6 +217,7 @@ h4 {
 }
 
 .main {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
@@ -508,7 +509,6 @@ h4 {
     }
 
     .main {
-        height: 100vh;
         flex-direction: row;
     }
 
