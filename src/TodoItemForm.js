@@ -70,6 +70,11 @@ export class TodoItemForm {
         dueByRow.appendChild(dueByInput);
         todoItemForm.appendChild(dueByRow);
 
+        // Setup projects dropdown menu.
+       // const projectsInputRow = document.createElement('div');
+
+       // todoItemForm.appendChild(projectsInputRow);
+
         // Setup buttons
         const buttonsRow = document.createElement('div');
         buttonsRow.classList.add('buttons-form-row');
