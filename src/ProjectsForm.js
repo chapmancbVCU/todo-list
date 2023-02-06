@@ -37,9 +37,9 @@ export class ProjectsForm {
         title.setAttribute('name', 'projects-title');
         title.setAttribute('type', 'text');
         title.setAttribute('minlength', '5');
-        title.setAttribute('maxlength', '50');
+        title.setAttribute('maxlength', '20');
         title.setAttribute('required', '');
-        title.setAttribute('placeholder', 'Ex: Workout checklist');
+        title.setAttribute('placeholder', 'Project title less than 20 characters');
         titleRow.appendChild(title);
         projectsForm.appendChild(titleRow);
 
