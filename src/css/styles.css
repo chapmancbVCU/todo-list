@@ -371,17 +371,17 @@ h4 {
 }
 
 .project-name {
-    font-weight: bold;
-    font-size: 20px;
     border: solid black 1px;
-    height: 40px;
-
+    padding: 15px 0;
     margin-left: 50px;
 }
 
-#projects-row {
+.project-row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .side-bar {
@@ -396,6 +396,11 @@ h4 {
     padding: 15px 0;
  
     width: 50%;
+}
+
+#side-bar-projects-row {
+    display: flex;
+    flex-direction: column;
 }
 
 .side-bar-row {
@@ -536,6 +541,7 @@ h4 {
     }
 
     .side-bar {
+        min-width: 300px;
         border-right: solid black 1px;
     }  
 }
