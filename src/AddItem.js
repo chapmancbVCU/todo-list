@@ -101,6 +101,7 @@ export class AddItem {
             let title = document.getElementById('todo-title').value;
             let description = document.getElementById('todo-description').value;
             let dueByDate = document.getElementById('due-by-date').value;
+            let project = document.getElementById('parent-project').value;
 
             // Perform form validation.
             if(title == "") {
@@ -118,7 +119,7 @@ export class AddItem {
                 });
 
                 // Add to local storage.
-                const todoItem = new TodoItem('TodoItemObj', 'NONE', title, description, dueByDate, priority);
+                const todoItem = new TodoItem('TodoItemObj', project, title, description, dueByDate, priority);
                 let date = new Date(Date.now());
                 todoItem.setTodoItem(todoItem, `TodoItemObj_${date}`); 
 
