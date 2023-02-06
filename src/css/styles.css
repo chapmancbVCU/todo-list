@@ -197,9 +197,6 @@ body {
     width: 100%;
     padding: 5px;
     font-size: 14px;
-    /* MDN says not to use this property.  It's effectively a hack
-    to make font-size work on Chrome and Safari. */
-    -webkit-appearance: none;
 }
 
 h1 {
