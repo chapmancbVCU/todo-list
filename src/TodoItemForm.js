@@ -1,3 +1,5 @@
+import { Project } from "./Project";
+
 /**
  * This file contains the TodoItemForm class
  * @class The TodoItemForm class is responsible for rendering the form for 
@@ -72,7 +74,38 @@ export class TodoItemForm {
 
         // Setup projects dropdown menu.
         const projectsInputRow = document.createElement('div');
+        projectsInputRow.classList.add('form-row');
 
+        const projectsLabel = document.createElement('label');
+        projectsLabel.setAttribute('for', 'parent-project');
+        projectsLabel.textContent = 'Project:';
+        projectsInputRow.appendChild(projectsLabel);
+
+        const projectsMenu = document.createElement('select');
+        projectsMenu.setAttribute('id', 'parent-project');
+        projectsMenu.setAttribute('name', 'parent-project');
+
+        const defaultOption = document.createElement('option');
+        defaultOption.setAttribute('value', 'None');
+        defaultOption.text = 'None';
+        projectsMenu.appendChild(defaultOption);
+
+        // Search local storage for projects.
+        for(let i = 0; i < localStorage.length; i++) {
+            let key = localStorage.key(i);
+
+            if(key.includes('ProjectObj_')) {
+                let project = new Project();
+                project = project.getItem(key);
+                const projectTitle = project.getTitle();
+                const projectOption = document.createElement('option');
+                projectOption.setAttribute('value', `${projectTitle}`);
+                projectOption.textContent = `${projectTitle}`;
+                projectsMenu.appendChild(projectOption);
+            }
+        }
+
+        projectsInputRow.appendChild(projectsMenu);
         todoItemForm.appendChild(projectsInputRow);
         
         // Setup buttons
