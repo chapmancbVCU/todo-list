@@ -141,11 +141,11 @@ export class SideBar {
     renderProjectsRow() {
         const projectsRow = document.createElement('div');
         projectsRow.classList.add('side-bar-row');
-        projectsRow.setAttribute('id', 'projects-row');
-        const projectsLabel = document.createElement('h3');
-        projectsLabel.classList.add('side-bar-label');
-        projectsLabel.textContent = 'Projects';
-        projectsRow.appendChild(projectsLabel);
+        projectsRow.setAttribute('id', 'side-bar-projects-row');
+        const projectsRowLabel = document.createElement('h3');
+        projectsRowLabel.classList.add('side-bar-label');
+        projectsRowLabel.textContent = 'Projects';
+        projectsRow.appendChild(projectsRowLabel);
 
         const projectsContainer = document.createElement('div');
         for(let i = 0; i < localStorage.length; i++) {
@@ -153,10 +153,22 @@ export class SideBar {
 
             if(key.includes('ProjectObj_')) {
                 const projectDiv = document.createElement('div');
+                projectDiv.setAttribute('id', `${key}`);
+                projectDiv.classList.add('project-row');
                 let project = new Project();
                 project = project.getItem(key);
-                projectDiv.textContent = `${project.getTitle()}`;
-                projectDiv.classList.add('project-name');
+                
+                // Setup label for particular project.
+                const projectLabel = document.createElement('h3');
+                projectLabel.textContent = `${project.getTitle()}`;
+                projectLabel.classList.add('project-name');
+                projectDiv.appendChild(projectLabel);
+
+                // Show to user how many items are associated with a project.
+                const numberOfTasks = document.createElement('h3');
+                numberOfTasks.classList.add('side-bar-task-count');
+                numberOfTasks.textContent = `${project.getSubTasks()}`;
+                projectDiv.appendChild(numberOfTasks);
                 projectsContainer.appendChild(projectDiv);
             }
         }
