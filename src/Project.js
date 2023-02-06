@@ -25,6 +25,7 @@ export class Project extends DataHandler {
         // Instance variables
         this.itemType = itemType;
         this.title = title;
+        this.subTasks = 0;
 
         /**
          * Functing inside constructor that reports information about this 
@@ -65,6 +66,10 @@ export class Project extends DataHandler {
         return this.itemType;
     }
 
+    getSubTasks() {
+        return this.subTasks;
+    }
+    
     /**
      * Returns the title of this project.
      * @returns String that contains the title of this project.
