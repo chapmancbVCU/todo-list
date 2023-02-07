@@ -46,14 +46,17 @@ export class TasksContent {
         left.appendChild(toggleChecked);
 
         const titleContent = document.createElement('p');
-        titleContent.textContent = `Title: ${todoItem.getTitle()}`;
+        titleContent.textContent = `${todoItem.getTitle()}`;
+        titleContent.classList.add('todo-item-title')
         left.appendChild(titleContent);        
 
         todoItemContainer.appendChild(left);
 
         const right = document.createElement('div');
         right.classList.add('todo-item-right-side');
-        right.textContent = 'test';
+        const detailsButton = document.createElement('button');
+        detailsButton.textContent = 'DETAILS';
+        right.appendChild(detailsButton);
 
         todoItemContainer.appendChild(right);
 
