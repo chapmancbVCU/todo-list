@@ -462,6 +462,16 @@ h4 {
     width: 100%;
     margin-top: 10px;
     margin-bottom: 10px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.todo-item-left-side,
+.todo-item-right-side {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: row;
 }
 
 @media only screen and (min-width: 700px) {
@@ -551,4 +561,17 @@ h4 {
         min-width: 300px;
         border-right: solid black 1px;
     }  
+
+    .todo-item {
+        flex-direction: row;
+    }
+
+    .todo-item-left-side {
+        margin-right: auto;
+    }
+
+    .todo-item-right-side {
+        margin-left: auto;
+        margin-right: 15px;
+    }
 }
