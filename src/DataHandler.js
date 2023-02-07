@@ -18,8 +18,6 @@ export class DataHandler {
 
     }
 
-    
-    
     /**
      * This method accepts a todo list item, project, or note object as input 
      * ad stores it as a string in local storage.
