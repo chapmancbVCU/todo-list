@@ -57,6 +57,7 @@ export class Project extends DataHandler {
             return project;
         } 
     }
+
     /**
      * Returns the type of item we are using.  The other types are project 
      * and notes.  
@@ -66,6 +67,10 @@ export class Project extends DataHandler {
         return this.itemType;
     }
 
+    /**
+     * Returns the number of subtasks that are associated with a project.
+     * @returns Integer The number of subtasks.
+     */
     getSubTasks() {
         return this.subTasks;
     }
@@ -78,6 +83,10 @@ export class Project extends DataHandler {
         return this.title;
     }
 
+    /**
+     * Increments the this.subTasks instance variables when a new task is 
+     * associated with a parent project.
+     */
     incrementSubTasksCount() {
         this.subTasks++;
     }
