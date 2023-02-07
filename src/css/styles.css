@@ -475,6 +475,13 @@ h4 {
     flex-direction: row;
 }
 
+.todo-item-text {
+    /* Horizontally align text in center. */
+    text-align: center;
+    /* Vertically align text in center. */
+    line-height: 35px;
+}
+
 .todo-item-title {
     margin-left: 10px;
 }
