@@ -75,7 +75,7 @@ export class AddItem {
             if(title == "") {
                 alert("Title is a required field");
             } else {
-                const project = new Project('ProjectObj', title);
+                const project = new Project('ProjectObj', title, 0);
                 let date = new Date(Date.now());
                 project.setTodoItem(project, `ProjectObj_${date}`);
 
@@ -101,7 +101,7 @@ export class AddItem {
             let title = document.getElementById('todo-title').value;
             let description = document.getElementById('todo-description').value;
             let dueByDate = document.getElementById('due-by-date').value;
-            let project = document.getElementById('parent-project').value;
+            let selectedProject = document.getElementById('parent-project').value;
 
             // Perform form validation.
             if(title == "") {
@@ -119,10 +119,22 @@ export class AddItem {
                 });
 
                 // Add to local storage.
-                const todoItem = new TodoItem('TodoItemObj', project, title, description, dueByDate, priority);
+                const todoItem = new TodoItem('TodoItemObj', selectedProject, title, description, dueByDate, priority);
                 let date = new Date(Date.now());
                 todoItem.setTodoItem(todoItem, `TodoItemObj_${date}`); 
 
+                for(let i = 0; i < localStorage.length; i++) {
+                    let key = localStorage.key(i);
+                    if(key.includes('ProjectObj_')) {
+                        let project = new Project();
+                        project = project.getItem(key);
+                        const projectTitle = project.getTitle();
+                        if(projectTitle === selectedProject) {
+                            project.incrementSubTasksCount();
+                            project.setTodoItem(project, key);
+                        }
+                    }
+                }
                 // Reset form and close modal.
                 document.forms[0].reset();
                 AddItem.closeModal();
