@@ -54,6 +54,7 @@ export class TasksContent {
         const titleContent = document.createElement('p');
         titleContent.textContent = `${todoItem.getTitle()}`;
         titleContent.classList.add('todo-item-title');
+        titleContent.classList.add('todo-item-text');
         left.appendChild(titleContent);        
 
         todoItemContainer.appendChild(left);
@@ -70,6 +71,8 @@ export class TasksContent {
         // Show due date.
         const dueDate = document.createElement('div');
         dueDate.textContent = `${todoItem.getDueDate()}`;
+        dueDate.classList.add('todo-item-date');
+        dueDate.classList.add('todo-item-text');
         right.appendChild(dueDate);
 
         // Show edit and delete icons.
