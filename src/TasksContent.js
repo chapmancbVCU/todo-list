@@ -65,6 +65,7 @@ export class TasksContent {
 
         // Show details button.
         const detailsButton = document.createElement('button');
+        detailsButton.classList.add('todo-item-details-button');
         detailsButton.textContent = 'DETAILS';
         right.appendChild(detailsButton);
 
