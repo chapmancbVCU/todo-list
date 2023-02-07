@@ -43,7 +43,7 @@ export class TodoItemForm {
         title.setAttribute('name', 'todo-title');
         title.setAttribute('type', 'text');
         title.setAttribute('minlength', '5');
-        title.setAttribute('maxlength', '50');
+        title.setAttribute('maxlength', '40');
         title.setAttribute('required', '');
         title.setAttribute('placeholder', 'Ex: Get groceries');
         titleRow.appendChild(title);
