@@ -14,7 +14,8 @@ export class SideBar {
     constructor(sideBarContainer) {
         this.sideBarContainer = sideBarContainer;
         this.sideBarContainer.appendChild(this.initializeSidebarComponents());
-        //this.sideBarContainer.appendChild(this.renderAddButton());
+        this.sideBarContainer.appendChild(this.renderAddButton());
+        this.sideBarContainer.appendChild(this.renderClearButton());
     }
 
     /**
@@ -41,8 +42,8 @@ export class SideBar {
         categories.appendChild(this.renderWeekTasksContainer());
         categories.appendChild(this.renderProjectsRow());
         categories.appendChild(this.renderNotesRow());
-        categories.appendChild(this.renderAddButton());
-        categories.appendChild(this.renderClearButton());
+        //categories.appendChild(this.renderAddButton());
+        //categories.appendChild(this.renderClearButton());
         return categories;
     }
     
