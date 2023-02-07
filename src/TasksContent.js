@@ -40,7 +40,7 @@ export class TasksContent {
         todoItem = todoItem.getItem(key);
         const todoItemContainer = document.createElement('div');
         todoItemContainer.classList.add('todo-item');
-        
+        this.setTodoItemRowColor(todoItemContainer, todoItem);
         // Setup left side of todo item row.
         const left = document.createElement('div');
         left.classList.add('todo-item-left-side');
@@ -88,5 +88,15 @@ export class TasksContent {
 
         todoItemContainer.appendChild(right);
         this.tasksContainer.appendChild(todoItemContainer);
+    }
+
+    setTodoItemRowColor(todoItemRow, todoItem) {
+        if(todoItem.getPriority() === 'low-priority') {
+            todoItemRow.classList.add('todo-item-low-priority');
+        } else if (todoItem.getPriority() === 'medium-priority') {
+            todoItemRow.classList.add('todo-item-medium-priority');
+        } else if (todoItem.getPriority() == 'high-priority') {
+            todoItemRow.classList.add('todo-item-high-priority');
+        }
     }
 }
