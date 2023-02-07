@@ -3,6 +3,7 @@
  *****************************************************************************/
 import { TodoItem } from "./TodoItem"; 
 
+
 /**
  * Contains the TasksContent class which is responsible for rendering contents 
  * of local storage as a list.
@@ -38,21 +39,23 @@ export class TasksContent {
         const todoItemContainer = document.createElement('div');
         todoItemContainer.classList.add('todo-item');
         
+        const left = document.createElement('div');
+        left.classList.add('todo-item-left-side');
+        const toggleChecked = document.createElement('input');
+        toggleChecked.setAttribute('type', 'checkbox');
+        left.appendChild(toggleChecked);
+
         const titleContent = document.createElement('p');
         titleContent.textContent = `Title: ${todoItem.getTitle()}`;
-        todoItemContainer.appendChild(titleContent);
+        left.appendChild(titleContent);        
 
-        const descriptionContent = document.createElement('p');
-        descriptionContent.textContent = `Description: ${todoItem.getDescription()}`;
-        todoItemContainer.appendChild(descriptionContent);
+        todoItemContainer.appendChild(left);
 
-        const dueDateContent = document.createElement('p');
-        dueDateContent.textContent = `Due by: ${todoItem.getDueDate()}`;
-        todoItemContainer.appendChild(dueDateContent);
+        const right = document.createElement('div');
+        right.classList.add('todo-item-right-side');
+        right.textContent = 'test';
 
-        const priorityContent = document.createElement('p');
-        priorityContent.textContent = `Priority: ${todoItem.getPriority()}`;
-        todoItemContainer.appendChild(priorityContent);
+        todoItemContainer.appendChild(right);
 
         this.tasksContainer.appendChild(todoItemContainer);
     }
