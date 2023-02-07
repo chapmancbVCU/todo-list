@@ -19,13 +19,13 @@ export class Project extends DataHandler {
      * todo items when parsing string from local storage.
      * @param {*} title The title for the project.
      */
-    constructor(itemType, title) {
+    constructor(itemType, title, subTasks) {
         super();
 
         // Instance variables
         this.itemType = itemType;
         this.title = title;
-        this.subTasks = 0;
+        this.subTasks = subTasks;
 
         /**
          * Functing inside constructor that reports information about this 
@@ -52,8 +52,8 @@ export class Project extends DataHandler {
         if(itemType == 'ProjectObj') {
             const parentProject = deserializedObj.parentProject;
             const title = deserializedObj.title;
-
-            const project = new Project(itemType, title);
+            const subTasks = deserializedObj.subTasks;
+            const project = new Project(itemType, title, subTasks);
             return project;
         } 
     }
@@ -76,5 +76,9 @@ export class Project extends DataHandler {
      */
     getTitle() {
         return this.title;
+    }
+
+    incrementSubTasksCount() {
+        this.subTasks++;
     }
 }
