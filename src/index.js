@@ -12,7 +12,7 @@
 import _ from 'lodash';
 import './css/styles.css';
 import { AddItem } from './AddItem';
-import { Page } from './page';
+import { Page } from './Page';
 import { TasksContent } from './TasksContent';
 import { Editor } from "@tinymce/tinymce-webcomponent";
 import tinymce from "tinymce";
