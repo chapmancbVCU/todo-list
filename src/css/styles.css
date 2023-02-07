@@ -455,7 +455,6 @@ h4 {
 }
 
 .todo-item {
-    border: solid var(--link-and-button-color) 3px;
     border-radius: 5px;
 
     width: 100%;
@@ -487,6 +486,18 @@ h4 {
     margin-left: 15px;
     display: flex;
     flex-direction: row;
+}
+
+.todo-item-medium-priority {
+    border: solid orange 2px;
+}
+
+.todo-item-low-priority {
+    border: solid green 2px;
+}
+
+.todo-item-high-priority {
+    border: solid red 2px;
 }
 
 .todo-item-text {
