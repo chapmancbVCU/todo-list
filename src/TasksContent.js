@@ -78,9 +78,11 @@ export class TasksContent {
 
         // Show edit and delete icons.
         const editIcon = new Image();
+        editIcon.classList.add('todo-item-icon');
         editIcon.src = EditIcon;
         right.appendChild(editIcon);
         const deleteIcon = new Image();
+        deleteIcon.classList.add('todo-item-icon');
         deleteIcon.src = DeleteIcon;
         right.appendChild(deleteIcon);
 
