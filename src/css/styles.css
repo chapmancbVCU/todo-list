@@ -467,7 +467,7 @@ h4 {
 }
 
 .todo-item-date {
-    width: 80px;
+    width: 100px;
 }
 
 .todo-item-date,
@@ -501,6 +501,7 @@ h4 {
 }
 
 .todo-item-text {
+    font-size: 20px;
     /* Horizontally align text in center. */
     text-align: center;
     /* Vertically align text in center. */
@@ -508,7 +509,6 @@ h4 {
 }
 
 .todo-item-title span{
-    font-size: 20px;
     margin-left: 10px;
 }
 
@@ -601,7 +601,7 @@ h4 {
     }   
 }
 
-@media only screen and (min-width: 910px) {
+@media only screen and (min-width: 950px) {
     .todo-item {
         height: 35px;
         flex-direction: row;
