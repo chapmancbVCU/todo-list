@@ -43,21 +43,9 @@ export class TasksContent {
         this.setTodoItemRowColor(todoItemContainer, todoItem);
         // Setup left side of todo item row.
         const left = document.createElement('div');
-        left.classList.add('todo-item-left-side');
+        left.classList.add('todo-item-left-side');    
 
-        // Setup toggle complete checkbox.
-        /*const toggleChecked = document.createElement('input');
-        toggleChecked.setAttribute('type', 'checkbox');
-        toggleChecked.classList.add('todo-item-checkbox');
-        left.appendChild(toggleChecked);
-
-        // Title
-        const titleContent = document.createElement('p');
-        titleContent.textContent = `${todoItem.getTitle()}`;
-        titleContent.classList.add('todo-item-title');
-        titleContent.classList.add('todo-item-text');
-        left.appendChild(titleContent);*/      
-
+        // Setup checkbox and title.
         const titleLabel = document.createElement('label')
         titleLabel.classList.add('todo-item-title');
         titleLabel.setAttribute('for', `${todoItem.getTitle()}-is-complete`);
@@ -67,6 +55,7 @@ export class TasksContent {
         toggleChecked.setAttribute('value', 'is-complete');
         titleLabel.appendChild(toggleChecked);
         const titleContent = document.createElement('span');
+        titleContent.classList.add('todo-item-text');
         titleContent.textContent = `${todoItem.getTitle()}`;
         titleLabel.appendChild(titleContent);
         left.appendChild(titleLabel);
