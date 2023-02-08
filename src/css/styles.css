@@ -466,10 +466,6 @@ h4 {
     flex-direction: column;
 }
 
-.todo-item-checkbox {
-    margin-bottom: 0;
-}
-
 .todo-item-date {
     width: 80px;
 }
@@ -512,6 +508,11 @@ h4 {
 }
 
 .todo-item-title {
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
+
+.todo-item-title span{
     margin-left: 10px;
 }
 

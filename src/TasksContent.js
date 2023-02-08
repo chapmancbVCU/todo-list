@@ -46,7 +46,7 @@ export class TasksContent {
         left.classList.add('todo-item-left-side');
 
         // Setup toggle complete checkbox.
-        const toggleChecked = document.createElement('input');
+        /*const toggleChecked = document.createElement('input');
         toggleChecked.setAttribute('type', 'checkbox');
         toggleChecked.classList.add('todo-item-checkbox');
         left.appendChild(toggleChecked);
@@ -56,8 +56,20 @@ export class TasksContent {
         titleContent.textContent = `${todoItem.getTitle()}`;
         titleContent.classList.add('todo-item-title');
         titleContent.classList.add('todo-item-text');
-        left.appendChild(titleContent);        
+        left.appendChild(titleContent);*/      
 
+        const titleLabel = document.createElement('label')
+        titleLabel.classList.add('todo-item-title');
+        titleLabel.setAttribute('for', `${todoItem.getTitle()}-is-complete`);
+        const toggleChecked = document.createElement('input');
+        toggleChecked.setAttribute('type', 'checkbox');
+        toggleChecked.setAttribute('id', `${todoItem.getTitle()}-is-complete`);
+        toggleChecked.setAttribute('value', 'is-complete');
+        titleLabel.appendChild(toggleChecked);
+        const titleContent = document.createElement('span');
+        titleContent.textContent = `${todoItem.getTitle()}`;
+        titleLabel.appendChild(titleContent);
+        left.appendChild(titleLabel);
         todoItemContainer.appendChild(left);
 
         // Setup right side of todo item row.
