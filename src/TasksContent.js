@@ -36,7 +36,42 @@ export class TasksContent {
     }
 
     renderDetailsModal(todoItem) {
+        const contentContainer = document.querySelector('#content');
+
+        const detailsContainer = document.createElement('div');
+        detailsContainer.classList.add('todo-item-details-bg-modal');
+        detailsContainer.style.display = 'flex';
+
+        const detailsModalContent = document.createElement('div');
+        detailsModalContent.classList.add('todo-item-details-modal-content');
         
+        // Setup title and close button.
+        const detailsModalTitleContainer = document.createElement('div');
+        detailsModalTitleContainer.classList.add(
+            'todo-item-details-modal-title-container');
+        
+        const detailsTitle = document.createElement('div');
+        detailsTitle.textContent = `${todoItem.getTitle()}`;
+        detailsTitle.classList.add('modal-title');
+        detailsModalTitleContainer.appendChild(detailsTitle);
+
+        const closeButton = document.createElement('div');
+        closeButton.classList.add('close');
+        closeButton.textContent = '+';
+        detailsModalTitleContainer.appendChild(closeButton);
+        closeButton.addEventListener('click', function() {
+            detailsContainer.style.display = 'none';
+            detailsContainer.remove();
+        });
+
+
+        detailsModalContent.appendChild(detailsModalTitleContainer);
+
+
+
+        detailsContainer.appendChild(detailsModalContent);
+        contentContainer.appendChild(detailsContainer);
+
     }
 
     renderTodoItem(key) {
@@ -72,7 +107,6 @@ export class TasksContent {
         // Show details button.
         const detailsButton = document.createElement('button');
         detailsButton.classList.add('todo-item-details-button');
-        //detailsButton.setAttribute('id', `${key}`);
         detailsButton.textContent = 'DETAILS';
         right.appendChild(detailsButton);
 
