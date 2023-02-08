@@ -119,7 +119,14 @@ export class AddItem {
                 });
 
                 // Add to local storage.
-                const todoItem = new TodoItem('TodoItemObj', selectedProject, title, description, dueByDate, priority);
+                const todoItem = new TodoItem(
+                    'TodoItemObj', 
+                    selectedProject, 
+                    title, 
+                    description, 
+                    dueByDate, 
+                    priority);
+                    
                 let date = new Date(Date.now());
                 todoItem.setTodoItem(todoItem, `TodoItemObj_${date}`); 
 
