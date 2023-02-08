@@ -48,6 +48,7 @@ export class TasksContent {
         // Setup toggle complete checkbox.
         const toggleChecked = document.createElement('input');
         toggleChecked.setAttribute('type', 'checkbox');
+        toggleChecked.classList.add('todo-item-checkbox');
         left.appendChild(toggleChecked);
 
         // Title
