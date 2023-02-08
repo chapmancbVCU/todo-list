@@ -232,7 +232,8 @@ h4 {
     border: solid black 1px;
     border-radius: 10px;
     width: 350px;
-  
+    position: fixed;
+    top: 10%;
     /* Need this for close button. */
     position: relative;
 }
@@ -588,6 +589,7 @@ h4 {
     }
 
     .modal-content {
+        top: 0;
         width: 600px;
     }
 
@@ -631,7 +633,7 @@ h4 {
     .todo-item-right-side {
         margin-top: 3px;
     }
-    
+
     .todo-item-left-side {
         margin-right: auto;
     }
@@ -639,5 +641,11 @@ h4 {
     .todo-item-right-side {
         margin-left: auto;
         margin-right: 15px;
+    }
+}
+
+@media only screen and (max-height: 500px) {
+    .modal-content {
+        top: 50%;
     }
 }
