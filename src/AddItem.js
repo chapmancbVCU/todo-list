@@ -126,7 +126,7 @@ export class AddItem {
                     description, 
                     dueByDate, 
                     priority);
-                    
+
                 let date = new Date(Date.now());
                 todoItem.setTodoItem(todoItem, `TodoItemObj_${date}`); 
 
@@ -196,7 +196,8 @@ export class AddItem {
      * in the modal sidebar.
      */
     removeModalFormFromDOM() {
-        const modalMainSelector = document.querySelector('#modal-form-container');
+        const modalMainSelector = 
+            document.querySelector('#modal-form-container');
         modalMainSelector.remove();
     }
 
