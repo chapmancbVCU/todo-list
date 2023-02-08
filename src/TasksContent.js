@@ -35,6 +35,10 @@ export class TasksContent {
        }
     }
 
+    renderDetailsModal(todoItem) {
+        
+    }
+
     renderTodoItem(key) {
         let todoItem = new TodoItem();
         todoItem = todoItem.getItem(key);
@@ -68,6 +72,7 @@ export class TasksContent {
         // Show details button.
         const detailsButton = document.createElement('button');
         detailsButton.classList.add('todo-item-details-button');
+        //detailsButton.setAttribute('id', `${key}`);
         detailsButton.textContent = 'DETAILS';
         right.appendChild(detailsButton);
 
@@ -90,6 +95,11 @@ export class TasksContent {
 
         todoItemContainer.appendChild(right);
         this.tasksContainer.appendChild(todoItemContainer);
+
+        detailsButton.addEventListener('click', () => {
+            this.renderDetailsModal(todoItem);
+        });
+
     }
 
     setTodoItemRowColor(todoItemRow, todoItem) {
