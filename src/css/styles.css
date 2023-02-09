@@ -83,10 +83,11 @@
     margin: 15px auto;
 }
 
-/* Contains form for adding new items. */
-.bg-modal {
+.bg-modal,
+.todo-item-details-bg-modal {
     width: 100%;
     height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
     top: 0;
 
@@ -472,19 +473,6 @@ h4 {
 .todo-item-date,
 .todo-item-icon {
     margin-left: 10px;
-}
-
-.todo-item-details-bg-modal {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    position: absolute;
-    top: 0;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    display: none;
 }
 
 .todo-item-details-button {
