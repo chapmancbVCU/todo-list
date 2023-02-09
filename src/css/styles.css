@@ -513,6 +513,11 @@ h4 {
     margin-top: 5px;
 }
 
+.todo-item-details-content {
+    margin: 10px;
+    font-size: 18px;
+}
+
 .todo-item-details-modal-content {
     border: solid black 1px;
     border-radius: 10px;

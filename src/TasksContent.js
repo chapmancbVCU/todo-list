@@ -69,19 +69,23 @@ export class TasksContent {
         const detailsModalMain = document.createElement('div');
 
         const parentProject = document.createElement('div');
+        parentProject.classList.add('todo-item-details-content');
         parentProject.textContent = `Project: ${todoItem.getParentProject()}`;
         detailsModalMain.appendChild(parentProject);
 
         const dueByDate = document.createElement('div');
+        dueByDate.classList.add('todo-item-details-content');
         dueByDate.textContent = `Due by: ${todoItem.getDueDate()}`;
         detailsModalMain.appendChild(dueByDate);
 
         const priority = document.createElement('div');
+        priority.classList.add('todo-item-details-content');
         priority.textContent = 
             `Priority: ${this.setPriorityString(todoItem.getPriority())}`;
         detailsModalMain.appendChild(priority);
 
-        const description = document.createElement('div')
+        const description = document.createElement('div');
+        description.classList.add('todo-item-details-content');
         description.setAttribute('id', 'foo');
         detailsModalMain.appendChild(description);
 
