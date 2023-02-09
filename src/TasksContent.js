@@ -63,15 +63,32 @@ export class TasksContent {
             detailsContainer.style.display = 'none';
             detailsContainer.remove();
         });
-
-
         detailsModalContent.appendChild(detailsModalTitleContainer);
 
+        // Setup main content for details modal.
+        const detailsModalMain = document.createElement('div');
 
+        const parentProject = document.createElement('div');
+        parentProject.textContent = `Project: ${todoItem.getParentProject()}`;
+        detailsModalMain.appendChild(parentProject);
 
+        const dueByDate = document.createElement('div');
+        dueByDate.textContent = `Due by: ${todoItem.getDueDate()}`;
+        detailsModalMain.appendChild(dueByDate);
+
+        const priority = document.createElement('div');
+        priority.textContent = 
+            `Priority: ${this.setPriorityString(todoItem.getPriority())}`;
+        detailsModalMain.appendChild(priority);
+
+        const description = document.createElement('div')
+        description.setAttribute('id', 'foo');
+        detailsModalMain.appendChild(description);
+
+        detailsModalContent.appendChild(detailsModalMain);
         detailsContainer.appendChild(detailsModalContent);
         contentContainer.appendChild(detailsContainer);
-
+        document.getElementById('foo').innerHTML = todoItem.getDescription();
     }
 
     renderTodoItem(key) {
@@ -144,5 +161,11 @@ export class TasksContent {
         } else if (todoItem.getPriority() == 'high-priority') {
             todoItemRow.classList.add('todo-item-high-priority');
         }
+    }
+
+    setPriorityString(priority) {
+        return (priority === 'low-priority') ? 'Low' 
+            : (priority === 'medium-priority') ? 'Medium'
+            : 'High';
     }
 }
