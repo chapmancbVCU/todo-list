@@ -76,7 +76,7 @@ export class Page {
         const docsURL = document.createElement('a');
         docsURL.classList.add('footer-link');
         docsURL.textContent = 'JSDOC For This Project';
-        docsURL.href = 'https://chapmancbvcu.github.io/restaurant-page/out/index.html';
+        docsURL.href = 'https://chapmancbvcu.github.io/todo-list/out/index.html';
         docs.appendChild(docsURL);
         footerContainer.appendChild(docs);
 
