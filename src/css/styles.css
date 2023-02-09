@@ -524,6 +524,7 @@ h4 {
     width: 450px;
     height: 420px;
     background-color: white;
+    top: 50%;
 
     /* Need this for close button. */
     position: relative;
@@ -648,7 +649,11 @@ h4 {
         min-width: 300px;
         border-right: solid var(--side-bar-border) 3px;
         border-bottom: none;
-    }   
+    } 
+    
+    .todo-item-details-modal-content {
+        top: 0;
+    }
 }
 
 @media only screen and (min-width: 970px) {
@@ -675,5 +680,9 @@ h4 {
 @media only screen and (max-height: 500px) {
     .modal-content {
         top: 50%;
+    }
+
+    .todo-item-details-modal-content {
+        top: 25%;
     }
 }
