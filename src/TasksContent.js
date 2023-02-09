@@ -35,6 +35,12 @@ export class TasksContent {
        }
     }
 
+    /**
+     * Renders the modal that displays details for a particular todo item when 
+     * you click on the details button.
+     * @param {TodoItem} todoItem The todo item whose information we want to 
+     * show to the user.
+     */
     renderDetailsModal(todoItem) {
         const contentContainer = document.querySelector('#content');
 
@@ -95,6 +101,11 @@ export class TasksContent {
         document.getElementById('foo').innerHTML = todoItem.getDescription();
     }
 
+    /**
+     * Renders a row on the tasks content area for a particular todo list item.
+     * @param {String} key The key for a particular todo list item in local 
+     * storage.
+     */
     renderTodoItem(key) {
         let todoItem = new TodoItem();
         todoItem = todoItem.getItem(key);
@@ -151,12 +162,21 @@ export class TasksContent {
         todoItemContainer.appendChild(right);
         this.tasksContainer.appendChild(todoItemContainer);
 
+        // Event listener for details button.
         detailsButton.addEventListener('click', () => {
             this.renderDetailsModal(todoItem);
         });
 
     }
 
+    /**
+     * This function uses the priority level of a particular todo item
+     * too set a class for the todo list item row depending on its priority.
+     * @param {HTMLDivElement} todoItemRow The DIV element that contains 
+     * information about a particular todo list item.
+     * @param {TodoItem} todoItem The todo item object whose priority level 
+     * we want to test.
+     */
     setTodoItemRowColor(todoItemRow, todoItem) {
         if(todoItem.getPriority() === 'low-priority') {
             todoItemRow.classList.add('todo-item-low-priority');
@@ -167,6 +187,14 @@ export class TasksContent {
         }
     }
 
+    /**
+     * This function returns the string that represent the priority level of 
+     * a particular todo item in the details modal.
+     * @param {String} priority The string whose value we are testing so we 
+     * can set the text for the priority level.
+     * @returns Returns either the strings "Low", "Medium", or "High" 
+     * depending on the value of the priority paramenter.
+     */
     setPriorityString(priority) {
         return (priority === 'low-priority') ? 'Low' 
             : (priority === 'medium-priority') ? 'Medium'
