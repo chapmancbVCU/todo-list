@@ -105,7 +105,7 @@ in the main section of the page that lists what items are in local storage.</div
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line13">line 13</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line16">line 16</a>
     </li></ul></dd>
     
 
@@ -168,6 +168,145 @@ in the main section of the page that lists what items are in local storage.</div
     
 
     
+    <h4 class="name" id="renderDetailsModal"><span class="type-signature"></span>renderDetailsModal<span class="signature">(todoItem)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Renders the modal that displays details for a particular todo item when 
+you click on the details button.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>todoItem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="TodoItem.html">TodoItem</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The todo item whose information we want to 
+show to the user.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line44">line 44</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="renderTasks"><span class="type-signature"></span>renderTasks<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
@@ -221,7 +360,458 @@ buttons the user can use to view and update each item.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line25">line 25</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line28">line 28</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="renderTodoItem"><span class="type-signature"></span>renderTodoItem<span class="signature">(key)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Renders a row on the tasks content area for a particular todo list item.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The key for a particular todo list item in local 
+storage.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line109">line 109</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="setPriorityString"><span class="type-signature"></span>setPriorityString<span class="signature">(priority)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function returns the string that represent the priority level of 
+a particular todo item in the details modal.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>priority</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The string whose value we are testing so we 
+can set the text for the priority level.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line198">line 198</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Returns either the strings "Low", "Medium", or "High" 
+depending on the value of the priority paramenter.
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="setTodoItemRowColor"><span class="type-signature"></span>setTodoItemRowColor<span class="signature">(todoItemRow, todoItem)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function uses the priority level of a particular todo item
+too set a class for the todo list item row depending on its priority.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>todoItemRow</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLDivElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The DIV element that contains 
+information about a particular todo list item.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>todoItem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="TodoItem.html">TodoItem</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The todo item object whose priority level 
+we want to test.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line180">line 180</a>
     </li></ul></dd>
     
 
@@ -267,13 +857,13 @@ buttons the user can use to view and update each item.
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddItem.html">AddItem</a></li><li><a href="DataHandler.html">DataHandler</a></li><li><a href="NotesForm.html">NotesForm</a></li><li><a href="Page.html">Page</a></li><li><a href="ProjectsForm.html">ProjectsForm</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="TasksContent.html">TasksContent</a></li><li><a href="TodoItem.html">TodoItem</a></li><li><a href="TodoItemForm.html">TodoItemForm</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddItem.html">AddItem</a></li><li><a href="DataHandler.html">DataHandler</a></li><li><a href="Note.html">Note</a></li><li><a href="NotesForm.html">NotesForm</a></li><li><a href="Page.html">Page</a></li><li><a href="Project.html">Project</a></li><li><a href="ProjectsForm.html">ProjectsForm</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="TasksContent.html">TasksContent</a></li><li><a href="TodoItem.html">TodoItem</a></li><li><a href="TodoItemForm.html">TodoItemForm</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Sat Feb 04 2023 18:45:32 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Feb 08 2023 19:52:30 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

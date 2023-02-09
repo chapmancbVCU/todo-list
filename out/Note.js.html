@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: TodoItem.js</title>
+    <title>JSDoc: Source: Note.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: TodoItem.js</h1>
+    <h1 class="page-title">Source: Note.js</h1>
 
     
 
@@ -31,59 +31,45 @@
  *****************************************************************************/
 import { DataHandler } from "./DataHandler";
 
-
 /**
- * Functions that support implementation of Todo List item
- * @class The TodoItem class is responsible for creating todo item objects.  It
+ * Functions that support implementation of the Note object.
+ * @class The Note class is responsible for creating todo item objects.  It
  *  extends the DataHandler class which supports CRUD operations.
  * @extends DataHandler The class responsible for supporting CRUD operations.
  * @author Chad Chapman
  */
-export class TodoItem extends DataHandler {
+export class Note extends DataHandler {
+
     /**
-     * Constructor for TodoItem.
+     * Constructor for Note object.
      * @param {String} itemType 
-     * @param {String} parentProject 
      * @param {String} title 
      * @param {String} description 
-     * @param {String} dueDate 
-     * @param {String} priority 
      */
-    constructor(itemType, parentProject, title, description, dueDate, priority) {
+    constructor(itemType, title, description) {
         super();
-        
+
         // Instance variables
         this.description = description;
-        this.dueDate = dueDate;
         this.itemType = itemType;
-        this.parentProject = parentProject;
-        this.priority = priority;
         this.title = title;
 
         /**
-         * Function inside constructor that reports information about todo
-         * item.
-         * @returns String containing information about todo item.
+         * Function inside constructor that reports information about this 
+         * note.
+         * @returns String containing information about this note.
          */
         this.info = function() {
-            return `Title: ${this.title}; Description: ${this.description}; Due Date: ${this.dueDate}; Priority: ${this.priority}`;
+            return `Title: ${this.title}; Description: ${this.description}`;
         }
     }
 
     /**
-     * Returns the title for the TodoItem.
-     * @returns String representation of the item's description.
+     * Returns the title for the note.
+     * @returns String representation of the notes's description.
      */
     getDescription() {
         return this.description;
-    }
-
-    /**
-     * Returns the due date of the TodoItem.
-     * @returns String representation of the item's due date.
-     */
-    getDueDate() {
-        return this.dueDate;
     }
 
     /**
@@ -98,47 +84,18 @@ export class TodoItem extends DataHandler {
         let deserializedObj = JSON.parse(localStorage.getItem(key));
         
         const itemType = deserializedObj.itemType;
-        if(itemType == 'TodoItemObj') {
-            const parentProject = deserializedObj.parentProject;
+        if(itemType == 'NoteItemObj') {
             const title = deserializedObj.title;
             const description = deserializedObj.description;
-            const dueDate = deserializedObj.dueDate;
-            const priority = deserializedObj.priority;
 
-            const todoItem = new TodoItem(itemType, parentProject, title, description, dueDate, priority);
-            return todoItem;
+            const note = new Note(itemType, title, description);
+            return note;
         } 
     }
-    
-    /**
-     * Returns the type of item we are using.  The other types are project 
-     * and notes.  
-     * @returns String representation of the item type.
-     */
-    getItemType() {
-        return this.itemType;
-    }
 
     /**
-     * Returns the name of the parent project.
-     * @returns String representation of the name for the parent project.
-     */
-    getParentProject() {
-        return this.parentProject;
-    }
-
-    /**
-     * Returns the priority level of the todo item.
-     * @returns String that contains the value of the priority level of the
-     * todo item.
-     */
-    getPriority() {
-        return this.priority;
-    }
-    
-    /**
-     * Returns the title of this todo item.
-     * @returns String that contains the title of the todo item.
+     * Returns the title of this note.
+     * @returns String that contains the title of this note.
      */
     getTitle() {
         return this.title;

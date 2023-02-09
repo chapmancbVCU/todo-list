@@ -26,7 +26,9 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
+            <pre class="prettyprint source linenums"><code>import { Project } from "./Project";
+
+/**
  * This file contains the Page class whose responsibility is to build sidebar 
  * section of the webpage.
  * @class Class for rendering the components of the sidebar.
@@ -40,7 +42,8 @@ export class SideBar {
     constructor(sideBarContainer) {
         this.sideBarContainer = sideBarContainer;
         this.sideBarContainer.appendChild(this.initializeSidebarComponents());
-        //this.sideBarContainer.appendChild(this.renderAddButton());
+        this.sideBarContainer.appendChild(this.renderAddButton());
+        this.sideBarContainer.appendChild(this.renderClearButton());
     }
 
     /**
@@ -62,12 +65,13 @@ export class SideBar {
         categories.setAttribute('id', 'categories');
 
         // Render components of sidebar
-        categories.appendChild(this.renderHomeContainer(localStorage.length));
+        categories.appendChild(this.renderHomeContainer());
         categories.appendChild(this.renderTodayTasksContainer());
         categories.appendChild(this.renderWeekTasksContainer());
         categories.appendChild(this.renderProjectsRow());
         categories.appendChild(this.renderNotesRow());
-        categories.appendChild(this.renderAddButton());
+        //categories.appendChild(this.renderAddButton());
+        //categories.appendChild(this.renderClearButton());
         return categories;
     }
     
@@ -87,6 +91,23 @@ export class SideBar {
 
         return addButtonContainer;
     }
+
+    /**
+     * Renders the the add item button.
+     * @returns HTMLDivElement The div that contains the add item button.
+     */
+    renderClearButton() {
+        const clearButtonContainer = document.createElement('div');
+        clearButtonContainer.classList.add('add-button-container');
+        
+        const clearItemButton = document.createElement('button');
+        clearItemButton.setAttribute('id', 'clear-item-button');
+        clearItemButton.classList.add('add-item-button');
+        clearItemButton.textContent = 'C'
+        clearButtonContainer.appendChild(clearItemButton);
+
+        return clearButtonContainer;
+    }
     /**
      * Renders the the home tasks row.
      * @param { Integer} allProjects The integer value that represents the 
@@ -94,7 +115,7 @@ export class SideBar {
      * @returns HTMLDivElement The div that contains the row for home category 
      * of the sidebar.
      */
-    renderHomeContainer(allProjects) {
+    renderHomeContainer() {
         const homeContainer = document.createElement('li');
         homeContainer.setAttribute('id', 'home');
         homeContainer.classList.add('side-bar-row');
@@ -106,8 +127,19 @@ export class SideBar {
         
         const homeTaskCount = document.createElement('h3');
         homeTaskCount.classList.add('side-bar-task-count');
-        homeTaskCount.textContent = allProjects;
 
+        /* Get number of available todo items in storage so that we can set
+        the number of items in the home row. */
+        let allTodoItemsCount = 0;
+        for(let i  = 0; i &lt; localStorage.length; i++) {
+            let key = localStorage.key(i);
+
+            if(key.includes('TodoItemObj_')) {
+                allTodoItemsCount++;
+            }
+        }
+
+        homeTaskCount.textContent = `${allTodoItemsCount}`;
         homeContainer.appendChild(homeTaskCount);
 
         return homeContainer;
@@ -119,7 +151,7 @@ export class SideBar {
      * Notes section of the sidebar.
      */
     renderNotesRow() {
-        const notesRow = document.createElement('div');
+        const notesRow = document.createElement('li');
         notesRow.classList.add('side-bar-row');
 
         const notesLabel = document.createElement('h3');
@@ -136,14 +168,40 @@ export class SideBar {
      * Nrojects section of the sidebar.
      */
     renderProjectsRow() {
-        const projectsRow = document.createElement('div');
+        const projectsRow = document.createElement('li');
         projectsRow.classList.add('side-bar-row');
+        projectsRow.setAttribute('id', 'side-bar-projects-row');
+        const projectsRowLabel = document.createElement('h3');
+        projectsRowLabel.classList.add('side-bar-label');
+        projectsRowLabel.textContent = 'Projects';
+        projectsRow.appendChild(projectsRowLabel);
 
-        const projectsLabel = document.createElement('h3');
-        projectsLabel.classList.add('side-bar-label');
-        projectsLabel.textContent = 'Projects';
-        projectsRow.appendChild(projectsLabel);
+        const projectsContainer = document.createElement('div');
+        for(let i = 0; i &lt; localStorage.length; i++) {
+            let key = localStorage.key(i);
 
+            if(key.includes('ProjectObj_')) {
+                const projectDiv = document.createElement('div');
+                projectDiv.setAttribute('id', `${key}`);
+                projectDiv.classList.add('project-row');
+                let project = new Project();
+                project = project.getItem(key);
+                
+                // Setup label for particular project.
+                const projectLabel = document.createElement('h3');
+                projectLabel.textContent = `${project.getTitle()}`;
+                projectLabel.classList.add('project-name');
+                projectDiv.appendChild(projectLabel);
+
+                // Show to user how many items are associated with a project.
+                const numberOfTasks = document.createElement('h3');
+                numberOfTasks.classList.add('side-bar-task-count');
+                numberOfTasks.textContent = `${project.getSubTasks()}`;
+                projectDiv.appendChild(numberOfTasks);
+                projectsContainer.appendChild(projectDiv);
+            }
+        }
+        projectsRow.appendChild(projectsContainer);
         return projectsRow;
     }
 
@@ -206,13 +264,13 @@ export class SideBar {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddItem.html">AddItem</a></li><li><a href="DataHandler.html">DataHandler</a></li><li><a href="NotesForm.html">NotesForm</a></li><li><a href="Page.html">Page</a></li><li><a href="ProjectsForm.html">ProjectsForm</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="TasksContent.html">TasksContent</a></li><li><a href="TodoItem.html">TodoItem</a></li><li><a href="TodoItemForm.html">TodoItemForm</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddItem.html">AddItem</a></li><li><a href="DataHandler.html">DataHandler</a></li><li><a href="Note.html">Note</a></li><li><a href="NotesForm.html">NotesForm</a></li><li><a href="Page.html">Page</a></li><li><a href="Project.html">Project</a></li><li><a href="ProjectsForm.html">ProjectsForm</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="TasksContent.html">TasksContent</a></li><li><a href="TodoItem.html">TodoItem</a></li><li><a href="TodoItemForm.html">TodoItemForm</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Sat Feb 04 2023 18:45:32 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Feb 08 2023 19:52:30 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

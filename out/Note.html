@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: TodoItem</title>
+    <title>JSDoc: Class: Note</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: TodoItem</h1>
+    <h1 class="page-title">Class: Note</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>TodoItem<span class="signature">(itemType, parentProject, title, description, dueDate, priority)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>Note<span class="signature">(itemType, title, description)</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">The TodoItem class is responsible for creating todo item objects.  It
+            <div class="class-description">The Note class is responsible for creating todo item objects.  It
  extends the DataHandler class which supports CRUD operations.</div>
         
     
@@ -46,7 +46,7 @@
     
 
     
-    <h4 class="name" id="TodoItem"><span class="type-signature"></span>new TodoItem<span class="signature">(itemType, parentProject, title, description, dueDate, priority)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Note"><span class="type-signature"></span>new Note<span class="signature">(itemType, title, description)</span><span class="type-signature"></span></h4>
     
 
     
@@ -54,7 +54,7 @@
 
 
 <div class="description">
-    Constructor for TodoItem.
+    Constructor for Note object.
 </div>
 
 
@@ -91,29 +91,6 @@
         <tr>
             
                 <td class="name"><code>itemType</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>parentProject</code></td>
             
 
             <td class="type">
@@ -179,52 +156,6 @@
         </tr>
 
     
-
-        <tr>
-            
-                <td class="name"><code>dueDate</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>priority</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
     </tbody>
 </table>
 
@@ -269,7 +200,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TodoItem.js.html">TodoItem.js</a>, <a href="TodoItem.js.html#line14">line 14</a>
+        <a href="Note.js.html">Note.js</a>, <a href="Note.js.html#line13">line 13</a>
     </li></ul></dd>
     
 
@@ -321,7 +252,7 @@
         <h3 class="subsection-title">Classes</h3>
 
         <dl>
-            <dt><a href="TodoItem.html">TodoItem</a></dt>
+            <dt><a href="Note.html">Note</a></dt>
             <dd></dd>
         </dl>
     
@@ -351,7 +282,7 @@
 
 
 <div class="description">
-    Returns the title for the TodoItem.
+    Returns the title for the note.
 </div>
 
 
@@ -395,7 +326,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TodoItem.js.html">TodoItem.js</a>, <a href="TodoItem.js.html#line49">line 49</a>
+        <a href="Note.js.html">Note.js</a>, <a href="Note.js.html#line43">line 43</a>
     </li></ul></dd>
     
 
@@ -424,105 +355,7 @@
 
         
 <div class="param-desc">
-    String representation of the item's description.
-</div>
-
-
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getDueDate"><span class="type-signature"></span>getDueDate<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Returns the due date of the TodoItem.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TodoItem.js.html">TodoItem.js</a>, <a href="TodoItem.js.html#line57">line 57</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    String representation of the item's due date.
+    String representation of the notes's description.
 </div>
 
 
@@ -643,7 +476,7 @@ represented as a string.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TodoItem.js.html">TodoItem.js</a>, <a href="TodoItem.js.html#line69">line 69</a>
+        <a href="Note.js.html">Note.js</a>, <a href="Note.js.html#line55">line 55</a>
     </li></ul></dd>
     
 
@@ -689,302 +522,6 @@ represented as a string.</td>
     
 
     
-    <h4 class="name" id="getItemType"><span class="type-signature"></span>getItemType<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Returns the type of item we are using.  The other types are project 
-and notes.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TodoItem.js.html">TodoItem.js</a>, <a href="TodoItem.js.html#line90">line 90</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    String representation of the item type.
-</div>
-
-
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getParentProject"><span class="type-signature"></span>getParentProject<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Returns the name of the parent project.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TodoItem.js.html">TodoItem.js</a>, <a href="TodoItem.js.html#line98">line 98</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    String representation of the name for the parent project.
-</div>
-
-
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getPriority"><span class="type-signature"></span>getPriority<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Returns the priority level of the todo item.
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TodoItem.js.html">TodoItem.js</a>, <a href="TodoItem.js.html#line107">line 107</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    String that contains the value of the priority level of the
-todo item.
-</div>
-
-
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
     <h4 class="name" id="getTitle"><span class="type-signature"></span>getTitle<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
@@ -993,7 +530,7 @@ todo item.
 
 
 <div class="description">
-    Returns the title of this todo item.
+    Returns the title of this note.
 </div>
 
 
@@ -1037,7 +574,7 @@ todo item.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TodoItem.js.html">TodoItem.js</a>, <a href="TodoItem.js.html#line115">line 115</a>
+        <a href="Note.js.html">Note.js</a>, <a href="Note.js.html#line72">line 72</a>
     </li></ul></dd>
     
 
@@ -1066,7 +603,7 @@ todo item.
 
         
 <div class="param-desc">
-    String that contains the title of the todo item.
+    String that contains the title of this note.
 </div>
 
 
@@ -1091,8 +628,8 @@ todo item.
 
 
 <div class="description">
-    Function inside constructor that reports information about todo
-item.
+    Function inside constructor that reports information about this 
+note.
 </div>
 
 
@@ -1136,7 +673,7 @@ item.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TodoItem.js.html">TodoItem.js</a>, <a href="TodoItem.js.html#line40">line 40</a>
+        <a href="Note.js.html">Note.js</a>, <a href="Note.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
@@ -1165,7 +702,7 @@ item.
 
         
 <div class="param-desc">
-    String containing information about todo item.
+    String containing information about this note.
 </div>
 
 
