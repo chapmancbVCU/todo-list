@@ -162,6 +162,16 @@ export class TasksContent {
         todoItemContainer.appendChild(right);
         this.tasksContainer.appendChild(todoItemContainer);
 
+        // Event listener for delete button.
+        deleteIcon.addEventListener('click', () => {
+            alert("click delete");
+        });
+
+        // Event listener for edit button.
+        editIcon.addEventListener('click', () => {
+            alert('click edit');
+        })
+
         // Event listener for details button.
         detailsButton.addEventListener('click', () => {
             this.renderDetailsModal(todoItem);
