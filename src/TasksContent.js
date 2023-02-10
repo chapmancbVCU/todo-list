@@ -70,7 +70,6 @@ export class TasksContent {
         closeButton.textContent = '+';
         confirmDeleteModalTitleContainer.appendChild(closeButton);
         closeButton.addEventListener('click', () => {
-            
             this.closeModals(confirmDeleteModal);
         });
         confirmDeleteModalContent.appendChild(
@@ -131,9 +130,8 @@ export class TasksContent {
         closeButton.classList.add('close');
         closeButton.textContent = '+';
         detailsModalTitleContainer.appendChild(closeButton);
-        closeButton.addEventListener('click', function() {
-            detailsContainer.style.display = 'none';
-            detailsContainer.remove();
+        closeButton.addEventListener('click', () => {
+            this.closeModals(detailsContainer);
         });
         detailsModalContent.appendChild(detailsModalTitleContainer);
 
@@ -249,7 +247,7 @@ export class TasksContent {
 
         // Event listener for details button.
         detailsButton.addEventListener('click', () => {
-            this.renderDetailsModal(key, todoItem);
+            this.renderDetailsModal(todoItem);
         });
 
     }
