@@ -55,7 +55,7 @@ export class SideBar {
         const addButtonContainer = document.createElement('div');
         addButtonContainer.classList.add('add-button-container');
         
-        const addItemButton = document.createElement('button');
+        const addItemButton = document.createElement('h3');
         addItemButton.setAttribute('id', 'add-item-button');
         addItemButton.classList.add('add-item-button');
         addItemButton.textContent = '+'
@@ -72,7 +72,7 @@ export class SideBar {
         const clearButtonContainer = document.createElement('div');
         clearButtonContainer.classList.add('add-button-container');
         
-        const clearItemButton = document.createElement('button');
+        const clearItemButton = document.createElement('h3');
         clearItemButton.setAttribute('id', 'clear-item-button');
         clearItemButton.classList.add('add-item-button');
         clearItemButton.textContent = 'C'
