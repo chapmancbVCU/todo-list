@@ -26,6 +26,10 @@ export class TasksContent {
         parentContainer.remove();
     }
     
+    deleteTodoItemButton(todoItem) {
+
+    }
+
     /**
      * This function is responsible for rendering the list of todo items and 
      * buttons the user can use to view and update each item.
@@ -80,14 +84,27 @@ export class TasksContent {
         const deleteMessage = document.createElement('div');
         deleteMessage.classList.add('todo-item-delete-message');
         deleteMessage.textContent = 
-            `Confirm you want to delete the following todo list item: ${todoItem.getTitle()}`;
+            `Confirm you want to delete: ${todoItem.getTitle()}`;
 
         deleteItemModalMain.appendChild(deleteMessage);
 
         // Setup ok and cancel buttons.
         const deleteModalButtonsContainer = document.createElement('div');
         deleteModalButtonsContainer.classList.add('todo-item-cancel-delete-buttons');
-        
+        const okButton = document.createElement('button');
+        okButton.textContent = 'OK';
+        okButton.addEventListener('click', () => {
+
+            this.closeModals(confirmDeleteModal);
+        });
+        deleteModalButtonsContainer.appendChild(okButton);
+
+        const cancelButton = document.createElement('button');
+        cancelButton.textContent = "Cancel";
+        cancelButton.addEventListener('click', () => {
+            this.closeModals(confirmDeleteModal);
+        });
+        deleteModalButtonsContainer.appendChild(cancelButton);
 
         deleteItemModalMain.appendChild(deleteModalButtonsContainer);
         
