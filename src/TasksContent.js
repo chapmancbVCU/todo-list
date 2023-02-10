@@ -3,6 +3,7 @@
  *****************************************************************************/
 import EditIcon from './icons/note-edit.png';
 import DeleteIcon from './icons/trash-can.png';
+import { Project } from './Project';
 import { TodoItem } from "./TodoItem"; 
 
 
@@ -29,9 +30,21 @@ export class TasksContent {
     deleteTodoItemButton(key, todoItem) {
         const parentProject = todoItem.getParentProject();
 
-        
+        for(let i = 0; i < localStorage.length; i++) {
+            let key = localStorage.key(i);
+            if(key.includes('ProjectObj_')) {
+                let project = new Project();
+                project = project.getItem(key);
+                const projectTitle = project.getTitle();
+                if(projectTitle === parentProject) {
+                    project.decrementSubTasksCount();
+                    project.setTodoItem(project, key);
+                }
+            }
+        }
 
         localStorage.removeItem(key);
+        location.reload();
     }
 
     /**
