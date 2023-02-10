@@ -14,12 +14,17 @@ import { DataHandler } from "./DataHandler";
 export class TodoItem extends DataHandler {
     /**
      * Constructor for TodoItem.
-     * @param {String} itemType 
-     * @param {String} parentProject 
-     * @param {String} title 
-     * @param {String} description 
-     * @param {String} dueDate 
-     * @param {String} priority 
+     * @param {String} itemType The type of item.  It can be a todo list item,
+     * project, or note.
+     * @param {String} parentProject The parent project for this particular 
+     * tod list item.
+     * @param {String} title The title for this todo list item.
+     * @param {String} description Information that is particular to this todo 
+     * list item.
+     * @param {String} dueDate The date that this item must be completed.
+     * @param {String} priority This value can be low-priority, 
+     * medium-priority or high-priority.  This suggests the urgency for this 
+     * particular todo list item.
      */
     constructor(itemType, parentProject, title, description, dueDate, priority) {
         super();

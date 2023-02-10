@@ -14,9 +14,10 @@ export class Note extends DataHandler {
 
     /**
      * Constructor for Note object.
-     * @param {String} itemType 
-     * @param {String} title 
-     * @param {String} description 
+     * @param {String} itemType The type of item.  It can be a todo list item,
+     * project, or note.
+     * @param {String} title The title for this note.
+     * @param {String} description The content for this particular note.
      */
     constructor(itemType, title, description) {
         super();

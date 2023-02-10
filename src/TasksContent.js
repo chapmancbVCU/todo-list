@@ -30,6 +30,7 @@ export class TasksContent {
     deleteTodoItemButton(key, todoItem) {
         const parentProject = todoItem.getParentProject();
 
+        // Decrement sub task count for parent project.
         for(let i = 0; i < localStorage.length; i++) {
             let key = localStorage.key(i);
             if(key.includes('ProjectObj_')) {
@@ -43,6 +44,7 @@ export class TasksContent {
             }
         }
 
+        // Finally delete todo list item from local storage and refresh page.
         localStorage.removeItem(key);
         location.reload();
     }

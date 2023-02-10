@@ -15,8 +15,8 @@ import { DataHandler } from "./DataHandler";
 export class Project extends DataHandler {
     /**
      * Default constructor.
-     * @param {*} itemType Used to differentiate this object from notes and 
-     * todo items when parsing string from local storage.
+     * @param {*} itemType The type of item.  It can be a todo list item,
+     * project, or note.
      * @param {*} title The title for the project.
      */
     constructor(itemType, title, subTasks) {
