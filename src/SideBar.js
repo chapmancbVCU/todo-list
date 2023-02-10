@@ -1,4 +1,5 @@
 import { Project } from "./Project";
+import { TodoItem } from "./TodoItem";
 
 /**
  * This file contains the Page class whose responsibility is to build sidebar 
@@ -194,7 +195,25 @@ export class SideBar {
         
         const todayTaskCount = document.createElement('h3');
         todayTaskCount.classList.add('side-bar-task-count');
-        todayTaskCount.textContent = '10';
+
+        /* Perform test to see if a todo item is due today.  If the item is
+        due today then we increment the count variable. */
+        let count = 0;
+        for(let i  = 0; i < localStorage.length; i++) {
+            let key = localStorage.key(i);
+
+            if(key.includes('TodoItemObj_')) {
+                let todoItem = new TodoItem();
+                todoItem = todoItem.getItem(key);
+                let todaysDate = (new Date()).toISOString().split('T')[0];
+
+                if(todoItem.getDueDate() == todaysDate) {
+                    count++;
+                }
+            }
+        }
+
+        todayTaskCount.textContent = count;
 
         todayTasksContainer.appendChild(todayTaskCount);
 
