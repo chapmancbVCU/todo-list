@@ -26,8 +26,12 @@ export class TasksContent {
         parentContainer.remove();
     }
     
-    deleteTodoItemButton(todoItem) {
+    deleteTodoItemButton(key, todoItem) {
+        const parentProject = todoItem.getParentProject();
 
+        
+
+        localStorage.removeItem(key);
     }
 
     /**
@@ -94,8 +98,9 @@ export class TasksContent {
         const okButton = document.createElement('button');
         okButton.textContent = 'OK';
         okButton.addEventListener('click', () => {
-
+            this.deleteTodoItemButton(key, todoItem);
             this.closeModals(confirmDeleteModal);
+            location.reload();
         });
         deleteModalButtonsContainer.appendChild(okButton);
 
