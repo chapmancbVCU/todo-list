@@ -37,6 +37,10 @@ export class Project extends DataHandler {
         }
     }
 
+    decrementSubTasksCount() {
+        this.subTasks--;
+    }
+    
     /**
      * This function retrieves projects that are represented in local storage 
      * as a string.  The object returned will be a project object.
