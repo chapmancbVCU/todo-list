@@ -21,6 +21,11 @@ export class TasksContent {
         this.tasksContainer = document.querySelector('#tasks-container');
     }
 
+    closeModals(parentContainer) {
+        parentContainer.style.display = 'none';
+        parentContainer.remove();
+    }
+    
     /**
      * This function is responsible for rendering the list of todo items and 
      * buttons the user can use to view and update each item.
@@ -64,15 +69,36 @@ export class TasksContent {
         closeButton.classList.add('close');
         closeButton.textContent = '+';
         confirmDeleteModalTitleContainer.appendChild(closeButton);
-        closeButton.addEventListener('click', function() {
-            confirmDeleteModal.style.display = 'none'
-            confirmDeleteModal.remove();
+        closeButton.addEventListener('click', () => {
+            
+            this.closeModals(confirmDeleteModal);
         });
-
         confirmDeleteModalContent.appendChild(
             confirmDeleteModalTitleContainer);
+
+        // Setup main content for delete todo item modal.
+        const deleteItemModalMain = document.createElement('div');
+        const deleteMessage = document.createElement('div');
+        deleteMessage.classList.add('todo-item-delete-message');
+        deleteMessage.textContent = 
+            `Confirm you want to delete the following todo list item: ${todoItem.getTitle()}`;
+
+        deleteItemModalMain.appendChild(deleteMessage);
+
+        // Setup ok and cancel buttons.
+        const deleteModalButtonsContainer = document.createElement('div');
+        deleteModalButtonsContainer.classList.add('todo-item-cancel-delete-buttons');
+        
+
+        deleteItemModalMain.appendChild(deleteModalButtonsContainer);
+        
+        confirmDeleteModalContent.appendChild(deleteItemModalMain);
         confirmDeleteModal.appendChild(confirmDeleteModalContent);
         contentContainer.appendChild(confirmDeleteModal);
+
+
+
+        
     }
 
     /**
