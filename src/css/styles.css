@@ -23,9 +23,6 @@
 
 .add-item-button {
     color: black;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
     margin-right: auto;
     margin-left: 20px;
     width: 50px;
@@ -36,6 +33,11 @@
 
     background-color: var(--link-and-button-color);
     font-size: 45px;
+
+    /* Horizontally align text in center. */
+    text-align: center;
+    /* Vertically align text in center. */
+    line-height: 50px;
 }
 
 .add-note-button-row {
