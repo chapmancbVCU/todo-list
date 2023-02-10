@@ -47,7 +47,31 @@ export class TasksContent {
         confirmDeleteModal.classList.add('todo-item-details-bg-modal');
         confirmDeleteModal.style.display = 'flex';
 
+        const confirmDeleteModalContent = document.createElement('div');
+        confirmDeleteModalContent.classList.add('todo-item-delete-modal-content');
+        
+        // Setup title and close button.
+        const confirmDeleteModalTitleContainer = document.createElement('div');
+        confirmDeleteModalTitleContainer.classList.add(
+            'todo-item-confirm-delete-title-container');
 
+        const deleteItemTitle = document.createElement('div');
+        deleteItemTitle.textContent = 'Delete Todo List Item';
+        deleteItemTitle.classList.add('modal-title');
+        confirmDeleteModalTitleContainer.appendChild(deleteItemTitle);
+
+        const closeButton = document.createElement('div');
+        closeButton.classList.add('close');
+        closeButton.textContent = '+';
+        confirmDeleteModalTitleContainer.appendChild(closeButton);
+        closeButton.addEventListener('click', function() {
+            confirmDeleteModal.style.display = 'none'
+            confirmDeleteModal.remove();
+        });
+
+        confirmDeleteModalContent.appendChild(
+            confirmDeleteModalTitleContainer);
+        confirmDeleteModal.appendChild(confirmDeleteModalContent);
         contentContainer.appendChild(confirmDeleteModal);
     }
 

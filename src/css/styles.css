@@ -279,6 +279,7 @@ h4 {
 }
 
 .modal-title-container,
+.todo-item-confirm-delete-title-container,
 .todo-item-details-modal-title-container {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -475,6 +476,18 @@ h4 {
     margin-left: 10px;
 }
 
+.todo-item-delete-modal-content {
+    border: solid black 1px;
+    border-radius: 10px;
+    width: 350px;
+    height: 200px;
+    background-color: white;
+    top: 50%;
+
+    /* Need this for close button. */
+    position: relative;
+}
+
 .todo-item-details-button {
     font-size: 15px;
     width: 90px;
@@ -639,6 +652,7 @@ h4 {
         border-bottom: none;
     } 
     
+    .todo-item-delete-modal-content,
     .todo-item-details-modal-content {
         top: 0;
     }
@@ -670,6 +684,7 @@ h4 {
         top: 50%;
     }
 
+    .todo-item-delete-modal-content,
     .todo-item-details-modal-content {
         top: 25%;
     }
