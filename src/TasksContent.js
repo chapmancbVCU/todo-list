@@ -22,11 +22,26 @@ export class TasksContent {
         this.tasksContainer = document.querySelector('#tasks-container');
     }
 
+    /**
+     * This function performs the close operation of a modal that is 
+     * implemented by this class.  It is usually called when the user presses 
+     * the close button in the title bar or a cancel button.
+     * @param {HTMLDivElement} parentContainer 
+     */
     closeModals(parentContainer) {
         parentContainer.style.display = 'none';
         parentContainer.remove();
     }
     
+    /**
+     * This function is called by the event listener in the 
+     * renderConfirmDeleteModal function.  It performs the delete operation 
+     * and updates the parent project so that its subtask count variable is 
+     * decremented.
+     * @param {String} key The string that identifies a particular todo list 
+     * item in local storage. 
+     * @param {TodoItem} todoItem The todo list item we may want to delete.
+     */
     deleteTodoItemButton(key, todoItem) {
         const parentProject = todoItem.getParentProject();
 
@@ -64,9 +79,11 @@ export class TasksContent {
     }
 
     /**
-     * 
-     * @param {*} key 
-     * @param {*} todoItem 
+     * Renders the confirm delete todo item modal.  This modal prompts the 
+     * user if they are sure they want to delete this item.
+     * @param {String} key The string that identifies a particular todo list 
+     * item in local storage. 
+     * @param {TodoItem} todoItem The todo list item we may want to delete.
      */
     renderConfirmDeleteModal(key, todoItem) {
         const contentContainer = document.querySelector('#content');
@@ -132,11 +149,7 @@ export class TasksContent {
         
         confirmDeleteModalContent.appendChild(deleteItemModalMain);
         confirmDeleteModal.appendChild(confirmDeleteModalContent);
-        contentContainer.appendChild(confirmDeleteModal);
-
-
-
-        
+        contentContainer.appendChild(confirmDeleteModal); 
     }
 
     /**
@@ -205,11 +218,13 @@ export class TasksContent {
     }
 
     /**
-     * 
-     * @param {String} key 
-     * @param {TodoItem} todoItem 
+     * Renders a form so that the user can update details for a particular 
+     * todo list item.
+     * @param {String} key The string that identifies a particular todo list 
+     * item in local storage. 
+     * @param {TodoItem} todoItem The todo list item we want to edit.
      */
-    renderEditDetailsModal(key, todoItem) {
+    renderEditTodoListDetailsModal(key, todoItem) {
         alert('Edit details link');
     }
 
@@ -281,7 +296,7 @@ export class TasksContent {
 
         // Event listener for edit button.
         editIcon.addEventListener('click', () => {
-            this.renderEditDetailsModal(key, todoItem);
+            this.renderEditTodoListDetailsModal(key, todoItem);
         })
 
         // Event listener for details button.
