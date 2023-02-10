@@ -36,6 +36,22 @@ export class TasksContent {
     }
 
     /**
+     * 
+     * @param {*} key 
+     * @param {*} todoItem 
+     */
+    renderConfirmDeleteModal(key, todoItem) {
+        const contentContainer = document.querySelector('#content');
+
+        const confirmDeleteModal = document.createElement('div');
+        confirmDeleteModal.classList.add('todo-item-details-bg-modal');
+        confirmDeleteModal.style.display = 'flex';
+
+
+        contentContainer.appendChild(confirmDeleteModal);
+    }
+
+    /**
      * Renders the modal that displays details for a particular todo item when 
      * you click on the details button.
      * @param {TodoItem} todoItem The todo item whose information we want to 
@@ -102,6 +118,15 @@ export class TasksContent {
     }
 
     /**
+     * 
+     * @param {String} key 
+     * @param {TodoItem} todoItem 
+     */
+    renderEditDetailsModal(key, todoItem) {
+        alert('Edit details link');
+    }
+
+    /**
      * Renders a row on the tasks content area for a particular todo list item.
      * @param {String} key The key for a particular todo list item in local 
      * storage.
@@ -164,17 +189,17 @@ export class TasksContent {
 
         // Event listener for delete button.
         deleteIcon.addEventListener('click', () => {
-            alert("click delete");
+            this.renderConfirmDeleteModal(key, todoItem);
         });
 
         // Event listener for edit button.
         editIcon.addEventListener('click', () => {
-            alert('click edit');
+            this.renderEditDetailsModal(key, todoItem);
         })
 
         // Event listener for details button.
         detailsButton.addEventListener('click', () => {
-            this.renderDetailsModal(todoItem);
+            this.renderDetailsModal(key, todoItem);
         });
 
     }
