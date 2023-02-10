@@ -470,7 +470,27 @@ h4 {
 
 
 .todo-item-cancel-delete-button {
-    margin: 25px;
+    margin: 20px;
+    width: 130px;
+    font-size: 16px;
+    font-weight: bold;
+  
+    color: #FFFFFF;
+    background-color: #5995DA;
+  
+    border: none;
+    border-radius: 3px;
+  
+    padding: 10px 40px;
+    cursor: pointer;
+}
+
+.todo-item-cancel-delete-button:hover {
+    background-color: #76AEED;
+}
+  
+  .todo-item-cancel-delete-button:active {
+    background-color: #407FC7;
 }
 
 .todo-item-cancel-delete-buttons-container {
