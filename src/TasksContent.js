@@ -94,8 +94,9 @@ export class TasksContent {
 
         // Setup ok and cancel buttons.
         const deleteModalButtonsContainer = document.createElement('div');
-        deleteModalButtonsContainer.classList.add('todo-item-cancel-delete-buttons');
+        deleteModalButtonsContainer.classList.add('todo-item-cancel-delete-buttons-container');
         const okButton = document.createElement('button');
+        okButton.classList.add('todo-item-cancel-delete-button');
         okButton.textContent = 'OK';
         okButton.addEventListener('click', () => {
             this.deleteTodoItemButton(key, todoItem);
@@ -105,6 +106,7 @@ export class TasksContent {
         deleteModalButtonsContainer.appendChild(okButton);
 
         const cancelButton = document.createElement('button');
+        cancelButton.classList.add('todo-item-cancel-delete-button');
         cancelButton.textContent = "Cancel";
         cancelButton.addEventListener('click', () => {
             this.closeModals(confirmDeleteModal);
