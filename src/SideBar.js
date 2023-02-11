@@ -19,6 +19,17 @@ export class SideBar {
         this.sideBarContainer.appendChild(this.renderClearButton());
     }
 
+    getSelectedTab() {
+        let selectedTab = '';
+        // Selected tab is used to mark which tab is selected in sidebar.
+        for(let i = 0; i < sessionStorage.length; i++) {
+            const key = sessionStorage.key(i);
+            if(key.includes('SelectedTab')) {
+                selectedTab = sessionStorage.getItem(key);
+            }
+        }
+        return selectedTab;
+    }
     /**
      * Getter function for the sidebar container.
      * @returns HTMLDivElement The div that contains the sidebar container.
@@ -89,13 +100,18 @@ export class SideBar {
      * of the sidebar.
      */
     renderHomeContainer() {
+        
         const homeContainer = document.createElement('li');
         homeContainer.setAttribute('id', 'home');
         homeContainer.classList.add('side-bar-row');
 
         const homeLabel = document.createElement('h3');
         homeLabel.classList.add('side-bar-label');
-        homeLabel.textContent = 'Home';
+        if(this.getSelectedTab() === 'HOME') {
+            homeLabel.textContent = '\\\\ Home';
+        } else {
+            homeLabel.textContent = 'Home';
+        }   
         homeContainer.appendChild(homeLabel);
         
         const homeTaskCount = document.createElement('h3');
@@ -114,7 +130,6 @@ export class SideBar {
 
         homeTaskCount.textContent = `${allTodoItemsCount}`;
         homeContainer.appendChild(homeTaskCount);
-
         return homeContainer;
     }
 
@@ -130,7 +145,11 @@ export class SideBar {
 
         const notesLabel = document.createElement('h3');
         notesLabel.classList.add('side-bar-label');
-        notesLabel.textContent = 'Notes';
+        if(this.getSelectedTab() === 'NOTES') {
+            notesLabel.textContent = '\\\\ Notes';
+        } else {
+            notesLabel.textContent = 'Notes';
+        } 
         notesRow.appendChild(notesLabel);
 
         return notesRow;
@@ -191,7 +210,11 @@ export class SideBar {
 
         const todayLabel = document.createElement('h3');
         todayLabel.classList.add('side-bar-label');
-        todayLabel.textContent = 'Today';
+        if(this.getSelectedTab() === 'TODAY') {
+            todayLabel.textContent = '\\\\ Today';
+        } else {
+            todayLabel.textContent = 'Today';
+        } 
         todayTasksContainer.appendChild(todayLabel);
         
         const todayTaskCount = document.createElement('h3');
@@ -233,7 +256,11 @@ export class SideBar {
 
         const weekLabel = document.createElement('h3');
         weekLabel.classList.add('side-bar-label');
-        weekLabel.textContent = 'Week';
+        if(this.getSelectedTab() === 'WEEK') {
+            weekLabel.textContent = '\\\\ Week';
+        } else {
+            weekLabel.textContent = 'Week';
+        } 
         weekTasksContainer.appendChild(weekLabel);
         
         const weekTaskCount = document.createElement('h3');
