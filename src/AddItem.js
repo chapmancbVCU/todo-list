@@ -125,7 +125,8 @@ export class AddItem {
                     title, 
                     description, 
                     dueByDate, 
-                    priority);
+                    priority,
+                    false);
 
                 let date = new Date(Date.now());
                 todoItem.setTodoItem(todoItem, `TodoItemObj_${date}`); 
