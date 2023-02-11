@@ -21,6 +21,7 @@ import tinymce from "tinymce";
 /******************************************************************************
  * INITIAL PAGE SETUP
  *****************************************************************************/
+let selectedTab = '';
 const page = new Page();
 const contentContainer = page.getContentContainer();
 const addItemSelector = document.querySelector('#add-item-button');
@@ -32,9 +33,6 @@ const weekTab = document.querySelector('#week');
 
 const tasksContainer = new TasksContent();
 tasksContainer.renderTasks();
-
-let selectedTab = "";
-
 
 /******************************************************************************
  * Event listeners

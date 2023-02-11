@@ -109,9 +109,11 @@ export class SideBar {
         homeLabel.classList.add('side-bar-label');
         if(this.getSelectedTab() === 'HOME') {
             homeLabel.textContent = '// Home';
-        } else {
+        } else if(this.getSelectedTab() != '') {
             homeLabel.textContent = 'Home';
-        }   
+        } else {
+            homeLabel.textContent = '// Home';
+        }
         homeContainer.appendChild(homeLabel);
         
         const homeTaskCount = document.createElement('h3');
