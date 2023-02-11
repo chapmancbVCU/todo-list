@@ -69,10 +69,10 @@ export class TasksContent {
      * buttons the user can use to view and update each item.
      */
     renderTasks() {
-        for(let i = 0; i < localStorage.length; i++) {
-            /* Before we do anything we need to know which tab is selected
+        /* Before we do anything we need to know which tab is selected
             in order to know what to render. */
-            const selectedTab = sessionStorage.getItem('SelectedTab');
+        const selectedTab = sessionStorage.getItem('SelectedTab');
+        for(let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
             
             if(key.includes('TodoItemObj_')) {
@@ -89,7 +89,14 @@ export class TasksContent {
                         this.renderTodoItem(key, todoItem);
                     }
                 } else if (selectedTab.includes('WEEK')) {
-                    alert('WEEK');
+                    alert('week');
+                } else if (selectedTab.includes('ProjectObj')) {
+                    let project = new Project();
+                    project = project.getItem(selectedTab);
+                    if(todoItem.getParentProject() == project.getTitle()) {
+                        this.renderTodoItem(key, todoItem);
+                    }
+
                 }
             } else if(key.includes('NoteItemObj')) {
                 if(selectedTab.includes('NOTES')) {
@@ -98,6 +105,7 @@ export class TasksContent {
             }
        }
     }
+
 
     /**
      * Renders the confirm delete todo item modal.  This modal prompts the 

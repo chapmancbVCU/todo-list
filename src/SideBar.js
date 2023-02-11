@@ -1,4 +1,5 @@
 import { Project } from "./Project";
+import { TasksContent } from "./TasksContent";
 import { TodoItem } from "./TodoItem";
 
 /**
@@ -187,9 +188,15 @@ export class SideBar {
                 let project = new Project();
                 project = project.getItem(key);
                 
-                // Setup label for particular project.
+                /* Setup label for particular project.  We also test if the 
+                the tab for this project is selected.  If selected we print 
+                // before the title. */
                 const projectLabel = document.createElement('h2');
-                projectLabel.textContent = `${project.getTitle()}`;
+                if(this.getSelectedTab() === key) {
+                    projectLabel.textContent = `// ${project.getTitle()}`;
+                } else {
+                    projectLabel.textContent = `${project.getTitle()}`;
+                }
                 projectLabel.classList.add('project-name');
                 projectDiv.appendChild(projectLabel);
 
@@ -199,6 +206,11 @@ export class SideBar {
                 numberOfTasks.textContent = `${project.getSubTasks()}`;
                 projectDiv.appendChild(numberOfTasks);
                 projectsContainer.appendChild(projectDiv);
+                projectDiv.addEventListener('click', () => {
+                    let selectedTab = `${key}`;
+                    sessionStorage.setItem('SelectedTab', selectedTab);
+                    location.reload();
+                })
             }
         }
         projectsRow.appendChild(projectsContainer);
