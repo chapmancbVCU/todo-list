@@ -43,10 +43,16 @@ export class TasksContent {
      * @param {TodoItem} todoItem The todo list item we may want to delete.
      */
     deleteTodoItemButton(key, todoItem) {
-        const parentProject = todoItem.getParentProject();
+        const parentProjectTitle = todoItem.getParentProject();
+        
+        let projectKey = localStorage.key(parentProjectTitle);
+        let project = new Project();
+        project = project.getItem(project);
+        project.decrementSubTasksCount();
+        project.setTodoItem(project, projectKey);
 
         // Decrement sub task count for parent project.
-        for(let i = 0; i < localStorage.length; i++) {
+        /*for(let i = 0; i < localStorage.length; i++) {
             let key = localStorage.key(i);
             if(key.includes('ProjectObj_')) {
                 let project = new Project();
@@ -57,7 +63,8 @@ export class TasksContent {
                     project.setTodoItem(project, key);
                 }
             }
-        }
+        }*/
+
 
         // Finally delete todo list item from local storage and refresh page.
         localStorage.removeItem(key);
