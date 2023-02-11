@@ -73,7 +73,21 @@ export class TasksContent {
             const key = localStorage.key(i);
             
             if(key.includes('TodoItemObj_')) {
-                this.renderTodoItem(key);
+                let todoItem = new TodoItem();
+                todoItem = todoItem.getItem(key);
+                const selectedTab = sessionStorage.getItem('SelectedTab');
+                if(selectedTab == null || selectedTab.includes('HOME')) {
+                    this.renderTodoItem(key, todoItem);
+                } else if (selectedTab.includes('NOTES')) {
+                    alert('NOTES');
+                } else if (selectedTab.includes('TODAY')) {
+                    let todaysDate = (new Date()).toISOString().split('T')[0];
+                    if(todoItem.getDueDate() == todaysDate) {
+                        this.renderTodoItem(key, todoItem);
+                    }
+                } else if (selectedTab.includes('WEEK')) {
+                    alert('WEEK');
+                }
             }
        }
     }
@@ -233,9 +247,8 @@ export class TasksContent {
      * @param {String} key The key for a particular todo list item in local 
      * storage.
      */
-    renderTodoItem(key) {
-        let todoItem = new TodoItem();
-        todoItem = todoItem.getItem(key);
+    renderTodoItem(key, todoItem) {
+        
         const todoItemContainer = document.createElement('div');
         todoItemContainer.classList.add('todo-item');
         this.setTodoItemRowColor(todoItemContainer, todoItem);
