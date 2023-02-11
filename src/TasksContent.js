@@ -250,6 +250,8 @@ export class TasksContent {
         const toggleChecked = document.createElement('input');
         toggleChecked.setAttribute('type', 'checkbox');
         toggleChecked.setAttribute('id', `${todoItem.getTitle()}-is-complete`);
+
+
         toggleChecked.setAttribute('value', 'is-complete');
         titleLabel.appendChild(toggleChecked);
         const titleContent = document.createElement('span');
@@ -294,16 +296,29 @@ export class TasksContent {
             this.renderConfirmDeleteModal(key, todoItem);
         });
 
-        // Event listener for edit button.
-        editIcon.addEventListener('click', () => {
-            this.renderEditTodoListDetailsModal(key, todoItem);
-        })
-
         // Event listener for details button.
         detailsButton.addEventListener('click', () => {
             this.renderDetailsModal(todoItem);
         });
 
+        // Event listener for edit button.
+        editIcon.addEventListener('click', () => {
+            this.renderEditTodoListDetailsModal(key, todoItem);
+        })
+
+        // Check if item is completed and set value of checkbox.
+        if(todoItem.getIsComplete() === true) {
+            document.getElementById(`${todoItem.getTitle()}-is-complete`).checked = true;
+        } else if (todoItem.getIsComplete() === false) {
+            document.getElementById(`${todoItem.getTitle()}-is-complete`).checked = false;
+        }
+
+        // Event handler for checkbox.
+        toggleChecked.addEventListener('click', () => {
+            todoItem.setIsComplete();
+            todoItem.setTodoItem(todoItem, key);
+            location.reload();
+        });
     }
 
     /**
