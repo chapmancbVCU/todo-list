@@ -65,8 +65,9 @@ export class TasksContent {
     }
 
     /**
-     * This function is responsible for rendering the list of todo items and 
-     * buttons the user can use to view and update each item.
+     * This function is responsible for rendering list of items in the tasks
+     * content section of the page.  Possible lists includes todo items, notes 
+     * and projects.
      */
     renderTasks() {
         /* Before we do anything we need to know which tab is selected
