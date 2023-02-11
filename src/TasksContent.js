@@ -230,6 +230,8 @@ export class TasksContent {
         const description = document.createElement('div');
         description.classList.add('todo-item-details-content');
         description.setAttribute('id', 'foo');
+        description.setAttribute('style', 'overflow-y:scroll;');
+        description.classList.add('todo-item-description');
         detailsModalMain.appendChild(description);
 
         detailsModalContent.appendChild(detailsModalMain);
