@@ -107,7 +107,7 @@ export class TasksContent {
                 }
             } else if(selectedTab.includes('PROJECTS_TAB')) {
                 if(key.includes('ProjectObj_')) {
-                    this.renderProjectsList();
+                    this.renderProjectsList(key);
                 }
             }
        }
@@ -274,10 +274,31 @@ export class TasksContent {
         this.tasksContainer.appendChild(noteItemContainer);
     }
 
-    renderProjectsList() {
+    renderProjectsList(key) {
+        let project = new Project();
+        project = project.getItem(key);
         const projectsContainer = document.createElement('div');
-        projectsContainer.textContent = 'Projects container';
+        projectsContainer.classList.add('project-list-item');
 
+        // Setup title.
+        const projectTitle = document.createElement('div');
+        projectTitle.classList.add('project-list-item-title');
+        projectTitle.textContent = `${project.getTitle()}`;
+        projectsContainer.appendChild(projectTitle);
+
+        // Setup edit and delete icons.
+        const iconsContainer = document.createElement('div');
+        iconsContainer.classList.add('project-list-item-icons-container');
+        const editIcon = new Image();
+        editIcon.classList.add('project-list-item-icon');
+        editIcon.src = EditIcon;
+        iconsContainer.appendChild(editIcon);
+        const deleteIcon = new Image();
+        deleteIcon.classList.add('project-list-item-icon');
+        deleteIcon.src = DeleteIcon;
+
+        iconsContainer.appendChild(deleteIcon);
+        projectsContainer.appendChild(iconsContainer);
         this.tasksContainer.appendChild(projectsContainer);
     }
     /**
@@ -286,7 +307,6 @@ export class TasksContent {
      * storage.
      */
     renderTodoItem(key, todoItem) {
-        
         const todoItemContainer = document.createElement('div');
         todoItemContainer.classList.add('todo-item');
         this.setTodoItemRowColor(todoItemContainer, todoItem);

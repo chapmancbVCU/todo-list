@@ -387,6 +387,37 @@ h4 {
     margin-left: 50px;
 }
 
+.project-list-item {
+    border: solid var(--link-and-button-color) 2px;
+    border-radius: 5px;
+
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.project-list-item-icon {
+    height: 25px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.project-list-item-icons-container {
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+.project-list-item-title {
+    margin-left: 15px;
+    font-size: 20px;
+    /* Vertically align text in center. */
+    line-height: 40px;
+}
+
 .project-row {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -420,7 +451,6 @@ h4 {
 }
 
 .side-bar-task-count {
-
     margin-left: auto;
     margin-right: 20px;
 
@@ -500,6 +530,7 @@ h4 {
 .todo-item-description {
     height: 240px;
 }
+
 .todo-item-date {
     width: 100px;
 }
