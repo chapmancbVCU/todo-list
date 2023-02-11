@@ -70,16 +70,19 @@ export class TasksContent {
      */
     renderTasks() {
         for(let i = 0; i < localStorage.length; i++) {
+            /* Before we do anything we nee to know which tab is selected
+            in order to know what to render. */
+            const selectedTab = sessionStorage.getItem('SelectedTab');
             const key = localStorage.key(i);
             
             if(key.includes('TodoItemObj_')) {
                 let todoItem = new TodoItem();
                 todoItem = todoItem.getItem(key);
-                const selectedTab = sessionStorage.getItem('SelectedTab');
+
+                /* Render todo items depending on which tab is clicked in the 
+                sidebar. */
                 if(selectedTab == null || selectedTab.includes('HOME')) {
                     this.renderTodoItem(key, todoItem);
-                } else if (selectedTab.includes('NOTES')) {
-                    alert('NOTES');
                 } else if (selectedTab.includes('TODAY')) {
                     let todaysDate = (new Date()).toISOString().split('T')[0];
                     if(todoItem.getDueDate() == todaysDate) {
@@ -87,6 +90,12 @@ export class TasksContent {
                     }
                 } else if (selectedTab.includes('WEEK')) {
                     alert('WEEK');
+                }
+            }
+
+            else if(key.includes('NoteItemObj')) {
+                if(selectedTab.includes('NOTES')) {
+                    alert("notes");
                 }
             }
        }
