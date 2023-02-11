@@ -125,6 +125,7 @@ export class SideBar {
      */
     renderNotesRow() {
         const notesRow = document.createElement('li');
+        notesRow.setAttribute('id', 'notes');
         notesRow.classList.add('side-bar-row');
 
         const notesLabel = document.createElement('h3');
