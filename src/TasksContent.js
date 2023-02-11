@@ -91,6 +91,8 @@ export class TasksContent {
                 } else if (selectedTab.includes('WEEK')) {
                     alert('week');
                 } else if (selectedTab.includes('ProjectObj')) {
+                    /* Detect the parent project and populate the tasks 
+                    content container with only those todo items. */
                     let project = new Project();
                     project = project.getItem(selectedTab);
                     if(todoItem.getParentProject() == project.getTitle()) {
