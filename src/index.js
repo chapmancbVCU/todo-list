@@ -87,7 +87,7 @@ homeTab.addEventListener('click', function() {
     sessionStorage.setItem('SelectedTab', selectedTab);
 });
 notesTab.addEventListener('click', function() {
-    selectedTab = 'NOTE';
+    selectedTab = 'NOTES';
     sessionStorage.setItem('SelectedTab', selectedTab);
 });
 todayTab.addEventListener('click', function() {
