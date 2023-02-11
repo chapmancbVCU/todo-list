@@ -25,8 +25,15 @@ const page = new Page();
 const contentContainer = page.getContentContainer();
 const addItemSelector = document.querySelector('#add-item-button');
 const clearLocalStorageSelector = document.querySelector('#clear-item-button');
+const homeTab = document.querySelector('#home');
+const notesTab = document.querySelector('#notes');
+const todayTab = document.querySelector('#today');
+const weekTab = document.querySelector('#week');
+
 const tasksContainer = new TasksContent();
 tasksContainer.renderTasks();
+
+let selectedTab = "";
 
 
 /******************************************************************************
@@ -73,4 +80,21 @@ addItemSelector.addEventListener('click', function(){
         modalMainSelector.appendChild(addItem.renderTodoItemForm());
         addItem.addTodoItemSubmitButtonEventListener();
     });
+});
+
+homeTab.addEventListener('click', function() {
+    selectedTab = 'HOME';
+    sessionStorage.setItem('SelectedTab', selectedTab);
+});
+notesTab.addEventListener('click', function() {
+    selectedTab = 'NOTE';
+    sessionStorage.setItem('SelectedTab', selectedTab);
+});
+todayTab.addEventListener('click', function() {
+    selectedTab = 'TODAY';
+    sessionStorage.setItem('SelectedTab', selectedTab);
+});
+weekTab.addEventListener('click', function() {
+    selectedTab = 'WEEK';
+    sessionStorage.setItem('SelectedTab', selectedTab);
 });
