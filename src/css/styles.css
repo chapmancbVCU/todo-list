@@ -419,7 +419,7 @@ h4 {
 .project-list-item-icon {
     height: 25px;
     margin-top: 5px;
-    margin-left: 5px;
+    margin-left: 15px;
 }
 
 .project-list-item-icons-container {
@@ -553,7 +553,7 @@ h4 {
 
 .todo-item-date,
 .todo-item-icon {
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 .todo-item-delete-message {
@@ -647,7 +647,7 @@ h4 {
     margin-left: 10px;
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 740px) {
     .add-note-button,
     .add-project-button,
     .add-todo-button {
@@ -743,7 +743,7 @@ h4 {
     }
 }
 
-@media only screen and (min-width: 970px) {
+@media only screen and (min-width: 1010px) {
     .todo-item {
         height: 40px;
         flex-direction: row;
