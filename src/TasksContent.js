@@ -107,13 +107,11 @@ export class TasksContent {
                 }
             } else if(selectedTab.includes('PROJECTS_TAB')) {
                 if(key.includes('ProjectObj_')) {
-                    this.renderProjectsList(key);
+                    this.renderProject(key);
                 }
             }
        }
- 
     }
-
 
     /**
      * Renders the confirm delete todo item modal.  This modal prompts the 
@@ -274,7 +272,14 @@ export class TasksContent {
         this.tasksContainer.appendChild(noteItemContainer);
     }
 
-    renderProjectsList(key) {
+    /**
+     * Renders a row that contains information about a project.  This row 
+     * contains the project name and icons for editing the name and deleting 
+     * the project from local storage.
+     * @param {String} key The string that identifies a particular project 
+     * that is contained in local storage.
+     */
+    renderProject(key) {
         let project = new Project();
         project = project.getItem(key);
         const projectsContainer = document.createElement('div');
