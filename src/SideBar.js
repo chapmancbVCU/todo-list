@@ -105,8 +105,13 @@ export class SideBar {
         homeContainer.setAttribute('id', 'home');
         homeContainer.classList.add('side-bar-row');
 
-        const homeLabel = document.createElement('h3');
+        const homeLabel = document.createElement('h2');
         homeLabel.classList.add('side-bar-label');
+
+        /* Determine if home tab is selected.  If it's the case we print 
+        some // before the word home.  We also test if others are selected.
+        Finally, if selectedTab is not set we just print // Home since it is 
+        the default tab. */
         if(this.getSelectedTab() === 'HOME') {
             homeLabel.textContent = '// Home';
         } else if(this.getSelectedTab() != '') {
@@ -145,7 +150,7 @@ export class SideBar {
         notesRow.setAttribute('id', 'notes');
         notesRow.classList.add('side-bar-row');
 
-        const notesLabel = document.createElement('h3');
+        const notesLabel = document.createElement('h2');
         notesLabel.classList.add('side-bar-label');
         if(this.getSelectedTab() === 'NOTES') {
             notesLabel.textContent = '// Notes';
@@ -166,7 +171,7 @@ export class SideBar {
         const projectsRow = document.createElement('li');
         projectsRow.classList.add('side-bar-row');
         projectsRow.setAttribute('id', 'side-bar-projects-row');
-        const projectsRowLabel = document.createElement('h3');
+        const projectsRowLabel = document.createElement('h2');
         projectsRowLabel.classList.add('side-bar-label');
         projectsRowLabel.textContent = 'Projects';
         projectsRow.appendChild(projectsRowLabel);
@@ -183,7 +188,7 @@ export class SideBar {
                 project = project.getItem(key);
                 
                 // Setup label for particular project.
-                const projectLabel = document.createElement('h3');
+                const projectLabel = document.createElement('h2');
                 projectLabel.textContent = `${project.getTitle()}`;
                 projectLabel.classList.add('project-name');
                 projectDiv.appendChild(projectLabel);
@@ -210,7 +215,7 @@ export class SideBar {
         todayTasksContainer.setAttribute('id', 'today');
         todayTasksContainer.classList.add('side-bar-row');
 
-        const todayLabel = document.createElement('h3');
+        const todayLabel = document.createElement('h2');
         todayLabel.classList.add('side-bar-label');
         if(this.getSelectedTab() === 'TODAY') {
             todayLabel.textContent = '// Today';
@@ -256,7 +261,7 @@ export class SideBar {
         weekTasksContainer.setAttribute('id', 'week');
         weekTasksContainer.classList.add('side-bar-row');
 
-        const weekLabel = document.createElement('h3');
+        const weekLabel = document.createElement('h2');
         weekLabel.classList.add('side-bar-label');
         if(this.getSelectedTab() === 'WEEK') {
             weekLabel.textContent = '// Week';
