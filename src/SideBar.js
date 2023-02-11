@@ -86,8 +86,8 @@ export class SideBar {
         clearButtonContainer.classList.add('add-button-container');
         
         const clearItemButton = document.createElement('h3');
-        clearItemButton.setAttribute('id', 'clear-item-button');
-        clearItemButton.classList.add('add-item-button');
+        clearItemButton.setAttribute('id', 'clear-local-storage-button');
+        clearItemButton.classList.add('clear-local-storage-button');
         clearItemButton.textContent = 'C'
         clearButtonContainer.appendChild(clearItemButton);
 
