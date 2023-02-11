@@ -245,9 +245,7 @@ export class SideBar {
         }
 
         todayTaskCount.textContent = count;
-
         todayTasksContainer.appendChild(todayTaskCount);
-
         return todayTasksContainer;
     }
 
@@ -273,9 +271,7 @@ export class SideBar {
         const weekTaskCount = document.createElement('h3');
         weekTaskCount.classList.add('side-bar-task-count');
         weekTaskCount.textContent = '10';
-
         weekTasksContainer.appendChild(weekTaskCount);
-
         return weekTasksContainer;
     }
 }
