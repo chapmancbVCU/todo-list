@@ -175,7 +175,12 @@ export class SideBar {
         const projectsRowLabel = document.createElement('h2');
         projectsRowLabel.setAttribute('id', 'project-row-label');
         projectsRowLabel.classList.add('side-bar-label');
-        projectsRowLabel.textContent = 'Projects';
+        if(this.getSelectedTab() === 'PROJECTS_TAB') {
+            projectsRowLabel.textContent = '// Projects';
+        }  else {
+            projectsRowLabel.textContent = 'Projects';
+        }
+        
         projectsRow.appendChild(projectsRowLabel);
 
         const projectsContainer = document.createElement('div');
