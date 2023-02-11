@@ -45,9 +45,11 @@ export class TasksContent {
     deleteTodoItemButton(key, todoItem) {
         const parentProjectTitle = todoItem.getParentProject();
         
+        /* Get parent project information and update it before we 
+        perform delete on todo list item. */
         let projectKey = localStorage.key(parentProjectTitle);
         let project = new Project();
-        project = project.getItem(project);
+        project = project.getItem(projectKey);
         project.decrementSubTasksCount();
         project.setTodoItem(project, projectKey);
 
