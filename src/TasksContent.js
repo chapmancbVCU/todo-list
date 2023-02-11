@@ -70,7 +70,7 @@ export class TasksContent {
      */
     renderTasks() {
         for(let i = 0; i < localStorage.length; i++) {
-            /* Before we do anything we nee to know which tab is selected
+            /* Before we do anything we need to know which tab is selected
             in order to know what to render. */
             const selectedTab = sessionStorage.getItem('SelectedTab');
             const key = localStorage.key(i);
@@ -91,11 +91,9 @@ export class TasksContent {
                 } else if (selectedTab.includes('WEEK')) {
                     alert('WEEK');
                 }
-            }
-
-            else if(key.includes('NoteItemObj')) {
+            } else if(key.includes('NoteItemObj')) {
                 if(selectedTab.includes('NOTES')) {
-                    alert("notes");
+                    this.renderNote(key);
                 }
             }
        }
@@ -251,6 +249,12 @@ export class TasksContent {
         alert('Edit details link');
     }
 
+    renderNote(key) {
+        const noteItemContainer = document.createElement('div');
+        noteItemContainer.textContent = 'Notes container';
+
+        this.tasksContainer.appendChild(noteItemContainer);
+    }
     /**
      * Renders a row on the tasks content area for a particular todo list item.
      * @param {String} key The key for a particular todo list item in local 
