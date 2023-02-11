@@ -25,13 +25,15 @@ export class TodoItem extends DataHandler {
      * @param {String} priority This value can be low-priority, 
      * medium-priority or high-priority.  This suggests the urgency for this 
      * particular todo list item.
+     * @param {Boolean} isComplete;
      */
-    constructor(itemType, parentProject, title, description, dueDate, priority) {
+    constructor(itemType, parentProject, title, description, dueDate, priority, isComplete) {
         super();
         
         // Instance variables
         this.description = description;
         this.dueDate = dueDate;
+        this.isComplete = isComplete;
         this.itemType = itemType;
         this.parentProject = parentProject;
         this.priority = priority;
@@ -64,6 +66,15 @@ export class TodoItem extends DataHandler {
     }
 
     /**
+     * Returns a Boolean value depending on if the todo item has been 
+     * completed.
+     * @returns Boolean The value is true if item is complete and false if
+     * the item has not been completed.
+     */
+    getIsComplete() {
+        return this.isComplete;
+    }
+    /**
      * This function retrieves todo list items that  are represented in local 
      * storage as a string.  The object returned will be a new todo list itemb
      * @param {String} key A string containing the name of the key you want 
@@ -81,8 +92,15 @@ export class TodoItem extends DataHandler {
             const description = deserializedObj.description;
             const dueDate = deserializedObj.dueDate;
             const priority = deserializedObj.priority;
-
-            const todoItem = new TodoItem(itemType, parentProject, title, description, dueDate, priority);
+            const isItemCoomplete = deserializedObj.isComplete;
+            const todoItem = new TodoItem(
+                itemType, 
+                parentProject, 
+                title, 
+                description, 
+                dueDate, 
+                priority, 
+                isItemCoomplete);
             return todoItem;
         } 
     }
@@ -119,5 +137,16 @@ export class TodoItem extends DataHandler {
      */
     getTitle() {
         return this.title;
+    }
+
+    /**
+     * This function updates the isComplete Boolean value when the user checks 
+     * the checkbox in the tasks content section.  It is used to update the 
+     * checkbox and strike through the title of the completed todo list item. 
+     * @param {Boolean} isComplete A Boolean value that is set when an item is 
+     * set as complete or not.
+     */
+    setIsComplete() {
+        this.isComplete = !this.isComplete;
     }
 }
