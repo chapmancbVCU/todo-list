@@ -85,16 +85,20 @@ addItemSelector.addEventListener('click', function(){
 homeTab.addEventListener('click', function() {
     selectedTab = 'HOME';
     sessionStorage.setItem('SelectedTab', selectedTab);
+    location.reload();
 });
 notesTab.addEventListener('click', function() {
     selectedTab = 'NOTES';
     sessionStorage.setItem('SelectedTab', selectedTab);
+    location.reload();
 });
 todayTab.addEventListener('click', function() {
     selectedTab = 'TODAY';
     sessionStorage.setItem('SelectedTab', selectedTab);
+    location.reload();
 });
 weekTab.addEventListener('click', function() {
     selectedTab = 'WEEK';
     sessionStorage.setItem('SelectedTab', selectedTab);
+    location.reload();
 });

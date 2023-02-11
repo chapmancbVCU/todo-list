@@ -108,7 +108,7 @@ export class SideBar {
         const homeLabel = document.createElement('h3');
         homeLabel.classList.add('side-bar-label');
         if(this.getSelectedTab() === 'HOME') {
-            homeLabel.textContent = '\\\\ Home';
+            homeLabel.textContent = '// Home';
         } else {
             homeLabel.textContent = 'Home';
         }   
@@ -146,7 +146,7 @@ export class SideBar {
         const notesLabel = document.createElement('h3');
         notesLabel.classList.add('side-bar-label');
         if(this.getSelectedTab() === 'NOTES') {
-            notesLabel.textContent = '\\\\ Notes';
+            notesLabel.textContent = '// Notes';
         } else {
             notesLabel.textContent = 'Notes';
         } 
@@ -211,7 +211,7 @@ export class SideBar {
         const todayLabel = document.createElement('h3');
         todayLabel.classList.add('side-bar-label');
         if(this.getSelectedTab() === 'TODAY') {
-            todayLabel.textContent = '\\\\ Today';
+            todayLabel.textContent = '// Today';
         } else {
             todayLabel.textContent = 'Today';
         } 
@@ -257,7 +257,7 @@ export class SideBar {
         const weekLabel = document.createElement('h3');
         weekLabel.classList.add('side-bar-label');
         if(this.getSelectedTab() === 'WEEK') {
-            weekLabel.textContent = '\\\\ Week';
+            weekLabel.textContent = '// Week';
         } else {
             weekLabel.textContent = 'Week';
         } 
