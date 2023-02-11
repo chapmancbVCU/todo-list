@@ -28,7 +28,7 @@ const addItemSelector = document.querySelector('#add-item-button');
 const clearLocalStorageSelector = document.querySelector('#clear-item-button');
 const homeTab = document.querySelector('#home');
 const notesTab = document.querySelector('#notes');
-const projectsTab = document.querySelector('#side-bar-projects-row');
+const projectsTab = document.querySelector('#project-row-label');
 const todayTab = document.querySelector('#today');
 const weekTab = document.querySelector('#week');
 
@@ -94,7 +94,7 @@ notesTab.addEventListener('click', function() {
 });
 
 projectsTab.addEventListener('click', function() {
-    selectedTab = 'PROJECTS';
+    selectedTab = 'PROJECTS_TAB';
     sessionStorage.setItem('SelectedTab', selectedTab);
     location.reload();
 });

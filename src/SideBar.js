@@ -173,6 +173,7 @@ export class SideBar {
         projectsRow.classList.add('side-bar-row');
         projectsRow.setAttribute('id', 'side-bar-projects-row');
         const projectsRowLabel = document.createElement('h2');
+        projectsRowLabel.setAttribute('id', 'project-row-label');
         projectsRowLabel.classList.add('side-bar-label');
         projectsRowLabel.textContent = 'Projects';
         projectsRow.appendChild(projectsRowLabel);

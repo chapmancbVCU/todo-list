@@ -89,8 +89,8 @@ export class TasksContent {
                         this.renderTodoItem(key, todoItem);
                     }
                 } else if (selectedTab.includes('WEEK')) {
-                    alert('week');
-                } else if (selectedTab.includes('ProjectObj')) {
+                   // alert('week');
+                } else if (selectedTab.includes('ProjectObj_')) {
                     /* Detect the parent project and populate the tasks 
                     content container with only those todo items. */
                     let project = new Project();
@@ -100,12 +100,17 @@ export class TasksContent {
                     }
 
                 }
-            } else if(key.includes('NoteItemObj')) {
+            } else if(key.includes('NoteItemObj_')) {
                 if(selectedTab.includes('NOTES')) {
                     this.renderNote(key);
                 }
+            } else if(selectedTab.includes('PROJECTS_TAB')) {
+                if(key.includes('ProjectObj_')) {
+                    this.renderProjectsList();
+                }
             }
        }
+ 
     }
 
 
@@ -239,7 +244,7 @@ export class TasksContent {
 
         const description = document.createElement('div');
         description.classList.add('todo-item-details-content');
-        description.setAttribute('id', 'foo');
+        description.setAttribute('id', 'todo-item-details');
         description.setAttribute('style', 'overflow-y:scroll;');
         description.classList.add('todo-item-description');
         detailsModalMain.appendChild(description);
@@ -247,7 +252,7 @@ export class TasksContent {
         detailsModalContent.appendChild(detailsModalMain);
         detailsContainer.appendChild(detailsModalContent);
         contentContainer.appendChild(detailsContainer);
-        document.getElementById('foo').innerHTML = todoItem.getDescription();
+        document.getElementById('todo-item-details').innerHTML = todoItem.getDescription();
     }
 
     /**
@@ -266,6 +271,13 @@ export class TasksContent {
         noteItemContainer.textContent = 'Notes container';
 
         this.tasksContainer.appendChild(noteItemContainer);
+    }
+
+    renderProjectsList() {
+        const projectsContainer = document.createElement('div');
+        projectsContainer.textContent = 'Projects container';
+
+        this.tasksContainer.appendChild(projectsContainer);
     }
     /**
      * Renders a row on the tasks content area for a particular todo list item.
