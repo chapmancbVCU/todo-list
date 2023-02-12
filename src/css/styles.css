@@ -404,12 +404,46 @@ h4 {
     border: solid black 1px;
     border-radius: 10px;
     width: 350px;
-    height: 200px;
+    height: 220px;
     background-color: white;
     top: 50%;
 
     /* Need this for close button. */
     position: relative;
+}
+
+.project-edit-cancel-delete-button,
+.todo-item-cancel-delete-button {
+    margin: 20px;
+    width: 130px;
+    font-size: 16px;
+    font-weight: bold;
+  
+    color: #FFFFFF;
+    background-color: #5995DA;
+  
+    border: none;
+    border-radius: 3px;
+  
+    padding: 10px 40px;
+    cursor: pointer;
+}
+
+.project-edit-cancel-delete-button:hover,
+.todo-item-cancel-delete-button:hover{
+    background-color: #76AEED;
+}
+
+.project-edit-cancel-delete-button:active, 
+.todo-item-cancel-delete-button:active {
+    background-color: #407FC7;
+}
+
+.project-edit-cancel-delete-buttons-container,
+.todo-item-cancel-delete-buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .project-name {
@@ -525,36 +559,6 @@ h4 {
 
     display: flex;
     flex-direction: column;
-}
-
-.todo-item-cancel-delete-button {
-    margin: 20px;
-    width: 130px;
-    font-size: 16px;
-    font-weight: bold;
-  
-    color: #FFFFFF;
-    background-color: #5995DA;
-  
-    border: none;
-    border-radius: 3px;
-  
-    padding: 10px 40px;
-    cursor: pointer;
-}
-
-.todo-item-cancel-delete-button:hover {
-    background-color: #76AEED;
-}
-  
-  .todo-item-cancel-delete-button:active {
-    background-color: #407FC7;
-}
-
-.todo-item-cancel-delete-buttons-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .todo-item-description {

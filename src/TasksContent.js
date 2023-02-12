@@ -129,7 +129,8 @@ export class TasksContent {
         confirmDeleteModal.style.display = 'flex';
 
         const confirmDeleteModalContent = document.createElement('div');
-        confirmDeleteModalContent.classList.add('todo-item-delete-modal-content');
+        confirmDeleteModalContent.classList.add(
+            'todo-item-delete-modal-content');
         
         // Setup title and close button.
         const confirmDeleteModalTitleContainer = document.createElement('div');
@@ -162,7 +163,8 @@ export class TasksContent {
 
         // Setup ok and cancel buttons.
         const deleteModalButtonsContainer = document.createElement('div');
-        deleteModalButtonsContainer.classList.add('todo-item-cancel-delete-buttons-container');
+        deleteModalButtonsContainer.classList.add(
+            'todo-item-cancel-delete-buttons-container');
         const okButton = document.createElement('button');
         okButton.classList.add('todo-item-cancel-delete-button');
         okButton.textContent = 'OK';
@@ -267,7 +269,8 @@ export class TasksContent {
 
         // Setup title and close button.
         const editProjectTitleContainer = document.createElement('div');
-        editProjectTitleContainer.classList.add('edit-project-title-container');
+        editProjectTitleContainer.classList.add(
+            'edit-project-title-container');
         
         const editProjectTitle = document.createElement('div');
         editProjectTitle.textContent = 'Edit Project Title';
@@ -283,7 +286,53 @@ export class TasksContent {
         });
         editProjectModalContent.appendChild(editProjectTitleContainer);
 
-        
+        // Setup main content for edit project name modal.
+        const editProjectTitleModalMain = document.createElement('div');
+        const projectsForm = document.createElement('form');
+        projectsForm.classList.add('modal-form');
+        projectsForm.setAttribute('method', 'get');
+        projectsForm.setAttribute('action', '#');
+
+        // Setup title
+        const titleRow = document.createElement('div');
+        titleRow.classList.add('form-row');
+        const projectsFormLabel = document.createElement('label');
+        projectsFormLabel.setAttribute('for', 'projects-title');
+        projectsFormLabel.textContent = 'Project Title:';
+        titleRow.appendChild(projectsFormLabel);
+        const title = document.createElement('input');
+        title.setAttribute('id', 'projects-title');
+        title.setAttribute('name', 'projects-title');
+        title.setAttribute('type', 'text');
+        title.setAttribute('minlength', '5');
+        title.setAttribute('maxlength', '20');
+        title.setAttribute('required', '');
+        title.setAttribute('placeholder', `${project.getTitle()}`);
+        titleRow.appendChild(title);
+        projectsForm.appendChild(titleRow);
+
+        // Setup submit button
+        const buttonsRow = document.createElement('div');
+        buttonsRow.classList.add('project-edit-cancel-delete-buttons-container');
+        const submitButton = document.createElement('button');
+        submitButton.setAttribute('id', 'edit-project-button');
+        submitButton.setAttribute('type', 'submit');
+        submitButton.classList.add('project-edit-cancel-delete-button');
+        submitButton.textContent = 'Submit';
+        buttonsRow.appendChild(submitButton);
+
+        const cancelButton = document.createElement('button');
+        cancelButton.classList.add('todo-item-cancel-delete-button');
+        cancelButton.textContent = "Cancel";
+        cancelButton.addEventListener('click', () => {
+            this.closeModals(editProjectModal);
+        });
+        buttonsRow.appendChild(cancelButton);
+        projectsForm.appendChild(buttonsRow);
+
+        editProjectTitleModalMain.appendChild(projectsForm);
+
+        editProjectModalContent.appendChild(editProjectTitleModalMain);
         editProjectModal.appendChild(editProjectModalContent);
         contentContainer.appendChild(editProjectModal);
     }
