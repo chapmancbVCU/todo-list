@@ -421,23 +421,27 @@ export class TasksContent {
         editIcon.classList.add('project-list-item-icon');
         editIcon.src = EditIcon;
         iconsContainer.appendChild(editIcon);
-        const deleteIcon = new Image();
-        deleteIcon.classList.add('project-list-item-icon');
-        deleteIcon.src = DeleteIcon;
-
-        iconsContainer.appendChild(deleteIcon);
-        projectsContainer.appendChild(iconsContainer);
-        this.tasksContainer.appendChild(projectsContainer);
-
-        // Event listener for delete button.
-        deleteIcon.addEventListener('click', () => {
-            alert('delete');
-        });
-
         // Event listener for edit button.
         editIcon.addEventListener('click', () => {
             this.renderEditProjectModal(key, project);
-        })
+        });
+
+        if(project.getSubTasks() > 0) {
+            const deleteIcon = new Image();
+            deleteIcon.classList.add('project-list-item-icon');
+            deleteIcon.src = DeleteIcon;
+            iconsContainer.appendChild(deleteIcon);
+            // Event listener for delete button.
+            deleteIcon.addEventListener('click', () => {
+                alert('delete');
+            });
+        }
+        projectsContainer.appendChild(iconsContainer);
+        this.tasksContainer.appendChild(projectsContainer);
+
+        
+
+        
     }
     /**
      * Renders a row on the tasks content area for a particular todo list item.
