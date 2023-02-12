@@ -24,9 +24,12 @@ export class TodoItem extends DataHandler {
      * @param {String} priority This value can be low-priority, 
      * medium-priority or high-priority.  This suggests the urgency for this 
      * particular todo list item.
-     * @param {Boolean} isComplete;
+     * @param {Boolean} isComplete This value gets updated when the user 
+     * selects or unselects the checkbox for the row for this todo item in the 
+     * tasks content area.
      */
-    constructor(itemType, parentProject, title, description, dueDate, priority, isComplete) {
+    constructor(itemType, parentProject, title, description, dueDate, 
+        priority, isComplete) {
         super();
         
         /**
