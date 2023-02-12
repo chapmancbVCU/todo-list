@@ -3,6 +3,7 @@
  *****************************************************************************/
 import EditIcon from './icons/note-edit.png';
 import DeleteIcon from './icons/trash-can.png';
+import { Note } from './Note';
 import { Project } from './Project';
 import { TodoItem } from "./TodoItem"; 
 
@@ -111,6 +112,8 @@ export class TasksContent {
                 }
             } else if(key.includes('NoteItemObj_')) {
                 if(selectedTab.includes('NOTES')) {
+                    this.tasksContainer.classList.remove('tasks-container');
+                    this.tasksContainer.classList.add('notes-content-grid');
                     this.renderNote(key);
                 }
             } else if(selectedTab.includes('PROJECTS_TAB')) {
@@ -406,10 +409,45 @@ export class TasksContent {
      * @returns void
      */
     renderNote(key) {
-        const noteItemContainer = document.createElement('div');
-        noteItemContainer.textContent = 'Notes container';
+        let note = new Note();
+        note = note.getItem(key);
 
-        this.tasksContainer.appendChild(noteItemContainer);
+        // Setup card for this note.
+        const noteCard = document.createElement('div');
+        noteCard.classList.add('note-card');
+        
+        // Setup title.
+        const noteTitleRow = document.createElement('div');
+        noteTitleRow.classList.add('note-title-row');
+        const noteTitle = document.createElement('div');
+        noteTitle.classList.add('note-title');
+        noteTitle.textContent = `${note.getTitle()}`;
+        noteTitleRow.appendChild(noteTitle);
+        
+        // Setup delete button.
+        const deleteButton = document.createElement('div');
+        deleteButton.classList.add('note-delete');
+        deleteButton.textContent = '+';
+        noteTitleRow.appendChild(deleteButton);
+        deleteButton.addEventListener('click', () => {
+            
+        });
+
+        noteCard.appendChild(noteTitleRow);
+
+        // Setup content.
+        const noteContent = document.createElement('div');
+        noteContent.classList.add('note-content');
+        noteContent.setAttribute('id', `note-content-${key}`);
+        noteContent.setAttribute('style', 'overflow-y:scroll;');
+        noteCard.appendChild(noteContent);
+
+        this.tasksContainer.appendChild(noteCard);
+
+        /* Now that we have appended note to parent we can access the id 
+        for setting content of this note. */
+        document.getElementById(
+            `note-content-${key}`).innerHTML = note.getDescription();
     }
 
     /**
