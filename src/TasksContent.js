@@ -45,7 +45,7 @@ export class TasksContent {
      * This function is called by the event listener in the 
      * renderConfirmDeleteModal function.  It performs the delete operation 
      * and updates the parent project so that its subtask count variable is 
-     * decremented.
+     * decremented if the object we are removing is a todo list item.
      * @param {String} key The string that identifies a particular todo list 
      * item, project, or note object in local storage. 
      * @param {DataHandler} item A todo list item, project, or note object. 
@@ -53,9 +53,12 @@ export class TasksContent {
      * @returns void
      */
     deleteTodoItemButton(key, item) {
+        /* Test if this item is a todo item object.  Since the todo item may 
+        have a parent project we perform this test so we can decrement the
+        number of subtasks associated with the project. */
         if(key.includes('TodoItemObj_')) {
             const parentProject = item.getParentProject();
-            // Decrement sub task count for parent project.
+            
             for(let i = 0; i < localStorage.length; i++) {
                 let projectKey = localStorage.key(i);
                 if(projectKey.includes('ProjectObj_')) {
@@ -69,61 +72,11 @@ export class TasksContent {
                 }
             }
         }
-        // Finally delete todo list item from local storage and refresh page.
+
+        /* Finally we delete the todo item, project, or note object and 
+        reload the page so updates appear. */
         localStorage.removeItem(key);
         location.reload();
-    }
-
-    /**
-     * This function is responsible for rendering list of items in the tasks
-     * content section of the page.  Possible lists includes todo items, notes 
-     * and projects.
-     * @returns void
-     */
-    renderTasks() {
-        /* Before we do anything we need to know which tab is selected
-            in order to know what to render. */
-        const selectedTab = sessionStorage.getItem('SelectedTab');
-        for(let i = 0; i < localStorage.length; i++) {
-            const key = localStorage.key(i);
-            
-            if(key.includes('TodoItemObj_')) {
-                let todoItem = new TodoItem();
-                todoItem = todoItem.getItem(key);
-
-                /* Render todo items depending on which tab is clicked in the 
-                sidebar. */
-                if(selectedTab == null || selectedTab.includes('HOME')) {
-                    this.renderTodoItem(key, todoItem);
-                } else if (selectedTab.includes('TODAY')) {
-                    let todaysDate = (new Date()).toISOString().split('T')[0];
-                    if(todoItem.getDueDate() == todaysDate) {
-                        this.renderTodoItem(key, todoItem);
-                    }
-                } else if (selectedTab.includes('WEEK')) {
-                   // alert('week');
-                } else if (selectedTab.includes('ProjectObj_')) {
-                    /* Detect the parent project and populate the tasks 
-                    content container with only those todo items. */
-                    let project = new Project();
-                    project = project.getItem(selectedTab);
-                    if(todoItem.getParentProject() == project.getTitle()) {
-                        this.renderTodoItem(key, todoItem);
-                    }
-
-                }
-            } else if(key.includes('NoteItemObj_')) {
-                if(selectedTab.includes('NOTES')) {
-                    this.tasksContainer.classList.remove('tasks-container');
-                    this.tasksContainer.classList.add('notes-content-grid');
-                    this.renderNote(key);
-                }
-            } else if(selectedTab.includes('PROJECTS_TAB')) {
-                if(key.includes('ProjectObj_')) {
-                    this.renderProject(key);
-                }
-            }
-       }
     }
 
     /**
@@ -267,6 +220,10 @@ export class TasksContent {
         detailsContainer.appendChild(detailsModalContent);
         contentContainer.appendChild(detailsContainer);
         document.getElementById('todo-item-details').innerHTML = todoItem.getDescription();
+    }
+
+    renderEditNoteModal(key, note) {
+        alert('edit note function');
     }
 
     /**
@@ -424,7 +381,7 @@ export class TasksContent {
         noteTitle.textContent = `${note.getTitle()}`;
         noteTitleRow.appendChild(noteTitle);
         noteTitle.addEventListener('click', () => {
-            alert('title');
+            this.renderEditNoteModal(key, note);
         });
 
         // Setup delete button.
@@ -445,7 +402,7 @@ export class TasksContent {
         noteContent.setAttribute('id', `note-content-${key}`);
         noteContent.setAttribute('style', 'overflow-y:scroll;');
         noteContent.addEventListener('click', () => {
-            alert('click content');
+            this.renderEditNoteModal(key, note);
         });
         noteCard.appendChild(noteContent);
         this.tasksContainer.appendChild(noteCard);
@@ -596,6 +553,58 @@ export class TasksContent {
             todoItem.setTodoItem(todoItem, key);
             location.reload();
         });
+    }
+
+    /**
+     * This function is responsible for rendering list of items in the tasks
+     * content section of the page.  Possible lists includes todo items, notes 
+     * and projects.
+     * @returns void
+     */
+    renderTasks() {
+        /* Before we do anything we need to know which tab is selected
+            in order to know what to render. */
+        const selectedTab = sessionStorage.getItem('SelectedTab');
+        for(let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            
+            if(key.includes('TodoItemObj_')) {
+                let todoItem = new TodoItem();
+                todoItem = todoItem.getItem(key);
+
+                /* Render todo items depending on which tab is clicked in the 
+                sidebar. */
+                if(selectedTab == null || selectedTab.includes('HOME')) {
+                    this.renderTodoItem(key, todoItem);
+                } else if (selectedTab.includes('TODAY')) {
+                    let todaysDate = (new Date()).toISOString().split('T')[0];
+                    if(todoItem.getDueDate() == todaysDate) {
+                        this.renderTodoItem(key, todoItem);
+                    }
+                } else if (selectedTab.includes('WEEK')) {
+                   // alert('week');
+                } else if (selectedTab.includes('ProjectObj_')) {
+                    /* Detect the parent project and populate the tasks 
+                    content container with only those todo items. */
+                    let project = new Project();
+                    project = project.getItem(selectedTab);
+                    if(todoItem.getParentProject() == project.getTitle()) {
+                        this.renderTodoItem(key, todoItem);
+                    }
+
+                }
+            } else if(key.includes('NoteItemObj_')) {
+                if(selectedTab.includes('NOTES')) {
+                    this.tasksContainer.classList.remove('tasks-container');
+                    this.tasksContainer.classList.add('notes-content-grid');
+                    this.renderNote(key);
+                }
+            } else if(selectedTab.includes('PROJECTS_TAB')) {
+                if(key.includes('ProjectObj_')) {
+                    this.renderProject(key);
+                }
+            }
+       }
     }
 
     /**
