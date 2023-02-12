@@ -95,6 +95,10 @@ export class Project extends DataHandler {
         this.subTasks++;
     }
 
+    /**
+     * Setter method for updating the title of a project.
+     * @param {String} title The title of the project that we want to set. 
+     */
     setTitle(title) {
         this.title = title;
     }
