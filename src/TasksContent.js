@@ -401,9 +401,6 @@ export class TasksContent {
         noteContent.classList.add('note-content');
         noteContent.setAttribute('id', `note-content-${key}`);
         noteContent.setAttribute('style', 'overflow-y:scroll;');
-        noteContent.addEventListener('click', () => {
-            this.renderEditNoteModal(key, note);
-        });
         noteCard.appendChild(noteContent);
         this.tasksContainer.appendChild(noteCard);
 

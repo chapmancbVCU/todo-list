@@ -324,23 +324,27 @@ h4 {
     height: 230px;
 }
 
-.note-content::-webkit-scrollbar {
+.note-content::-webkit-scrollbar,
+.todo-item-description::-webkit-scrollbar {
     width: 10px;
 }
 
-.note-content::-webkit-scrollbar-track {
+.note-content::-webkit-scrollbar-track,
+.todo-item-description::-webkit-scrollbar-track {
     background: hsl(120 75% 50% / 1);
     border-radius: 100vw;
     margin-block: 0.5em;
 }
 
-.note-content::-webkit-scrollbar-thumb {
+.note-content::-webkit-scrollbar-thumb,
+.todo-item-description::-webkit-scrollbar-thumb {
     background: hsl(120 100% 20% / 1);
     border: .05rem solid hsl(120 75% 50% / 1);
     border-radius: 100vw;
 }
 
-.note-content::-webkit-scrollbar-thumb:hover {
+.note-content::-webkit-scrollbar-thumb:hover,
+.todo-item-description::-webkit-scrollbar-thumb:hover {
     background: hsl(120 100% 20% / .5);
 }
 
