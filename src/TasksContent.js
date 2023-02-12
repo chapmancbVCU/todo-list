@@ -1,6 +1,7 @@
 /******************************************************************************
  * IMPORTS
  *****************************************************************************/
+import { DataHandler } from './DataHandler';
 import EditIcon from './icons/note-edit.png';
 import DeleteIcon from './icons/trash-can.png';
 import { Note } from './Note';
@@ -47,26 +48,26 @@ export class TasksContent {
      * decremented.
      * @param {String} key The string that identifies a particular todo list 
      * item in local storage. 
-     * @param {TodoItem} todoItem The todo list item we may want to delete.
+     * @param {DataHandler} item The todo list item we may want to delete.
      * @returns void
      */
-    deleteTodoItemButton(key, todoItem) {
-        const parentProject = todoItem.getParentProject();
-
-        // Decrement sub task count for parent project.
-        for(let i = 0; i < localStorage.length; i++) {
-            let key = localStorage.key(i);
-            if(key.includes('ProjectObj_')) {
-                let project = new Project();
-                project = project.getItem(key);
-                const projectTitle = project.getTitle();
-                if(projectTitle === parentProject) {
-                    project.decrementSubTasksCount();
-                    project.setTodoItem(project, key);
+    deleteTodoItemButton(key, item) {
+        if(key.includes('TodoItemObj_')) {
+            const parentProject = item.getParentProject();
+            // Decrement sub task count for parent project.
+            for(let i = 0; i < localStorage.length; i++) {
+                let key = localStorage.key(i);
+                if(key.includes('ProjectObj_')) {
+                    let project = new Project();
+                    project = project.getItem(key);
+                    const projectTitle = project.getTitle();
+                    if(projectTitle === parentProject) {
+                        project.decrementSubTasksCount();
+                        project.setTodoItem(project, key);
+                    }
                 }
             }
         }
-
         // Finally delete todo list item from local storage and refresh page.
         localStorage.removeItem(key);
         location.reload();
@@ -181,8 +182,6 @@ export class TasksContent {
         okButton.textContent = 'OK';
         okButton.addEventListener('click', () => {
             this.deleteTodoItemButton(key, todoItem);
-            this.closeModals(confirmDeleteModal);
-            location.reload();
         });
         deleteModalButtonsContainer.appendChild(okButton);
 
@@ -423,14 +422,18 @@ export class TasksContent {
         noteTitle.classList.add('note-title');
         noteTitle.textContent = `${note.getTitle()}`;
         noteTitleRow.appendChild(noteTitle);
-        
+        noteTitle.addEventListener('click', () => {
+            alert('title');
+        });
+
         // Setup delete button.
         const deleteButton = document.createElement('div');
         deleteButton.classList.add('note-delete');
         deleteButton.textContent = '+';
         noteTitleRow.appendChild(deleteButton);
         deleteButton.addEventListener('click', () => {
-            
+            this.deleteTodoItemButton(key, note);
+            location.reload();
         });
 
         noteCard.appendChild(noteTitleRow);
@@ -440,8 +443,10 @@ export class TasksContent {
         noteContent.classList.add('note-content');
         noteContent.setAttribute('id', `note-content-${key}`);
         noteContent.setAttribute('style', 'overflow-y:scroll;');
+        noteContent.addEventListener('click', () => {
+            alert('click content');
+        });
         noteCard.appendChild(noteContent);
-
         this.tasksContainer.appendChild(noteCard);
 
         /* Now that we have appended note to parent we can access the id 
@@ -491,7 +496,7 @@ export class TasksContent {
             iconsContainer.appendChild(deleteIcon);
             // Event listener for delete button.
             deleteIcon.addEventListener('click', () => {
-                alert('delete');
+                this.deleteTodoItemButton(key, project);
             });
         }
         projectsContainer.appendChild(iconsContainer);
