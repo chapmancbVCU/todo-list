@@ -9,7 +9,8 @@ import { TodoItem } from "./TodoItem";
 
 /**
  * Contains the TasksContent class which is responsible for rendering contents 
- * of local storage as a list.
+ * of local storage as a list.  Other features include functions for viewing 
+ * details of available content and updating such content with forms.
  * @class The TasksContent class is responsible for managing what is rendered 
  * in the main section of the page that lists what items are in local storage.
  * @author Chad Chapman
@@ -254,6 +255,39 @@ export class TasksContent {
         document.getElementById('todo-item-details').innerHTML = todoItem.getDescription();
     }
 
+    renderEditProjectModal(project) {
+        const contentContainer = document.querySelector('#content');
+
+        const editProjectModal = document.createElement('div');
+        editProjectModal.classList.add('project-details-bg-modal');
+        editProjectModal.style.display = 'flex';
+
+        const editProjectModalContent = document.createElement('div')
+        editProjectModalContent.classList.add('project-details-modal-content');
+
+        // Setup title and close button.
+        const editProjectTitleContainer = document.createElement('div');
+        editProjectTitleContainer.classList.add('edit-project-title-container');
+        
+        const editProjectTitle = document.createElement('div');
+        editProjectTitle.textContent = 'Edit Project Title';
+        editProjectTitle.classList.add('modal-title');
+        editProjectTitleContainer.appendChild(editProjectTitle);
+
+        const closeButton = document.createElement('div');
+        closeButton.classList.add('close');
+        closeButton.textContent = '+';
+        editProjectTitleContainer.appendChild(closeButton);
+        closeButton.addEventListener('click', () => {
+            this.closeModals(editProjectModal);
+        });
+        editProjectModalContent.appendChild(editProjectTitleContainer);
+
+        
+        editProjectModal.appendChild(editProjectModalContent);
+        contentContainer.appendChild(editProjectModal);
+    }
+
     /**
      * Renders a form so that the user can update details for a particular 
      * todo list item.
@@ -305,6 +339,16 @@ export class TasksContent {
         iconsContainer.appendChild(deleteIcon);
         projectsContainer.appendChild(iconsContainer);
         this.tasksContainer.appendChild(projectsContainer);
+
+        // Event listener for delete button.
+        deleteIcon.addEventListener('click', () => {
+            alert('delete');
+        });
+
+        // Event listener for edit button.
+        editIcon.addEventListener('click', () => {
+            this.renderEditProjectModal(project);
+        })
     }
     /**
      * Renders a row on the tasks content area for a particular todo list item.
@@ -384,9 +428,11 @@ export class TasksContent {
 
         // Check if item is completed and set value of checkbox.
         if(todoItem.getIsComplete() === true) {
-            document.getElementById(`${todoItem.getTitle()}-is-complete`).checked = true;
+            document.getElementById(
+                `${todoItem.getTitle()}-is-complete`).checked = true;
         } else if (todoItem.getIsComplete() === false) {
-            document.getElementById(`${todoItem.getTitle()}-is-complete`).checked = false;
+            document.getElementById(
+                `${todoItem.getTitle()}-is-complete`).checked = false;
         }
 
         // Event handler for checkbox.
