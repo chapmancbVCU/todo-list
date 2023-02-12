@@ -1,5 +1,4 @@
 /**
- * This file contains the ProjectsForm class.
  * @class Class for rendering and handling data entry for adding a new project.
  * @author Chad Chapman
  */

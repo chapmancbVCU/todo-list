@@ -5,7 +5,6 @@ import { Project } from "./Project";
 
 
 /**
- * This file contains the TodoItemForm class
  * @class The TodoItemForm class is responsible for rendering the form for 
  * creating a new todo list item.
  * @author Chad Chapman

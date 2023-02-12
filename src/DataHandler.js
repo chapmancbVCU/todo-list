@@ -1,16 +1,9 @@
-/******************************************************************************
- * IMPORTS
- *****************************************************************************/
-
-
 /**
- * This super class contains methods for managing local storage.
  * @class The DataHandler class contains CRUD operations for managing local 
  * storage.
  * @author Chad Chapman
  */
 export class DataHandler {
-
     /**
      * Default constructor for the DataHandler super class.
      */

@@ -4,14 +4,12 @@
 import { DataHandler } from "./DataHandler";
 
 /**
- * Functions that support implementation of the Note object.
  * @class The Note class is responsible for creating todo item objects.  It
  *  extends the DataHandler class which supports CRUD operations.
  * @extends DataHandler The class responsible for supporting CRUD operations.
  * @author Chad Chapman
  */
 export class Note extends DataHandler {
-
     /**
      * Constructor for Note object.
      * @param {String} itemType The type of item.  It can be a todo list item,

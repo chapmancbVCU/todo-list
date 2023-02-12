@@ -7,12 +7,11 @@ import { Project } from './Project';
 import { TodoItem } from "./TodoItem"; 
 
 
-/**
- * Contains the TasksContent class which is responsible for rendering contents 
- * of local storage as a list.  Other features include functions for viewing 
- * details of available content and updating such content with forms.
+/** 
  * @class The TasksContent class is responsible for managing what is rendered 
- * in the main section of the page that lists what items are in local storage.
+ * in the main section of the page that lists what items are in local storage. 
+ * Other features include functions for viewing details of available content 
+ * and updating such content with forms.
  * @author Chad Chapman
  */
 export class TasksContent {

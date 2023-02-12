@@ -6,12 +6,10 @@ import ClipboardList from './images/clipboard-list.png';
 import { SideBar } from './SideBar.js';
 import TextIcon from './images/text.png';
 
+
 /**
- * This file contains the Page class whose responsibility is to build the main 
- * components of the index.html page.
- * @class The Page class is responsible for the initial setup of the Todo List 
- * page's 
- * components.
+ * @class This file contains the Page class whose responsibility is to build the main 
+ * components of the index.html page..
  * @author Chad Chapman
  */
 export class Page {

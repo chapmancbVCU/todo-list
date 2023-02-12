@@ -5,7 +5,6 @@ import { DataHandler } from "./DataHandler";
 
 
 /**
- * Functions that support implementation of the Project class.
  * @class The Projects class is responsible for creating Project objects.  It
  *  extends the DataHandler class which supports CRUD operations.
  * @extends DataHandler The class responsible for supporting CRUD operations.
@@ -15,9 +14,10 @@ import { DataHandler } from "./DataHandler";
 export class Project extends DataHandler {
     /**
      * Default constructor.
-     * @param {*} itemType The type of item.  It can be a todo list item,
+     * @param {String} itemType The type of item.  It can be a todo list item,
      * project, or note.
-     * @param {*} title The title for the project.
+     * @param {String} title The title for the project.
+     * @param {Number} The number of subtasks associated with a project.
      */
     constructor(itemType, title, subTasks) {
         super();

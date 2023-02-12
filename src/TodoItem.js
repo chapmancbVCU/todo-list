@@ -5,7 +5,6 @@ import { DataHandler } from "./DataHandler";
 
 
 /**
- * Functions that support implementation of Todo List item
  * @class The TodoItem class is responsible for creating todo item objects.  It
  *  extends the DataHandler class which supports CRUD operations.
  * @extends DataHandler The class responsible for supporting CRUD operations.

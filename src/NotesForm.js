@@ -1,5 +1,4 @@
 /**
- * This file contains the NotesForm class
  * @class The NotesForm class is responsible for rendering the form for 
  * creating a new note.
  * @author Chad Chapman

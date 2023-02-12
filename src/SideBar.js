@@ -1,5 +1,7 @@
+/******************************************************************************
+ * IMPORTS
+ *****************************************************************************/
 import { Project } from "./Project";
-import { TasksContent } from "./TasksContent";
 import { TodoItem } from "./TodoItem";
 
 /**
@@ -55,8 +57,6 @@ export class SideBar {
         categories.appendChild(this.renderWeekTasksContainer());
         categories.appendChild(this.renderProjectsRow());
         categories.appendChild(this.renderNotesRow());
-        //categories.appendChild(this.renderAddButton());
-        //categories.appendChild(this.renderClearButton());
         return categories;
     }
     
@@ -93,6 +93,7 @@ export class SideBar {
 
         return clearButtonContainer;
     }
+    
     /**
      * Renders the the home tasks row.
      * @param { Integer} allProjects The integer value that represents the 

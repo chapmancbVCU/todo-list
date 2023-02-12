@@ -8,8 +8,9 @@ import { Project } from "./Project.js";
 import { ProjectsForm } from "./ProjectsForm.js";
 import { Note } from "./Note.js";
 
+
 /**
- * Contains the class Class that supports functions for rendering form for 
+ * @class Contains the class Class that supports functions for rendering form for 
  * adding an item.  More specifically the modal div that presents a web form.
  * @author Chad Chapman
  */
