@@ -27,6 +27,8 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import { Project } from "./Project";
+import { TasksContent } from "./TasksContent";
+import { TodoItem } from "./TodoItem";
 
 /**
  * This file contains the Page class whose responsibility is to build sidebar 
@@ -46,6 +48,17 @@ export class SideBar {
         this.sideBarContainer.appendChild(this.renderClearButton());
     }
 
+    getSelectedTab() {
+        let selectedTab = '';
+        // Selected tab is used to mark which tab is selected in sidebar.
+        for(let i = 0; i &lt; sessionStorage.length; i++) {
+            const key = sessionStorage.key(i);
+            if(key.includes('SelectedTab')) {
+                selectedTab = sessionStorage.getItem(key);
+            }
+        }
+        return selectedTab;
+    }
     /**
      * Getter function for the sidebar container.
      * @returns HTMLDivElement The div that contains the sidebar container.
@@ -83,7 +96,7 @@ export class SideBar {
         const addButtonContainer = document.createElement('div');
         addButtonContainer.classList.add('add-button-container');
         
-        const addItemButton = document.createElement('button');
+        const addItemButton = document.createElement('h3');
         addItemButton.setAttribute('id', 'add-item-button');
         addItemButton.classList.add('add-item-button');
         addItemButton.textContent = '+'
@@ -100,9 +113,9 @@ export class SideBar {
         const clearButtonContainer = document.createElement('div');
         clearButtonContainer.classList.add('add-button-container');
         
-        const clearItemButton = document.createElement('button');
-        clearItemButton.setAttribute('id', 'clear-item-button');
-        clearItemButton.classList.add('add-item-button');
+        const clearItemButton = document.createElement('h3');
+        clearItemButton.setAttribute('id', 'clear-local-storage-button');
+        clearItemButton.classList.add('clear-local-storage-button');
         clearItemButton.textContent = 'C'
         clearButtonContainer.appendChild(clearItemButton);
 
@@ -116,13 +129,25 @@ export class SideBar {
      * of the sidebar.
      */
     renderHomeContainer() {
+        
         const homeContainer = document.createElement('li');
         homeContainer.setAttribute('id', 'home');
         homeContainer.classList.add('side-bar-row');
 
-        const homeLabel = document.createElement('h3');
+        const homeLabel = document.createElement('h2');
         homeLabel.classList.add('side-bar-label');
-        homeLabel.textContent = 'Home';
+
+        /* Determine if home tab is selected.  If it's the case we print 
+        some // before the word home.  We also test if others are selected.
+        Finally, if selectedTab is not set we just print // Home since it is 
+        the default tab. */
+        if(this.getSelectedTab() === 'HOME') {
+            homeLabel.textContent = '// Home';
+        } else if(this.getSelectedTab() != '') {
+            homeLabel.textContent = 'Home';
+        } else {
+            homeLabel.textContent = '// Home';
+        }
         homeContainer.appendChild(homeLabel);
         
         const homeTaskCount = document.createElement('h3');
@@ -141,7 +166,6 @@ export class SideBar {
 
         homeTaskCount.textContent = `${allTodoItemsCount}`;
         homeContainer.appendChild(homeTaskCount);
-
         return homeContainer;
     }
 
@@ -152,11 +176,16 @@ export class SideBar {
      */
     renderNotesRow() {
         const notesRow = document.createElement('li');
+        notesRow.setAttribute('id', 'notes');
         notesRow.classList.add('side-bar-row');
 
-        const notesLabel = document.createElement('h3');
+        const notesLabel = document.createElement('h2');
         notesLabel.classList.add('side-bar-label');
-        notesLabel.textContent = 'Notes';
+        if(this.getSelectedTab() === 'NOTES') {
+            notesLabel.textContent = '// Notes';
+        } else {
+            notesLabel.textContent = 'Notes';
+        } 
         notesRow.appendChild(notesLabel);
 
         return notesRow;
@@ -171,9 +200,15 @@ export class SideBar {
         const projectsRow = document.createElement('li');
         projectsRow.classList.add('side-bar-row');
         projectsRow.setAttribute('id', 'side-bar-projects-row');
-        const projectsRowLabel = document.createElement('h3');
+        const projectsRowLabel = document.createElement('h2');
+        projectsRowLabel.setAttribute('id', 'project-row-label');
         projectsRowLabel.classList.add('side-bar-label');
-        projectsRowLabel.textContent = 'Projects';
+        if(this.getSelectedTab() === 'PROJECTS_TAB') {
+            projectsRowLabel.textContent = '// Projects';
+        }  else {
+            projectsRowLabel.textContent = 'Projects';
+        }
+        
         projectsRow.appendChild(projectsRowLabel);
 
         const projectsContainer = document.createElement('div');
@@ -187,9 +222,15 @@ export class SideBar {
                 let project = new Project();
                 project = project.getItem(key);
                 
-                // Setup label for particular project.
-                const projectLabel = document.createElement('h3');
-                projectLabel.textContent = `${project.getTitle()}`;
+                /* Setup label for particular project.  We also test if the 
+                the tab for this project is selected.  If selected we print 
+                // before the title. */
+                const projectLabel = document.createElement('h2');
+                if(this.getSelectedTab() === key) {
+                    projectLabel.textContent = `// ${project.getTitle()}`;
+                } else {
+                    projectLabel.textContent = `${project.getTitle()}`;
+                }
                 projectLabel.classList.add('project-name');
                 projectDiv.appendChild(projectLabel);
 
@@ -199,6 +240,11 @@ export class SideBar {
                 numberOfTasks.textContent = `${project.getSubTasks()}`;
                 projectDiv.appendChild(numberOfTasks);
                 projectsContainer.appendChild(projectDiv);
+                projectDiv.addEventListener('click', () => {
+                    let selectedTab = `${key}`;
+                    sessionStorage.setItem('SelectedTab', selectedTab);
+                    location.reload();
+                })
             }
         }
         projectsRow.appendChild(projectsContainer);
@@ -215,17 +261,37 @@ export class SideBar {
         todayTasksContainer.setAttribute('id', 'today');
         todayTasksContainer.classList.add('side-bar-row');
 
-        const todayLabel = document.createElement('h3');
+        const todayLabel = document.createElement('h2');
         todayLabel.classList.add('side-bar-label');
-        todayLabel.textContent = 'Today';
+        if(this.getSelectedTab() === 'TODAY') {
+            todayLabel.textContent = '// Today';
+        } else {
+            todayLabel.textContent = 'Today';
+        } 
         todayTasksContainer.appendChild(todayLabel);
         
         const todayTaskCount = document.createElement('h3');
         todayTaskCount.classList.add('side-bar-task-count');
-        todayTaskCount.textContent = '10';
 
+        /* Perform test to see if a todo item is due today.  If the item is
+        due today then we increment the count variable. */
+        let count = 0;
+        for(let i  = 0; i &lt; localStorage.length; i++) {
+            let key = localStorage.key(i);
+
+            if(key.includes('TodoItemObj_')) {
+                let todoItem = new TodoItem();
+                todoItem = todoItem.getItem(key);
+                let todaysDate = (new Date()).toISOString().split('T')[0];
+
+                if(todoItem.getDueDate() == todaysDate) {
+                    count++;
+                }
+            }
+        }
+
+        todayTaskCount.textContent = count;
         todayTasksContainer.appendChild(todayTaskCount);
-
         return todayTasksContainer;
     }
 
@@ -239,17 +305,19 @@ export class SideBar {
         weekTasksContainer.setAttribute('id', 'week');
         weekTasksContainer.classList.add('side-bar-row');
 
-        const weekLabel = document.createElement('h3');
+        const weekLabel = document.createElement('h2');
         weekLabel.classList.add('side-bar-label');
-        weekLabel.textContent = 'Week';
+        if(this.getSelectedTab() === 'WEEK') {
+            weekLabel.textContent = '// Week';
+        } else {
+            weekLabel.textContent = 'Week';
+        } 
         weekTasksContainer.appendChild(weekLabel);
         
         const weekTaskCount = document.createElement('h3');
         weekTaskCount.classList.add('side-bar-task-count');
         weekTaskCount.textContent = '10';
-
         weekTasksContainer.appendChild(weekTaskCount);
-
         return weekTasksContainer;
     }
 }
@@ -270,7 +338,7 @@ export class SideBar {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Feb 08 2023 19:52:30 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Sat Feb 11 2023 21:14:15 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

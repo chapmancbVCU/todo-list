@@ -105,7 +105,7 @@ in the main section of the page that lists what items are in local storage.</div
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line16">line 16</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -161,6 +161,471 @@ in the main section of the page that lists what items are in local storage.</div
 
     
         <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="closeModals"><span class="type-signature"></span>closeModals<span class="signature">(parentContainer)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function performs the close operation of a modal that is 
+implemented by this class.  It is usually called when the user presses 
+the close button in the title bar or a cancel button.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>parentContainer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLDivElement</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line32">line 32</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="deleteTodoItemButton"><span class="type-signature"></span>deleteTodoItemButton<span class="signature">(key, todoItem)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    This function is called by the event listener in the 
+renderConfirmDeleteModal function.  It performs the delete operation 
+and updates the parent project so that its subtask count variable is 
+decremented.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The string that identifies a particular todo list 
+item in local storage.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>todoItem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="TodoItem.html">TodoItem</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The todo list item we may want to delete.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line46">line 46</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="renderConfirmDeleteModal"><span class="type-signature"></span>renderConfirmDeleteModal<span class="signature">(key, todoItem)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Renders the confirm delete todo item modal.  This modal prompts the 
+user if they are sure they want to delete this item.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The string that identifies a particular todo list 
+item in local storage.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>todoItem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="TodoItem.html">TodoItem</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The todo list item we may want to delete.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line124">line 124</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         
             
@@ -271,7 +736,471 @@ show to the user.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line44">line 44</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line199">line 199</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="renderEditProjectModal"><span class="type-signature"></span>renderEditProjectModal<span class="signature">(key, project)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Renders the form for updating the details for a project.  This function 
+also performs form validation and submit operations.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The string that identifies a particular project  
+in local storage.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>project</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Project.html">Project</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The project whose title we want to edit.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line267">line 267</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="renderEditTodoListDetailsModal"><span class="type-signature"></span>renderEditTodoListDetailsModal<span class="signature">(key, todoItem)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Renders a form so that the user can update details for a particular 
+todo list item.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The string that identifies a particular todo list 
+item in local storage.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>todoItem</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="TodoItem.html">TodoItem</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The todo list item we want to edit.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line387">line 387</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="renderProject"><span class="type-signature"></span>renderProject<span class="signature">(key)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Renders a row that contains information about a project.  This row 
+contains the project name and icons for editing the name and deleting 
+the project from local storage.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The string that identifies a particular project 
+that is contained in local storage.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line405">line 405</a>
     </li></ul></dd>
     
 
@@ -315,8 +1244,9 @@ show to the user.</td>
 
 
 <div class="description">
-    This function is responsible for rendering the list of todo items and 
-buttons the user can use to view and update each item.
+    This function is responsible for rendering list of items in the tasks
+content section of the page.  Possible lists includes todo items, notes 
+and projects.
 </div>
 
 
@@ -360,7 +1290,7 @@ buttons the user can use to view and update each item.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line28">line 28</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line73">line 73</a>
     </li></ul></dd>
     
 
@@ -498,7 +1428,7 @@ storage.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line109">line 109</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line450">line 450</a>
     </li></ul></dd>
     
 
@@ -637,7 +1567,7 @@ can set the text for the priority level.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line198">line 198</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line564">line 564</a>
     </li></ul></dd>
     
 
@@ -811,7 +1741,7 @@ we want to test.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line180">line 180</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line546">line 546</a>
     </li></ul></dd>
     
 
@@ -863,7 +1793,7 @@ we want to test.</td>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Feb 08 2023 19:52:30 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Sat Feb 11 2023 21:14:15 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
