@@ -319,11 +319,18 @@ export class TasksContent {
         submitButton.setAttribute('type', 'submit');
         submitButton.classList.add('project-edit-cancel-delete-button');
         submitButton.textContent = 'Submit';
-        submitButton.addEventListener('click', () => {
+        submitButton.addEventListener('click', (event) => {
             let newTitle = document.getElementById('projects-title').value;
-            project.setTitle(newTitle);
-            project.setTodoItem(project, key);
-            location.reload();
+            event.preventDefault();
+            if(newTitle == "") {
+                alert("Title is a required field");
+            } else if (newTitle.length < 5) {
+                alert("Title must be at least 5 characters in length");
+            } else {
+                project.setTitle(newTitle);
+                project.setTodoItem(project, key);
+                location.reload();
+            }
         });
         buttonsRow.appendChild(submitButton);
 
