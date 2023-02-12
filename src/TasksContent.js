@@ -414,7 +414,7 @@ export class TasksContent {
         projectTitle.textContent = `${project.getTitle()}`;
         projectsContainer.appendChild(projectTitle);
 
-        // Setup edit and delete icons.
+        // Setup edit button icon.
         const iconsContainer = document.createElement('div');
         iconsContainer.classList.add('project-list-item-icons-container');
         const editIcon = new Image();
@@ -426,6 +426,8 @@ export class TasksContent {
             this.renderEditProjectModal(key, project);
         });
 
+        /* Setup delete button icon.  This feature is only available when 
+        the project has zero subtasks. */
         if(project.getSubTasks() > 0) {
             const deleteIcon = new Image();
             deleteIcon.classList.add('project-list-item-icon');
@@ -438,11 +440,8 @@ export class TasksContent {
         }
         projectsContainer.appendChild(iconsContainer);
         this.tasksContainer.appendChild(projectsContainer);
-
-        
-
-        
     }
+    
     /**
      * Renders a row on the tasks content area for a particular todo list item.
      * @param {String} key The key for a particular todo list item in local 
