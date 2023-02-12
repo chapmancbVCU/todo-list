@@ -308,6 +308,8 @@ h4 {
 }
 
 .note-card {
+    margin-top: 10px;
+    margin-bottom: 10px;
     font-size: 19px;
     border: solid var(--link-and-button-color) 2px;
     border-radius: 5px;
@@ -321,14 +323,33 @@ h4 {
     margin-bottom: 10px;
     height: 230px;
 }
+
+.note-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.note-content::-webkit-scrollbar-track {
+    background: hsl(120 75% 50% / 1);
+    border-radius: 100vw;
+    margin-block: 0.5em;
+}
+
+.note-content::-webkit-scrollbar-thumb {
+    background: hsl(120 100% 20% / 1);
+    border: .05rem solid hsl(120 75% 50% / 1);
+    border-radius: 100vw;
+}
+
+.note-content::-webkit-scrollbar-thumb:hover {
+    background: hsl(120 100% 20% / .5);
+}
+
 .notes-content-grid {
-    width: 95%;
-    padding-top: 20px;
-    margin-left: 30px;
-    margin-right: 30px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 15px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .note-delete {
@@ -647,15 +668,15 @@ h4 {
     border-radius: 3px;
 
     cursor: pointer;
-  }
-  
-  .todo-item-details-button:hover {
+}
+
+.todo-item-details-button:hover {
     background-color: #76AEED;
-  }
-  
-  .todo-item-details-button:active {
+}
+
+.todo-item-details-button:active {
     background-color: #407FC7;
-  }
+}
 
 .todo-item-details-button,
 .todo-item-icon {
@@ -709,6 +730,15 @@ h4 {
 
 .todo-item-title span{
     margin-left: 10px;
+}
+
+@media only screen and (min-width: 600px) {
+    .notes-content-grid  { 
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 15px;
+        width: 95%;
+    }
 }
 
 @media only screen and (min-width: 780px) {
@@ -787,6 +817,8 @@ h4 {
         flex-direction: column;
     }
 
+    
+
     .priority-buttons-container {
         width: 300px;
     }
@@ -806,8 +838,6 @@ h4 {
         border-right: solid var(--side-bar-border) 3px;
         border-bottom: none;
     } 
-    
-    
 }
 
 @media only screen and (min-width: 1100px) {
