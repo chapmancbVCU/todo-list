@@ -30,6 +30,7 @@ export class AddItem {
      * Contains event listener for when user clicks the submit button on the 
      * add note form.  Actions include form validation, adding the note to 
      * local storage, resetting form, closing modal, and reloading the page.
+     * @returns void
      */
     addNoteSubmitButtonEventListener() {
         const noteFormSubmit = document.querySelector('#add-note-button');
@@ -65,6 +66,7 @@ export class AddItem {
      * Contains event listener for when user clicks the submit button on the 
      * add projects form.  Actions include form validation, adding the project  
      * to local storage, resetting form, closing modal, and reloading the page.
+     * @returns void
      */
     addProjectSubmitButtonEventListener() {
         const projectFormSubmit = document.querySelector('#add-project-button');
@@ -96,6 +98,7 @@ export class AddItem {
      * Contains event listener for when user clicks the submit button on the 
      * add todo item form.  Actions include form validation, adding Todo item 
      * to local storage, resetting form, closing modal, and reloading the page.
+     * @returns void
      */
     addTodoItemSubmitButtonEventListener() {
         const todoFormSubmit = document.querySelector('#add-todo-item-button');
@@ -192,6 +195,7 @@ export class AddItem {
 
     /**
      * Closes the modal when you press the close button.
+     * @returns void
      */
     static closeModal() {
         const modal = document.querySelector('.bg-modal');
@@ -202,6 +206,7 @@ export class AddItem {
     /**
      * Removes current modal form from DOM when user selects a different form 
      * in the modal sidebar.
+     * @returns void
      */
     removeModalFormFromDOM() {
         const modalMainSelector = 

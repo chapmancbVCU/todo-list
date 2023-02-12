@@ -50,6 +50,10 @@ export class Project extends DataHandler {
         }
     }
 
+    /**
+     * This function decrements by 1, the number of subTasks.
+     * @returns void
+     */
     decrementSubTasksCount() {
         this.subTasks--;
     }
@@ -103,6 +107,7 @@ export class Project extends DataHandler {
     /**
      * Increments the this.subTasks instance variables when a new task is 
      * associated with a parent project.
+     * @returns void
      */
     incrementSubTasksCount() {
         this.subTasks++;

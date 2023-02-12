@@ -30,7 +30,9 @@ export class TasksContent {
      * This function performs the close operation of a modal that is 
      * implemented by this class.  It is usually called when the user presses 
      * the close button in the title bar or a cancel button.
-     * @param {HTMLDivElement} parentContainer 
+     * @param {HTMLDivElement} parentContainer The modal whose close button is 
+     * associated with that we want to close.
+     * @returns void
      */
     closeModals(parentContainer) {
         parentContainer.style.display = 'none';
@@ -45,6 +47,7 @@ export class TasksContent {
      * @param {String} key The string that identifies a particular todo list 
      * item in local storage. 
      * @param {TodoItem} todoItem The todo list item we may want to delete.
+     * @returns void
      */
     deleteTodoItemButton(key, todoItem) {
         const parentProject = todoItem.getParentProject();
@@ -72,6 +75,7 @@ export class TasksContent {
      * This function is responsible for rendering list of items in the tasks
      * content section of the page.  Possible lists includes todo items, notes 
      * and projects.
+     * @returns void
      */
     renderTasks() {
         /* Before we do anything we need to know which tab is selected
@@ -123,6 +127,7 @@ export class TasksContent {
      * @param {String} key The string that identifies a particular todo list 
      * item in local storage. 
      * @param {TodoItem} todoItem The todo list item we may want to delete.
+     * @returns void
      */
     renderConfirmDeleteModal(key, todoItem) {
         const contentContainer = document.querySelector('#content');
@@ -198,6 +203,7 @@ export class TasksContent {
      * you click on the details button.
      * @param {TodoItem} todoItem The todo item whose information we want to 
      * show to the user.
+     * @returns void
      */
     renderDetailsModal(todoItem) {
         const contentContainer = document.querySelector('#content');
@@ -266,6 +272,7 @@ export class TasksContent {
      * @param {String} key The string that identifies a particular project  
      * in local storage. 
      * @param {Project} project The project whose title we want to edit.
+     * @returns void
      */ 
     renderEditProjectModal(key, project) {
         const contentContainer = document.querySelector('#content');
@@ -386,11 +393,18 @@ export class TasksContent {
      * @param {String} key The string that identifies a particular todo list 
      * item in local storage. 
      * @param {TodoItem} todoItem The todo list item we want to edit.
+     * @returns void
      */
     renderEditTodoListDetailsModal(key, todoItem) {
         alert('Edit details link');
     }
 
+    /**
+     * Renders a note inside the tasks content container.
+     * @param {String} key The string that identifies a particular note in 
+     * local storage. 
+     * @returns void
+     */
     renderNote(key) {
         const noteItemContainer = document.createElement('div');
         noteItemContainer.textContent = 'Notes container';
@@ -404,6 +418,7 @@ export class TasksContent {
      * the project from local storage.
      * @param {String} key The string that identifies a particular project 
      * that is contained in local storage.
+     * @returns void
      */
     renderProject(key) {
         let project = new Project();
@@ -449,6 +464,7 @@ export class TasksContent {
      * Renders a row on the tasks content area for a particular todo list item.
      * @param {String} key The key for a particular todo list item in local 
      * storage.
+     * @returns void
      */
     renderTodoItem(key, todoItem) {
         const todoItemContainer = document.createElement('div');
@@ -545,6 +561,7 @@ export class TasksContent {
      * information about a particular todo list item.
      * @param {TodoItem} todoItem The todo item object whose priority level 
      * we want to test.
+     * @returns void
      */
     setTodoItemRowColor(todoItemRow, todoItem) {
         if(todoItem.getPriority() === 'low-priority') {
@@ -563,6 +580,7 @@ export class TasksContent {
      * can set the text for the priority level.
      * @returns Returns either the strings "Low", "Medium", or "High" 
      * depending on the value of the priority paramenter.
+     * @returns void
      */
     setPriorityString(priority) {
         return (priority === 'low-priority') ? 'Low' 

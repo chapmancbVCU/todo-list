@@ -18,6 +18,7 @@ export class DataHandler {
      * to add to local storage.
      * @param {String} title The keyName for the how we will identify an item 
      * in local storage.
+     * @returns void
      */
     setTodoItem(item, title) {
         let serializedObj = JSON.stringify(item);

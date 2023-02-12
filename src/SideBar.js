@@ -26,6 +26,11 @@ export class SideBar {
         this.sideBarContainer.appendChild(this.renderClearButton());
     }
 
+    /**
+     * We use this function to get the selected tab so that we can update 
+     * the sidebar row labels.
+     * @returns The string representation of the currently selected tab.
+     */
     getSelectedTab() {
         let selectedTab = '';
         // Selected tab is used to mark which tab is selected in sidebar.
@@ -37,6 +42,7 @@ export class SideBar {
         }
         return selectedTab;
     }
+
     /**
      * Getter function for the sidebar container.
      * @returns HTMLDivElement The div that contains the sidebar container.
