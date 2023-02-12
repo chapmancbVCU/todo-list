@@ -47,8 +47,9 @@ export class TasksContent {
      * and updates the parent project so that its subtask count variable is 
      * decremented.
      * @param {String} key The string that identifies a particular todo list 
-     * item in local storage. 
-     * @param {DataHandler} item The todo list item we may want to delete.
+     * item, project, or note object in local storage. 
+     * @param {DataHandler} item A todo list item, project, or note object. 
+     * All three of these object extends the DataHandler class.
      * @returns void
      */
     deleteTodoItemButton(key, item) {
@@ -56,14 +57,14 @@ export class TasksContent {
             const parentProject = item.getParentProject();
             // Decrement sub task count for parent project.
             for(let i = 0; i < localStorage.length; i++) {
-                let key = localStorage.key(i);
-                if(key.includes('ProjectObj_')) {
+                let projectKey = localStorage.key(i);
+                if(projectKey.includes('ProjectObj_')) {
                     let project = new Project();
-                    project = project.getItem(key);
+                    project = project.getItem(projectKey);
                     const projectTitle = project.getTitle();
                     if(projectTitle === parentProject) {
                         project.decrementSubTasksCount();
-                        project.setTodoItem(project, key);
+                        project.setTodoItem(project, projectKey);
                     }
                 }
             }
