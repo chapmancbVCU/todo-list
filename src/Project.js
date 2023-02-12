@@ -94,4 +94,8 @@ export class Project extends DataHandler {
     incrementSubTasksCount() {
         this.subTasks++;
     }
+
+    setTitle(title) {
+        this.title = title;
+    }
 }
