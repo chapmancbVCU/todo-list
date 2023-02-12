@@ -257,9 +257,18 @@ export class TasksContent {
         document.getElementById('todo-item-details').innerHTML = todoItem.getDescription();
     }
 
-    renderEditProjectModal(key,project) {
+    /**
+     * Renders the form for updating the details for a project.  This function 
+     * also performs form validation and submit operations.
+     * @param {String} key The string that identifies a particular project  
+     * in local storage. 
+     * @param {Project} project The project whose title we want to edit.
+     */ 
+    renderEditProjectModal(key, project) {
         const contentContainer = document.querySelector('#content');
 
+        // Before we proceed we need to get original title.
+        const originalTitle = project.getTitle();
         const editProjectModal = document.createElement('div');
         editProjectModal.classList.add('project-details-bg-modal');
         editProjectModal.style.display = 'flex';
@@ -307,7 +316,7 @@ export class TasksContent {
         title.setAttribute('minlength', '5');
         title.setAttribute('maxlength', '20');
         title.setAttribute('required', '');
-        title.setAttribute('value', `${project.getTitle()}`);
+        title.setAttribute('value', `${originalTitle}`);
         titleRow.appendChild(title);
         projectsForm.appendChild(titleRow);
 
@@ -322,13 +331,31 @@ export class TasksContent {
         submitButton.addEventListener('click', (event) => {
             let newTitle = document.getElementById('projects-title').value;
             event.preventDefault();
+
+            // Perform form validation.
             if(newTitle == "") {
                 alert("Title is a required field");
             } else if (newTitle.length < 5) {
                 alert("Title must be at least 5 characters in length");
             } else {
+                // Update the project.
                 project.setTitle(newTitle);
                 project.setTodoItem(project, key);
+
+                /* Update the parent project for child todo items.  To do this 
+                we must got through each todo item in storage and compare.  If 
+                there is a match we perform the update. */
+                for(let i = 0; i < localStorage.length; i++) {
+                    const todoItemKey = localStorage.key(i);
+                    if(todoItemKey.includes('TodoItemObj_')) {
+                        let todoItem = new TodoItem();
+                        todoItem = todoItem.getItem(todoItemKey);
+                        if(todoItem.getParentProject() === originalTitle) {
+                            todoItem.setParentProject(newTitle);
+                            todoItem.setTodoItem(todoItem, todoItemKey);
+                        }
+                    }
+                }
                 location.reload();
             }
         });
