@@ -428,7 +428,7 @@ export class TasksContent {
 
         /* Setup delete button icon.  This feature is only available when 
         the project has zero subtasks. */
-        if(project.getSubTasks() > 0) {
+        if(project.getSubTasks() < 1) {
             const deleteIcon = new Image();
             deleteIcon.classList.add('project-list-item-icon');
             deleteIcon.src = DeleteIcon;
@@ -441,7 +441,7 @@ export class TasksContent {
         projectsContainer.appendChild(iconsContainer);
         this.tasksContainer.appendChild(projectsContainer);
     }
-    
+
     /**
      * Renders a row on the tasks content area for a particular todo list item.
      * @param {String} key The key for a particular todo list item in local 
