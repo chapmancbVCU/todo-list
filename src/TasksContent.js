@@ -257,7 +257,7 @@ export class TasksContent {
         document.getElementById('todo-item-details').innerHTML = todoItem.getDescription();
     }
 
-    renderEditProjectModal(project) {
+    renderEditProjectModal(key,project) {
         const contentContainer = document.querySelector('#content');
 
         const editProjectModal = document.createElement('div');
@@ -307,7 +307,7 @@ export class TasksContent {
         title.setAttribute('minlength', '5');
         title.setAttribute('maxlength', '20');
         title.setAttribute('required', '');
-        title.setAttribute('placeholder', `${project.getTitle()}`);
+        title.setAttribute('value', `${project.getTitle()}`);
         titleRow.appendChild(title);
         projectsForm.appendChild(titleRow);
 
@@ -319,6 +319,12 @@ export class TasksContent {
         submitButton.setAttribute('type', 'submit');
         submitButton.classList.add('project-edit-cancel-delete-button');
         submitButton.textContent = 'Submit';
+        submitButton.addEventListener('click', () => {
+            let newTitle = document.getElementById('projects-title').value;
+            project.setTitle(newTitle);
+            project.setTodoItem(project, key);
+            location.reload();
+        });
         buttonsRow.appendChild(submitButton);
 
         const cancelButton = document.createElement('button');
@@ -396,7 +402,7 @@ export class TasksContent {
 
         // Event listener for edit button.
         editIcon.addEventListener('click', () => {
-            this.renderEditProjectModal(project);
+            this.renderEditProjectModal(key, project);
         })
     }
     /**
