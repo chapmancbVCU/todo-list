@@ -149,4 +149,13 @@ export class TodoItem extends DataHandler {
     setIsComplete() {
         this.isComplete = !this.isComplete;
     }
+
+    /**
+     * Setter function for the parentProject instance variable.
+     * @param {String} project The name of the project we want to set to the 
+     * parentProject variable.
+     */
+    setParentProject(project) {
+        this.parentProject = project;
+    }
 }
