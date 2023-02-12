@@ -19,6 +19,10 @@ export class TasksContent {
      * Default constructor.
      */
     constructor() {
+        /**
+         * @property {Element} tasksContainer The parent container for the 
+         * contents of the tasks container.  Its id is #tasks-container.
+         */
         this.tasksContainer = document.querySelector('#tasks-container');
     }
 

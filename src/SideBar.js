@@ -16,6 +16,10 @@ export class SideBar {
      * @param {HTMLDivElement} sideBarContainer The container for the sidebar. 
      */
     constructor(sideBarContainer) {
+        /**
+         * @property {HTMLDivElement} sideBarContainer The HTMLDivElement for 
+         * the sidebar of this website.
+         */
         this.sideBarContainer = sideBarContainer;
         this.sideBarContainer.appendChild(this.initializeSidebarComponents());
         this.sideBarContainer.appendChild(this.renderAddButton());

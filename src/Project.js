@@ -22,9 +22,22 @@ export class Project extends DataHandler {
     constructor(itemType, title, subTasks) {
         super();
 
-        // Instance variables
+        /**
+         * @property {String} itemType The type of object we are working with 
+         * so that we can identify it when parsing this object's information 
+         * from local storage.
+         */
         this.itemType = itemType;
+
+        /**
+         * @property {String} title The title for this note.
+         */
         this.title = title;
+
+        /**
+         * @property {Number} subTasks The number of subtasks that are 
+         * associated with this project.
+         */
         this.subTasks = subTasks;
 
         /**

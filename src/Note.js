@@ -3,6 +3,7 @@
  *****************************************************************************/
 import { DataHandler } from "./DataHandler";
 
+
 /**
  * @class The Note class is responsible for creating todo item objects.  It
  *  extends the DataHandler class which supports CRUD operations.
@@ -20,9 +21,22 @@ export class Note extends DataHandler {
     constructor(itemType, title, description) {
         super();
 
-        // Instance variables
+        /**
+         * @property {String} description The description for a note.  This is 
+         * the main content of the note itself
+         */
         this.description = description;
+
+        /**
+         * @property {String} itemType The type of object we are working with 
+         * so that we can identify it when parsing this object's information 
+         * from local storage.
+         */
         this.itemType = itemType;
+
+        /**
+         * @property {String} title The title for this note.
+         */
         this.title = title;
 
         /**

@@ -29,13 +29,49 @@ export class TodoItem extends DataHandler {
     constructor(itemType, parentProject, title, description, dueDate, priority, isComplete) {
         super();
         
-        // Instance variables
+        /**
+         * @property {String} description The description for a note.  This is 
+         * the main content of the note itself
+         */
         this.description = description;
+
+        /**
+         * @property {String} dueDate A string representation of the due date 
+         * for this todo list item.
+         */
         this.dueDate = dueDate;
+
+        /**
+         * @property {Boolean} isComplete The status of the note.  If false, 
+         * then the tasks is new and has not been completed.  If true, then 
+         * the task has been completed.
+         */
         this.isComplete = isComplete;
+
+        /**
+         * @property {String} itemType The type of object we are working with 
+         * so that we can identify it when parsing this object's information 
+         * from local storage.
+         */
         this.itemType = itemType;
+
+        /**
+         * @property {String} parentProject The parent project for this todo 
+         * list item.
+         */
         this.parentProject = parentProject;
+
+        /**
+         * @property {String} priority The priority level represents the 
+         * urgency level for completing this task.  The available levels are 
+         * low-priority, medium-priority, and high-priority.
+         */
         this.priority = priority;
+
+        /**
+         * @property {String} title The title for this note.
+         */
+        this.title = title;
         this.title = title;
 
         /**

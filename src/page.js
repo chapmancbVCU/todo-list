@@ -17,6 +17,11 @@ export class Page {
      * Default constructor.
      */
     constructor() {
+        /**
+         * The parent HTMLDivElement for all content of this page.  It is identified 
+         * by the id #content.
+         * @type {HTMLDivElement}
+         */
         this.container = document.querySelector('#content');
         this.container.classList.add('content');
         
@@ -29,6 +34,11 @@ export class Page {
         /* This may look awkward.  The parent div is created in this class
         and the SideBar class is responsible for setting up the content
         inside this div. */
+        /**
+         * @property {SideBar} sideBar This object is responsible for 
+         * rendering and updating content of the sidebar of this 
+         * website.
+         */
         this.sideBar = new SideBar(this.sideBarComponents());
         mainContainer.appendChild(this.sideBar.getSideBarContainer());
         mainContainer.appendChild(this.tasksContainerComponents());
