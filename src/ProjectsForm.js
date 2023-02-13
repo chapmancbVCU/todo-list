@@ -35,7 +35,6 @@ export class ProjectsForm {
         title.setAttribute('id', 'projects-title');
         title.setAttribute('name', 'projects-title');
         title.setAttribute('type', 'text');
-        title.setAttribute('minlength', '5');
         title.setAttribute('maxlength', '20');
         title.setAttribute('required', '');
         title.setAttribute('placeholder', 'Project title less than 20 characters');

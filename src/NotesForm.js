@@ -37,7 +37,6 @@ export class NotesForm {
         title.setAttribute('id', 'note-title');
         title.setAttribute('name', 'note-title');
         title.setAttribute('type', 'text');
-        title.setAttribute('minlength', '5');
         title.setAttribute('maxlength', '30');
         title.setAttribute('required', '');
         title.setAttribute('placeholder', 'Ex: Get groceries');
