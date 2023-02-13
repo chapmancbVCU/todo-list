@@ -21,11 +21,22 @@ import tinymce from "tinymce";
 /******************************************************************************
  * INITIAL PAGE SETUP
  *****************************************************************************/
+/* Test if selected tab is set in session storage.  If not set then we set then
+ * default to HOME. */
 let selectedTab = '';
-if (selectedTab == '') {
+let isSelectedTabSet = false;
+for(let i = 0; i < sessionStorage.length; i++) {
+    const key = sessionStorage.key(i);
+    if(key.includes('SelectedTab')) {
+        isSelectedTabSet = true;
+        selectedTab = sessionStorage.getItem(key);
+    }
+}
+if(isSelectedTabSet == false) {
     selectedTab = 'HOME';
     sessionStorage.setItem('SelectedTab', selectedTab);
 }
+
 /**
  * Instance of page class.  Building of page content starts here.
  * @type {Page}
