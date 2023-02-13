@@ -380,20 +380,30 @@ export class TasksContent {
         noteTitle.classList.add('note-title');
         noteTitle.textContent = `${note.getTitle()}`;
         noteTitleRow.appendChild(noteTitle);
-        noteTitle.addEventListener('click', () => {
+
+        // Setup edit icon for this note.
+        const iconsContainer = document.createElement('div');
+        iconsContainer.classList.add('project-list-item-icons-container');
+        const editIcon = new Image();
+        editIcon.classList.add('project-list-item-icon');
+        editIcon.src = EditIcon;
+        iconsContainer.appendChild(editIcon);
+        // Event listener for edit button.
+        editIcon.addEventListener('click', () => {
             this.renderEditNoteModal(key, note);
         });
 
-        // Setup delete button.
-        const deleteButton = document.createElement('div');
-        deleteButton.classList.add('note-delete');
-        deleteButton.textContent = '+';
-        noteTitleRow.appendChild(deleteButton);
-        deleteButton.addEventListener('click', () => {
+        // Setup edit icon for this note.
+        const deleteIcon = new Image();
+        deleteIcon.classList.add('project-list-item-icon');
+        deleteIcon.src = DeleteIcon;
+        iconsContainer.appendChild(deleteIcon);
+        // Event listener for delete button.
+        deleteIcon.addEventListener('click', () => {
             this.deleteTodoItemButton(key, note);
-            location.reload();
         });
 
+        noteTitleRow.appendChild(iconsContainer);
         noteCard.appendChild(noteTitleRow);
 
         // Setup content.
