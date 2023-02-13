@@ -379,6 +379,9 @@ export class TasksContent {
         const noteTitle = document.createElement('div');
         noteTitle.classList.add('note-title');
         noteTitle.textContent = `${note.getTitle()}`;
+        noteTitle.addEventListener('click', () => {
+            this.renderEditNoteModal(key, note);
+        });
         noteTitleRow.appendChild(noteTitle);
 
         // Setup edit icon for this note.
