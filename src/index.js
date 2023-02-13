@@ -22,7 +22,10 @@ import tinymce from "tinymce";
  * INITIAL PAGE SETUP
  *****************************************************************************/
 let selectedTab = '';
-
+if (selectedTab == '') {
+    selectedTab = 'HOME';
+    sessionStorage.setItem('SelectedTab', selectedTab);
+}
 /**
  * Instance of page class.  Building of page content starts here.
  * @type {Page}
