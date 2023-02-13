@@ -43,8 +43,6 @@ export class AddItem {
 
             if(title == "") {
                 alert("Title is a required field");
-            } else if (title.length < 5) {
-                alert("Title must be at least 5 characters in length");
             } else if (description == "") {
                 alert("Please enter note content");
             } else {
@@ -79,8 +77,6 @@ export class AddItem {
             // Perform form validation.
             if(title == "") {
                 alert("Title is a required field");
-            } else if (title.length < 5) {
-                alert("Title must be at least 5 characters in length");
             } else {
                 const project = new Project('ProjectObj', title, 0);
                 let date = new Date(Date.now());
@@ -114,8 +110,6 @@ export class AddItem {
             // Perform form validation.
             if(title == "") {
                 alert("Title is a required field");
-            } else if (title.length < 5) {
-                alert("Title must be at least 5 characters in length");
             } else if (dueByDate == "") {
                 alert("Select a due by date");
             } else {    

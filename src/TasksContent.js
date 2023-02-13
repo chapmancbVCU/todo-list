@@ -223,7 +223,14 @@ export class TasksContent {
     }
 
     renderEditNoteModal(key, note) {
-        alert('edit note function');
+        const contentContainer = document.querySelector('#content');
+
+        // Before re proceed we need original title and note content.
+        const originalTitle = note.getTitle();
+        const originalDescription = note.getDescription();
+
+        //Begin setup of modal.
+
     }
 
     /**
@@ -239,6 +246,8 @@ export class TasksContent {
 
         // Before we proceed we need to get original title.
         const originalTitle = project.getTitle();
+
+        // Begin setup of modal.
         const editProjectModal = document.createElement('div');
         editProjectModal.classList.add('project-details-bg-modal');
         editProjectModal.style.display = 'flex';
