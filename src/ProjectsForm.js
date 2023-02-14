@@ -1,3 +1,7 @@
+/******************************************************************************
+ * IMPORTS
+ *****************************************************************************/
+import { TasksContent } from "./TasksContent";
 import { TodoItem } from "./TodoItem";
 /**
  * @class Class for rendering and handling data entry for adding a new project.
@@ -94,7 +98,7 @@ export class ProjectsForm {
         closeButton.textContent = '+';
         editProjectTitleContainer.appendChild(closeButton);
         closeButton.addEventListener('click', () => {
-            this.closeModals(editProjectModal);
+            TasksContent.closeModals(editProjectModal);
         });
         editProjectModalContent.appendChild(editProjectTitleContainer);
 

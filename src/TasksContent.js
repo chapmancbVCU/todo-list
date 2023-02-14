@@ -1,8 +1,6 @@
 /******************************************************************************
  * IMPORTS
  *****************************************************************************/
-import { Editor } from "@tinymce/tinymce-webcomponent";
-import tinymce from 'tinymce';
 import { DataHandler } from './DataHandler';
 import EditIcon from './icons/note-edit.png';
 import DeleteIcon from './icons/trash-can.png';
@@ -41,7 +39,7 @@ export class TasksContent {
      * associated with that we want to close.
      * @returns void
      */
-    closeModals(parentContainer) {
+    static closeModals(parentContainer) {
         parentContainer.style.display = 'none';
         parentContainer.remove();
     }
@@ -118,7 +116,7 @@ export class TasksContent {
         closeButton.textContent = '+';
         confirmDeleteModalTitleContainer.appendChild(closeButton);
         closeButton.addEventListener('click', () => {
-            this.closeModals(confirmDeleteModal);
+            TasksContent.closeModals(confirmDeleteModal);
         });
         confirmDeleteModalContent.appendChild(
             confirmDeleteModalTitleContainer);
@@ -148,7 +146,7 @@ export class TasksContent {
         cancelButton.classList.add('todo-item-cancel-delete-button');
         cancelButton.textContent = "Cancel";
         cancelButton.addEventListener('click', () => {
-            this.closeModals(confirmDeleteModal);
+            TasksContent.closeModals(confirmDeleteModal);
         });
         deleteModalButtonsContainer.appendChild(cancelButton);
 
@@ -191,7 +189,7 @@ export class TasksContent {
         closeButton.textContent = '+';
         detailsModalTitleContainer.appendChild(closeButton);
         closeButton.addEventListener('click', () => {
-            this.closeModals(detailsContainer);
+            TasksContent.closeModals(detailsContainer);
         });
         detailsModalContent.appendChild(detailsModalTitleContainer);
 

@@ -2,6 +2,7 @@
  * IMPORTS
  *****************************************************************************/
 import { Project } from "./Project";
+import { TasksContent } from "./TasksContent";
 
 
 /**
@@ -9,7 +10,7 @@ import { Project } from "./Project";
  * creating a new todo list item.
  * @author Chad Chapman
  */
-export class TodoItemForm {
+export class TodoItemForm extends TasksContent {
     /**
      * Default constructor.
      */

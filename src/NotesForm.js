@@ -1,9 +1,14 @@
+/******************************************************************************
+ * IMPORTS
+ *****************************************************************************/
+import { TasksContent } from "./TasksContent";
+
 /**
  * @class The NotesForm class is responsible for rendering the form for 
  * creating a new note.
  * @author Chad Chapman
  */
-export class NotesForm {
+export class NotesForm extends TasksContent {
     /**
      * Default constructor.
      */
