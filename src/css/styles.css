@@ -356,6 +356,18 @@ h4 {
     align-items: center;
 }
 
+.note-modal-content {
+    border: solid black 1px;
+    border-radius: 10px;
+    top: 10%;
+    width: 350px;
+    height: 520px;
+    background-color: white;
+
+    /* Need this for close button. */
+    position: relative;
+}
+
 .note-title {
     width: 70%;
     font-weight: bold;
@@ -815,7 +827,10 @@ h4 {
         flex-direction: column;
     }
 
-    
+    .note-modal-content {
+        top: 0;
+        width: 500px;
+    }
 
     .priority-buttons-container {
         width: 300px;
@@ -871,6 +886,7 @@ h4 {
         align-items: center;
     }
 
+    .note-modal-content,
     .project-details-modal-content,
     .todo-item-delete-modal-content,
     .todo-item-details-modal-content {
