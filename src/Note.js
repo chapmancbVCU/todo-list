@@ -85,4 +85,12 @@ export class Note extends DataHandler {
     getTitle() {
         return this.title;
     }
+
+    setDescription(description) {
+        this.description = description;
+    }
+
+    setTitle(title) {
+        this.title = title;
+    }
 }
