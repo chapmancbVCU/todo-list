@@ -2,7 +2,6 @@
  * IMPORTS
  *****************************************************************************/
 import { Editor } from "@tinymce/tinymce-webcomponent";
-import * as editor from './editor';
 import tinymce from 'tinymce';
 import { DataHandler } from './DataHandler';
 import EditIcon from './icons/note-edit.png';
@@ -284,7 +283,7 @@ export class TasksContent {
         notesForm.appendChild(titleRow);
 
         // Setup description textarea
-        /*const editorArea = document.createElement('tinymce-editor');
+        const editorArea = document.createElement('tinymce-editor');
         editorArea.setAttribute('id', 'edit-notes-content');
         editorArea.setAttribute('selector', 'edit-notes-content');
         editorArea.setAttribute('name', 'edit-notes-content');
@@ -294,15 +293,46 @@ export class TasksContent {
         editorArea.setAttribute('height', '300');
         editorArea.setAttribute('required', '');
         editorArea.setAttribute('minlength', '5');
-        notesForm.appendChild(editorArea);*/
-        const editorArea = () => {
-            const element = document.createElement('textarea');
-            element.id = 'editor';
-            return element;
-        }
+        editorArea.setAttribute('placeholder', 'This note is about ...');
+        notesForm.appendChild(editorArea);
         
-        notesForm.appendChild(editorArea());
-        editor.render();
+        // Setup submit button
+        const buttonsRow = document.createElement('div');
+        buttonsRow.classList.add('project-edit-cancel-delete-buttons-container');
+        const submitButton = document.createElement('button');
+        submitButton.setAttribute('id', 'edit-project-button');
+        submitButton.setAttribute('type', 'submit');
+        submitButton.classList.add('project-edit-cancel-delete-button');
+        submitButton.textContent = 'Submit';
+        submitButton.addEventListener('click', (event) => {
+            let newTitle = document.getElementById('note-title').value;
+            let newDescription = document.getElementById('edit-notes-content').value;
+            event.preventDefault();
+
+            // Perform form validation.
+            if(newTitle == "") {
+                alert("Title is a required field");
+            } else if (newDescription == "") {
+                alert("Please enter note content");
+            } else {
+                note.setDescription(newDescription);
+                note.setTitle(newTitle);
+                note.setTodoItem(note, key);
+                location.reload();
+            }
+        });
+        buttonsRow.appendChild(submitButton);
+
+        const cancelButton = document.createElement('button');
+        cancelButton.classList.add('todo-item-cancel-delete-button');
+        cancelButton.textContent = "Cancel";
+        cancelButton.addEventListener('click', () => {
+            this.closeModals(editProjectModal);
+        });
+        buttonsRow.appendChild(cancelButton);
+        notesForm.appendChild(buttonsRow);
+
+
         editNoteModalMain.appendChild(notesForm)
         editNoteModalContent.appendChild(editNoteModalMain);
         editNoteModal.appendChild(editNoteModalContent);
