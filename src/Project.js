@@ -114,7 +114,7 @@ export class Project extends DataHandler {
     }
 
     /**
-     * Setter method for updating the title of a project.
+     * Setter function for updating the title of a project.
      * @param {String} title The title of the project that we want to set. 
      */
     setTitle(title) {
