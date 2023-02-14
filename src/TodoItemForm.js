@@ -2,7 +2,6 @@
  * IMPORTS
  *****************************************************************************/
 import { Project } from "./Project";
-import { TasksContent } from "./TasksContent";
 
 
 /**
@@ -10,7 +9,7 @@ import { TasksContent } from "./TasksContent";
  * creating a new todo list item.
  * @author Chad Chapman
  */
-export class TodoItemForm extends TasksContent {
+export class TodoItemForm {
     /**
      * Default constructor.
      */
@@ -189,15 +188,4 @@ export class TodoItemForm extends TasksContent {
         return todoItemFormContainer;
     }
 
-    /**
-     * Renders a form so that the user can update details for a particular 
-     * todo list item.
-     * @param {String} key The string that identifies a particular todo list 
-     * item in local storage. 
-     * @param {TodoItem} todoItem The todo list item we want to edit.
-     * @returns void
-     */
-    static renderEditTodoListDetailsModal(key, todoItem) {
-        alert('Edit details link');
-    }
 }

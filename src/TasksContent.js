@@ -1,15 +1,14 @@
 /******************************************************************************
  * IMPORTS
  *****************************************************************************/
+import { Editor } from "@tinymce/tinymce-webcomponent";
+import tinymce from 'tinymce';
 import { DataHandler } from './DataHandler';
 import EditIcon from './icons/note-edit.png';
 import DeleteIcon from './icons/trash-can.png';
 import { Note } from './Note';
-import { NotesForm } from "./NotesForm";
 import { Project } from './Project';
-import { ProjectsForm } from "./ProjectsForm";
 import { TodoItem } from "./TodoItem"; 
-import { TodoItemForm } from "./TodoItemForm";
 
 
 /** 
@@ -39,7 +38,7 @@ export class TasksContent {
      * associated with that we want to close.
      * @returns void
      */
-    static closeModals(parentContainer) {
+    closeModals(parentContainer) {
         parentContainer.style.display = 'none';
         parentContainer.remove();
     }
@@ -116,7 +115,7 @@ export class TasksContent {
         closeButton.textContent = '+';
         confirmDeleteModalTitleContainer.appendChild(closeButton);
         closeButton.addEventListener('click', () => {
-            TasksContent.closeModals(confirmDeleteModal);
+            this.closeModals(confirmDeleteModal);
         });
         confirmDeleteModalContent.appendChild(
             confirmDeleteModalTitleContainer);
@@ -146,7 +145,7 @@ export class TasksContent {
         cancelButton.classList.add('todo-item-cancel-delete-button');
         cancelButton.textContent = "Cancel";
         cancelButton.addEventListener('click', () => {
-            TasksContent.closeModals(confirmDeleteModal);
+            this.closeModals(confirmDeleteModal);
         });
         deleteModalButtonsContainer.appendChild(cancelButton);
 
@@ -189,7 +188,7 @@ export class TasksContent {
         closeButton.textContent = '+';
         detailsModalTitleContainer.appendChild(closeButton);
         closeButton.addEventListener('click', () => {
-            TasksContent.closeModals(detailsContainer);
+            this.closeModals(detailsContainer);
         });
         detailsModalContent.appendChild(detailsModalTitleContainer);
 
@@ -226,10 +225,263 @@ export class TasksContent {
             todoItem.getDescription();
     }
 
-    
-    
+    /**
+     * Renders the form for updating the details for a note.  This function 
+     * also performs form validation and submit operations.
+     * @param {String} key The string that identifies a particular note  
+     * in local storage. 
+     * @param {Note} note The note whose informatin we want to edit.
+     * @returns void
+     */ 
+    renderEditNoteModal(key, note) {
+        const contentContainer = document.querySelector('#content');
 
-    
+        // Before re proceed we need original title and note content.
+        const originalTitle = note.getTitle();
+        const originalDescription = note.getDescription();
+
+        //Begin setup of modal.
+        const editNoteModal = document.createElement('div');
+        editNoteModal.classList.add('bg-modal');
+        editNoteModal.style.display = 'flex';
+
+        const editNoteModalContent = document.createElement('div');
+        editNoteModalContent.classList.add('note-modal-content');
+
+        // Setup title and close button.
+        const editNoteTitleContainer = document.createElement('div');
+        editNoteTitleContainer.classList.add('modal-title-container');
+
+        const editNoteTitle = document.createElement('div');
+        editNoteTitle.textContent = 'Edit Note';
+        editNoteTitle.classList.add('modal-title');
+        editNoteTitleContainer.appendChild(editNoteTitle);
+
+        const closeButton = document.createElement('div');
+        closeButton.classList.add('close');
+        closeButton.textContent = '+';
+        editNoteTitleContainer.appendChild(closeButton);
+        closeButton.addEventListener('click', () => {
+            this.closeModals(editNoteModal);
+        });
+        editNoteModalContent.appendChild(editNoteTitleContainer);
+
+        // Setup main content for edit project name modal.
+        const editNoteModalMain = document.createElement('div');
+        const notesForm = document.createElement('form');
+        notesForm.classList.add('modal-form');
+        notesForm.setAttribute('method', 'get');
+        notesForm.setAttribute('action', '#');
+
+        // Setup title
+        const titleRow = document.createElement('div');
+        titleRow.classList.add('form-row');
+        const noteFormLabel = document.createElement('label');
+        noteFormLabel.setAttribute('for', 'note-title');
+        noteFormLabel.textContent = 'New note:';
+        titleRow.appendChild(noteFormLabel);
+        const title = document.createElement('input');
+        title.setAttribute('id', 'note-title');
+        title.setAttribute('name', 'note-title');
+        title.setAttribute('type', 'text');
+        title.setAttribute('maxlength', '30');
+        title.setAttribute('required', '');
+        title.setAttribute('value', `${originalTitle}`);
+        title.setAttribute('placeholder', 'Ex: Get groceries');
+        titleRow.appendChild(title);
+        notesForm.appendChild(titleRow);
+
+        // Setup description textarea
+        const editorArea = document.createElement('tinymce-editor');
+        editorArea.setAttribute('id', 'edit-notes-content');
+        editorArea.setAttribute('selector', 'edit-notes-content');
+        editorArea.setAttribute('name', 'edit-notes-content');
+        editorArea.setAttribute('plugins', 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount');
+        editorArea.setAttribute('toolbar', 'undo redo | | bold italic backcolor | strikethrough | outdent indent | alignleft aligncenter alignright alignjustify | removeformat | help');
+        editorArea.setAttribute('menubar', 'false');
+        editorArea.setAttribute('height', '300');
+        editorArea.setAttribute('required', '');
+        editorArea.setAttribute('minlength', '5');
+        editorArea.setAttribute('placeholder', 'This note is about ...');
+        notesForm.appendChild(editorArea);
+        
+        // Setup submit button
+        const buttonsRow = document.createElement('div');
+        buttonsRow.classList.add(
+            'project-edit-cancel-delete-buttons-container');
+        const submitButton = document.createElement('button');
+        submitButton.setAttribute('id', 'edit-project-button');
+        submitButton.setAttribute('type', 'submit');
+        submitButton.classList.add('project-edit-cancel-delete-button');
+        submitButton.textContent = 'Submit';
+        submitButton.addEventListener('click', (event) => {
+            let newTitle = document.getElementById('note-title').value;
+            let newDescription = document.getElementById(
+                'edit-notes-content').value;
+            event.preventDefault();
+
+            // Perform form validation.
+            if(newTitle == "") {
+                alert("Title is a required field");
+            } else if (newDescription == "") {
+                alert("Please enter note content");
+            } else {
+                note.setDescription(newDescription);
+                note.setTitle(newTitle);
+                note.setTodoItem(note, key);
+                location.reload();
+            }
+        });
+        buttonsRow.appendChild(submitButton);
+
+        const cancelButton = document.createElement('button');
+        cancelButton.classList.add('todo-item-cancel-delete-button');
+        cancelButton.textContent = "Cancel";
+        cancelButton.addEventListener('click', () => {
+            this.closeModals(editProjectModal);
+        });
+        buttonsRow.appendChild(cancelButton);
+        notesForm.appendChild(buttonsRow);
+
+
+        editNoteModalMain.appendChild(notesForm)
+        editNoteModalContent.appendChild(editNoteModalMain);
+        editNoteModal.appendChild(editNoteModalContent);
+        contentContainer.appendChild(editNoteModal);
+    }
+
+    /**
+     * Renders the form for updating the details for a project.  This function 
+     * also performs form validation and submit operations.
+     * @param {String} key The string that identifies a particular project  
+     * in local storage. 
+     * @param {Project} project The project whose title we want to edit.
+     * @returns void
+     */ 
+    renderEditProjectModal(key, project) {
+        const contentContainer = document.querySelector('#content');
+
+        // Before we proceed we need to get original title.
+        const originalTitle = project.getTitle();
+
+        // Begin setup of modal.
+        const editProjectModal = document.createElement('div');
+        editProjectModal.classList.add('project-details-bg-modal');
+        editProjectModal.style.display = 'flex';
+
+        const editProjectModalContent = document.createElement('div')
+        editProjectModalContent.classList.add('project-details-modal-content');
+
+        // Setup title and close button.
+        const editProjectTitleContainer = document.createElement('div');
+        editProjectTitleContainer.classList.add(
+            'edit-project-title-container');
+        
+        const editProjectTitle = document.createElement('div');
+        editProjectTitle.textContent = 'Edit Project Title';
+        editProjectTitle.classList.add('modal-title');
+        editProjectTitleContainer.appendChild(editProjectTitle);
+
+        const closeButton = document.createElement('div');
+        closeButton.classList.add('close');
+        closeButton.textContent = '+';
+        editProjectTitleContainer.appendChild(closeButton);
+        closeButton.addEventListener('click', () => {
+            this.closeModals(editProjectModal);
+        });
+        editProjectModalContent.appendChild(editProjectTitleContainer);
+
+        // Setup main content for edit project name modal.
+        const editProjectTitleModalMain = document.createElement('div');
+        const projectsForm = document.createElement('form');
+        projectsForm.classList.add('modal-form');
+        projectsForm.setAttribute('method', 'get');
+        projectsForm.setAttribute('action', '#');
+
+        // Setup title
+        const titleRow = document.createElement('div');
+        titleRow.classList.add('form-row');
+        const projectsFormLabel = document.createElement('label');
+        projectsFormLabel.setAttribute('for', 'projects-title');
+        projectsFormLabel.textContent = 'Project Title:';
+        titleRow.appendChild(projectsFormLabel);
+        const title = document.createElement('input');
+        title.setAttribute('id', 'projects-title');
+        title.setAttribute('name', 'projects-title');
+        title.setAttribute('type', 'text');
+        title.setAttribute('maxlength', '20');
+        title.setAttribute('required', '');
+        title.setAttribute('value', `${originalTitle}`);
+        titleRow.appendChild(title);
+        projectsForm.appendChild(titleRow);
+
+        // Setup submit button
+        const buttonsRow = document.createElement('div');
+        buttonsRow.classList.add(
+            'project-edit-cancel-delete-buttons-container');
+        const submitButton = document.createElement('button');
+        submitButton.setAttribute('id', 'edit-project-button');
+        submitButton.setAttribute('type', 'submit');
+        submitButton.classList.add('project-edit-cancel-delete-button');
+        submitButton.textContent = 'Submit';
+        submitButton.addEventListener('click', (event) => {
+            let newTitle = document.getElementById('projects-title').value;
+            event.preventDefault();
+
+            // Perform form validation.
+            if(newTitle == "") {
+                alert("Title is a required field");
+            } else {
+                // Update the project.
+                project.setTitle(newTitle);
+                project.setTodoItem(project, key);
+
+                /* Update the parent project for child todo items.  To do this 
+                we must got through each todo item in storage and compare.  If 
+                there is a match we perform the update. */
+                for(let i = 0; i < localStorage.length; i++) {
+                    const todoItemKey = localStorage.key(i);
+                    if(todoItemKey.includes('TodoItemObj_')) {
+                        let todoItem = new TodoItem();
+                        todoItem = todoItem.getItem(todoItemKey);
+                        if(todoItem.getParentProject() === originalTitle) {
+                            todoItem.setParentProject(newTitle);
+                            todoItem.setTodoItem(todoItem, todoItemKey);
+                        }
+                    }
+                }
+                location.reload();
+            }
+        });
+        buttonsRow.appendChild(submitButton);
+
+        const cancelButton = document.createElement('button');
+        cancelButton.classList.add('todo-item-cancel-delete-button');
+        cancelButton.textContent = "Cancel";
+        cancelButton.addEventListener('click', () => {
+            this.closeModals(editProjectModal);
+        });
+        buttonsRow.appendChild(cancelButton);
+        projectsForm.appendChild(buttonsRow);
+
+        editProjectTitleModalMain.appendChild(projectsForm);
+
+        editProjectModalContent.appendChild(editProjectTitleModalMain);
+        editProjectModal.appendChild(editProjectModalContent);
+        contentContainer.appendChild(editProjectModal);
+    }
+
+    /**
+     * Renders a form so that the user can update details for a particular 
+     * todo list item.
+     * @param {String} key The string that identifies a particular todo list 
+     * item in local storage. 
+     * @param {TodoItem} todoItem The todo list item we want to edit.
+     * @returns void
+     */
+    renderEditTodoListDetailsModal(key, todoItem) {
+        alert('Edit details link');
+    }
 
     /**
      * Renders a note inside the tasks content container.
@@ -252,7 +504,7 @@ export class TasksContent {
         noteTitle.classList.add('note-title');
         noteTitle.textContent = `${note.getTitle()}`;
         noteTitle.addEventListener('click', () => {
-            NotesForm.renderEditNoteModal(key, note);
+            this.renderEditNoteModal(key, note);
         });
         noteTitleRow.appendChild(noteTitle);
 
@@ -265,7 +517,7 @@ export class TasksContent {
         iconsContainer.appendChild(editIcon);
         // Event listener for edit button.
         editIcon.addEventListener('click', () => {
-            NotesForm.renderEditNoteModal(key, note);
+            this.renderEditNoteModal(key, note);
         });
 
         // Setup edit icon for this note.
@@ -324,7 +576,7 @@ export class TasksContent {
         iconsContainer.appendChild(editIcon);
         // Event listener for edit button.
         editIcon.addEventListener('click', () => {
-            ProjectsForm.renderEditProjectModal(key, project);
+            this.renderEditProjectModal(key, project);
         });
 
         /* Setup delete button icon.  This feature is only available when 
@@ -417,7 +669,7 @@ export class TasksContent {
 
         // Event listener for edit button.
         editIcon.addEventListener('click', () => {
-            TodoItemForm.renderEditTodoListDetailsModal(key, todoItem);
+            this.renderEditTodoListDetailsModal(key, todoItem);
         })
 
         // Check if item is completed and set value of checkbox.
