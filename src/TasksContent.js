@@ -1,6 +1,9 @@
 /******************************************************************************
  * IMPORTS
  *****************************************************************************/
+import { Editor } from "@tinymce/tinymce-webcomponent";
+import * as editor from './editor';
+import tinymce from 'tinymce';
 import { DataHandler } from './DataHandler';
 import EditIcon from './icons/note-edit.png';
 import DeleteIcon from './icons/trash-can.png';
@@ -230,7 +233,80 @@ export class TasksContent {
         const originalDescription = note.getDescription();
 
         //Begin setup of modal.
+        const editNoteModal = document.createElement('div');
+        editNoteModal.classList.add('bg-modal');
+        editNoteModal.style.display = 'flex';
 
+        const editNoteModalContent = document.createElement('div');
+        editNoteModalContent.classList.add('note-modal-content');
+
+        // Setup title and close button.
+        const editNoteTitleContainer = document.createElement('div');
+        editNoteTitleContainer.classList.add('modal-title-container');
+
+        const editNoteTitle = document.createElement('div');
+        editNoteTitle.textContent = 'Edit Note';
+        editNoteTitle.classList.add('modal-title');
+        editNoteTitleContainer.appendChild(editNoteTitle);
+
+        const closeButton = document.createElement('div');
+        closeButton.classList.add('close');
+        closeButton.textContent = '+';
+        editNoteTitleContainer.appendChild(closeButton);
+        closeButton.addEventListener('click', () => {
+            this.closeModals(editNoteModal);
+        });
+        editNoteModalContent.appendChild(editNoteTitleContainer);
+
+        // Setup main content for edit project name modal.
+        const editNoteModalMain = document.createElement('div');
+        const notesForm = document.createElement('form');
+        notesForm.classList.add('modal-form');
+        notesForm.setAttribute('method', 'get');
+        notesForm.setAttribute('action', '#');
+
+        // Setup title
+        const titleRow = document.createElement('div');
+        titleRow.classList.add('form-row');
+        const noteFormLabel = document.createElement('label');
+        noteFormLabel.setAttribute('for', 'note-title');
+        noteFormLabel.textContent = 'New note:';
+        titleRow.appendChild(noteFormLabel);
+        const title = document.createElement('input');
+        title.setAttribute('id', 'note-title');
+        title.setAttribute('name', 'note-title');
+        title.setAttribute('type', 'text');
+        title.setAttribute('maxlength', '30');
+        title.setAttribute('required', '');
+        title.setAttribute('value', `${originalTitle}`);
+        title.setAttribute('placeholder', 'Ex: Get groceries');
+        titleRow.appendChild(title);
+        notesForm.appendChild(titleRow);
+
+        // Setup description textarea
+        /*const editorArea = document.createElement('tinymce-editor');
+        editorArea.setAttribute('id', 'edit-notes-content');
+        editorArea.setAttribute('selector', 'edit-notes-content');
+        editorArea.setAttribute('name', 'edit-notes-content');
+        editorArea.setAttribute('plugins', 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount');
+        editorArea.setAttribute('toolbar', 'undo redo | | bold italic backcolor | strikethrough | outdent indent | alignleft aligncenter alignright alignjustify | removeformat | help');
+        editorArea.setAttribute('menubar', 'false');
+        editorArea.setAttribute('height', '300');
+        editorArea.setAttribute('required', '');
+        editorArea.setAttribute('minlength', '5');
+        notesForm.appendChild(editorArea);*/
+        const editorArea = () => {
+            const element = document.createElement('textarea');
+            element.id = 'editor';
+            return element;
+        }
+        
+        notesForm.appendChild(editorArea());
+        editor.render();
+        editNoteModalMain.appendChild(notesForm)
+        editNoteModalContent.appendChild(editNoteModalMain);
+        editNoteModal.appendChild(editNoteModalContent);
+        contentContainer.appendChild(editNoteModal);
     }
 
     /**
@@ -292,7 +368,6 @@ export class TasksContent {
         title.setAttribute('id', 'projects-title');
         title.setAttribute('name', 'projects-title');
         title.setAttribute('type', 'text');
-        title.setAttribute('minlength', '5');
         title.setAttribute('maxlength', '20');
         title.setAttribute('required', '');
         title.setAttribute('value', `${originalTitle}`);
@@ -314,8 +389,6 @@ export class TasksContent {
             // Perform form validation.
             if(newTitle == "") {
                 alert("Title is a required field");
-            } else if (newTitle.length < 5) {
-                alert("Title must be at least 5 characters in length");
             } else {
                 // Update the project.
                 project.setTitle(newTitle);
