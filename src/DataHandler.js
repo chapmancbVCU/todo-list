@@ -16,12 +16,12 @@ export class DataHandler {
      * ad stores it as a string in local storage.
      * @param {Object} item The todo list item, project, or note that we want 
      * to add to local storage.
-     * @param {String} title The keyName for the how we will identify an item 
+     * @param {String} key The keyName for the how we will identify an item 
      * in local storage.
      * @returns void
      */
-    setTodoItem(item, title) {
+    setTodoItem(item, key) {
         let serializedObj = JSON.stringify(item);
-        localStorage.setItem(title, serializedObj);
+        localStorage.setItem(key, serializedObj);
     }
 }
