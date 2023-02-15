@@ -188,7 +188,7 @@ export class TodoItem extends DataHandler {
     setDueDate(dueDate) {
         this.dueDate = dueDate;
     }
-    
+
     /**
      * This function updates the isComplete Boolean value when the user checks 
      * the checkbox in the tasks content section.  It is used to update the 
@@ -207,6 +207,10 @@ export class TodoItem extends DataHandler {
      */
     setParentProject(project) {
         this.parentProject = project;
+    }
+
+    setPriority(priority) {
+        this.priority = priority;
     }
 
     /**
