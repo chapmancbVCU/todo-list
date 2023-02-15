@@ -284,6 +284,36 @@ export class SideBar {
      * of the sidebar.
      */
     renderWeekTasksContainer() {
+        /* Figure out which todo items are due this week and set the variable 
+        count to the number of those tasks. */
+        Date.prototype.getFirstDayOfWeek = function() {
+            return (new Date(this.setDate(this.getDate() - this.getDay())).
+                toISOString().split('T')[0]);
+        }
+        
+        Date.prototype.getLastDayOfWeek = function() {
+            return (new Date(this.setDate(this.getDate() - this.getDay() +6)).
+                toISOString().split('T')[0]);
+        }
+        
+        let today = new Date();
+
+        let count = 0;
+        for(let i = 0; i < localStorage.length; i++) {
+            let key = localStorage.key(i);
+
+            if(key.includes('TodoItemObj_')) {
+                let todoItem = new TodoItem();
+                todoItem = todoItem.getItem(key)
+                let dueDate = todoItem.getDueDate();
+                if(dueDate >= today.getFirstDayOfWeek() && 
+                    dueDate <= today.getLastDayOfWeek()) {
+                    count++;
+                }
+            }
+        }
+
+        // Begin setup of container.
         const weekTasksContainer = document.createElement('li');
         weekTasksContainer.setAttribute('id', 'week');
         weekTasksContainer.classList.add('side-bar-row');
@@ -299,7 +329,7 @@ export class SideBar {
         
         const weekTaskCount = document.createElement('h3');
         weekTaskCount.classList.add('side-bar-task-count');
-        weekTaskCount.textContent = '10';
+        weekTaskCount.textContent = count;
         weekTasksContainer.appendChild(weekTaskCount);
         return weekTasksContainer;
     }
