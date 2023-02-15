@@ -107,7 +107,7 @@ and updating such content with forms.</div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line17">line 17</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line21">line 21</a>
     </li></ul></dd>
     
 
@@ -257,7 +257,7 @@ contents of the tasks container.  Its id is #tasks-container.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line26">line 26</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line30">line 30</a>
     </li></ul></dd>
     
 
@@ -389,7 +389,7 @@ associated with that we want to close.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line37">line 37</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line41">line 41</a>
     </li></ul></dd>
     
 
@@ -435,7 +435,7 @@ associated with that we want to close.</td>
     
 
     
-    <h4 class="name" id="deleteTodoItemButton"><span class="type-signature"></span>deleteTodoItemButton<span class="signature">(key, todoItem)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteTodoItemButton"><span class="type-signature"></span>deleteTodoItemButton<span class="signature">(key, item)</span><span class="type-signature"></span></h4>
     
 
     
@@ -446,7 +446,7 @@ associated with that we want to close.</td>
     This function is called by the event listener in the 
 renderConfirmDeleteModal function.  It performs the delete operation 
 and updates the parent project so that its subtask count variable is 
-decremented.
+decremented if the object we are removing is a todo list item.
 </div>
 
 
@@ -499,20 +499,20 @@ decremented.
             
 
             <td class="description last">The string that identifies a particular todo list 
-item in local storage.</td>
+item, project, or note object in local storage.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>todoItem</code></td>
+                <td class="name"><code>item</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="TodoItem.html">TodoItem</a></span>
+<span class="param-type"><a href="DataHandler.html">DataHandler</a></span>
 
 
             
@@ -522,7 +522,8 @@ item in local storage.</td>
 
             
 
-            <td class="description last">The todo list item we may want to delete.</td>
+            <td class="description last">A todo list item, project, or note object. 
+All three of these object extends the DataHandler class.</td>
         </tr>
 
     
@@ -563,7 +564,7 @@ item in local storage.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line52">line 52</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line57">line 57</a>
     </li></ul></dd>
     
 
@@ -735,7 +736,7 @@ item in local storage.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line132">line 132</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line92">line 92</a>
     </li></ul></dd>
     
 
@@ -884,7 +885,179 @@ show to the user.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line208">line 208</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line166">line 166</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    void
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="renderEditNoteModal"><span class="type-signature"></span>renderEditNoteModal<span class="signature">(key, note)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Renders the form for updating the details for a note.  This function 
+also performs form validation and submit operations.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The string that identifies a particular note  
+in local storage.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>note</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Note.html">Note</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The note whose informatin we want to edit.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line236">line 236</a>
     </li></ul></dd>
     
 
@@ -1056,7 +1229,7 @@ in local storage.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line277">line 277</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line362">line 362</a>
     </li></ul></dd>
     
 
@@ -1228,7 +1401,7 @@ item in local storage.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line398">line 398</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line485">line 485</a>
     </li></ul></dd>
     
 
@@ -1376,7 +1549,7 @@ local storage.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line408">line 408</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line769">line 769</a>
     </li></ul></dd>
     
 
@@ -1526,7 +1699,7 @@ that is contained in local storage.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line423">line 423</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line835">line 835</a>
     </li></ul></dd>
     
 
@@ -1626,7 +1799,7 @@ and projects.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line80">line 80</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line975">line 975</a>
     </li></ul></dd>
     
 
@@ -1774,7 +1947,7 @@ storage.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line469">line 469</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line881">line 881</a>
     </li></ul></dd>
     
 
@@ -1923,7 +2096,7 @@ can set the text for the priority level.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line585">line 585</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line1049">line 1049</a>
     </li></ul></dd>
     
 
@@ -2105,7 +2278,7 @@ we want to test.</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line566">line 566</a>
+        <a href="TasksContent.js.html">TasksContent.js</a>, <a href="TasksContent.js.html#line1030">line 1030</a>
     </li></ul></dd>
     
 
@@ -2167,7 +2340,7 @@ we want to test.</td>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Sat Feb 11 2023 22:28:07 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Tue Feb 14 2023 21:47:46 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
