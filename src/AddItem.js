@@ -103,9 +103,11 @@ export class AddItem {
 
             // Get the following information from the form.
             let title = document.getElementById('todo-title').value;
-            let description = document.getElementById('todo-description').value;
+            let description = document.getElementById(
+                'todo-description').value;
             let dueByDate = document.getElementById('due-by-date').value;
-            let selectedProject = document.getElementById('parent-project').value;
+            let selectedProject = document.getElementById(
+                'parent-project').value;
 
             // Perform form validation.
             if(title == "") {
@@ -115,8 +117,7 @@ export class AddItem {
             } else {    
                 // Get value for radio button
                 let priority;
-                document.getElementsByName('set-priority')
-                        .forEach(radio => {
+                document.getElementsByName('set-priority').forEach(radio => {
                     if (radio.checked) {
                         priority = radio.value;
                     }
