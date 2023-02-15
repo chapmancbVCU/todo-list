@@ -483,7 +483,7 @@ export class TasksContent {
 
         /* Get original information about todo list item so we can 
         pre-populate the form for editing. */
-        const originalDueDate = todoItem.getDescription();
+        const originalDueDate = todoItem.getDueDate();
         const originalParentProject = todoItem.getParentProject();
         const originalPriority = todoItem.getPriority();
         const originalTitle = todoItem.getTitle();
@@ -533,6 +533,7 @@ export class TasksContent {
         title.setAttribute('type', 'text');
         title.setAttribute('maxlength', '35');
         title.setAttribute('required', '');
+        title.setAttribute('value', `${originalTitle}`);
         title.setAttribute('placeholder', 'Ex: Get groceries');
         titleRow.appendChild(title);
         todoItemForm.appendChild(titleRow);
@@ -560,10 +561,11 @@ export class TasksContent {
         dueByInput.setAttribute('id', 'due-by-date');
         dueByInput.setAttribute('name', 'due-by-date');
         dueByInput.setAttribute('type', 'date');
+        dueByInput.setAttribute('value', `${originalDueDate}`);
         dueByInput.setAttribute('required', '');
         dueByRow.appendChild(dueByInput);
         todoItemForm.appendChild(dueByRow);
-
+        
         // Setup projects dropdown menu.
         const projectsInputRow = document.createElement('div');
         projectsInputRow.classList.add('form-row');
@@ -576,7 +578,6 @@ export class TasksContent {
         const projectsMenu = document.createElement('select');
         projectsMenu.setAttribute('id', 'parent-project');
         projectsMenu.setAttribute('name', 'parent-project');
-
         const defaultOption = document.createElement('option');
         defaultOption.setAttribute('value', 'None');
         defaultOption.text = 'None';
@@ -596,8 +597,9 @@ export class TasksContent {
                 projectsMenu.appendChild(projectOption);
             }
         }
-
+        
         projectsInputRow.appendChild(projectsMenu);
+        
         todoItemForm.appendChild(projectsInputRow);
         
         // Setup buttons
@@ -703,6 +705,10 @@ export class TasksContent {
         editTodoItemModalContent.appendChild(editTodoListItemModalMain);
         editTodoItemModal.appendChild(editTodoItemModalContent);
         contentContainer.appendChild(editTodoItemModal);
+
+        /* Set value of original project after form has been created and 
+        appended to parent container. */
+        document.getElementById('parent-project').value = originalParentProject;
     }
 
     /**
