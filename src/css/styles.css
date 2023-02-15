@@ -916,10 +916,18 @@ h4 {
     }
 
     .note-modal-content,
-    .project-details-modal-content,
-    .todo-item-delete-modal-content,
-    .todo-item-details-modal-content,
+    .todo-item-details-modal-content {
+        top: 50%;
+    }
+    
+    .project-details-modal-content { 
+        top: 20%
+    }
+    .todo-item-delete-modal-content {
+        top: 30%;
+    }
+
     .todo-item-modal-content {
-        top: 25%;
+        top: 60%;
     }
 }
