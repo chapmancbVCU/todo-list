@@ -973,6 +973,18 @@ export class TasksContent {
      * @returns void
      */
     renderTasks() {
+        /* Functions for determining day of the week. */
+        Date.prototype.getFirstDayOfWeek = function() {
+            return (new Date(this.setDate(this.getDate() - this.getDay())).
+                toISOString().split('T')[0]);
+        }
+        
+        Date.prototype.getLastDayOfWeek = function() {
+            return (new Date(this.setDate(this.getDate() - this.getDay() +6)).
+                toISOString().split('T')[0]);
+        }
+        let today = new Date();
+
         /* Before we do anything we need to know which tab is selected
             in order to know what to render. */
         const selectedTab = sessionStorage.getItem('SelectedTab');
@@ -982,18 +994,21 @@ export class TasksContent {
             if(key.includes('TodoItemObj_')) {
                 let todoItem = new TodoItem();
                 todoItem = todoItem.getItem(key);
+                let dueDate = todoItem.getDueDate();
 
                 /* Render todo items depending on which tab is clicked in the 
                 sidebar. */
                 if(selectedTab == null || selectedTab.includes('HOME')) {
                     this.renderTodoItem(key, todoItem);
                 } else if (selectedTab.includes('TODAY')) {
-                    let todaysDate = (new Date()).toISOString().split('T')[0];
-                    if(todoItem.getDueDate() == todaysDate) {
+                    if(dueDate == (new Date()).toISOString().split('T')[0]) {
                         this.renderTodoItem(key, todoItem);
                     }
                 } else if (selectedTab.includes('WEEK')) {
-                   // alert('week');
+                   if(dueDate >= today.getFirstDayOfWeek() &&
+                        dueDate <= today.getLastDayOfWeek()) {
+                            this.renderTodoItem(key, todoItem);
+                        }
                 } else if (selectedTab.includes('ProjectObj_')) {
                     /* Detect the parent project and populate the tasks 
                     content container with only those todo items. */
@@ -1002,7 +1017,6 @@ export class TasksContent {
                     if(todoItem.getParentProject() == project.getTitle()) {
                         this.renderTodoItem(key, todoItem);
                     }
-
                 }
             } else if(key.includes('NoteItemObj_')) {
                 if(selectedTab.includes('NOTES')) {
