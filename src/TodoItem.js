@@ -185,6 +185,10 @@ export class TodoItem extends DataHandler {
         this.description = description;
     }
 
+    /**
+     * Setter function for updating the due date of the todo list item.
+     * @param {String} dueDate The due date of the todo list item.
+     */
     setDueDate(dueDate) {
         this.dueDate = dueDate;
     }
@@ -209,6 +213,10 @@ export class TodoItem extends DataHandler {
         this.parentProject = project;
     }
 
+    /**
+     * Setter function for the priority level of the todo list item. 
+     * @param {String} priority The priority level of the todo list item.
+     */
     setPriority(priority) {
         this.priority = priority;
     }
