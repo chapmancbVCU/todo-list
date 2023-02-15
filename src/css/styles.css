@@ -711,6 +711,18 @@ h4 {
     position: relative;
 }
 
+.todo-item-due-date-future {
+    color: green;
+}
+
+.todo-item-due-date-overdue {
+    color: red;
+}
+
+.todo-item-due-date-today {
+    color: rgb(209, 153, 49);
+}
+
 .todo-item-high-priority {
     border: solid red 2px;
 }

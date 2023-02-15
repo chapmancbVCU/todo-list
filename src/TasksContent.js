@@ -916,7 +916,16 @@ export class TasksContent {
 
         // Show due date.
         const dueDate = document.createElement('div');
-        dueDate.textContent = `${todoItem.getDueDate()}`;
+        let todoItemDueDate = todoItem.getDueDate();
+        const today = (new Date()).toISOString().split('T')[0];
+        if(today > todoItemDueDate) {
+            dueDate.classList.add('todo-item-due-date-overdue');
+        } else if (today == todoItemDueDate) {
+            dueDate.classList.add('todo-item-due-date-today');
+        } else {
+            dueDate.classList.add('todo-item-due-date-future');
+        }
+        dueDate.textContent = `${todoItemDueDate}`;
         dueDate.classList.add('todo-item-date');
         dueDate.classList.add('todo-item-text');
         right.appendChild(dueDate);
