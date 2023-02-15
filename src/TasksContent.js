@@ -682,7 +682,7 @@ export class TasksContent {
             event.preventDefault();
             
             // Get the following information from the form.
-            let newTitle = document.getElementById('note-title').value;
+            let newTitle = document.getElementById('todo-title').value;
             let newDescription = document.getElementById(
                 'todo-description').value;
             let newDueByDate = document.getElementById('due-by-date').value;
@@ -699,6 +699,38 @@ export class TasksContent {
                         newPriority = radio.value;
                     }
                 });
+
+                // Update instance variables and local storage.
+                todoItem.setDescription(newDescription);
+                todoItem.setDueDate(newDueByDate);
+                todoItem.setParentProject(newSelectedProject);
+                todoItem.setPriority(newPriority);
+                todoItem.setTitle(newTitle);
+                todoItem.setTodoItem(todoItem, key);
+
+                /* If parent project has changed we increment task count for
+                new parent project and decrement task count for original
+                parent project. */
+                if(newSelectedProject != originalParentProject) {
+                    for(let i = 0; i < localStorage.length; i++) {
+                        let key = localStorage.key(i);
+                        if(key.includes('ProjectObj_')) {
+                            let project = new Project();
+                            project = project.getItem(key);
+                            const projectTitle = project.getTitle();
+                            if(projectTitle === newSelectedProject) {
+                                project.incrementSubTasksCount();
+                                project.setTodoItem(project, key);
+                            }
+                            if(projectTitle === originalParentProject) {
+                                project.decrementSubTasksCount();
+                                project.setTodoItem(project, key);
+                            }
+                        }
+                    }
+                }
+
+                location.reload();
             }
         });
         updateButtonsRow.appendChild(submitButton);
