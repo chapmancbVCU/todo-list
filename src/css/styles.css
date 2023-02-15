@@ -253,7 +253,7 @@ h4 {
     border-radius: 10px;
     width: 350px;
     position: fixed;
-    top: 10%;
+    top: 50%;
     /* Need this for close button. */
     position: relative;
 }
@@ -359,7 +359,7 @@ h4 {
 .note-modal-content {
     border: solid black 1px;
     border-radius: 10px;
-    top: 10%;
+    top: 50%;
     width: 350px;
     height: 520px;
     background-color: white;
@@ -745,7 +745,7 @@ h4 {
 .todo-item-modal-content {
     border: solid black 1px;
     border-radius: 10px;
-    top: 10%;
+    top: 70%;
     width: 350px;
     height: 780px;
     background-color: white;
