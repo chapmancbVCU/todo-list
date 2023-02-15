@@ -177,6 +177,19 @@ export class TodoItem extends DataHandler {
     }
 
     /**
+     * Setter function for updating the description of a todo list item.
+     * @param {String} description The description of the todo list item we 
+     * want to update. 
+     */
+    setDescription(description) {
+        this.description = description;
+    }
+
+    setDueDate(dueDate) {
+        this.dueDate = dueDate;
+    }
+    
+    /**
      * This function updates the isComplete Boolean value when the user checks 
      * the checkbox in the tasks content section.  It is used to update the 
      * checkbox and strike through the title of the completed todo list item. 
@@ -194,5 +207,14 @@ export class TodoItem extends DataHandler {
      */
     setParentProject(project) {
         this.parentProject = project;
+    }
+
+    /**
+     * Setter function for updating the title of a todo list item.
+     * @param {String} title The title of the todo list item that we want to 
+     * set. 
+     */
+    setTitle(title) {
+        this.title = title;
     }
 }

@@ -315,10 +315,12 @@ export class TasksContent {
         submitButton.classList.add('project-edit-cancel-delete-button');
         submitButton.textContent = 'Submit';
         submitButton.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            // Get the following information from the form.
             let newTitle = document.getElementById('note-title').value;
             let newDescription = document.getElementById(
                 'edit-notes-content').value;
-            event.preventDefault();
 
             // Perform form validation.
             if(newTitle == "") {
@@ -424,9 +426,11 @@ export class TasksContent {
         submitButton.classList.add('project-edit-cancel-delete-button');
         submitButton.textContent = 'Submit';
         submitButton.addEventListener('click', (event) => {
-            let newTitle = document.getElementById('projects-title').value;
             event.preventDefault();
 
+            // Get the following information from the form.
+            let newTitle = document.getElementById('projects-title').value;
+            
             // Perform form validation.
             if(newTitle == "") {
                 alert("Title is a required field");
@@ -621,7 +625,7 @@ export class TasksContent {
         lowPriorityButton.setAttribute('name', 'set-priority');
         lowPriorityButton.setAttribute('type', 'radio');
         lowPriorityButton.setAttribute('value', 'low-priority');
-        lowPriorityButton.setAttribute('checked', '');
+        //lowPriorityButton.setAttribute('checked', '');
         lowPriorityButtonContainer.appendChild(lowPriorityButton);
         const lowPriorityButtonLabel = document.createElement('label');
         lowPriorityButtonLabel.setAttribute('for', 'low-priority');
@@ -675,19 +679,26 @@ export class TasksContent {
         submitButton.classList.add('project-edit-cancel-delete-button');
         submitButton.textContent = 'Submit';
         submitButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            
+            // Get the following information from the form.
             let newTitle = document.getElementById('note-title').value;
             let newDescription = document.getElementById(
-                'edit-notes-content').value;
-            event.preventDefault();
-
+                'todo-description').value;
+            let newDueByDate = document.getElementById('due-by-date').value;
+            let newSelectedProject = document.getElementById(
+                'parent-project').value;
+            
             // Perform form validation.
             if(newTitle == "") {
                 alert("Title is a required field");
             } else {
-                //note.setDescription(newDescription);
-                //note.setTitle(newTitle);
-                //note.setTodoItem(note, key);
-                //location.reload();
+                let newPriority;
+                document.getElementsByName('set-priority').forEach(radio => {
+                    if (radio.checked) {
+                        newPriority = radio.value;
+                    }
+                });
             }
         });
         updateButtonsRow.appendChild(submitButton);
@@ -706,9 +717,15 @@ export class TasksContent {
         editTodoItemModal.appendChild(editTodoItemModalContent);
         contentContainer.appendChild(editTodoItemModal);
 
-        /* Set value of original project after form has been created and 
-        appended to parent container. */
-        document.getElementById('parent-project').value = originalParentProject;
+        /* Set value of original project and priority level after form has been 
+        created and appended to parent container. */
+        document.getElementById('parent-project').value = 
+            originalParentProject;
+        document.getElementsByName('set-priority').forEach(radio => {
+            if(radio.value == originalPriority) {
+                radio.checked = true;
+            }
+        });
     }
 
     /**
