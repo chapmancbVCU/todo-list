@@ -75,7 +75,6 @@ export class TodoItem extends DataHandler {
          * @property {String} title The title for this note.
          */
         this.title = title;
-        this.title = title;
 
         /**
          * Function inside constructor that reports information about todo
