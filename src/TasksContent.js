@@ -238,7 +238,7 @@ export class TasksContent {
 
         // Before re proceed we need original title and note content.
         const originalTitle = note.getTitle();
-        const originalDescription = note.getDescription();
+        //const originalDescription = note.getDescription();
 
         //Begin setup of modal.
         const editNoteModal = document.createElement('div');
@@ -342,7 +342,6 @@ export class TasksContent {
         });
         buttonsRow.appendChild(cancelButton);
         notesForm.appendChild(buttonsRow);
-
 
         editNoteModalMain.appendChild(notesForm)
         editNoteModalContent.appendChild(editNoteModalMain);
@@ -480,7 +479,43 @@ export class TasksContent {
      * @returns void
      */
     renderEditTodoListDetailsModal(key, todoItem) {
-        alert('Edit details link');
+        const contentContainer = document.querySelector('#content');
+
+        /* Get original information about todo list item so we can 
+        pre-populate the form for editing. */
+        const originalDueDate = todoItem.getDescription();
+        const originalParentProject = todoItem.getParentProject();
+        const originalPriority = todoItem.getPriority();
+        const originalTitle = todoItem.getTitle();
+
+        //Begin setup of modal.
+        const editTodoItemModal = document.createElement('div');
+        editTodoItemModal.classList.add('bg-modal');
+        editTodoItemModal.style.display = 'flex';
+
+        const editTodoItemModalContent = document.createElement('div');
+        editTodoItemModalContent.classList.add('note-modal-content');
+
+        // Setup title and close button.
+        const editTodoItemTitleContainer = document.createElement('div');
+        editTodoItemTitleContainer.classList.add('modal-title-container');
+
+        const editTodoItemTitle = document.createElement('div');
+        editTodoItemTitle.textContent = 'Edit Todo List Item';
+        editTodoItemTitle.classList.add('modal-title');
+        editTodoItemTitleContainer.appendChild(editTodoItemTitle);
+        const closeButton = document.createElement('div');
+        closeButton.classList.add('close');
+        closeButton.textContent = '+';
+        editTodoItemTitleContainer.appendChild(closeButton);
+        closeButton.addEventListener('click', () => {
+            this.closeModals(editTodoItemModal);
+        });
+        editTodoItemModalContent.appendChild(editTodoItemTitleContainer);
+
+        
+        editTodoItemModal.appendChild(editTodoItemModalContent);
+        contentContainer.appendChild(editTodoItemModal);
     }
 
     /**
