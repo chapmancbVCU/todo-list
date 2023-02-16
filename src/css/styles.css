@@ -877,7 +877,7 @@ h4 {
     }
 
     .todo-item-modal-content {
-        top: 0;
+        top: 10%;
         width: 500px;
     }
 }
