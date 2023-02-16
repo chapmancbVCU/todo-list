@@ -512,6 +512,7 @@ export class TasksContent {
         editTodoItemTitleContainer.appendChild(closeButton);
         closeButton.addEventListener('click', () => {
             this.closeModals(editTodoItemModal);
+            location.reload();
         });
         editTodoItemModalContent.appendChild(editTodoItemTitleContainer);
 
@@ -618,7 +619,6 @@ export class TasksContent {
         lowPriorityButton.setAttribute('name', 'set-priority');
         lowPriorityButton.setAttribute('type', 'radio');
         lowPriorityButton.setAttribute('value', 'low-priority');
-        //lowPriorityButton.setAttribute('checked', '');
         lowPriorityButtonContainer.appendChild(lowPriorityButton);
         const lowPriorityButtonLabel = document.createElement('label');
         lowPriorityButtonLabel.setAttribute('for', 'low-priority');
@@ -678,6 +678,7 @@ export class TasksContent {
         cancelButton.textContent = "Cancel";
         cancelButton.addEventListener('click', () => {
             this.closeModals(editTodoItemModal);
+            location.reload();
         });
         updateButtonsRow.appendChild(cancelButton);
         todoItemForm.appendChild(updateButtonsRow);
