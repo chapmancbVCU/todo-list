@@ -27,18 +27,38 @@ import 'tinymce/plugins/table';
 /* import './plugins/powerpaste/js/wordimport'; */
 
 /* content UI CSS is required */
-import contentUiSkinCss from 'tinymce/skins/ui/oxide/content.css';
-/* The default content CSS can be changed or replaced with appropriate CSS for the editor content. */
-import contentCss from 'tinymce/skins/content/default/content.css';
+import contentCss from '!!raw-loader!tinymce/skins/content/default/content.min.css';
+import contentUiCss from '!!raw-loader!tinymce/skins/ui/oxide/content.min.css';
 
-/* Initialize TinyMCE */
-export function render () {
+/**
+ * Initialize TinyMCE editor for editing the description of a note or todo 
+ * list item.
+ * @param {String} description The desciption of the note or todo list item 
+ * that we want to update.
+ */
+export function render (description) {
+  let newDescription = '';
   tinymce.init({
-    selector: 'textarea#editor',
-    plugins: 'advlist code emoticons link lists table',
-    toolbar: 'bold italic | bullist numlist | link emoticons',
+    selector: '.editor',
+    plugins: 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount',
+    toolbar: 'undo redo | bold italic backcolor | strikethrough | outdent indent | alignleft aligncenter alignright alignjustify | removeformat | help',
     skin: false,
-    content_css: true,
-    content_style: contentUiSkinCss.toString() + '\n' + contentCss.toString(),
+    menubar: false,
+    content_css: false,
+    content_style: [contentCss, contentUiCss].join('\n'),
+    height: 300,
+    setup: function (editor) {
+      editor.on('init', function (e) {
+        editor.setContent(description);
+      });
+    }
   });
 };
+
+/**
+ * This function returns the new description for a note or todo list item.
+ * @returns The new description for a note or todo list item.
+ */
+export function getDescription() {
+    return tinymce.get('editor').getContent();
+}

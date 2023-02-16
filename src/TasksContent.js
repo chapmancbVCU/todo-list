@@ -3,6 +3,7 @@
  *****************************************************************************/
 import { Editor } from "@tinymce/tinymce-webcomponent";
 import tinymce from 'tinymce';
+import * as editor from './editor';
 import { DataHandler } from './DataHandler';
 import EditIcon from './icons/note-edit.png';
 import DeleteIcon from './icons/trash-can.png';
@@ -263,6 +264,7 @@ export class TasksContent {
         editNoteTitleContainer.appendChild(closeButton);
         closeButton.addEventListener('click', () => {
             this.closeModals(editNoteModal);
+            location.reload();
         });
         editNoteModalContent.appendChild(editNoteTitleContainer);
 
@@ -292,17 +294,10 @@ export class TasksContent {
         notesForm.appendChild(titleRow);
 
         // Setup description textarea
-        const editorArea = document.createElement('tinymce-editor');
+        const editorArea = document.createElement('textarea');
+        editorArea.classList.add('editor');
         editorArea.setAttribute('id', 'edit-notes-content');
-        editorArea.setAttribute('selector', 'edit-notes-content');
-        editorArea.setAttribute('name', 'edit-notes-content');
-        editorArea.setAttribute('plugins', 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount');
-        editorArea.setAttribute('toolbar', 'undo redo | | bold italic backcolor | strikethrough | outdent indent | alignleft aligncenter alignright alignjustify | removeformat | help');
-        editorArea.setAttribute('menubar', 'false');
-        editorArea.setAttribute('height', '300');
-        editorArea.setAttribute('required', '');
-        editorArea.setAttribute('minlength', '5');
-        editorArea.setAttribute('placeholder', 'This note is about ...');
+        editorArea.id = 'editor';
         notesForm.appendChild(editorArea);
         
         // Setup submit button
@@ -314,13 +309,31 @@ export class TasksContent {
         submitButton.setAttribute('type', 'submit');
         submitButton.classList.add('project-edit-cancel-delete-button');
         submitButton.textContent = 'Submit';
+        buttonsRow.appendChild(submitButton);
+
+        const cancelButton = document.createElement('button');
+        cancelButton.classList.add('todo-item-cancel-delete-button');
+        cancelButton.textContent = "Cancel";
+        cancelButton.addEventListener('click', () => {
+            this.closeModals(editNoteModal);
+            location.reload();
+        });
+        buttonsRow.appendChild(cancelButton);
+        notesForm.appendChild(buttonsRow);
+
+        editNoteModalMain.appendChild(notesForm)
+        editNoteModalContent.appendChild(editNoteModalMain);
+        editNoteModal.appendChild(editNoteModalContent);
+        contentContainer.appendChild(editNoteModal);
+
+        // Render tinymce and setup submit button event listener.
+        editor.render(note.getDescription());
         submitButton.addEventListener('click', (event) => {
             event.preventDefault();
 
             // Get the following information from the form.
             let newTitle = document.getElementById('note-title').value;
-            let newDescription = document.getElementById(
-                'edit-notes-content').value;
+            let newDescription = editor.getDescription();
 
             // Perform form validation.
             if(newTitle == "") {
@@ -334,21 +347,6 @@ export class TasksContent {
                 location.reload();
             }
         });
-        buttonsRow.appendChild(submitButton);
-
-        const cancelButton = document.createElement('button');
-        cancelButton.classList.add('todo-item-cancel-delete-button');
-        cancelButton.textContent = "Cancel";
-        cancelButton.addEventListener('click', () => {
-            this.closeModals(editNoteModal);
-        });
-        buttonsRow.appendChild(cancelButton);
-        notesForm.appendChild(buttonsRow);
-
-        editNoteModalMain.appendChild(notesForm)
-        editNoteModalContent.appendChild(editNoteModalMain);
-        editNoteModal.appendChild(editNoteModalContent);
-        contentContainer.appendChild(editNoteModal);
     }
 
     /**
@@ -543,15 +541,10 @@ export class TasksContent {
         todoItemForm.appendChild(titleRow);
 
         // Setup description textarea
-        const editorArea = document.createElement('tinymce-editor');
-        editorArea.setAttribute('id', 'todo-description');
-        editorArea.setAttribute('selector', 'todo-description');
-        editorArea.setAttribute('name', 'todo-description');
-        editorArea.setAttribute('plugins', 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount');
-        editorArea.setAttribute('toolbar', 'undo redo | | bold italic backcolor | strikethrough | outdent indent | alignleft aligncenter alignright alignjustify | removeformat | help');
-        editorArea.setAttribute('menubar', 'false');
-        editorArea.setAttribute('height', '300');
-        editorArea.setAttribute('placeholder', 'Describe item here.');
+        const editorArea = document.createElement('textarea');
+        editorArea.classList.add('editor');
+        editorArea.setAttribute('id', 'edit-notes-content');
+        editorArea.id = 'editor';
         todoItemForm.appendChild(editorArea);
 
         // Setup due by date
@@ -678,13 +671,40 @@ export class TasksContent {
         submitButton.setAttribute('type', 'submit');
         submitButton.classList.add('project-edit-cancel-delete-button');
         submitButton.textContent = 'Submit';
+        updateButtonsRow.appendChild(submitButton);
+
+        const cancelButton = document.createElement('button');
+        cancelButton.classList.add('todo-item-cancel-delete-button');
+        cancelButton.textContent = "Cancel";
+        cancelButton.addEventListener('click', () => {
+            this.closeModals(editTodoItemModal);
+        });
+        updateButtonsRow.appendChild(cancelButton);
+        todoItemForm.appendChild(updateButtonsRow);
+        
+        editTodoListItemModalMain.appendChild(todoItemForm);
+        editTodoItemModalContent.appendChild(editTodoListItemModalMain);
+        editTodoItemModal.appendChild(editTodoItemModalContent);
+        contentContainer.appendChild(editTodoItemModal);
+
+        /* Set value of original project and priority level after form has been 
+        created and appended to parent container. */
+        document.getElementById('parent-project').value = 
+            originalParentProject;
+        document.getElementsByName('set-priority').forEach(radio => {
+            if(radio.value == originalPriority) {
+                radio.checked = true;
+            }
+        });
+
+        // Render tinymce and setup submit button event listener.
+        editor.render(todoItem.getDescription());
         submitButton.addEventListener('click', (event) => {
             event.preventDefault();
             
             // Get the following information from the form.
             let newTitle = document.getElementById('todo-title').value;
-            let newDescription = document.getElementById(
-                'todo-description').value;
+            let newDescription = editor.getDescription();
             let newDueByDate = document.getElementById('due-by-date').value;
             let newSelectedProject = document.getElementById(
                 'parent-project').value;
@@ -731,31 +751,6 @@ export class TasksContent {
                 }
 
                 location.reload();
-            }
-        });
-        updateButtonsRow.appendChild(submitButton);
-
-        const cancelButton = document.createElement('button');
-        cancelButton.classList.add('todo-item-cancel-delete-button');
-        cancelButton.textContent = "Cancel";
-        cancelButton.addEventListener('click', () => {
-            this.closeModals(editTodoItemModal);
-        });
-        updateButtonsRow.appendChild(cancelButton);
-        todoItemForm.appendChild(updateButtonsRow);
-        
-        editTodoListItemModalMain.appendChild(todoItemForm);
-        editTodoItemModalContent.appendChild(editTodoListItemModalMain);
-        editTodoItemModal.appendChild(editTodoItemModalContent);
-        contentContainer.appendChild(editTodoItemModal);
-
-        /* Set value of original project and priority level after form has been 
-        created and appended to parent container. */
-        document.getElementById('parent-project').value = 
-            originalParentProject;
-        document.getElementsByName('set-priority').forEach(radio => {
-            if(radio.value == originalPriority) {
-                radio.checked = true;
             }
         });
     }
