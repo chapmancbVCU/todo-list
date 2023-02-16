@@ -49,7 +49,7 @@ export class NotesForm {
         editorArea.setAttribute('selector', 'notes-content');
         editorArea.setAttribute('name', 'notes-content');
         editorArea.setAttribute('plugins', 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount');
-        editorArea.setAttribute('toolbar', 'undo redo | | bold italic backcolor | strikethrough | outdent indent | alignleft aligncenter alignright alignjustify | removeformat | help');
+        editorArea.setAttribute('toolbar', 'undo redo | bold italic backcolor | strikethrough | outdent indent | alignleft aligncenter alignright alignjustify | removeformat | help');
         editorArea.setAttribute('menubar', 'false');
         editorArea.setAttribute('height', '300');
         editorArea.setAttribute('required', '');
