@@ -68,7 +68,7 @@ export class AddItem {
      */
     addProjectSubmitButtonEventListener() {
         const projectFormSubmit = document.querySelector('#add-project-button');
-        projectFormSubmit.addEventListener('click', function(event) {
+        projectFormSubmit.addEventListener('submit', function(event) {
             event.preventDefault();
 
             // Get the following information from the form.
@@ -76,7 +76,7 @@ export class AddItem {
 
             // Perform form validation.
             if(title == "") {
-                alert("Title is a required field");
+                title.setCustomValidity();
             } else {
                 const project = new Project('ProjectObj', title, 0);
                 let date = new Date(Date.now());
