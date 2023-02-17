@@ -31,6 +31,14 @@ import contentCss from '!!raw-loader!tinymce/skins/content/default/content.min.c
 import contentUiCss from '!!raw-loader!tinymce/skins/ui/oxide/content.min.css';
 
 /**
+ * This function returns the new description for a note or todo list item.
+ * @returns The new description for a note or todo list item.
+ */
+export function getDescription() {
+  return tinymce.get('editor').getContent();
+}
+
+/**
  * Initialize TinyMCE editor for editing the description of a note or todo 
  * list item.
  * @param {String} description The desciption of the note or todo list item 
@@ -55,10 +63,16 @@ export function render (description) {
   });
 };
 
-/**
- * This function returns the new description for a note or todo list item.
- * @returns The new description for a note or todo list item.
- */
-export function getDescription() {
-    return tinymce.get('editor').getContent();
-}
+export function renderOriginalInput() {
+  let newDescription = '';
+  tinymce.init({
+    selector: '.editor',
+    plugins: 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount',
+    toolbar: 'undo redo | bold italic backcolor | strikethrough | outdent indent | alignleft aligncenter alignright alignjustify | removeformat | help',
+    skin: false,
+    menubar: false,
+    content_css: false,
+    content_style: [contentCss, contentUiCss].join('\n'),
+    height: 300,
+  });
+};
