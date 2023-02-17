@@ -328,7 +328,7 @@ export class TasksContent {
 
         // Render tinymce and setup submit button event listener.
         editor.render(note.getDescription());
-        submitButton.addEventListener('click', (event) => {
+        submitButton.addEventListener('submit', (event) => {
             event.preventDefault();
 
             // Get the following information from the form.
@@ -336,10 +336,10 @@ export class TasksContent {
             let newDescription = editor.getDescription();
 
             // Perform form validation.
-            if(newTitle == "") {
-                alert("Title is a required field");
-            } else if (newDescription == "") {
-                alert("Please enter note content");
+            if(newTitle == "" || newTitle == null) {
+                newTitle.setCustomValidity();
+            } else if (newDescription == "" || newDescription == null) {
+                newDescription.setCustomValidity();
             } else {
                 note.setDescription(newDescription);
                 note.setTitle(newTitle);
@@ -423,15 +423,15 @@ export class TasksContent {
         submitButton.setAttribute('type', 'submit');
         submitButton.classList.add('project-edit-cancel-delete-button');
         submitButton.textContent = 'Submit';
-        submitButton.addEventListener('click', (event) => {
+        submitButton.addEventListener('submit', (event) => {
             event.preventDefault();
 
             // Get the following information from the form.
             let newTitle = document.getElementById('projects-title').value;
             
             // Perform form validation.
-            if(newTitle == "") {
-                alert("Title is a required field");
+            if(newTitle == "" || newTitle == null) {
+                newTitle.setCustomValidity();
             } else {
                 // Update the project.
                 project.setTitle(newTitle);
@@ -700,7 +700,7 @@ export class TasksContent {
 
         // Render tinymce and setup submit button event listener.
         editor.render(todoItem.getDescription());
-        submitButton.addEventListener('click', (event) => {
+        submitButton.addEventListener('submit', (event) => {
             event.preventDefault();
             
             // Get the following information from the form.
@@ -709,10 +709,10 @@ export class TasksContent {
             let newDueByDate = document.getElementById('due-by-date').value;
             let newSelectedProject = document.getElementById(
                 'parent-project').value;
-            
+              
             // Perform form validation.
-            if(newTitle == "") {
-                alert("Title is a required field");
+            if(newTitle == "" || newTitle == null) {
+                newTitle.setCustomValidity();
             } else {
                 let newPriority;
                 document.getElementsByName('set-priority').forEach(radio => {
