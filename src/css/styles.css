@@ -206,6 +206,11 @@ body {
     box-shadow: none; /* Remove default red glow in Firefox */
 }
 
+.form-row input[type='text']:valid,
+.form-row input[type='date']:valid {
+    border: 1px solid green;;
+    box-shadow: none; /* Remove default red glow in Firefox */
+}
 .form-row label {
     margin-top: 15px;
     margin-bottom: 10px;
