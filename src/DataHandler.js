@@ -12,6 +12,15 @@ export class DataHandler {
     }
 
     /**
+     * Returns the type of item we are using.  The other types are project 
+     * and notes.  
+     * @returns String representation of the item type.
+     */
+    getItemType() {
+        return this.itemType;
+    }
+    
+    /**
      * This method accepts a todo list item, project, or note object as input 
      * ad stores it as a string in local storage.
      * @param {Object} item The todo list item, project, or note that we want 
