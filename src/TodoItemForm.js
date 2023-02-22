@@ -29,6 +29,7 @@ export class TodoItemForm {
         todoItemForm.classList.add('modal-form');
         todoItemForm.setAttribute('method', 'get');
         todoItemForm.setAttribute('action', '#');
+        todoItemForm.setAttribute('id', 'add-note-form');
 
         // Setup title
         const titleRow = document.createElement('div');

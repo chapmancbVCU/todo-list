@@ -21,8 +21,9 @@ export class ProjectsForm {
 
         const projectsForm = document.createElement('form');
         projectsForm.classList.add('modal-form');
-        projectsForm.setAttribute('method', 'get');
+        projectsForm.setAttribute('method', 'GET');
         projectsForm.setAttribute('action', '#');
+        projectsForm.setAttribute('id', 'add-project-form');
 
         // Setup title
         const titleRow = document.createElement('div');

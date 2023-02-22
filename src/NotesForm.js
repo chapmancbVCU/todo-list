@@ -1,3 +1,6 @@
+import * as editor from './editor';
+import { Editor } from "@tinymce/tinymce-webcomponent";
+import tinymce from 'tinymce';
 /**
  * @class The NotesForm class is responsible for rendering the form for 
  * creating a new note.
@@ -25,6 +28,7 @@ export class NotesForm {
         notesForm.classList.add('notes-form');
         notesForm.setAttribute('method', 'get');
         notesForm.setAttribute('action', '#');
+        notesForm.setAttribute('id', 'add-note-form');
 
         // Setup title
         const titleRow = document.createElement('div');
