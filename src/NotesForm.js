@@ -1,6 +1,3 @@
-import * as editor from './editor';
-import { Editor } from "@tinymce/tinymce-webcomponent";
-import tinymce from 'tinymce';
 /**
  * @class The NotesForm class is responsible for rendering the form for 
  * creating a new note.
