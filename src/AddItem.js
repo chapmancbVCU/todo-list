@@ -1,6 +1,9 @@
 /******************************************************************************
  * IMPORTS
  *****************************************************************************/
+import { Editor } from "@tinymce/tinymce-webcomponent";
+import tinymce from 'tinymce';
+import * as editor from './editor';
 import { NotesForm } from "./NotesForm.js";
 import { TodoItem } from "./TodoItem.js";
 import { TodoItemForm } from "./TodoItemForm.js";
@@ -33,20 +36,19 @@ export class AddItem {
      * @returns void
      */
     addNoteSubmitButtonEventListener() {
-        const noteFormSubmit = document.querySelector('#add-note-button');
-        noteFormSubmit.addEventListener('click', function(event) {
+        const noteFormSubmit = document.querySelector('#add-note-form');
+        noteFormSubmit.addEventListener('submit', (event) => {
             event.preventDefault();
 
             // Get the following information from the form.
             let title = document.getElementById('note-title').value;
             let description = document.getElementById('notes-content').value;
 
-            if(title == "") {
-                alert("Title is a required field");
-            } else if (description == "") {
-                alert("Please enter note content");
+            if(title == "" || title == null) {
+                title.setCustomValidity();
+            } else if (description == "" || description == null) {
+                description.setCustomValidity();
             } else {
-
                 // Add to local storage.
                 const note = new Note('NoteItemObj', title, description);
                 let date = new Date(Date.now());
@@ -67,8 +69,8 @@ export class AddItem {
      * @returns void
      */
     addProjectSubmitButtonEventListener() {
-        const projectFormSubmit = document.querySelector('#add-project-button');
-        projectFormSubmit.addEventListener('submit', function(event) {
+        const projectFormSubmit = document.querySelector('#add-project-form');
+        projectFormSubmit.addEventListener('submit', (event) => {
             event.preventDefault();
 
             // Get the following information from the form.
@@ -97,8 +99,8 @@ export class AddItem {
      * @returns void
      */
     addTodoItemSubmitButtonEventListener() {
-        const todoFormSubmit = document.querySelector('#add-todo-item-button');
-        todoFormSubmit.addEventListener('click', function(event) {
+        const todoFormSubmit = document.querySelector('#add-note-form');
+        todoFormSubmit.addEventListener('submit', (event) => {
             event.preventDefault();
 
             // Get the following information from the form.
@@ -183,7 +185,7 @@ export class AddItem {
         modalMain.appendChild(this.renderModalSideBar());
         modalMain.appendChild(this.renderTodoItemForm());
         modalContent.appendChild(modalMain);
-
+        
         addItemContainer.appendChild(modalContent);
         return addItemContainer;
     }
