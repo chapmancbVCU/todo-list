@@ -315,7 +315,7 @@ export class TasksContent {
         submitButton.setAttribute('id', 'edit-project-button');
         submitButton.setAttribute('type', 'submit');
         submitButton.classList.add('project-edit-cancel-delete-button');
-        submitButton.textContent = 'Submit';
+        submitButton.textContent = 'Update';
         buttonsRow.appendChild(submitButton);
 
         const cancelButton = document.createElement('button');
@@ -429,7 +429,7 @@ export class TasksContent {
         submitButton.setAttribute('id', 'edit-project-button');
         submitButton.setAttribute('type', 'submit');
         submitButton.classList.add('project-edit-cancel-delete-button');
-        submitButton.textContent = 'Submit';
+        submitButton.textContent = 'Update';
         
         buttonsRow.appendChild(submitButton);
 
@@ -679,7 +679,7 @@ export class TasksContent {
         submitButton.setAttribute('id', 'edit-project-button');
         submitButton.setAttribute('type', 'submit');
         submitButton.classList.add('project-edit-cancel-delete-button');
-        submitButton.textContent = 'Submit';
+        submitButton.textContent = 'Update';
         updateButtonsRow.appendChild(submitButton);
 
         const cancelButton = document.createElement('button');
