@@ -160,13 +160,6 @@ export class TodoItem extends DataHandler {
         return this.priority;
     }
     
-    /**
-     * Returns the title of this todo item.
-     * @returns String that contains the title of the todo item.
-     */
-    getTitle() {
-        return this.title;
-    }
 
     /**
      * Setter function for updating the description of a todo list item.
@@ -211,14 +204,5 @@ export class TodoItem extends DataHandler {
      */
     setPriority(priority) {
         this.priority = priority;
-    }
-
-    /**
-     * Setter function for updating the title of a todo list item.
-     * @param {String} title The title of the todo list item that we want to 
-     * set. 
-     */
-    setTitle(title) {
-        this.title = title;
     }
 }

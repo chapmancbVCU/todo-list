@@ -86,14 +86,6 @@ export class Note extends DataHandler {
     getItemType() {
         return this.itemType;
     }
-    
-    /**
-     * Returns the title of this note.
-     * @returns String that contains the title of this note.
-     */
-    getTitle() {
-        return this.title;
-    }
 
     /**
      * Setter function for updating the description of a note.
@@ -102,13 +94,5 @@ export class Note extends DataHandler {
      */
     setDescription(description) {
         this.description = description;
-    }
-
-    /**
-     * Setter function for updating the title of a note.
-     * @param {String} title The title of the note that we want to set. 
-     */
-    setTitle(title) {
-        this.title = title;
     }
 }

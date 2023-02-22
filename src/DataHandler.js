@@ -12,14 +12,33 @@ export class DataHandler {
     }
 
     /**
-     * Returns the type of item we are using.  The other types are project 
-     * and notes.  
+     * Returns the type of item we are using.  The available types are todo 
+     * list item, project, and note.
      * @returns String representation of the item type.
      */
     getItemType() {
         return this.itemType;
     }
-    
+
+    /**
+     * Returns the title of a todo list item, project, or note.
+     * @returns String that contains the title of a todo list item, project, 
+     * or note.
+     */
+    getTitle() {
+        return this.title;
+    }
+
+    /**
+     * Setter function for updating the title of a todo list item, project, or 
+     * note.
+     * @param {String} title The title of the todo list item, project, or note 
+     * that we want to set. 
+     */
+    setTitle(title) {
+        this.title = title;
+    }
+
     /**
      * This method accepts a todo list item, project, or note object as input 
      * ad stores it as a string in local storage.

@@ -95,14 +95,6 @@ export class Project extends DataHandler {
     getSubTasks() {
         return this.subTasks;
     }
-    
-    /**
-     * Returns the title of this project.
-     * @returns String that contains the title of this project.
-     */
-    getTitle() {
-        return this.title;
-    }
 
     /**
      * Increments the this.subTasks instance variables when a new task is 
@@ -111,13 +103,5 @@ export class Project extends DataHandler {
      */
     incrementSubTasksCount() {
         this.subTasks++;
-    }
-
-    /**
-     * Setter function for updating the title of a project.
-     * @param {String} title The title of the project that we want to set. 
-     */
-    setTitle(title) {
-        this.title = title;
     }
 }
