@@ -328,7 +328,7 @@ export class TasksContent {
 
         // Render tinymce and setup submit button event listener.
         editor.render(note.getDescription());
-        submitButton.addEventListener('submit', (event) => {
+        notesForm.addEventListener('submit', (event) => {
             event.preventDefault();
 
             // Get the following information from the form.
@@ -441,7 +441,7 @@ export class TasksContent {
         editProjectModal.appendChild(editProjectModalContent);
         contentContainer.appendChild(editProjectModal);
 
-        submitButton.addEventListener('submit', (event) => {
+        projectsForm.addEventListener('submit', (event) => {
             event.preventDefault();
 
             // Get the following information from the form.
@@ -702,7 +702,7 @@ export class TasksContent {
 
         // Render tinymce and setup submit button event listener.
         editor.render(todoItem.getDescription());
-        submitButton.addEventListener('submit', (event) => {
+        todoItemForm.addEventListener('submit', (event) => {
             event.preventDefault();
             
             // Get the following information from the form.
