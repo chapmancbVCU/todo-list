@@ -110,6 +110,10 @@ export class TasksContent {
         const deleteItemTitle = document.createElement('div');
         if(item.getItemType().includes('TodoItemObj')) {
         deleteItemTitle.textContent = 'Delete Todo List Item';
+        } else if(item.getItemType().includes('NoteItemObj')) {
+            deleteItemTitle.textContent = 'Delete Note';
+        } else if (item.getItemType().includes('ProjectObj')) {
+            deleteItemTitle.textContent = 'Delete Project';
         }
         deleteItemTitle.classList.add('modal-title');
         confirmDeleteModalTitleContainer.appendChild(deleteItemTitle);
