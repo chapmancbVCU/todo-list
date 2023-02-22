@@ -423,6 +423,24 @@ export class TasksContent {
         submitButton.setAttribute('type', 'submit');
         submitButton.classList.add('project-edit-cancel-delete-button');
         submitButton.textContent = 'Submit';
+        
+        buttonsRow.appendChild(submitButton);
+
+        const cancelButton = document.createElement('button');
+        cancelButton.classList.add('todo-item-cancel-delete-button');
+        cancelButton.textContent = "Cancel";
+        cancelButton.addEventListener('click', () => {
+            this.closeModals(editProjectModal);
+        });
+        buttonsRow.appendChild(cancelButton);
+        projectsForm.appendChild(buttonsRow);
+
+        editProjectTitleModalMain.appendChild(projectsForm);
+
+        editProjectModalContent.appendChild(editProjectTitleModalMain);
+        editProjectModal.appendChild(editProjectModalContent);
+        contentContainer.appendChild(editProjectModal);
+
         submitButton.addEventListener('submit', (event) => {
             event.preventDefault();
 
@@ -454,22 +472,6 @@ export class TasksContent {
                 location.reload();
             }
         });
-        buttonsRow.appendChild(submitButton);
-
-        const cancelButton = document.createElement('button');
-        cancelButton.classList.add('todo-item-cancel-delete-button');
-        cancelButton.textContent = "Cancel";
-        cancelButton.addEventListener('click', () => {
-            this.closeModals(editProjectModal);
-        });
-        buttonsRow.appendChild(cancelButton);
-        projectsForm.appendChild(buttonsRow);
-
-        editProjectTitleModalMain.appendChild(projectsForm);
-
-        editProjectModalContent.appendChild(editProjectTitleModalMain);
-        editProjectModal.appendChild(editProjectModalContent);
-        contentContainer.appendChild(editProjectModal);
     }
 
     /**

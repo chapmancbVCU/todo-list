@@ -113,9 +113,9 @@ export class AddItem {
 
             // Perform form validation.
             if(title == "") {
-                alert("Title is a required field");
+                title.setCustomValidity();
             } else if (dueByDate == "") {
-                alert("Select a due by date");
+                dueByDate.setCustomValidity();
             } else {    
                 // Get value for radio button
                 let priority;
