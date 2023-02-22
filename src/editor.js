@@ -63,6 +63,10 @@ export function render (description) {
   });
 };
 
+/**
+ * Initialize TinyMCE editor for adding the description of a note or todo 
+ * list item.
+ */
 export function renderOriginalInput() {
   let newDescription = '';
   tinymce.init({
