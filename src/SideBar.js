@@ -136,18 +136,22 @@ export class SideBar {
         const homeTaskCount = document.createElement('h3');
         homeTaskCount.classList.add('side-bar-task-count');
 
-        /* Get number of available todo items in storage so that we can set
-        the number of items in the home row. */
-        let allTodoItemsCount = 0;
+        /* Determine which items have not been completed and keep count so we 
+        can set the value for homeTaskCount.textContent. */
+        let incompleteTodoItemsCount = 0;
         for(let i  = 0; i < localStorage.length; i++) {
             let key = localStorage.key(i);
 
             if(key.includes('TodoItemObj_')) {
-                allTodoItemsCount++;
+                let todoItem = new TodoItem();
+                todoItem = todoItem.getItem(key);
+                if(todoItem.getIsComplete() == false) {
+                    incompleteTodoItemsCount++;
+                }
             }
         }
 
-        homeTaskCount.textContent = `${allTodoItemsCount}`;
+        homeTaskCount.textContent = `${incompleteTodoItemsCount}`;
         homeContainer.appendChild(homeTaskCount);
         return homeContainer;
     }
@@ -199,6 +203,7 @@ export class SideBar {
             let key = localStorage.key(i);
 
             if(key.includes('ProjectObj_')) {
+                let count = 0;
                 const projectDiv = document.createElement('div');
                 projectDiv.setAttribute('id', `${key}`);
                 projectDiv.classList.add('project-row');
@@ -217,10 +222,24 @@ export class SideBar {
                 projectLabel.classList.add('project-name');
                 projectDiv.appendChild(projectLabel);
 
-                // Show to user how many items are associated with a project.
+                /* The number in the circle reflects how many uncompleted tasks
+                exists under a parent project. */
                 const numberOfTasks = document.createElement('h3');
                 numberOfTasks.classList.add('side-bar-task-count');
-                numberOfTasks.textContent = `${project.getSubTasks()}`;
+
+                for(let i = 0; i < localStorage.length; i++) {
+                    const todoItemKey = localStorage.key(i);
+                    if(todoItemKey.includes('TodoItemObj_')) {
+                        let todoItem = new TodoItem();
+                        todoItem = todoItem.getItem(todoItemKey);
+                        if(project.getTitle() == todoItem.getParentProject()) {
+                            if(todoItem.getIsComplete() == false) {
+                                count++;
+                            }
+                        }
+                    }
+                }
+                numberOfTasks.textContent = count;
                 projectDiv.appendChild(numberOfTasks);
                 projectsContainer.appendChild(projectDiv);
                 projectDiv.addEventListener('click', () => {
@@ -267,7 +286,8 @@ export class SideBar {
                 todoItem = todoItem.getItem(key);
                 let todaysDate = (new Date()).toISOString().split('T')[0];
 
-                if(todoItem.getDueDate() == todaysDate) {
+                if(todoItem.getDueDate() == todaysDate && 
+                    todoItem.getIsComplete() == false) {
                     count++;
                 }
             }
@@ -298,6 +318,8 @@ export class SideBar {
         
         let today = new Date();
 
+        /* Determine how many todo items are not complete and set that as the
+        value shown inside the circle. */
         let count = 0;
         for(let i = 0; i < localStorage.length; i++) {
             let key = localStorage.key(i);
@@ -307,7 +329,8 @@ export class SideBar {
                 todoItem = todoItem.getItem(key)
                 let dueDate = todoItem.getDueDate();
                 if(dueDate >= today.getFirstDayOfWeek() && 
-                    dueDate <= today.getLastDayOfWeek()) {
+                    dueDate <= today.getLastDayOfWeek() &&
+                    todoItem.getIsComplete() == false) {
                     count++;
                 }
             }
