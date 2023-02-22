@@ -87,10 +87,11 @@ export class TasksContent {
      * user if they are sure they want to delete this item.
      * @param {String} key The string that identifies a particular todo list 
      * item in local storage. 
-     * @param {TodoItem} todoItem The todo list item we may want to delete.
+     * @param {DataHandler} item A todo list item, project, or note object. 
+     * All three of these object extends the DataHandler class.
      * @returns void
      */
-    renderConfirmDeleteModal(key, todoItem) {
+    renderConfirmDeleteModal(key, item) {
         const contentContainer = document.querySelector('#content');
 
         const confirmDeleteModal = document.createElement('div');
@@ -107,7 +108,9 @@ export class TasksContent {
             'todo-item-confirm-delete-title-container');
 
         const deleteItemTitle = document.createElement('div');
+        if(item.getItemType().includes('TodoItemObj')) {
         deleteItemTitle.textContent = 'Delete Todo List Item';
+        }
         deleteItemTitle.classList.add('modal-title');
         confirmDeleteModalTitleContainer.appendChild(deleteItemTitle);
 
@@ -126,7 +129,7 @@ export class TasksContent {
         const deleteMessage = document.createElement('div');
         deleteMessage.classList.add('todo-item-delete-message');
         deleteMessage.textContent = 
-            `Confirm you want to delete: ${todoItem.getTitle()}`;
+            `Confirm you want to delete: ${item.getTitle()}`;
 
         deleteItemModalMain.appendChild(deleteMessage);
 
@@ -138,7 +141,7 @@ export class TasksContent {
         okButton.classList.add('todo-item-cancel-delete-button');
         okButton.textContent = 'OK';
         okButton.addEventListener('click', () => {
-            this.deleteTodoItemButton(key, todoItem);
+            this.deleteTodoItemButton(key, item);
         });
         deleteModalButtonsContainer.appendChild(okButton);
 
@@ -802,7 +805,7 @@ export class TasksContent {
         iconsContainer.appendChild(deleteIcon);
         // Event listener for delete button.
         deleteIcon.addEventListener('click', () => {
-            this.deleteTodoItemButton(key, note);
+            this.renderConfirmDeleteModal(key, note);
         });
 
         noteTitleRow.appendChild(iconsContainer);
@@ -863,7 +866,7 @@ export class TasksContent {
             iconsContainer.appendChild(deleteIcon);
             // Event listener for delete button.
             deleteIcon.addEventListener('click', () => {
-                this.deleteTodoItemButton(key, project);
+                this.renderConfirmDeleteModal(key, project);
             });
         }
         projectsContainer.appendChild(iconsContainer);

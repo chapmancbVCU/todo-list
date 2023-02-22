@@ -24,6 +24,9 @@ export class SideBar {
         this.sideBarContainer.appendChild(this.initializeSidebarComponents());
         this.sideBarContainer.appendChild(this.renderAddButton());
         this.sideBarContainer.appendChild(this.renderClearButton());
+
+        //let date = new Date().toJSON().slice(0, 10);
+        //alert(date);
     }
 
     /**
@@ -284,7 +287,7 @@ export class SideBar {
             if(key.includes('TodoItemObj_')) {
                 let todoItem = new TodoItem();
                 todoItem = todoItem.getItem(key);
-                let todaysDate = (new Date()).toISOString().split('T')[0];
+                let todaysDate = new Date().toJSON().slice(0, 10);//(new Date()).toISOString().split('T')[0];
 
                 if(todoItem.getDueDate() == todaysDate && 
                     todoItem.getIsComplete() == false) {
