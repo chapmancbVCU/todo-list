@@ -29,6 +29,9 @@
             <pre class="prettyprint source linenums"><code>/******************************************************************************
  * IMPORTS
  *****************************************************************************/
+import { Editor } from "@tinymce/tinymce-webcomponent";
+import tinymce from 'tinymce';
+import * as editor from './editor';
 import { NotesForm } from "./NotesForm.js";
 import { TodoItem } from "./TodoItem.js";
 import { TodoItemForm } from "./TodoItemForm.js";
@@ -61,20 +64,19 @@ export class AddItem {
      * @returns void
      */
     addNoteSubmitButtonEventListener() {
-        const noteFormSubmit = document.querySelector('#add-note-button');
-        noteFormSubmit.addEventListener('click', function(event) {
+        const noteFormSubmit = document.querySelector('#add-note-form');
+        noteFormSubmit.addEventListener('submit', (event) => {
             event.preventDefault();
 
             // Get the following information from the form.
             let title = document.getElementById('note-title').value;
             let description = document.getElementById('notes-content').value;
 
-            if(title == "") {
-                alert("Title is a required field");
-            } else if (description == "") {
-                alert("Please enter note content");
+            if(title == "" || title == null) {
+                title.setCustomValidity();
+            } else if (description == "" || description == null) {
+                description.setCustomValidity();
             } else {
-
                 // Add to local storage.
                 const note = new Note('NoteItemObj', title, description);
                 let date = new Date(Date.now());
@@ -95,8 +97,8 @@ export class AddItem {
      * @returns void
      */
     addProjectSubmitButtonEventListener() {
-        const projectFormSubmit = document.querySelector('#add-project-button');
-        projectFormSubmit.addEventListener('click', function(event) {
+        const projectFormSubmit = document.querySelector('#add-project-form');
+        projectFormSubmit.addEventListener('submit', (event) => {
             event.preventDefault();
 
             // Get the following information from the form.
@@ -104,7 +106,7 @@ export class AddItem {
 
             // Perform form validation.
             if(title == "") {
-                alert("Title is a required field");
+                title.setCustomValidity();
             } else {
                 const project = new Project('ProjectObj', title, 0);
                 let date = new Date(Date.now());
@@ -125,8 +127,8 @@ export class AddItem {
      * @returns void
      */
     addTodoItemSubmitButtonEventListener() {
-        const todoFormSubmit = document.querySelector('#add-todo-item-button');
-        todoFormSubmit.addEventListener('click', function(event) {
+        const todoFormSubmit = document.querySelector('#add-note-form');
+        todoFormSubmit.addEventListener('submit', (event) => {
             event.preventDefault();
 
             // Get the following information from the form.
@@ -139,9 +141,9 @@ export class AddItem {
 
             // Perform form validation.
             if(title == "") {
-                alert("Title is a required field");
+                title.setCustomValidity();
             } else if (dueByDate == "") {
-                alert("Select a due by date");
+                dueByDate.setCustomValidity();
             } else {    
                 // Get value for radio button
                 let priority;
@@ -211,7 +213,7 @@ export class AddItem {
         modalMain.appendChild(this.renderModalSideBar());
         modalMain.appendChild(this.renderTodoItemForm());
         modalContent.appendChild(modalMain);
-
+        
         addItemContainer.appendChild(modalContent);
         return addItemContainer;
     }
@@ -313,13 +315,13 @@ export class AddItem {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddItem.html">AddItem</a></li><li><a href="DataHandler.html">DataHandler</a></li><li><a href="Note.html">Note</a></li><li><a href="NotesForm.html">NotesForm</a></li><li><a href="Page.html">Page</a></li><li><a href="Project.html">Project</a></li><li><a href="ProjectsForm.html">ProjectsForm</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="TasksContent.html">TasksContent</a></li><li><a href="TodoItem.html">TodoItem</a></li><li><a href="TodoItemForm.html">TodoItemForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addItemSelector">addItemSelector</a></li><li><a href="global.html#clearLocalStorageSelector">clearLocalStorageSelector</a></li><li><a href="global.html#contentContainer">contentContainer</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#homeTab">homeTab</a></li><li><a href="global.html#notesTab">notesTab</a></li><li><a href="global.html#page">page</a></li><li><a href="global.html#projectsTab">projectsTab</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#tasksContainer">tasksContainer</a></li><li><a href="global.html#todayTab">todayTab</a></li><li><a href="global.html#weekTab">weekTab</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddItem.html">AddItem</a></li><li><a href="DataHandler.html">DataHandler</a></li><li><a href="Note.html">Note</a></li><li><a href="NotesForm.html">NotesForm</a></li><li><a href="Page.html">Page</a></li><li><a href="Project.html">Project</a></li><li><a href="ProjectsForm.html">ProjectsForm</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="TasksContent.html">TasksContent</a></li><li><a href="TodoItem.html">TodoItem</a></li><li><a href="TodoItemForm.html">TodoItemForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addItemSelector">addItemSelector</a></li><li><a href="global.html#clearLocalStorageSelector">clearLocalStorageSelector</a></li><li><a href="global.html#contentContainer">contentContainer</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#homeTab">homeTab</a></li><li><a href="global.html#notesTab">notesTab</a></li><li><a href="global.html#page">page</a></li><li><a href="global.html#projectsTab">projectsTab</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#renderOriginalInput">renderOriginalInput</a></li><li><a href="global.html#tasksContainer">tasksContainer</a></li><li><a href="global.html#todayTab">todayTab</a></li><li><a href="global.html#weekTab">weekTab</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Feb 15 2023 20:51:55 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Feb 22 2023 18:16:49 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -52,6 +52,9 @@ export class SideBar {
         this.sideBarContainer.appendChild(this.initializeSidebarComponents());
         this.sideBarContainer.appendChild(this.renderAddButton());
         this.sideBarContainer.appendChild(this.renderClearButton());
+
+        //let date = new Date().toJSON().slice(0, 10);
+        //alert(date);
     }
 
     /**
@@ -164,18 +167,22 @@ export class SideBar {
         const homeTaskCount = document.createElement('h3');
         homeTaskCount.classList.add('side-bar-task-count');
 
-        /* Get number of available todo items in storage so that we can set
-        the number of items in the home row. */
-        let allTodoItemsCount = 0;
+        /* Determine which items have not been completed and keep count so we 
+        can set the value for homeTaskCount.textContent. */
+        let incompleteTodoItemsCount = 0;
         for(let i  = 0; i &lt; localStorage.length; i++) {
             let key = localStorage.key(i);
 
             if(key.includes('TodoItemObj_')) {
-                allTodoItemsCount++;
+                let todoItem = new TodoItem();
+                todoItem = todoItem.getItem(key);
+                if(todoItem.getIsComplete() == false) {
+                    incompleteTodoItemsCount++;
+                }
             }
         }
 
-        homeTaskCount.textContent = `${allTodoItemsCount}`;
+        homeTaskCount.textContent = `${incompleteTodoItemsCount}`;
         homeContainer.appendChild(homeTaskCount);
         return homeContainer;
     }
@@ -227,6 +234,7 @@ export class SideBar {
             let key = localStorage.key(i);
 
             if(key.includes('ProjectObj_')) {
+                let count = 0;
                 const projectDiv = document.createElement('div');
                 projectDiv.setAttribute('id', `${key}`);
                 projectDiv.classList.add('project-row');
@@ -245,10 +253,24 @@ export class SideBar {
                 projectLabel.classList.add('project-name');
                 projectDiv.appendChild(projectLabel);
 
-                // Show to user how many items are associated with a project.
+                /* The number in the circle reflects how many uncompleted tasks
+                exists under a parent project. */
                 const numberOfTasks = document.createElement('h3');
                 numberOfTasks.classList.add('side-bar-task-count');
-                numberOfTasks.textContent = `${project.getSubTasks()}`;
+
+                for(let i = 0; i &lt; localStorage.length; i++) {
+                    const todoItemKey = localStorage.key(i);
+                    if(todoItemKey.includes('TodoItemObj_')) {
+                        let todoItem = new TodoItem();
+                        todoItem = todoItem.getItem(todoItemKey);
+                        if(project.getTitle() == todoItem.getParentProject()) {
+                            if(todoItem.getIsComplete() == false) {
+                                count++;
+                            }
+                        }
+                    }
+                }
+                numberOfTasks.textContent = count;
                 projectDiv.appendChild(numberOfTasks);
                 projectsContainer.appendChild(projectDiv);
                 projectDiv.addEventListener('click', () => {
@@ -293,9 +315,10 @@ export class SideBar {
             if(key.includes('TodoItemObj_')) {
                 let todoItem = new TodoItem();
                 todoItem = todoItem.getItem(key);
-                let todaysDate = (new Date()).toISOString().split('T')[0];
+                let todaysDate = new Date().toJSON().slice(0, 10);//(new Date()).toISOString().split('T')[0];
 
-                if(todoItem.getDueDate() == todaysDate) {
+                if(todoItem.getDueDate() == todaysDate &amp;&amp; 
+                    todoItem.getIsComplete() == false) {
                     count++;
                 }
             }
@@ -326,6 +349,8 @@ export class SideBar {
         
         let today = new Date();
 
+        /* Determine how many todo items are not complete and set that as the
+        value shown inside the circle. */
         let count = 0;
         for(let i = 0; i &lt; localStorage.length; i++) {
             let key = localStorage.key(i);
@@ -335,7 +360,8 @@ export class SideBar {
                 todoItem = todoItem.getItem(key)
                 let dueDate = todoItem.getDueDate();
                 if(dueDate >= today.getFirstDayOfWeek() &amp;&amp; 
-                    dueDate &lt;= today.getLastDayOfWeek()) {
+                    dueDate &lt;= today.getLastDayOfWeek() &amp;&amp;
+                    todoItem.getIsComplete() == false) {
                     count++;
                 }
             }
@@ -373,13 +399,13 @@ export class SideBar {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddItem.html">AddItem</a></li><li><a href="DataHandler.html">DataHandler</a></li><li><a href="Note.html">Note</a></li><li><a href="NotesForm.html">NotesForm</a></li><li><a href="Page.html">Page</a></li><li><a href="Project.html">Project</a></li><li><a href="ProjectsForm.html">ProjectsForm</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="TasksContent.html">TasksContent</a></li><li><a href="TodoItem.html">TodoItem</a></li><li><a href="TodoItemForm.html">TodoItemForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addItemSelector">addItemSelector</a></li><li><a href="global.html#clearLocalStorageSelector">clearLocalStorageSelector</a></li><li><a href="global.html#contentContainer">contentContainer</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#homeTab">homeTab</a></li><li><a href="global.html#notesTab">notesTab</a></li><li><a href="global.html#page">page</a></li><li><a href="global.html#projectsTab">projectsTab</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#tasksContainer">tasksContainer</a></li><li><a href="global.html#todayTab">todayTab</a></li><li><a href="global.html#weekTab">weekTab</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddItem.html">AddItem</a></li><li><a href="DataHandler.html">DataHandler</a></li><li><a href="Note.html">Note</a></li><li><a href="NotesForm.html">NotesForm</a></li><li><a href="Page.html">Page</a></li><li><a href="Project.html">Project</a></li><li><a href="ProjectsForm.html">ProjectsForm</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="TasksContent.html">TasksContent</a></li><li><a href="TodoItem.html">TodoItem</a></li><li><a href="TodoItemForm.html">TodoItemForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addItemSelector">addItemSelector</a></li><li><a href="global.html#clearLocalStorageSelector">clearLocalStorageSelector</a></li><li><a href="global.html#contentContainer">contentContainer</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#homeTab">homeTab</a></li><li><a href="global.html#notesTab">notesTab</a></li><li><a href="global.html#page">page</a></li><li><a href="global.html#projectsTab">projectsTab</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#renderOriginalInput">renderOriginalInput</a></li><li><a href="global.html#tasksContainer">tasksContainer</a></li><li><a href="global.html#todayTab">todayTab</a></li><li><a href="global.html#weekTab">weekTab</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Feb 15 2023 20:51:55 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Feb 22 2023 18:16:49 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

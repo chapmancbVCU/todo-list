@@ -115,10 +115,11 @@ export class TasksContent {
      * user if they are sure they want to delete this item.
      * @param {String} key The string that identifies a particular todo list 
      * item in local storage. 
-     * @param {TodoItem} todoItem The todo list item we may want to delete.
+     * @param {DataHandler} item A todo list item, project, or note object. 
+     * All three of these object extends the DataHandler class.
      * @returns void
      */
-    renderConfirmDeleteModal(key, todoItem) {
+    renderConfirmDeleteModal(key, item) {
         const contentContainer = document.querySelector('#content');
 
         const confirmDeleteModal = document.createElement('div');
@@ -135,7 +136,13 @@ export class TasksContent {
             'todo-item-confirm-delete-title-container');
 
         const deleteItemTitle = document.createElement('div');
+        if(item.getItemType().includes('TodoItemObj')) {
         deleteItemTitle.textContent = 'Delete Todo List Item';
+        } else if(item.getItemType().includes('NoteItemObj')) {
+            deleteItemTitle.textContent = 'Delete Note';
+        } else if (item.getItemType().includes('ProjectObj')) {
+            deleteItemTitle.textContent = 'Delete Project';
+        }
         deleteItemTitle.classList.add('modal-title');
         confirmDeleteModalTitleContainer.appendChild(deleteItemTitle);
 
@@ -154,7 +161,7 @@ export class TasksContent {
         const deleteMessage = document.createElement('div');
         deleteMessage.classList.add('todo-item-delete-message');
         deleteMessage.textContent = 
-            `Confirm you want to delete: ${todoItem.getTitle()}`;
+            `Confirm you want to delete: ${item.getTitle()}`;
 
         deleteItemModalMain.appendChild(deleteMessage);
 
@@ -166,7 +173,7 @@ export class TasksContent {
         okButton.classList.add('todo-item-cancel-delete-button');
         okButton.textContent = 'OK';
         okButton.addEventListener('click', () => {
-            this.deleteTodoItemButton(key, todoItem);
+            this.deleteTodoItemButton(key, item);
         });
         deleteModalButtonsContainer.appendChild(okButton);
 
@@ -356,7 +363,7 @@ export class TasksContent {
 
         // Render tinymce and setup submit button event listener.
         editor.render(note.getDescription());
-        submitButton.addEventListener('click', (event) => {
+        notesForm.addEventListener('submit', (event) => {
             event.preventDefault();
 
             // Get the following information from the form.
@@ -364,10 +371,10 @@ export class TasksContent {
             let newDescription = editor.getDescription();
 
             // Perform form validation.
-            if(newTitle == "") {
-                alert("Title is a required field");
-            } else if (newDescription == "") {
-                alert("Please enter note content");
+            if(newTitle == "" || newTitle == null) {
+                newTitle.setCustomValidity();
+            } else if (newDescription == "" || newDescription == null) {
+                newDescription.setCustomValidity();
             } else {
                 note.setDescription(newDescription);
                 note.setTitle(newTitle);
@@ -451,15 +458,33 @@ export class TasksContent {
         submitButton.setAttribute('type', 'submit');
         submitButton.classList.add('project-edit-cancel-delete-button');
         submitButton.textContent = 'Submit';
-        submitButton.addEventListener('click', (event) => {
+        
+        buttonsRow.appendChild(submitButton);
+
+        const cancelButton = document.createElement('button');
+        cancelButton.classList.add('todo-item-cancel-delete-button');
+        cancelButton.textContent = "Cancel";
+        cancelButton.addEventListener('click', () => {
+            this.closeModals(editProjectModal);
+        });
+        buttonsRow.appendChild(cancelButton);
+        projectsForm.appendChild(buttonsRow);
+
+        editProjectTitleModalMain.appendChild(projectsForm);
+
+        editProjectModalContent.appendChild(editProjectTitleModalMain);
+        editProjectModal.appendChild(editProjectModalContent);
+        contentContainer.appendChild(editProjectModal);
+
+        projectsForm.addEventListener('submit', (event) => {
             event.preventDefault();
 
             // Get the following information from the form.
             let newTitle = document.getElementById('projects-title').value;
             
             // Perform form validation.
-            if(newTitle == "") {
-                alert("Title is a required field");
+            if(newTitle == "" || newTitle == null) {
+                newTitle.setCustomValidity();
             } else {
                 // Update the project.
                 project.setTitle(newTitle);
@@ -482,22 +507,6 @@ export class TasksContent {
                 location.reload();
             }
         });
-        buttonsRow.appendChild(submitButton);
-
-        const cancelButton = document.createElement('button');
-        cancelButton.classList.add('todo-item-cancel-delete-button');
-        cancelButton.textContent = "Cancel";
-        cancelButton.addEventListener('click', () => {
-            this.closeModals(editProjectModal);
-        });
-        buttonsRow.appendChild(cancelButton);
-        projectsForm.appendChild(buttonsRow);
-
-        editProjectTitleModalMain.appendChild(projectsForm);
-
-        editProjectModalContent.appendChild(editProjectTitleModalMain);
-        editProjectModal.appendChild(editProjectModalContent);
-        contentContainer.appendChild(editProjectModal);
     }
 
     /**
@@ -728,7 +737,7 @@ export class TasksContent {
 
         // Render tinymce and setup submit button event listener.
         editor.render(todoItem.getDescription());
-        submitButton.addEventListener('click', (event) => {
+        todoItemForm.addEventListener('submit', (event) => {
             event.preventDefault();
             
             // Get the following information from the form.
@@ -737,10 +746,10 @@ export class TasksContent {
             let newDueByDate = document.getElementById('due-by-date').value;
             let newSelectedProject = document.getElementById(
                 'parent-project').value;
-            
+              
             // Perform form validation.
-            if(newTitle == "") {
-                alert("Title is a required field");
+            if(newTitle == "" || newTitle == null) {
+                newTitle.setCustomValidity();
             } else {
                 let newPriority;
                 document.getElementsByName('set-priority').forEach(radio => {
@@ -828,7 +837,7 @@ export class TasksContent {
         iconsContainer.appendChild(deleteIcon);
         // Event listener for delete button.
         deleteIcon.addEventListener('click', () => {
-            this.deleteTodoItemButton(key, note);
+            this.renderConfirmDeleteModal(key, note);
         });
 
         noteTitleRow.appendChild(iconsContainer);
@@ -889,7 +898,7 @@ export class TasksContent {
             iconsContainer.appendChild(deleteIcon);
             // Event listener for delete button.
             deleteIcon.addEventListener('click', () => {
-                this.deleteTodoItemButton(key, project);
+                this.renderConfirmDeleteModal(key, project);
             });
         }
         projectsContainer.appendChild(iconsContainer);
@@ -1108,13 +1117,13 @@ export class TasksContent {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddItem.html">AddItem</a></li><li><a href="DataHandler.html">DataHandler</a></li><li><a href="Note.html">Note</a></li><li><a href="NotesForm.html">NotesForm</a></li><li><a href="Page.html">Page</a></li><li><a href="Project.html">Project</a></li><li><a href="ProjectsForm.html">ProjectsForm</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="TasksContent.html">TasksContent</a></li><li><a href="TodoItem.html">TodoItem</a></li><li><a href="TodoItemForm.html">TodoItemForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addItemSelector">addItemSelector</a></li><li><a href="global.html#clearLocalStorageSelector">clearLocalStorageSelector</a></li><li><a href="global.html#contentContainer">contentContainer</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#homeTab">homeTab</a></li><li><a href="global.html#notesTab">notesTab</a></li><li><a href="global.html#page">page</a></li><li><a href="global.html#projectsTab">projectsTab</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#tasksContainer">tasksContainer</a></li><li><a href="global.html#todayTab">todayTab</a></li><li><a href="global.html#weekTab">weekTab</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddItem.html">AddItem</a></li><li><a href="DataHandler.html">DataHandler</a></li><li><a href="Note.html">Note</a></li><li><a href="NotesForm.html">NotesForm</a></li><li><a href="Page.html">Page</a></li><li><a href="Project.html">Project</a></li><li><a href="ProjectsForm.html">ProjectsForm</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="TasksContent.html">TasksContent</a></li><li><a href="TodoItem.html">TodoItem</a></li><li><a href="TodoItemForm.html">TodoItemForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addItemSelector">addItemSelector</a></li><li><a href="global.html#clearLocalStorageSelector">clearLocalStorageSelector</a></li><li><a href="global.html#contentContainer">contentContainer</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#homeTab">homeTab</a></li><li><a href="global.html#notesTab">notesTab</a></li><li><a href="global.html#page">page</a></li><li><a href="global.html#projectsTab">projectsTab</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#renderOriginalInput">renderOriginalInput</a></li><li><a href="global.html#tasksContainer">tasksContainer</a></li><li><a href="global.html#todayTab">todayTab</a></li><li><a href="global.html#weekTab">weekTab</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Feb 15 2023 20:51:55 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Feb 22 2023 18:16:49 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
