@@ -5,11 +5,12 @@ import { Editor } from "@tinymce/tinymce-webcomponent";
 import tinymce from 'tinymce';
 import * as editor from './editor';
 import { DataHandler } from './DataHandler';
-import EditIcon from './icons/note-edit.png';
 import DeleteIcon from './icons/trash-can.png';
+import EditIcon from './icons/note-edit.png';
 import { Note } from './Note';
 import { Project } from './Project';
 import { TodoItem } from "./TodoItem"; 
+import { TodoListDate } from "./TodoListDate";
 
 
 /** 
@@ -924,10 +925,12 @@ export class TasksContent {
         // Show due date.
         const dueDate = document.createElement('div');
         let todoItemDueDate = todoItem.getDueDate();
-        const today = (new Date()).toISOString().split('T')[0];
-        if (today > todoItemDueDate) {
+        //const today = (new Date()).toISOString().split('T')[0];
+
+        console.log(`due date: ${todoItemDueDate}, today: ${TodoListDate.getDate()}`);
+        if (TodoListDate.getDate() > todoItemDueDate) {
             dueDate.classList.add('todo-item-due-date-overdue');
-        } else if (today == todoItemDueDate) {
+        } else if (TodoListDate.getDate() === todoItemDueDate) {
             dueDate.classList.add('todo-item-due-date-today');
         } else {
             dueDate.classList.add('todo-item-due-date-future');
@@ -1017,7 +1020,7 @@ export class TasksContent {
                 if (selectedTab == null || selectedTab.includes('HOME')) {
                     this.renderTodoItem(key, todoItem);
                 } else if (selectedTab.includes('TODAY')) {
-                    if (dueDate == (new Date()).toISOString().split('T')[0]) {
+                    if (dueDate == TodoListDate.getDate()) {
                         this.renderTodoItem(key, todoItem);
                     }
                 } else if (selectedTab.includes('WEEK')) {
