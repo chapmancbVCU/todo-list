@@ -164,10 +164,12 @@ export class SideBar {
      * Notes section of the sidebar.
      */
     renderNotesRow() {
+        // Setup container
         const notesRow = document.createElement('li');
         notesRow.setAttribute('id', 'notes');
         notesRow.classList.add('side-bar-row');
 
+        // Setup label
         const notesLabel = document.createElement('h2');
         notesLabel.classList.add('side-bar-label');
         if (this.getSelectedTab() === 'NOTES') {
@@ -177,6 +179,18 @@ export class SideBar {
         } 
         notesRow.appendChild(notesLabel);
 
+        // Setup number of notes in storage.
+        const noteCount = document.createElement('h3');
+        noteCount.classList.add('side-bar-task-count');
+        let count = 0;
+        for(let i = 0; i < localStorage.length; i++) {
+            let key = localStorage.key(i);
+            if(key.includes('NoteItemObj_')) {
+                count++;
+            }
+        }
+        noteCount.textContent = count;
+        notesRow.appendChild(noteCount);
         return notesRow;
     }
 
