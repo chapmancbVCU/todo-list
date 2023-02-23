@@ -309,13 +309,11 @@ export class SideBar {
         /* Figure out which todo items are due this week and set the variable 
         count to the number of those tasks. */
         Date.prototype.getFirstDayOfWeek = function() {
-            return (new Date(this.setDate(this.getDate() - this.getDay())).
-                toISOString().split('T')[0]);
+            return (new Date(this.setDate(this.getDate() - this.getDay())));
         }
         
         Date.prototype.getLastDayOfWeek = function() {
-            return (new Date(this.setDate(this.getDate() - this.getDay() +6)).
-                toISOString().split('T')[0]);
+            return (new Date(this.setDate(this.getDate() - this.getDay() +6)));
         }
         
         let today = new Date();
@@ -330,8 +328,10 @@ export class SideBar {
                 let todoItem = new TodoItem();
                 todoItem = todoItem.getItem(key)
                 let dueDate = todoItem.getDueDate();
-                if (dueDate >= today.getFirstDayOfWeek() && 
-                    dueDate <= today.getLastDayOfWeek() &&
+                if (dueDate >= TodoListDate.getDateFromString(
+                    today.getFirstDayOfWeek()) && 
+                    dueDate <= TodoListDate.getDateFromString(
+                        today.getLastDayOfWeek()) &&
                     todoItem.getIsComplete() == false) {
                     count++;
                 }

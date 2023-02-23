@@ -991,13 +991,11 @@ export class TasksContent {
     renderTasks() {
         /* Functions for determining day of the week. */
         Date.prototype.getFirstDayOfWeek = function() {
-            return (new Date(this.setDate(this.getDate() - this.getDay())).
-                toISOString().split('T')[0]);
+            return (new Date(this.setDate(this.getDate() - this.getDay())));
         }
         
         Date.prototype.getLastDayOfWeek = function() {
-            return (new Date(this.setDate(this.getDate() - this.getDay() +6)).
-                toISOString().split('T')[0]);
+            return (new Date(this.setDate(this.getDate() - this.getDay() +6)));
         }
         let today = new Date();
 
@@ -1022,8 +1020,10 @@ export class TasksContent {
                         this.renderTodoItem(key, todoItem);
                     }
                 } else if (selectedTab.includes('WEEK')) {
-                   if (dueDate >= today.getFirstDayOfWeek() &&
-                        dueDate <= today.getLastDayOfWeek()) {
+                   if (dueDate >= TodoListDate.getDateFromString(
+                        today.getFirstDayOfWeek()) &&
+                        dueDate <= TodoListDate.getDateFromString(
+                        today.getLastDayOfWeek())) {
                             this.renderTodoItem(key, todoItem);
                         }
                 } else if (selectedTab.includes('ProjectObj_')) {
