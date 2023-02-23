@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: ProjectsForm.js</title>
+    <title>JSDoc: Source: TodoListDate.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: ProjectsForm.js</h1>
+    <h1 class="page-title">Source: TodoListDate.js</h1>
 
     
 
@@ -26,63 +26,45 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @class Class for rendering and handling data entry for adding a new project.
+            <pre class="prettyprint source linenums"><code>
+/**
+ * @class A class whose purpose is to get dates in the correct format.  We 
+ * needed to implement this class because the incorrect date information is 
+ * returned when using the Date class.
  * @author Chad Chapman
  */
-export class ProjectsForm {
+export class TodoListDate {
     /**
-     * Default constructor.
+     * Default constructor
      */
     constructor() {
-
     }
 
     /**
-     * Renders the form for getting input about a new project.
-     * @returns HTMLDivElement The form responsible for getting information 
-     * about a project. 
+     * This function returns today's date as a string in yyyy-mm-dd format and 
+     * respects local host's timezone.
+     * @returns Today's date in yyyy-mm-dd format.
      */
-    initializeComponents() {
-        const projectsFormContainer = document.createElement('div');
-        projectsFormContainer.setAttribute('id', 'modal-form-container');
+    static getDate() {
+        let date = new Date();
+        let year = date.toLocaleString("default", { year: "numeric" });
+        let month = date.toLocaleString("default", { month: "2-digit" });
+        let day = date.toLocaleString("default", { day: "2-digit" });
+        return `${year}-${month}-${day}`;
+    }
 
-        const projectsForm = document.createElement('form');
-        projectsForm.classList.add('modal-form');
-        projectsForm.setAttribute('method', 'GET');
-        projectsForm.setAttribute('action', '#');
-        projectsForm.setAttribute('id', 'add-project-form');
-
-        // Setup title
-        const titleRow = document.createElement('div');
-        titleRow.classList.add('form-row');
-        const projectsFormLabel = document.createElement('label');
-        projectsFormLabel.setAttribute('for', 'projects-title');
-        projectsFormLabel.textContent = 'Project Title:';
-        titleRow.appendChild(projectsFormLabel);
-        const title = document.createElement('input');
-        title.setAttribute('id', 'projects-title');
-        title.setAttribute('name', 'projects-title');
-        title.setAttribute('type', 'text');
-        title.setAttribute('maxlength', '20');
-        title.setAttribute('required', '');
-        title.setAttribute('placeholder', 'Project title less than 20 characters');
-        titleRow.appendChild(title);
-        projectsForm.appendChild(titleRow);
-
-        // Setup submit button
-        const buttonsRow = document.createElement('div');
-        buttonsRow.classList.add('buttons-form-row');
-        const submitButton = document.createElement('button');
-        submitButton.setAttribute('id', 'add-project-button');
-        submitButton.setAttribute('type', 'submit');
-        submitButton.classList.add('add-project-button');
-        submitButton.textContent = 'Add';
-        buttonsRow.appendChild(submitButton);
-        projectsForm.appendChild(buttonsRow);
-
-        projectsFormContainer.appendChild(projectsForm);
-        return projectsFormContainer;
+    /**
+     * This function accepts a date object and returns the string as 
+     * yyyy-mm-dd format and respects local host's timezone.
+     * @param {Date} date The date object we want to process to get date as 
+     * string in the correct format.
+     * @returns Today's date in yyyy-mm-dd format.
+     */
+    static getDateFromString(date) {
+        let year = date.toLocaleString("default", { year: "numeric" });
+        let month = date.toLocaleString("default", { month: "2-digit" });
+        let day = date.toLocaleString("default", { day: "2-digit" });
+        return `${year}-${month}-${day}`;
     }
 }</code></pre>
         </article>

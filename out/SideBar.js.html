@@ -31,6 +31,8 @@
  *****************************************************************************/
 import { Project } from "./Project";
 import { TodoItem } from "./TodoItem";
+import { TodoListDate } from './TodoListDate';
+
 
 /**
  * This file contains the Page class whose responsibility is to build sidebar 
@@ -52,9 +54,6 @@ export class SideBar {
         this.sideBarContainer.appendChild(this.initializeSidebarComponents());
         this.sideBarContainer.appendChild(this.renderAddButton());
         this.sideBarContainer.appendChild(this.renderClearButton());
-
-        //let date = new Date().toJSON().slice(0, 10);
-        //alert(date);
     }
 
     /**
@@ -65,9 +64,9 @@ export class SideBar {
     getSelectedTab() {
         let selectedTab = '';
         // Selected tab is used to mark which tab is selected in sidebar.
-        for(let i = 0; i &lt; sessionStorage.length; i++) {
+        for (let i = 0; i &lt; sessionStorage.length; i++) {
             const key = sessionStorage.key(i);
-            if(key.includes('SelectedTab')) {
+            if (key.includes('SelectedTab')) {
                 selectedTab = sessionStorage.getItem(key);
             }
         }
@@ -155,9 +154,9 @@ export class SideBar {
         some // before the word home.  We also test if others are selected.
         Finally, if selectedTab is not set we just print // Home since it is 
         the default tab. */
-        if(this.getSelectedTab() === 'HOME') {
+        if (this.getSelectedTab() === 'HOME') {
             homeLabel.textContent = '// Home';
-        } else if(this.getSelectedTab() != '') {
+        } else if (this.getSelectedTab() != '') {
             homeLabel.textContent = 'Home';
         } else {
             homeLabel.textContent = '// Home';
@@ -170,13 +169,13 @@ export class SideBar {
         /* Determine which items have not been completed and keep count so we 
         can set the value for homeTaskCount.textContent. */
         let incompleteTodoItemsCount = 0;
-        for(let i  = 0; i &lt; localStorage.length; i++) {
+        for (let i  = 0; i &lt; localStorage.length; i++) {
             let key = localStorage.key(i);
 
-            if(key.includes('TodoItemObj_')) {
+            if (key.includes('TodoItemObj_')) {
                 let todoItem = new TodoItem();
                 todoItem = todoItem.getItem(key);
-                if(todoItem.getIsComplete() == false) {
+                if (todoItem.getIsComplete() == false) {
                     incompleteTodoItemsCount++;
                 }
             }
@@ -193,19 +192,33 @@ export class SideBar {
      * Notes section of the sidebar.
      */
     renderNotesRow() {
+        // Setup container
         const notesRow = document.createElement('li');
         notesRow.setAttribute('id', 'notes');
         notesRow.classList.add('side-bar-row');
 
+        // Setup label
         const notesLabel = document.createElement('h2');
         notesLabel.classList.add('side-bar-label');
-        if(this.getSelectedTab() === 'NOTES') {
+        if (this.getSelectedTab() === 'NOTES') {
             notesLabel.textContent = '// Notes';
         } else {
             notesLabel.textContent = 'Notes';
         } 
         notesRow.appendChild(notesLabel);
 
+        // Setup number of notes in storage.
+        const noteCount = document.createElement('h3');
+        noteCount.classList.add('side-bar-task-count');
+        let count = 0;
+        for(let i = 0; i &lt; localStorage.length; i++) {
+            let key = localStorage.key(i);
+            if(key.includes('NoteItemObj_')) {
+                count++;
+            }
+        }
+        noteCount.textContent = count;
+        notesRow.appendChild(noteCount);
         return notesRow;
     }
 
@@ -221,7 +234,7 @@ export class SideBar {
         const projectsRowLabel = document.createElement('h2');
         projectsRowLabel.setAttribute('id', 'project-row-label');
         projectsRowLabel.classList.add('side-bar-label');
-        if(this.getSelectedTab() === 'PROJECTS_TAB') {
+        if (this.getSelectedTab() === 'PROJECTS_TAB') {
             projectsRowLabel.textContent = '// Projects';
         }  else {
             projectsRowLabel.textContent = 'Projects';
@@ -230,10 +243,10 @@ export class SideBar {
         projectsRow.appendChild(projectsRowLabel);
 
         const projectsContainer = document.createElement('div');
-        for(let i = 0; i &lt; localStorage.length; i++) {
+        for (let i = 0; i &lt; localStorage.length; i++) {
             let key = localStorage.key(i);
 
-            if(key.includes('ProjectObj_')) {
+            if (key.includes('ProjectObj_')) {
                 let count = 0;
                 const projectDiv = document.createElement('div');
                 projectDiv.setAttribute('id', `${key}`);
@@ -245,7 +258,7 @@ export class SideBar {
                 the tab for this project is selected.  If selected we print 
                 // before the title. */
                 const projectLabel = document.createElement('h2');
-                if(this.getSelectedTab() === key) {
+                if (this.getSelectedTab() === key) {
                     projectLabel.textContent = `// ${project.getTitle()}`;
                 } else {
                     projectLabel.textContent = `${project.getTitle()}`;
@@ -258,13 +271,14 @@ export class SideBar {
                 const numberOfTasks = document.createElement('h3');
                 numberOfTasks.classList.add('side-bar-task-count');
 
-                for(let i = 0; i &lt; localStorage.length; i++) {
+                for (let i = 0; i &lt; localStorage.length; i++) {
                     const todoItemKey = localStorage.key(i);
-                    if(todoItemKey.includes('TodoItemObj_')) {
+                    if (todoItemKey.includes('TodoItemObj_')) {
                         let todoItem = new TodoItem();
                         todoItem = todoItem.getItem(todoItemKey);
-                        if(project.getTitle() == todoItem.getParentProject()) {
-                            if(todoItem.getIsComplete() == false) {
+                        if (project.getTitle() == 
+                            todoItem.getParentProject()) {
+                            if (todoItem.getIsComplete() == false) {
                                 count++;
                             }
                         }
@@ -296,7 +310,7 @@ export class SideBar {
 
         const todayLabel = document.createElement('h2');
         todayLabel.classList.add('side-bar-label');
-        if(this.getSelectedTab() === 'TODAY') {
+        if (this.getSelectedTab() === 'TODAY') {
             todayLabel.textContent = '// Today';
         } else {
             todayLabel.textContent = 'Today';
@@ -309,15 +323,13 @@ export class SideBar {
         /* Perform test to see if a todo item is due today.  If the item is
         due today then we increment the count variable. */
         let count = 0;
-        for(let i  = 0; i &lt; localStorage.length; i++) {
+        for (let i  = 0; i &lt; localStorage.length; i++) {
             let key = localStorage.key(i);
 
-            if(key.includes('TodoItemObj_')) {
+            if (key.includes('TodoItemObj_')) {
                 let todoItem = new TodoItem();
                 todoItem = todoItem.getItem(key);
-                let todaysDate = new Date().toJSON().slice(0, 10);//(new Date()).toISOString().split('T')[0];
-
-                if(todoItem.getDueDate() == todaysDate &amp;&amp; 
+                if (todoItem.getDueDate() == TodoListDate.getDate() &amp;&amp; 
                     todoItem.getIsComplete() == false) {
                     count++;
                 }
@@ -329,6 +341,7 @@ export class SideBar {
         return todayTasksContainer;
     }
 
+    
     /**
      * Renders the the week tasks row.
      * @returns HTMLDivElement The div that contains the row for week category 
@@ -338,13 +351,11 @@ export class SideBar {
         /* Figure out which todo items are due this week and set the variable 
         count to the number of those tasks. */
         Date.prototype.getFirstDayOfWeek = function() {
-            return (new Date(this.setDate(this.getDate() - this.getDay())).
-                toISOString().split('T')[0]);
+            return (new Date(this.setDate(this.getDate() - this.getDay())));
         }
         
         Date.prototype.getLastDayOfWeek = function() {
-            return (new Date(this.setDate(this.getDate() - this.getDay() +6)).
-                toISOString().split('T')[0]);
+            return (new Date(this.setDate(this.getDate() - this.getDay() +6)));
         }
         
         let today = new Date();
@@ -352,15 +363,17 @@ export class SideBar {
         /* Determine how many todo items are not complete and set that as the
         value shown inside the circle. */
         let count = 0;
-        for(let i = 0; i &lt; localStorage.length; i++) {
+        for (let i = 0; i &lt; localStorage.length; i++) {
             let key = localStorage.key(i);
 
-            if(key.includes('TodoItemObj_')) {
+            if (key.includes('TodoItemObj_')) {
                 let todoItem = new TodoItem();
                 todoItem = todoItem.getItem(key)
                 let dueDate = todoItem.getDueDate();
-                if(dueDate >= today.getFirstDayOfWeek() &amp;&amp; 
-                    dueDate &lt;= today.getLastDayOfWeek() &amp;&amp;
+                if (dueDate >= TodoListDate.getDateFromString(
+                    today.getFirstDayOfWeek()) &amp;&amp; 
+                    dueDate &lt;= TodoListDate.getDateFromString(
+                        today.getLastDayOfWeek()) &amp;&amp;
                     todoItem.getIsComplete() == false) {
                     count++;
                 }
@@ -374,7 +387,7 @@ export class SideBar {
 
         const weekLabel = document.createElement('h2');
         weekLabel.classList.add('side-bar-label');
-        if(this.getSelectedTab() === 'WEEK') {
+        if (this.getSelectedTab() === 'WEEK') {
             weekLabel.textContent = '// Week';
         } else {
             weekLabel.textContent = 'Week';
@@ -399,13 +412,13 @@ export class SideBar {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddItem.html">AddItem</a></li><li><a href="DataHandler.html">DataHandler</a></li><li><a href="Note.html">Note</a></li><li><a href="NotesForm.html">NotesForm</a></li><li><a href="Page.html">Page</a></li><li><a href="Project.html">Project</a></li><li><a href="ProjectsForm.html">ProjectsForm</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="TasksContent.html">TasksContent</a></li><li><a href="TodoItem.html">TodoItem</a></li><li><a href="TodoItemForm.html">TodoItemForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addItemSelector">addItemSelector</a></li><li><a href="global.html#clearLocalStorageSelector">clearLocalStorageSelector</a></li><li><a href="global.html#contentContainer">contentContainer</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#homeTab">homeTab</a></li><li><a href="global.html#notesTab">notesTab</a></li><li><a href="global.html#page">page</a></li><li><a href="global.html#projectsTab">projectsTab</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#renderOriginalInput">renderOriginalInput</a></li><li><a href="global.html#tasksContainer">tasksContainer</a></li><li><a href="global.html#todayTab">todayTab</a></li><li><a href="global.html#weekTab">weekTab</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddItem.html">AddItem</a></li><li><a href="DataHandler.html">DataHandler</a></li><li><a href="Note.html">Note</a></li><li><a href="NotesForm.html">NotesForm</a></li><li><a href="Page.html">Page</a></li><li><a href="Project.html">Project</a></li><li><a href="ProjectsForm.html">ProjectsForm</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="TasksContent.html">TasksContent</a></li><li><a href="TodoItem.html">TodoItem</a></li><li><a href="TodoItemForm.html">TodoItemForm</a></li><li><a href="TodoListDate.html">TodoListDate</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addItemSelector">addItemSelector</a></li><li><a href="global.html#clearLocalStorageSelector">clearLocalStorageSelector</a></li><li><a href="global.html#contentContainer">contentContainer</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#homeTab">homeTab</a></li><li><a href="global.html#notesTab">notesTab</a></li><li><a href="global.html#page">page</a></li><li><a href="global.html#projectsTab">projectsTab</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#renderOriginalInput">renderOriginalInput</a></li><li><a href="global.html#tasksContainer">tasksContainer</a></li><li><a href="global.html#todayTab">todayTab</a></li><li><a href="global.html#weekTab">weekTab</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Feb 22 2023 18:16:49 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Feb 22 2023 21:18:09 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

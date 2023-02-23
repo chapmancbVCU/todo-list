@@ -72,7 +72,7 @@ export class AddItem {
             let title = document.getElementById('note-title').value;
             let description = document.getElementById('notes-content').value;
 
-            if(title == "" || title == null) {
+            if (title == "" || title == null) {
                 title.setCustomValidity();
             } else if (description == "" || description == null) {
                 description.setCustomValidity();
@@ -105,7 +105,7 @@ export class AddItem {
             let title = document.getElementById('projects-title').value;
 
             // Perform form validation.
-            if(title == "") {
+            if (title == "") {
                 title.setCustomValidity();
             } else {
                 const project = new Project('ProjectObj', title, 0);
@@ -140,7 +140,7 @@ export class AddItem {
                 'parent-project').value;
 
             // Perform form validation.
-            if(title == "") {
+            if (title == "") {
                 title.setCustomValidity();
             } else if (dueByDate == "") {
                 dueByDate.setCustomValidity();
@@ -166,13 +166,13 @@ export class AddItem {
                 let date = new Date(Date.now());
                 todoItem.setTodoItem(todoItem, `TodoItemObj_${date}`); 
 
-                for(let i = 0; i &lt; localStorage.length; i++) {
+                for (let i = 0; i &lt; localStorage.length; i++) {
                     let key = localStorage.key(i);
-                    if(key.includes('ProjectObj_')) {
+                    if (key.includes('ProjectObj_')) {
                         let project = new Project();
                         project = project.getItem(key);
                         const projectTitle = project.getTitle();
-                        if(projectTitle === selectedProject) {
+                        if (projectTitle === selectedProject) {
                             project.incrementSubTasksCount();
                             project.setTodoItem(project, key);
                         }
@@ -291,7 +291,6 @@ export class AddItem {
      * @returns HTMLFormElement The form for adding a new todo list item.
      */
     renderTodoItemForm() {
-
         return this.todoItemForm.initializeComponents();
     }
 
@@ -315,13 +314,13 @@ export class AddItem {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddItem.html">AddItem</a></li><li><a href="DataHandler.html">DataHandler</a></li><li><a href="Note.html">Note</a></li><li><a href="NotesForm.html">NotesForm</a></li><li><a href="Page.html">Page</a></li><li><a href="Project.html">Project</a></li><li><a href="ProjectsForm.html">ProjectsForm</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="TasksContent.html">TasksContent</a></li><li><a href="TodoItem.html">TodoItem</a></li><li><a href="TodoItemForm.html">TodoItemForm</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addItemSelector">addItemSelector</a></li><li><a href="global.html#clearLocalStorageSelector">clearLocalStorageSelector</a></li><li><a href="global.html#contentContainer">contentContainer</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#homeTab">homeTab</a></li><li><a href="global.html#notesTab">notesTab</a></li><li><a href="global.html#page">page</a></li><li><a href="global.html#projectsTab">projectsTab</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#renderOriginalInput">renderOriginalInput</a></li><li><a href="global.html#tasksContainer">tasksContainer</a></li><li><a href="global.html#todayTab">todayTab</a></li><li><a href="global.html#weekTab">weekTab</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="AddItem.html">AddItem</a></li><li><a href="DataHandler.html">DataHandler</a></li><li><a href="Note.html">Note</a></li><li><a href="NotesForm.html">NotesForm</a></li><li><a href="Page.html">Page</a></li><li><a href="Project.html">Project</a></li><li><a href="ProjectsForm.html">ProjectsForm</a></li><li><a href="SideBar.html">SideBar</a></li><li><a href="TasksContent.html">TasksContent</a></li><li><a href="TodoItem.html">TodoItem</a></li><li><a href="TodoItemForm.html">TodoItemForm</a></li><li><a href="TodoListDate.html">TodoListDate</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addItemSelector">addItemSelector</a></li><li><a href="global.html#clearLocalStorageSelector">clearLocalStorageSelector</a></li><li><a href="global.html#contentContainer">contentContainer</a></li><li><a href="global.html#getDescription">getDescription</a></li><li><a href="global.html#homeTab">homeTab</a></li><li><a href="global.html#notesTab">notesTab</a></li><li><a href="global.html#page">page</a></li><li><a href="global.html#projectsTab">projectsTab</a></li><li><a href="global.html#render">render</a></li><li><a href="global.html#renderOriginalInput">renderOriginalInput</a></li><li><a href="global.html#tasksContainer">tasksContainer</a></li><li><a href="global.html#todayTab">todayTab</a></li><li><a href="global.html#weekTab">weekTab</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Feb 22 2023 18:16:49 GMT-0500 (Eastern Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Feb 22 2023 21:18:09 GMT-0500 (Eastern Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
