@@ -925,9 +925,6 @@ export class TasksContent {
         // Show due date.
         const dueDate = document.createElement('div');
         let todoItemDueDate = todoItem.getDueDate();
-        //const today = (new Date()).toISOString().split('T')[0];
-
-        console.log(`due date: ${todoItemDueDate}, today: ${TodoListDate.getDate()}`);
         if (TodoListDate.getDate() > todoItemDueDate) {
             dueDate.classList.add('todo-item-due-date-overdue');
         } else if (TodoListDate.getDate() === todoItemDueDate) {
@@ -1004,8 +1001,9 @@ export class TasksContent {
         }
         let today = new Date();
 
-        /* Before we do anything we need to know which tab is selected
-            in order to know what to render. */
+        /* Before we do anything we need to know which tab is selected in 
+        order to know what to render. We also test which item type we are 
+        working with to render the correct content. */
         const selectedTab = sessionStorage.getItem('SelectedTab');
         for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
