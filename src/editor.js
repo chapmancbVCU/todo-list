@@ -49,7 +49,7 @@ export function render (description) {
   tinymce.init({
     selector: '.editor',
     plugins: 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table code help wordcount',
-    toolbar: 'undo redo | bold italic backcolor | strikethrough | outdent indent | alignleft aligncenter alignright alignjustify | removeformat | help',
+    toolbar: 'undo redo | bold italic backcolor underline strikethrough | outdent indent | alignleft aligncenter alignright alignjustify | removeformat | help',
     skin: false,
     menubar: false,
     content_css: false,
