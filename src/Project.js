@@ -70,7 +70,7 @@ export class Project extends DataHandler {
         let deserializedObj = JSON.parse(localStorage.getItem(key));
         
         const itemType = deserializedObj.itemType;
-        if(itemType == 'ProjectObj') {
+        if (itemType == 'ProjectObj') {
             const parentProject = deserializedObj.parentProject;
             const title = deserializedObj.title;
             const subTasks = deserializedObj.subTasks;

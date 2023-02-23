@@ -44,7 +44,7 @@ export class AddItem {
             let title = document.getElementById('note-title').value;
             let description = document.getElementById('notes-content').value;
 
-            if(title == "" || title == null) {
+            if (title == "" || title == null) {
                 title.setCustomValidity();
             } else if (description == "" || description == null) {
                 description.setCustomValidity();
@@ -77,7 +77,7 @@ export class AddItem {
             let title = document.getElementById('projects-title').value;
 
             // Perform form validation.
-            if(title == "") {
+            if (title == "") {
                 title.setCustomValidity();
             } else {
                 const project = new Project('ProjectObj', title, 0);
@@ -112,7 +112,7 @@ export class AddItem {
                 'parent-project').value;
 
             // Perform form validation.
-            if(title == "") {
+            if (title == "") {
                 title.setCustomValidity();
             } else if (dueByDate == "") {
                 dueByDate.setCustomValidity();
@@ -138,13 +138,13 @@ export class AddItem {
                 let date = new Date(Date.now());
                 todoItem.setTodoItem(todoItem, `TodoItemObj_${date}`); 
 
-                for(let i = 0; i < localStorage.length; i++) {
+                for (let i = 0; i < localStorage.length; i++) {
                     let key = localStorage.key(i);
-                    if(key.includes('ProjectObj_')) {
+                    if (key.includes('ProjectObj_')) {
                         let project = new Project();
                         project = project.getItem(key);
                         const projectTitle = project.getTitle();
-                        if(projectTitle === selectedProject) {
+                        if (projectTitle === selectedProject) {
                             project.incrementSubTasksCount();
                             project.setTodoItem(project, key);
                         }
@@ -263,7 +263,6 @@ export class AddItem {
      * @returns HTMLFormElement The form for adding a new todo list item.
      */
     renderTodoItemForm() {
-
         return this.todoItemForm.initializeComponents();
     }
 

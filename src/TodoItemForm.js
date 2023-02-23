@@ -188,5 +188,4 @@ export class TodoItemForm {
         todoItemFormContainer.appendChild(todoItemForm);
         return todoItemFormContainer;
     }
-
 }

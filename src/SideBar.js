@@ -37,9 +37,9 @@ export class SideBar {
     getSelectedTab() {
         let selectedTab = '';
         // Selected tab is used to mark which tab is selected in sidebar.
-        for(let i = 0; i < sessionStorage.length; i++) {
+        for (let i = 0; i < sessionStorage.length; i++) {
             const key = sessionStorage.key(i);
-            if(key.includes('SelectedTab')) {
+            if (key.includes('SelectedTab')) {
                 selectedTab = sessionStorage.getItem(key);
             }
         }
@@ -127,9 +127,9 @@ export class SideBar {
         some // before the word home.  We also test if others are selected.
         Finally, if selectedTab is not set we just print // Home since it is 
         the default tab. */
-        if(this.getSelectedTab() === 'HOME') {
+        if (this.getSelectedTab() === 'HOME') {
             homeLabel.textContent = '// Home';
-        } else if(this.getSelectedTab() != '') {
+        } else if (this.getSelectedTab() != '') {
             homeLabel.textContent = 'Home';
         } else {
             homeLabel.textContent = '// Home';
@@ -142,13 +142,13 @@ export class SideBar {
         /* Determine which items have not been completed and keep count so we 
         can set the value for homeTaskCount.textContent. */
         let incompleteTodoItemsCount = 0;
-        for(let i  = 0; i < localStorage.length; i++) {
+        for (let i  = 0; i < localStorage.length; i++) {
             let key = localStorage.key(i);
 
-            if(key.includes('TodoItemObj_')) {
+            if (key.includes('TodoItemObj_')) {
                 let todoItem = new TodoItem();
                 todoItem = todoItem.getItem(key);
-                if(todoItem.getIsComplete() == false) {
+                if (todoItem.getIsComplete() == false) {
                     incompleteTodoItemsCount++;
                 }
             }
@@ -171,7 +171,7 @@ export class SideBar {
 
         const notesLabel = document.createElement('h2');
         notesLabel.classList.add('side-bar-label');
-        if(this.getSelectedTab() === 'NOTES') {
+        if (this.getSelectedTab() === 'NOTES') {
             notesLabel.textContent = '// Notes';
         } else {
             notesLabel.textContent = 'Notes';
@@ -193,7 +193,7 @@ export class SideBar {
         const projectsRowLabel = document.createElement('h2');
         projectsRowLabel.setAttribute('id', 'project-row-label');
         projectsRowLabel.classList.add('side-bar-label');
-        if(this.getSelectedTab() === 'PROJECTS_TAB') {
+        if (this.getSelectedTab() === 'PROJECTS_TAB') {
             projectsRowLabel.textContent = '// Projects';
         }  else {
             projectsRowLabel.textContent = 'Projects';
@@ -202,10 +202,10 @@ export class SideBar {
         projectsRow.appendChild(projectsRowLabel);
 
         const projectsContainer = document.createElement('div');
-        for(let i = 0; i < localStorage.length; i++) {
+        for (let i = 0; i < localStorage.length; i++) {
             let key = localStorage.key(i);
 
-            if(key.includes('ProjectObj_')) {
+            if (key.includes('ProjectObj_')) {
                 let count = 0;
                 const projectDiv = document.createElement('div');
                 projectDiv.setAttribute('id', `${key}`);
@@ -217,7 +217,7 @@ export class SideBar {
                 the tab for this project is selected.  If selected we print 
                 // before the title. */
                 const projectLabel = document.createElement('h2');
-                if(this.getSelectedTab() === key) {
+                if (this.getSelectedTab() === key) {
                     projectLabel.textContent = `// ${project.getTitle()}`;
                 } else {
                     projectLabel.textContent = `${project.getTitle()}`;
@@ -230,13 +230,14 @@ export class SideBar {
                 const numberOfTasks = document.createElement('h3');
                 numberOfTasks.classList.add('side-bar-task-count');
 
-                for(let i = 0; i < localStorage.length; i++) {
+                for (let i = 0; i < localStorage.length; i++) {
                     const todoItemKey = localStorage.key(i);
-                    if(todoItemKey.includes('TodoItemObj_')) {
+                    if (todoItemKey.includes('TodoItemObj_')) {
                         let todoItem = new TodoItem();
                         todoItem = todoItem.getItem(todoItemKey);
-                        if(project.getTitle() == todoItem.getParentProject()) {
-                            if(todoItem.getIsComplete() == false) {
+                        if (project.getTitle() == 
+                            todoItem.getParentProject()) {
+                            if (todoItem.getIsComplete() == false) {
                                 count++;
                             }
                         }
@@ -268,7 +269,7 @@ export class SideBar {
 
         const todayLabel = document.createElement('h2');
         todayLabel.classList.add('side-bar-label');
-        if(this.getSelectedTab() === 'TODAY') {
+        if (this.getSelectedTab() === 'TODAY') {
             todayLabel.textContent = '// Today';
         } else {
             todayLabel.textContent = 'Today';
@@ -281,15 +282,15 @@ export class SideBar {
         /* Perform test to see if a todo item is due today.  If the item is
         due today then we increment the count variable. */
         let count = 0;
-        for(let i  = 0; i < localStorage.length; i++) {
+        for (let i  = 0; i < localStorage.length; i++) {
             let key = localStorage.key(i);
 
-            if(key.includes('TodoItemObj_')) {
+            if (key.includes('TodoItemObj_')) {
                 let todoItem = new TodoItem();
                 todoItem = todoItem.getItem(key);
                 let todaysDate = new Date().toJSON().slice(0, 10);//(new Date()).toISOString().split('T')[0];
 
-                if(todoItem.getDueDate() == todaysDate && 
+                if (todoItem.getDueDate() == todaysDate && 
                     todoItem.getIsComplete() == false) {
                     count++;
                 }
@@ -324,14 +325,14 @@ export class SideBar {
         /* Determine how many todo items are not complete and set that as the
         value shown inside the circle. */
         let count = 0;
-        for(let i = 0; i < localStorage.length; i++) {
+        for (let i = 0; i < localStorage.length; i++) {
             let key = localStorage.key(i);
 
-            if(key.includes('TodoItemObj_')) {
+            if (key.includes('TodoItemObj_')) {
                 let todoItem = new TodoItem();
                 todoItem = todoItem.getItem(key)
                 let dueDate = todoItem.getDueDate();
-                if(dueDate >= today.getFirstDayOfWeek() && 
+                if (dueDate >= today.getFirstDayOfWeek() && 
                     dueDate <= today.getLastDayOfWeek() &&
                     todoItem.getIsComplete() == false) {
                     count++;
@@ -346,7 +347,7 @@ export class SideBar {
 
         const weekLabel = document.createElement('h2');
         weekLabel.classList.add('side-bar-label');
-        if(this.getSelectedTab() === 'WEEK') {
+        if (this.getSelectedTab() === 'WEEK') {
             weekLabel.textContent = '// Week';
         } else {
             weekLabel.textContent = 'Week';

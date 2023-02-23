@@ -59,16 +59,16 @@ export class TasksContent {
         /* Test if this item is a todo item object.  Since the todo item may 
         have a parent project we perform this test so we can decrement the
         number of subtasks associated with the project. */
-        if(key.includes('TodoItemObj_')) {
+        if (key.includes('TodoItemObj_')) {
             const parentProject = item.getParentProject();
             
-            for(let i = 0; i < localStorage.length; i++) {
+            for (let i = 0; i < localStorage.length; i++) {
                 let projectKey = localStorage.key(i);
-                if(projectKey.includes('ProjectObj_')) {
+                if (projectKey.includes('ProjectObj_')) {
                     let project = new Project();
                     project = project.getItem(projectKey);
                     const projectTitle = project.getTitle();
-                    if(projectTitle === parentProject) {
+                    if (projectTitle === parentProject) {
                         project.decrementSubTasksCount();
                         project.setTodoItem(project, projectKey);
                     }
@@ -108,9 +108,9 @@ export class TasksContent {
             'todo-item-confirm-delete-title-container');
 
         const deleteItemTitle = document.createElement('div');
-        if(item.getItemType().includes('TodoItemObj')) {
+        if (item.getItemType().includes('TodoItemObj')) {
         deleteItemTitle.textContent = 'Delete Todo List Item';
-        } else if(item.getItemType().includes('NoteItemObj')) {
+        } else if (item.getItemType().includes('NoteItemObj')) {
             deleteItemTitle.textContent = 'Delete Note';
         } else if (item.getItemType().includes('ProjectObj')) {
             deleteItemTitle.textContent = 'Delete Project';
@@ -343,7 +343,7 @@ export class TasksContent {
             let newDescription = editor.getDescription();
 
             // Perform form validation.
-            if(newTitle == "" || newTitle == null) {
+            if (newTitle == "" || newTitle == null) {
                 newTitle.setCustomValidity();
             } else if (newDescription == "" || newDescription == null) {
                 newDescription.setCustomValidity();
@@ -455,7 +455,7 @@ export class TasksContent {
             let newTitle = document.getElementById('projects-title').value;
             
             // Perform form validation.
-            if(newTitle == "" || newTitle == null) {
+            if (newTitle == "" || newTitle == null) {
                 newTitle.setCustomValidity();
             } else {
                 // Update the project.
@@ -465,12 +465,12 @@ export class TasksContent {
                 /* Update the parent project for child todo items.  To do this 
                 we must got through each todo item in storage and compare.  If 
                 there is a match we perform the update. */
-                for(let i = 0; i < localStorage.length; i++) {
+                for (let i = 0; i < localStorage.length; i++) {
                     const todoItemKey = localStorage.key(i);
-                    if(todoItemKey.includes('TodoItemObj_')) {
+                    if (todoItemKey.includes('TodoItemObj_')) {
                         let todoItem = new TodoItem();
                         todoItem = todoItem.getItem(todoItemKey);
-                        if(todoItem.getParentProject() === originalTitle) {
+                        if (todoItem.getParentProject() === originalTitle) {
                             todoItem.setParentProject(newTitle);
                             todoItem.setTodoItem(todoItem, todoItemKey);
                         }
@@ -591,10 +591,10 @@ export class TasksContent {
         projectsMenu.appendChild(defaultOption);
 
         // Search local storage for projects.
-        for(let i = 0; i < localStorage.length; i++) {
+        for (let i = 0; i < localStorage.length; i++) {
             let key = localStorage.key(i);
 
-            if(key.includes('ProjectObj_')) {
+            if (key.includes('ProjectObj_')) {
                 let project = new Project();
                 project = project.getItem(key);
                 const projectTitle = project.getTitle();
@@ -702,7 +702,7 @@ export class TasksContent {
         document.getElementById('parent-project').value = 
             originalParentProject;
         document.getElementsByName('set-priority').forEach(radio => {
-            if(radio.value == originalPriority) {
+            if (radio.value == originalPriority) {
                 radio.checked = true;
             }
         });
@@ -720,7 +720,7 @@ export class TasksContent {
                 'parent-project').value;
               
             // Perform form validation.
-            if(newTitle == "" || newTitle == null) {
+            if (newTitle == "" || newTitle == null) {
                 newTitle.setCustomValidity();
             } else {
                 let newPriority;
@@ -741,18 +741,18 @@ export class TasksContent {
                 /* If parent project has changed we increment task count for
                 new parent project and decrement task count for original
                 parent project. */
-                if(newSelectedProject != originalParentProject) {
-                    for(let i = 0; i < localStorage.length; i++) {
+                if (newSelectedProject != originalParentProject) {
+                    for (let i = 0; i < localStorage.length; i++) {
                         let key = localStorage.key(i);
-                        if(key.includes('ProjectObj_')) {
+                        if (key.includes('ProjectObj_')) {
                             let project = new Project();
                             project = project.getItem(key);
                             const projectTitle = project.getTitle();
-                            if(projectTitle === newSelectedProject) {
+                            if (projectTitle === newSelectedProject) {
                                 project.incrementSubTasksCount();
                                 project.setTodoItem(project, key);
                             }
-                            if(projectTitle === originalParentProject) {
+                            if (projectTitle === originalParentProject) {
                                 project.decrementSubTasksCount();
                                 project.setTodoItem(project, key);
                             }
@@ -863,11 +863,12 @@ export class TasksContent {
 
         /* Setup delete button icon.  This feature is only available when 
         the project has zero subtasks. */
-        if(project.getSubTasks() < 1) {
+        if (project.getSubTasks() < 1) {
             const deleteIcon = new Image();
             deleteIcon.classList.add('project-list-item-icon');
             deleteIcon.src = DeleteIcon;
             iconsContainer.appendChild(deleteIcon);
+
             // Event listener for delete button.
             deleteIcon.addEventListener('click', () => {
                 this.renderConfirmDeleteModal(key, project);
@@ -887,6 +888,7 @@ export class TasksContent {
         const todoItemContainer = document.createElement('div');
         todoItemContainer.classList.add('todo-item');
         this.setTodoItemRowColor(todoItemContainer, todoItem);
+
         // Setup left side of todo item row.
         const left = document.createElement('div');
         left.classList.add('todo-item-left-side');    
@@ -923,7 +925,7 @@ export class TasksContent {
         const dueDate = document.createElement('div');
         let todoItemDueDate = todoItem.getDueDate();
         const today = (new Date()).toISOString().split('T')[0];
-        if(today > todoItemDueDate) {
+        if (today > todoItemDueDate) {
             dueDate.classList.add('todo-item-due-date-overdue');
         } else if (today == todoItemDueDate) {
             dueDate.classList.add('todo-item-due-date-today');
@@ -964,7 +966,7 @@ export class TasksContent {
         })
 
         // Check if item is completed and set value of checkbox.
-        if(todoItem.getIsComplete() === true) {
+        if (todoItem.getIsComplete() === true) {
             document.getElementById(
                 `${todoItem.getTitle()}-is-complete`).checked = true;
         } else if (todoItem.getIsComplete() === false) {
@@ -1002,24 +1004,24 @@ export class TasksContent {
         /* Before we do anything we need to know which tab is selected
             in order to know what to render. */
         const selectedTab = sessionStorage.getItem('SelectedTab');
-        for(let i = 0; i < localStorage.length; i++) {
+        for (let i = 0; i < localStorage.length; i++) {
             const key = localStorage.key(i);
             
-            if(key.includes('TodoItemObj_')) {
+            if (key.includes('TodoItemObj_')) {
                 let todoItem = new TodoItem();
                 todoItem = todoItem.getItem(key);
                 let dueDate = todoItem.getDueDate();
 
                 /* Render todo items depending on which tab is clicked in the 
                 sidebar. */
-                if(selectedTab == null || selectedTab.includes('HOME')) {
+                if (selectedTab == null || selectedTab.includes('HOME')) {
                     this.renderTodoItem(key, todoItem);
                 } else if (selectedTab.includes('TODAY')) {
-                    if(dueDate == (new Date()).toISOString().split('T')[0]) {
+                    if (dueDate == (new Date()).toISOString().split('T')[0]) {
                         this.renderTodoItem(key, todoItem);
                     }
                 } else if (selectedTab.includes('WEEK')) {
-                   if(dueDate >= today.getFirstDayOfWeek() &&
+                   if (dueDate >= today.getFirstDayOfWeek() &&
                         dueDate <= today.getLastDayOfWeek()) {
                             this.renderTodoItem(key, todoItem);
                         }
@@ -1028,18 +1030,18 @@ export class TasksContent {
                     content container with only those todo items. */
                     let project = new Project();
                     project = project.getItem(selectedTab);
-                    if(todoItem.getParentProject() == project.getTitle()) {
+                    if (todoItem.getParentProject() == project.getTitle()) {
                         this.renderTodoItem(key, todoItem);
                     }
                 }
-            } else if(key.includes('NoteItemObj_')) {
-                if(selectedTab.includes('NOTES')) {
+            } else if (key.includes('NoteItemObj_')) {
+                if (selectedTab.includes('NOTES')) {
                     this.tasksContainer.classList.remove('tasks-container');
                     this.tasksContainer.classList.add('notes-content-grid');
                     this.renderNote(key);
                 }
-            } else if(selectedTab.includes('PROJECTS_TAB')) {
-                if(key.includes('ProjectObj_')) {
+            } else if (selectedTab.includes('PROJECTS_TAB')) {
+                if (key.includes('ProjectObj_')) {
                     this.renderProject(key);
                 }
             }
@@ -1056,7 +1058,7 @@ export class TasksContent {
      * @returns void
      */
     setTodoItemRowColor(todoItemRow, todoItem) {
-        if(todoItem.getPriority() === 'low-priority') {
+        if (todoItem.getPriority() === 'low-priority') {
             todoItemRow.classList.add('todo-item-low-priority');
         } else if (todoItem.getPriority() === 'medium-priority') {
             todoItemRow.classList.add('todo-item-medium-priority');
